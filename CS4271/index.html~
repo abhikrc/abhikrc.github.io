@@ -1,128 +1,0 @@
-<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
-<html>
-<head>
-   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-   <meta name="GENERATOR" content="Microsoft FrontPage 5.0">
-   <title>CS 4271 Home Page</title>
-</head>
-<body bgcolor="#FFFFFF", background ="../CHALK.JPG">
-
-<h1>
-<a href="http://www.comp.nus.edu.sg/"><img SRC="sclogo.gif" BORDER=0 height=48 width=40></a>
-CS 4271 - Critical Systems and their Verification</h1>
-
-<p align="center">
-&nbsp;<font face="Arial" color="#008000">Variants of the following course were offered at the CS Department of National University of Singapore for 5 years from 2002-06</font></p>
-
-<ul>
-
-<li>
-<font face="Arial">
-<a href="#coursedesc">Brief Description</a></font></li>
-
-<li>
-<font face="Arial">
-<a href="#topics">Outline and Lesson Plan</a></font></li>
-
-<li>
-<font face="Arial">
-<a href="#material">Materials</a></font></li>
-
-<li>
-<font face="Arial">
-<a href="#assessment">Assessment</a></font></li>
-
-<li>
-<font face="Arial">
-<a href="#projects">Term Projects</a></font></li>
-
-<li>
-<font face="Arial">
-<a href="#courseinfo">Other Course Information</a></font></li>
-</ul>
-
-<hr>
-
-<h2>
-<a NAME="coursedesc"></a><i>Brief Description</i></h2>
-<font face="Arial">This course will introduce verification techniques for validating safety critical reactive systems with specific focus on embedded systems.&nbsp; Primarily we will cover an automated verification technique called Model Checking which is based on state space search and can check all possible behaviors of a system. The different parts of the course will touch upon:&nbsp; (a) modeling of reactive system behaviors&nbsp; (b) verification&nbsp; via Model Checking&nbsp;&nbsp; (c) state space reduction techniques to make model checking space/time efficient and (d)&nbsp; issues in validation
-of  embedded systems. </font><hr>
-<h2>
-<a NAME="topics"></a><i>Course Outline and Lesson Plan</i></h2>
-<font face="Arial">The following is a tentative outline of the lectures and examinations in the course. </font><p><font face="Arial">Full details of the course schedule appears in the <b><a href="lesson-plan.html">Lesson Plan.</a></b></font></p><ul>
-<li>
-<font face="Arial">Week 1:&nbsp;&nbsp; Introduction</font></li>
-
-<li>
-<font face="Arial">Week2:&nbsp;&nbsp;&nbsp; Modeling behaviors via&nbsp; transition systems</font></li>
-
-<li>
-<font face="Arial">Week 3:&nbsp;&nbsp; SMV Model Checker</font></li>
-
-<li>
-<font face="Arial">Week 4:&nbsp;&nbsp; SMV checker and Case Study</font></li>
-
-<li>
-<font face="Arial">Week 5&nbsp;&nbsp;&nbsp; Temporal Logics - I</font></li>
-
-<li>
-<font face="Arial">Week 6:&nbsp;&nbsp; Termporal Logics&nbsp; - II </font></li>
-
-<li>
-<font face="Arial">Week 7: <b><font color="#FF0000">&nbsp; MIDTERM&nbsp; (Open Book)</font></b></font></li>
-
-<li>
-<font face="Arial">Week 8:&nbsp;&nbsp; Explicit state model checking</font></li>
-
-<li>
-<font face="Arial">Week 9:&nbsp;&nbsp; Binary Decision Diagrams - I</font></li>
-
-<li>
-<font face="Arial">Week 10:&nbsp;Binary Decision Diagrams - II</font></li>
-
-<li>
-<font face="Arial">Week 11:&nbsp;Symbolic Model Checking</font></li>
-
-<li>
-<font face="Arial">Week 12:&nbsp;Fairness Issues</font></li>
-
-<li>
-<font face="Arial">Week 13:&nbsp;Slack for Unfinished Items and Wrap-up</font></li>
-
-<li>
-<font face="Arial">
-<font color="#FF0000"><b>April 26</b></font><b><font color="#FF0000">:&nbsp; Final Examination
-(Open Book).</font></b></font><hr></li>
-</ul>
-
-<h2>
-<a NAME="material"></a><i>Materials</i></h2>
-
-<div style="margin-top: 0; margin-bottom: 0"><b>&nbsp;&nbsp;&nbsp; <i>   <font size=+0 face="Arial">  Text Book</font></i></b></div>
-
-<ul>  <li><font face="Arial"><i><font size=+0>&nbsp;Model
-Checking</font></i><font size=+0>&nbsp; by&nbsp;  Clarke,  Grumberg, Peled   (Available in&nbsp; Bookstore).</font> </font>
-
-  </li>  </ul>
-
-<p><font face="Arial">&nbsp;&nbsp;&nbsp; <i> <b>Tutorials/Readings</b></i></font><ul>    <li><font face="Arial">&nbsp;<b><a href="http://embedded.eecs.berkeley.edu/Alumni/kenmcmil/tutorial.ps">SMV Tutorial</a></b> <font class="iContent">by Ken Mcmillan (the first 2-3 sections are useful for our course).</font></font></li>    <li><font face="Arial">&nbsp;<a href="http://www.cs.technion.ac.il/users/orna/tools.ps">Verification Tools for Finite-State Concurrent Systems</a>, LNCS 803, June 1993 by Clarke,  Grumberg, Long</font></li>    </ul>    <p style="margin-top: 0; margin-bottom: 0"><font face="Arial"><b><font size=+0>&nbsp;&nbsp;&nbsp;    <i>Lecture Notes</i></font></b></font><ul>  <li>    <p style="margin-top: 0; margin-bottom: 0"><font size=+0><b>&nbsp;</b><font face="Arial">All    Lecture Notes are accessible from <b><a href="lecture-notes.zip">here (zip     file)</a>. </b></font>    </font>    </li>  <li>    <p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="+0">Alternatively, you can     access each lecture  by browsing the lecture schedule from    <a href="lesson-plan.html"> <b>    Lesson Plan</b>.</a></font><font size=+0></li></ul><p style="margin-top: 0; margin-bottom: 0"><font size=+0>&nbsp;&nbsp;&nbsp; </font>
-
-<hr>
-
-<p><a NAME="assessment"></a><i><b><font size=+2>Assessment</font></b> </i>
-<p style="margin-top: 0; margin-bottom: 0"><font face="Arial">Midterm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp;&nbsp; 25% </font><p style="margin-top: 0; margin-bottom: 0"><font face="Arial">Project&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp;&nbsp; 25%<br>Final&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp;&nbsp; 50% <br>&nbsp;</font><hr><p><a NAME="projects"></a>    </font><i><b><font size="+2">Project</font></b><font size="+0"><b><font size=+2>s</font></b>    </font></i><p><font face="Arial" size="+0"><b>Tools:</b> &nbsp;&nbsp; Symbolic Model Verifier or<a href="http://www.kenmcmil.com/smv.html">SMV</a> (Cadence Version). The manual for&nbsp; Cadence SMV comes with its distribution. </font><p><font face="Arial" size="+0">Here is an <b><a href="proj-ideas.html">initial list of project ideas</a></b>. Please come and talk to the instructor to concretize your project proposal.</font><p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="+0">Here is the project implementation schedule.</font><p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="+0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Feb 10 :&nbsp; Submit a brief 2 page project proposal.</font><p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="+0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; March 10: Submit a midterm report (initial modeling should be complete or almost complete)</font><p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="+0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; April 10:&nbsp; Submit the final report with SMV code and results</font><p style="margin-top: 0; margin-bottom: 0"><font size="+0"><font face="Arial">Guidelines about report submission will be communicated via e-mail.</font></font><p style="margin-top: 0; margin-bottom: 0"><font size="+0"><hr>
-<h2>
-<a NAME="courseinfo"></a><i>Other Course Information</i></h2>
-
-<p style="margin-top: 0; margin-bottom: 0"><font face="Arial"><b>Instructor</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.comp.nus.edu.sg/~abhik">Dr.
-Abhik Roychoudhury</a> , Office : S16 #06-08 , <a href="mailto:abhik@comp.nus.edu.sg">abhik@comp.nus.edu.sg</a>
-<br><b>Lectures</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Monday 11:00 AM - 2 PM&nbsp; (2hr lecture + 1 hr revision)&nbsp; at SR1 (S16, 03-07)</font><p style="margin-top: 0; margin-bottom: 0">
-<font face="Arial">
-<b>Consultation&nbsp; </b>
-
-    &nbsp;&nbsp;&nbsp;&nbsp;Whenever you want to meet me, send me e-mail by proposing a meeting time.&nbsp;&nbsp;</font><p style="margin-top: 0; margin-bottom: 0"><font face="Arial"><b>Pre-requisites:&nbsp;&nbsp; </b>CS 1231/1231s : Discrete Mathematics&nbsp; and&nbsp; CS 1104 : Computer
-Organization </font> </p><dl>
-<hr></dl>
-
-</body>
-</html>
