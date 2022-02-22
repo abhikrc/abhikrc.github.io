@@ -1,19 +1,0 @@
-<HTML>
-<style>
-<!--
- p.MsoNormal
-	{mso-style-parent:"";
-	margin-bottom:.0001pt;
-	font-size:12.0pt;
-	font-family:"Times New Roman";
-	margin-left:0in; margin-right:0in; margin-top:0in}
- li.MsoNormal
-	{mso-style-parent:"";
-	margin-bottom:.0001pt;
-	font-size:12.0pt;
-	font-family:"Times New Roman";
-	margin-left:0in; margin-right:0in; margin-top:0in}
--->
-</style>
-<body bgcolor="#FFFFFF"><p class="MsoNormal"><b><span style="font-size: 16.0pt; font-family: Arial">Sample Project Report in CS4271, 2004-05</span></b></p><p class="MsoNormal">&nbsp;</p><ol style="margin-top: 0in; margin-bottom: 0in" start="1" type="1">  <li class="MsoNormal"><span style="font-size: 10.0pt; font-family: Arial">  Attached is a project report done by two (2) students for CS4271 term project   (in the year 2004-05). In my various offerings of the course, the project   report accounted for 25-35% of the course grade. It is a substantial piece of   work done over three months with (a) fixing of project and preliminary   proposal submission at the end of first month, (b) midterm report submission   (possibly with experiments pending) at the end of second month, and (c) final   report submission (along with implementation) at the end of the third month.</span></li></ol><p class="MsoNormal" style="margin-left:.25in"><span style="font-size: 10.0pt; font-family: Arial">&nbsp;</span></p><ol style="margin-top: 0in; margin-bottom: 0in" start="2" type="1">  <li class="MsoNormal"><span style="font-size: 10.0pt; font-family: Arial">In   the attached project, the students took up a well-known challenge problem   called the “Wildfire Verification Challenge Problem”. This problem had been   suggested as a challenge to verification researchers and practitioners to try   out the effectiveness of different techniques in formal validation. Basically,   the problem provides the formal description of a complex real-life cache   coherence protocol. The description contains a bug (deliberately inserted).   The purpose of the challenge is to find out the bug using validation methods.</span></li></ol><p class="MsoNormal" style="margin-left:.25in"><span style="font-size: 10.0pt; font-family: Arial">&nbsp;</span></p><ol style="margin-top: 0in; margin-bottom: 0in" start="3" type="1">  <li class="MsoNormal"><span style="font-size: 10.0pt; font-family: Arial">The   students did very well. Their work involved reading through the protocol as   well as its formal description (which required some familiarization of the   formal description language as well). They were also able to locate the   relevant error traces. Even after the error traces were located, understanding   the error traces to fix the bug was also problematic. This was also done by   the students resulting in very satisfactory work</span></li></ol><p><span style="font-family: Arial"><a href="report.pdf">Download the project report</a></span></p>
-</HTML>

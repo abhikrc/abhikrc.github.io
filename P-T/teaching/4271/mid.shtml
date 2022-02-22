@@ -1,19 +1,0 @@
-<HTML>
-<style>
-<!--
- p.MsoNormal
-	{mso-style-parent:"";
-	margin-bottom:.0001pt;
-	font-size:12.0pt;
-	font-family:"Times New Roman";
-	margin-left:0in; margin-right:0in; margin-top:0in}
- li.MsoNormal
-	{mso-style-parent:"";
-	margin-bottom:.0001pt;
-	font-size:12.0pt;
-	font-family:"Times New Roman";
-	margin-left:0in; margin-right:0in; margin-top:0in}
--->
-</style>
-<body bgcolor="#FFFFFF"><p class="MsoNormal"><b><span style="font-size: 16.0pt; font-family: Arial">Midterm Examination CS4271, 2004-05</span></b></p><p class="MsoNormal">&nbsp;</p><ol style="margin-top: 0in; margin-bottom: 0in" start="1" type="1">  <li class="MsoNormal"><span style="font-size: 10.0pt; font-family: Arial">The   midterm examination of CS 4271 (Critical Systems and their Verification) in   2004-05 is attached. In all my offerings of the course CS4271, the final   examination has accounted for 20-25% of the grade. </span></li></ol><p class="MsoNormal" style="margin-left:.25in"><span style="font-size: 10.0pt; font-family: Arial">&nbsp;</span></p><ol style="margin-top: 0in; margin-bottom: 0in" start="2" type="1">  <li class="MsoNormal"><span style="font-size: 10.0pt; font-family: Arial">The   questions test the students’ ability to apply their knowledge in realistic   settings. For example, question A in page 2 of the attached midterm paper   tests the students’ ability to apply their knowledge of system modeling in a   protocol they could not have seen in the textbook.</span></li></ol><p class="MsoNormal" style="margin-left:.25in"><span style="font-size: 10.0pt; font-family: Arial">&nbsp;</span></p><ol style="margin-top: 0in; margin-bottom: 0in" start="3" type="1">  <li class="MsoNormal"><span style="font-size: 10.0pt; font-family: Arial">In   this course, we discuss modeling and reasoning about concurrent systems which   the students initially find a bit hard. In the midterm, we have questions (see   question C, page 4 of the attached midterm exam) which test the students   understanding of the concurrency/communication models studied in class. In the   final examination, we go one step further. We test whether the students’   understanding of the concurrency models is in-depth enough to construct new   models of concurrency/communication (e.g. see question D.1 in page 11 of the   sample final exam question paper in this module folder).</span></li></ol><p><span style="font-family: Arial"><a href="mid.pdf">Download question paper (with sample answers)</a></span></p>
-</HTML>

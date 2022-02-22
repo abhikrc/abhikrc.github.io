@@ -1,22 +1,0 @@
-<HTML>
-<style>
-<!--
- p.MsoNormal
-	{mso-style-parent:"";
-	margin-bottom:.0001pt;
-	font-size:12.0pt;
-	font-family:"Times New Roman";
-	margin-left:0in; margin-right:0in; margin-top:0in}
- li.MsoNormal
-	{mso-style-parent:"";
-	margin-bottom:.0001pt;
-	font-size:12.0pt;
-	font-family:"Times New Roman";
-	margin-left:0in; margin-right:0in; margin-top:0in}
--->
-</style>
-<body bgcolor="#FFFFFF">
-
-
-<p class="MsoNormal"><b><span style="font-size: 16.0pt; font-family: Arial">Final Examination&nbsp; CS4271, 2004-05</span></b></p><blockquote>  <ol style="margin-top: 0in; margin-bottom: 0in" start="1" type="1">    <li class="MsoNormal"><span style="font-size: 10.0pt; font-family: Arial">    The final examination of CS 4271 (Critical Systems and their Verification)     in 2004-05 is attached. In this year, the final examination accounted for     45% of the grade. In all my offerings of the course CS4271, the final     examination has accounted for 40-50% of the grade. </span></li>  </ol>  <p class="MsoNormal" style="margin-left:.25in">  <span style="font-size: 10.0pt; font-family: Arial">&nbsp;</span></p>  <ol style="margin-top: 0in; margin-bottom: 0in" start="2" type="1">    <li class="MsoNormal"><span style="font-size: 10.0pt; font-family: Arial">    The questions require in-depth understanding of the topics covered in class.     More importantly, they require the students’ ability to <b><i>apply</i></b>     this understanding to real-life situations. An example of this can be seen     from question B.1 (page 5 of the question paper) which requires the students     to model a traffic light controller with various constraints, using the     formal models studied in class</span></li>    <li class="MsoNormal">    <p class="MsoNormal"><span style="font-size: 10.0pt; font-family: Arial">    Moreover, the examination tests not just the students’ ability to     understand/apply the concepts studied in class. Rather it also tests whether     the students can build on these to construct <b><i>new concepts.</i></b> An     example of this kind of question is&nbsp; question D.1 (page 11 of the question     paper). In class, we had studied some models of concurrency and     communication. In this question, the students have to use this understanding     to build a new kind of process communication described in the question</span></p>    <p>&nbsp;</li>  </ol></blockquote><p><font face="Arial"><a href="final.pdf">Download the question paper (with sample answers)</a></font></p>
-</HTML>
