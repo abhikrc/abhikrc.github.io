@@ -1,0 +1,16 @@
+
+clauseI(1, (f1([0,1|X], [1,0|X]) :- bad1(X)), _).
+clauseI(2, (f1([1,0|X], [0,1|X]) :- bad1(X)), _).
+clauseI(3, (f1([1|X], [1|Y]) :- g1(X, Y)), _).
+clauseI(4, (f1([H|X], [H|Y]) :- f1(X, Y)), _).
+
+clauseI(5, (f2([0,1|X], [1,0|X]) :- bad1(X)), _).
+clauseI(6, (f2([1,0|X], [0,1|X]) :- bad1(X)), _).
+clauseI(7, (f2([1|X], [1|Y]) :- g2(X, Y)), _).
+clauseI(8, (f2([H|X], [H|Y]) :- f2(X, Y)), _).
+
+clauseI(9, (g1(X) :- b(X)), _).
+
+clauseI(10, (g2(X) :- b(X)), _).
+
+

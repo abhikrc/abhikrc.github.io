@@ -1,0 +1,50 @@
+
+trans(S, T) :- trans_bcast(S, T).
+trans(S, T) :- trans_hshk(S, T).
+trans(S, T) :- trans_local(S, T).
+
+trans_local([H|T], [H1|T]) :- ltrans(H, self(_), H1).
+trans_local([H|T], [H|T1]) :- trans_local(T, T1).
+
+
+trans_hshk([H|T], [H|T1]) :- trans_hshk(T, T1).
+trans_hshk([H|T], [H1|T1]) :- 
+	ltrans(H, out(Act), H1), trans_rest(T, in(Act), T1).
+trans_hshk([H|T], [H1|T1]) :- 
+	ltrans(H, in(Act), H1), trans_rest(T, out(Act), T1).
+
+trans_rest([S|T], A, [S1|T]) :- ltrans(S, A, S1).
+trans_rest([H|T], A, [H|T1]) :- trans_rest(T, A, T1).
+
+trans_bcast(S, T) :- trans_bcast(S, inv, T).
+trans_bcast(S, T) :- trans_bcast(S, cp, T).
+
+trans_bcast([H|T], Act, [H1|T1]) :- 
+	ltrans(H, b_out(Act), H1), trans_all(T, b_in(Act), T1).
+trans_bcast([H|T], Act, [H1|T1]) :- 
+	ltrans(H, b_in(Act), H1), trans_bcast(T, Act, T1).
+
+trans_all([], _, []).
+trans_all([H|T], Act, [H1|T1]) :-
+	ltrans(H, Act, H1), trans_all(T, Act, T1).
+
+ltrans(valid, self(rd), valid).
+ltrans(valid, in(ot), own1).
+ltrans(valid, b_in(inv), invalid).
+ltrans(valid, b_in(cp), valid).
+
+ltrans(invalid, b_in(inv), invalid).
+ltrans(invalid, b_in(cp), valid).
+
+ltrans(own0, self(rd), own0).
+ltrans(own0, self(wr), own0).
+ltrans(own0, b_out(cp), own1).
+ltrans(own0, b_in(inv), invalid).     
+ltrans(own0, b_in(cp), own0).
+
+ltrans(own1, self(rd), own1).
+ltrans(own1, out(ot), valid).
+ltrans(own1, b_out(inv), own0).
+ltrans(own1, b_out(cp), own1).
+ltrans(own1, b_in(inv), invalid).     
+ltrans(own1, b_in(cp), own1).

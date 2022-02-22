@@ -1,0 +1,459 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	Submitted to SVV'03 Mumbai - India					 		 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass{entcs} \usepackage{entcsmacro}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amscd}
+
+\usepackage{latexsym}
+\usepackage{amsmath}
+\newcommand*{\bisim}{\mathbin{\mathop{\sim}\limits^{\texttt{.}}}}
+\newcommand*{\todefout}{\mathbin{\mathop{\longrightarrow}\limits^{\overline{m}\langle N\rangle}}}
+\newcommand*{\todefnout}{\mathbin{\mathop{\longrightarrow}\limits^{\overline{m}\langle n\rangle}}}
+\newcommand*{\todefbout}{\mathbin{\mathop{\longrightarrow}\limits^{(\nu~\!n_1,\ldots,\nu~\!n_k)\overline{m}\langle N\rangle}}}
+\newcommand*{\todefin}{\mathbin{\mathop{\longrightarrow}\limits^{m(x)}}}
+\newcommand*{\todeftau}{\mathbin{\mathop{\longrightarrow}\limits^{\tau}}}
+\newcommand*{\todefspi}{\mathbin{\mathop{\longrightarrow}\limits^{s\pi}}}
+\newcommand*{\eqdef}{\mathbin{\mathop{=}\limits^{\texttt{def}}}}
+\def\lastname{Aziz, Hamilton and Gray}
+\begin{document}
+\bibliographystyle{plain}
+\begin{frontmatter}
+  \title{A Denotational Approach to the Static Analysis of Cryptographic Processes} \author{Benjamin Aziz\thanksref{ALL}\thanksref{b.aziz@cs.ucc.ie}}
+  \address{Computer Science Department\\ University College Cork\\
+    Cork, Ireland} \author{Geoff W. Hamilton$^{3}${\thanksref{hamilton@computing.dcu.ie}}, David Gray\thanksref{dgray@computing.dcu.ie}}
+  \address{School of Computing\\Dublin City University\\
+    Dublin, Ireland} \thanks[ALL]{This work was partially funded by project IMPROVE (Enterprise Ireland Strategic Grant ST/2000/94)} \thanks[b.aziz@cs.ucc.ie]{Email:
+    \href{mailto:b.aziz@cs.ucc.ie} {\texttt{\normalshape
+        b.aziz@cs.ucc.ie}}} \thanks[hamilton@computing.dcu.ie]{Email:
+    \href{mailto:hamilton@computing.dcu.ie} {\texttt{\normalshape
+        hamilton@computing.dcu.ie}}} \thanks[dgray@computing.dcu.ie]{Email:
+    \href{mailto:dgray@computing.dcu.ie} {\texttt{\normalshape
+        dgray@computing.dcu.ie}}}
+\begin{abstract} 
+We present in this paper, a non-uniform static analysis for detecting the term-substitution property in processes specified in the spi calculus.  The property is essential in defining security breaches, like secrecy and authenticity.  The analysis is fully denotational, preserving compositionality and facilitating implementations in functional programming.
+\end{abstract}
+\begin{keyword}
+  Static Analysis, Cryptographic Protocols, Denotational Semantics
+\end{keyword}
+\end{frontmatter}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+The spi calculus \cite{abadi1} offers a process algebraic theory for the modelling of mobile cryptographic systems that essentially extends the {\itshape value-passing\/} theory of the $\pi$-calculus \cite{milner1} by the addition of primitives for performing cryptographic operations. We view the cryptographic operations as the {\itshape value-processing\/} behaviour of processes. One aspect of the term-passing and term-processing behaviours that has significance when detecting security breaches in processes is {\itshape term substitution\/}. Term substitutions occur whenever communications, successful decryption, signature verification and tuple splitting take place.  Security implications arise in scenarios where a process classified at a low secrecy level obtains high-level data, or a process classified at a high trust level obtains low-level data.  We call the former {\itshape information leakage\/} and the latter {\itshape authenticity breach\/}.
+
+In this paper, we propose a non-uniform static analysis that captures the property of term substitution in the spi calculus, and that is capable of distinguishing between the different instances of these substitutions.  The analysis is based on a closed denotational model of the language derived from Stark's domain-theoretic equations for the $\pi$-calculus \cite{stark1}. Apart from facilitating the use of computationally important mathematical concepts, like fixed-points, the denotational approach has the advantage that it results in an implementation that is straightforward in functional programming.
+
+The abstraction that we adopt limits, in a safe manner, the number of new names and the depth of data structures, both of which can grow, in concrete semantics, to an infinite level as a result of the use of the replication operator.  Since the abstract semantic domain is kept finite, least fixed-point calculations are guaranteed to terminate for our monotonic semantic functions.
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Related Work}
+The area of the static analysis of cryptographic processes has been researched intensively in recent years using a variety of techniques, which one can only mention here a few examples.  These include types \cite{abadi2,abadi3,blanchet1}, symbolic methods \cite{amadio1,huima1,boreale1,boreale2,martinelli1}, abstract interpretation \cite{monn1,aziz2,feret1,venet1} and control flow analysis \cite{bodei1,bodei2,bodei3,bodei4}. The current work expands on previous work presented in \cite{aziz2} for mobile systems modelled by the $\pi$-calculus.  In \cite{aziz2}, names substituting variables were captured directly in the analysis, and limiting the number of copies of these names was sufficient as an abstraction.  In the spi calculus, the difficulty with this abstraction is that complex data structures also have infinite depths, as well as containing infinite number of names.  This problem is solved by the use of tags.  Also, in \cite{aziz2}, the main property of interest was privacy, whereas here, we also deal with authenticity.  Finally, the current analysis, unlike \cite{aziz2}, is capable of distinguishing between the different instances of variables, which is necessary for future definitions of the properties like freshness and resource exhaustion.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{A Domain-Theoretic Model\label{sect:denspi}}
+We extend Stark's domain-theoretic model \cite{stark1} by introducing the following predomain equations, which underlie the primitive behaviour of input, output and silent actions as well as termination (deadlock) in the spi calculus:
+\begin{eqnarray}
+\mbox{{\itshape Spi\/}}&\cong&1+\mathbb{P}(\mbox{{\itshape Spi\/}}_\bot+\mbox{{\itshape In\/}}+\mbox{{\itshape Out\/}})\\
+\mbox{{\itshape In\/}}&\cong&N\times(T\to\mbox{{\itshape Spi\/}}_\bot)\\
+\mbox{{\itshape Out\/}}&\cong&N\times(T\times\mbox{{\itshape Spi\/}}_\bot+N\to\ldots N\to(T\times\mbox{{\itshape Spi\/}}_\bot))\\
+T&\cong&N+\mbox{{\itshape Sec\/}}+\mbox{{\itshape Pub\/}}+\mbox{{\itshape Sig\/}}+\mbox{{\itshape Tup\/}}\\
+\mbox{{\itshape Sec\/}}&\cong&T\times N\\
+\mbox{{\itshape Pub\/}}&\cong&T\times N\\
+\mbox{{\itshape Sig\/}}&\cong&T\times N\\
+\mbox{{\itshape Tup\/}}&\cong&T\times\ldots\times T
+\end{eqnarray}
+Where $\mbox{{\itshape Spi\/}}_\bot$ is the domain of processes, {\itshape In\/} and {\itshape Out\/} are the predomains of input and output actions, respectively.  Input actions are modelled as pairs; a name, $N$ (the channel), and a function, $T\to\mbox{{\itshape Spi\/}}_\bot$, that can be instantiated with a term, $T$, yielding a process in $\mbox{{\itshape Spi\/}}_\bot$. Output actions are divided into free and bound output actions.  These are pairs consisting of the channel, $N$, and either another pair, $T\times\mbox{{\itshape Spi\/}}_\bot$, denoting the message, $T$, and the residue $\mbox{{\itshape Spi\/}}_\bot$ (free outputs), or composed functions, $ N\to\ldots N\to(T\times\mbox{{\itshape Spi\/}}_\bot)$, that introduce new names to the message, $T$, and the residue, $\mbox{{\itshape Spi\/}}_\bot$ (bound outputs).  $\mathbb{P}(-)$ is Plotkin's powerdomain applied to the disjoint union of input, output and silent actions (the latter represented by $\mbox{{\itshape Spi\/}}_\bot$) to construct {\itshape Spi\/}.  The one-element predomain, $1$, representing terminated (deadlocked) processes is adjoined as in \cite[Def. 3.4]{abramsky1}. The flat predomain of closed terms, $T$, is defined as the disjoint union of the predomains of names, $N$, secret-key ciphers, {\itshape Sec\/}, public-key ciphers, {\itshape Pub\/}, digital signatures, {\itshape Sig\/} and finite tuples, {\itshape Tup\/}.  The predomains {\itshape Sec\/}, {\itshape Pub\/} and {\itshape Sig\/} can be expressed as pairs, where a term, $T$, is encrypted/signed with a key, $N$.
+
+The following functions are defined as usual, leading to $\mbox{{\itshape Spi\/}}_\bot$ \cite[Def. 3.3]{abramsky1}:
+\begin{eqnarray}
+\emptyset&:&1\to\mbox{{\itshape Spi\/}}_\bot\\
+\{\!|-|\!\}&:&(\mbox{{\itshape Spi\/}}_\bot+\mbox{{\itshape In\/}}+\mbox{{\itshape Out\/}})_\bot\to\mbox{{\itshape Spi\/}}_\bot\\
+\uplus&:&(\mbox{{\itshape Spi\/}}_\bot\times\mbox{{\itshape  Spi\/}}_\bot)\to\mbox{{\itshape Spi\/}}_\bot\\
+\mbox{{\itshape new\/}}&:&(N\multimap\mbox{{\itshape Spi\/}}_\bot)\to\mbox{{\itshape Spi\/}}_\bot
+\end{eqnarray}
+The empty set, $\emptyset$, is required to represent inactive processes. The singleton map, $\{\!|-|\!\}$, creates elements of $\mbox{{\itshape Spi\/}}_\bot$ from elements of input, output and silent actions.  {\itshape new\/} is used to interpret the effects of restriction.  Finally, $\uplus$, is the standard multiset union operator representing non-determinism.
+
+Concrete elements of $t\in T$ include names, $a,b,c,k$, secret-key ciphers, $sec(t,k)$, public-key ciphers, $pub(t,k)$, digital signatures, $sig(t,k)$ and tuples, $(t_1,\ldots,t_{n})$.  Elements $p\in\mbox{{\itshape Spi\/}}_\bot$ include the bottom element, $\{\!|\bot|\!\}$, the empty set, $\emptyset$ (where $\{\!|\bot|\!\}\sqsubseteq\emptyset$), input actions, $\mbox{{\itshape in}}(a,\lambda y.p)$, free output actions, $\mbox{{\itshape out}}(a,t,p)$, bound output actions, $\mbox{{\itshape out}}(a,\lambda n_1\ldots\lambda n_m.(t,p))$ and silent actions, $\mbox{{\itshape tau}}(p)$.  The effects of restriction are interpreted by defining {\itshape new\/} concretely as in Figure \ref{newspi}.
+\begin{figure}[!bht]
+\begin{center}
+$\begin{array}{|lll|}\hline
+\mbox{{\itshape new\/}}(\lambda n.\emptyset)&~=~&\emptyset\\
+\mbox{{\itshape new\/}}(\lambda n.\{\!|\bot|\!\})&~=~&\{\!|\bot|\!\}\\
+\mbox{{\itshape new\/}}(\lambda n.\{\!|in(a,\lambda x.p)|\!\})&~=~&\\
+\multicolumn{3}{|l|}{\left\{\begin{array}{ll}
+\emptyset,&\mbox{if }a=n\\
+\{\!|in(a,\lambda x.\mbox{{\itshape new\/}}(\lambda n.p))|\!\},&\mbox{otherwise}\\
+\end{array}\right.}\\
+\mbox{{\itshape new\/}}(\lambda n.\{\!|out(a,t,p)|\!\})&~=~&\\
+\multicolumn{3}{|l|}{\left\{\begin{array}{ll}
+\emptyset,&\mbox{if }a=n\\
+\{\!|out(a,\lambda n.(t,p))|\!\},&\mbox{if }n\in n(t)\mbox{ and }n\neq a\\
+\{\!|out(a,t,\mbox{{\itshape new\/}}(\lambda n.p))|\!\},&\mbox{otherwise}
+\end{array}\right.}\\
+\mbox{{\itshape new\/}}(\lambda n.\{\!|out(a,\lambda m_1\ldots\lambda m_k.(t,p))|\!\})&~=~&\\
+\multicolumn{3}{|l|}{\left\{\begin{array}{ll}
+\emptyset,&\mbox{if }a=n\\
+
+\{\!|out(a,\lambda n.\lambda m_1\ldots\lambda m_k.(t,p))|\!\},&\mbox{if }n\in n(t)\mbox{ and }n\neq a\\
+\{\!|out(a,\lambda m_1\ldots\lambda m_k.(t,\mbox{{\itshape new\/}}(\lambda n.p)))|\!\},&\mbox{otherwise}\\
+\end{array}\right.}\\
+\mbox{{\itshape new\/}}(\lambda n.\{\!|\mbox{{\itshape tau\/}}(p)|\!\})&~=~&\{\!|\mbox{{\itshape tau\/}}(\mbox{{\itshape new\/}}(\lambda n.p))|\!\}\\
+\mbox{{\itshape new\/}}(\lambda n.(p_1\uplus p_2))&~=~&\mbox{{\itshape new\/}}(\lambda n.p_1)\uplus\mbox{{\itshape new\/}}(\lambda n.p_2)\\
+\hline
+\end{array}$
+\end{center}
+\caption{The concrete definition of {\itshape new\/} over elements $p\in\mbox{{\itshape Spi\/}}_\bot$.\label{newspi}}
+\end{figure}
+
+These effects lead to the blocking of processes attempting to communicate over fresh, non-extruded channels and the transformation of free outputs to bound outputs whenever the message of communication is a fresh name.
+The denotational semantics for the spi calculus can now be given as a semantic function, $\mathcal{S}(\![P]\!)~\rho~\phi_\mathcal{S}\in\mbox{{\itshape Spi}}_\bot$, defined by the set of rules of Figure \ref{semanticsspi}.
+\begin{figure}[!]
+\begin{footnotesize}
+\begin{center}
+$\begin{array}{|llll|}\hline
+(\mathcal{S}1)&\mathcal{S}(\![{\bf 0}]\!)~\rho~\phi_\mathcal{S}&=&\emptyset\\
+(\mathcal{S}2)&\mathcal{S}(\![M(y).P]\!)~\rho~\phi_\mathcal{S}&=&\{\!|\mbox{{\itshape in\/}}(\varphi_\mathcal{S}(\phi_\mathcal{S},M),\lambda y.\mathcal{R}(\![\{\!|P|\!\}_\rho]\!)~\phi_\mathcal{S})|\!\}\mbox{ where, }\varphi(\phi_\mathcal{E},M)\in N\\
+(\mathcal{S}3)&\mathcal{S}(\![\overline{M}\langle L\rangle.P]\!)~\rho~\phi_\mathcal{S}&=&\\
+&\multicolumn{3}{l|}{\underset{M'(z).P'\in\rho}{\biguplus}\{\!|\mbox{{\itshape tau\/}}({\mathcal R}(\![\{\!|P|\!\}_\rho\uplus_\rho\rho[P'/M'(z).P']]\!)~\phi_\mathcal{S}[z\mapsto\varphi_\mathcal{S}(\phi_\mathcal{S},L)]|\!\}}\\
+&\multicolumn{3}{l|}{\hspace{6mm}\uplus~\{\!|\mbox{{\itshape out\/}}(\varphi_\mathcal{S}(\phi_\mathcal{S},M),\varphi_\mathcal{S}(\phi_\mathcal{S},L),{\mathcal R}(\![\{\!|P|\!\}_\rho]\!)~\phi_\mathcal{S})|\!\}}\\
+&&&\mbox{where, }\varphi_\mathcal{S}(\phi_\mathcal{S},M)=\varphi_\mathcal{S}(\phi_\mathcal{S},M')\in N\\
+(\mathcal{S}4)&\mathcal{S}(\![(\nu a)P]\!)~\rho~\phi_\mathcal{S}&=&\mbox{{\itshape new\/}}(\lambda{a}.\mathcal{R}(\![\{\!|P|\!\}_\rho\uplus_\rho\rho]\!)~\phi_\mathcal{S})\\
+(\mathcal{S}5)&\mathcal{S}(\![P\mid Q]\!)~\rho~\phi_\mathcal{S}&=&\mathcal{R}(\![\{\!|P|\!\}_\rho\uplus_\rho\{\!|Q|\!\}_\rho\uplus_\rho\rho]\!)~\phi_\mathcal{S}\\
+(\mathcal{S}6)&\mathcal{S}(\![!P]\!)~\rho~\phi_\mathcal{S}&=&\mathcal{F}(-1)\\
+&\multicolumn{3}{l|}{\mbox{where, }\mathcal{F}(n)=\mbox{{\itshape let\/} }p_1=\mathcal{S}(\![~\underset{i=1}{\overset{n}{\prod}}P[\mbox{{\itshape bnv\/}}_i(P)/\mbox{{\itshape bnv\/}}(P)]~]\!)~\rho~\phi_\mathcal{S}\mbox{ {\itshape in\/}}}\\
+&\multicolumn{3}{l|}{\hspace{25mm}\mbox{{\itshape let\/} }p_2=\mathcal{S}(\![~\underset{i=1}{\overset{n+2}{\prod}}P[\mbox{{\itshape bnv\/}}_i(P)/\mbox{{\itshape bnv\/}}(P)]~]\!)~\rho~\phi_\mathcal{S}=\mbox{ {\itshape in\/}}}\\
+&\multicolumn{3}{l|}{\hspace{25mm}\mbox{{\itshape if\/} }p_1=p_2\mbox{ {\itshape then\/} }p_1\mbox{ {\itshape else\/} }\mathcal{F}(n+1)}\\
+&\multicolumn{3}{l|}{\mbox{and, }\mbox{{\itshape bnv\/}}_i(P)=\{x_i\mid x\in\mbox{{\itshape bnv\/}}(P)\}}\\
+(\mathcal{S}7)&\multicolumn{3}{l|}{\mathcal{S}(\![\mbox{{\itshape if\/} }M=L\mbox{ {\itshape then\/} }P\mbox{ {\itshape else\/} }Q]\!)~\rho~\phi_\mathcal{S}=}\\
+&\multicolumn{3}{l|}{\left\{\begin{array}{ll}
+\mathcal{R}(\![\{\!|P|\!\}_\rho\uplus_\rho\rho]\!)~\phi_\mathcal{S},&\mbox{if }\varphi_\mathcal{S}(\phi_\mathcal{S},M)=\varphi_\mathcal{S}(\phi_\mathcal{S},L)\\
+\mathcal{R}(\![\{\!|Q|\!\}_\rho\uplus_\rho\rho]\!)~\phi_\mathcal{S},&\mbox{otherwise}\\
+\end{array}\right.}\\
+(\mathcal{S}8)&\multicolumn{3}{l|}{\mathcal{S}(\![\mbox{{\itshape let\/} }(x_1,\ldots,x_n)=M\mbox{ {\itshape in\/} }P\mbox{ {\itshape else\/} }Q]\!)~\rho~\phi_\mathcal{S}=}\\
+&\multicolumn{3}{l|}{\left\{\begin{array}{ll}
+\mathcal{R}(\![\{\!|P|\!\}_\rho\uplus_\rho\rho]\!)~\phi'_\mathcal{S},&\mbox{if }\varphi_\mathcal{S}(\phi_\mathcal{S},M)=(t_1,\ldots,t_n)\\
+\multicolumn{2}{l}{\mbox{where, }\phi'_\mathcal{S}=\phi_\mathcal{S}[x_1\mapsto t_1,\ldots,x_n\mapsto t_n]}\\
+\mathcal{R}(\![\{\!|Q|\!\}_\rho\uplus_\rho\rho]\!)~\phi_\mathcal{S},&\mbox{otherwise}\\
+\end{array}\right.}\\
+(\mathcal{S}9)&\multicolumn{3}{l|}{\mathcal{S}(\![\mbox{{\itshape case\/} }L\mbox{ {\itshape of\/} }\{x\}_N\mbox{ {\itshape in\/} }P\mbox{ {\itshape else\/} }Q]\!)~\rho~\phi_\mathcal{S}=}\\
+&\multicolumn{3}{l|}{\left\{\begin{array}{ll} \mathcal{R}(\![\{\!|P|\!\}_\rho\uplus_\rho\rho]\!)~\phi'_\mathcal{S},&\mbox{if }\varphi_\mathcal{S}(\phi_\mathcal{S},L)=\mbox{{\itshape sec\/}}(t,k)\mbox{ and }\varphi_\mathcal{S}(\phi_\mathcal{S},N)=k\\
+\mbox{where, }\phi'_\mathcal{S}=\phi_\mathcal{S}[x\mapsto t]&\\
+\mathcal{R}(\![\{\!|Q|\!\}_\rho\uplus_\rho\rho]\!)~\phi_\mathcal{S},&\mbox{otherwise}\\
+\end{array}\right.}\\
+(\mathcal{S}10)&\multicolumn{3}{l|}{\mathcal{S}(\![\mbox{{\itshape case\/} }L\mbox{ {\itshape of\/} }\{\![x]\!\}_{N}\mbox{ {\itshape in\/} }P\mbox{ {\itshape else\/} }Q]\!)~\rho~\phi_\mathcal{S}=}\\
+&\multicolumn{3}{l|}{\left\{\begin{array}{ll} \mathcal{R}(\![\{\!|P|\!\}_\rho\uplus_\rho\rho]\!)~\phi'_\mathcal{S},&\mbox{if }\varphi_\mathcal{S}(\phi_\mathcal{S},L)=\mbox{{\itshape pub\/}}(t,k^+)\mbox{ and }\varphi_\mathcal{S}(\phi_\mathcal{S},N)=k^-\\
+\multicolumn{2}{l}{\mbox{where, }\phi'_\mathcal{S}=\phi_\mathcal{S}[x\mapsto t]}\\
+\mathcal{R}(\![\{\!|Q|\!\}_\rho\uplus_\rho\rho]\!)~\phi_\mathcal{S},&\mbox{otherwise}\\
+\end{array}\right.}\\
+(\mathcal{S}11)&\multicolumn{3}{l|}{\mathcal{S}(\![\mbox{{\itshape case\/} }L\mbox{ {\itshape of\/} }[\!\{x\}\!]_{N}\mbox{ {\itshape in\/} }P\mbox{ {\itshape else\/} }Q]\!)~\rho~\phi_\mathcal{S}=}\\
+&\multicolumn{3}{l|}{\left\{\begin{array}{ll} \mathcal{R}(\![\{\!|P|\!\}_\rho\uplus_\rho\rho]\!)~\phi'_\mathcal{S},&\mbox{if }\varphi_\mathcal{S}(\phi_\mathcal{S},L)=\mbox{{\itshape sig\/}}(t,k^-)\mbox{ and }\varphi_\mathcal{S}(\phi_\mathcal{S},N)=k^+\\
+\multicolumn{2}{l}{\mbox{where, }\phi'_\mathcal{S}=\phi_\mathcal{S}[x\mapsto t]}\\
+\mathcal{R}(\![\{\!|Q|\!\}_\rho\uplus_\rho\rho]\!)~\phi_\mathcal{S},&\mbox{otherwise}\\
+\end{array}\right.}\\
+(\mathcal{R}0)&\mathcal{R}(\![\rho]\!)~\phi_\mathcal{S}&=&\underset{P\in\rho}{\biguplus}{\mathcal S}(\![P]\!)~(\rho\backslash\{\!|P|\!\}_\rho)~\phi_\mathcal{S}\\\hline
+\end{array}$
+\end{center}
+\end{footnotesize}
+\caption{The denotational semantics of the spi calculus.\label{semanticsspi}}
+\end{figure}
+The multiset, $\rho$, is used to hold processes composed in parallel with the analysed process, where rule $(\mathcal{R}0)$ is used to interpret the contents of $\rho$.  The environment, $\phi_\mathcal{S}:V\to T_\bot$, where $V$ is the predomain of variables, captures any term substitutions that occur in the semantics. The special function, $\varphi_\mathcal{S}:(V\to T_\bot)\times\mbox{{\itshape Term\/}}\to T$, returns the semantic value of a term, given substitutions recorded by $\phi_\mathcal{S}$ as follows:\vspace{5mm}
+
+\noindent
+\[\varphi_\mathcal{S}(\phi_\mathcal{S},M)=\left\{\begin{array}{ll}\phi_\mathcal{S}(M),&\mbox{if }M\in V\\
+M,&\mbox{if }M\in N\\
+\mbox{{\itshape sec\/}}(\varphi_\mathcal{S}(\phi_\mathcal{S},M'),\varphi_\mathcal{S}(\phi_\mathcal{S},N)),&\mbox{if }M=\{M'\}_{N}\\
+\mbox{{\itshape pub\/}}(\varphi_\mathcal{S}(\phi_\mathcal{S},M'),\varphi_\mathcal{S}(\phi_\mathcal{S},N)),&\mbox{if }M=\{\![M']\!\}_{N}\\
+\mbox{{\itshape sig\/}}(\varphi_\mathcal{S}(\phi_\mathcal{S},M'),\varphi_\mathcal{S}(\phi_\mathcal{S},N)),&\mbox{if }M=[\!\{M'\}\!]_{N}\\
+(\varphi_\mathcal{S}(\phi_\mathcal{S},M_1),\ldots,\varphi_\mathcal{S}(\phi_\mathcal{S},M_n)),&\mbox{if }M=(M_1,\ldots,M_n)\\
+
+\end{array}\right.\]
+Note that since we only deal with closed terms, the case where $M=x\in V$ and $\phi_\mathcal{S}(x)=\bot$ will never be encountered (the case of open terms).
+
+The description of rules $(\mathcal{S}1)$--$(\mathcal{S}11)$ is as follows.  Rule $(\mathcal{S}1)$ interprets the meaning of a null process as the empty set mapping, $\emptyset$.  Rules $(\mathcal{S}2)$ and $(\mathcal{S}3)$ deal with processes guarded with input and output actions, respectively.  The rule for output actions, $(\mathcal{S}3)$, considers communications between the output channel and appropriate input channels guarding processes in $\rho$.  The $\phi_\mathcal{S}$ is updated appropriately with semantic elements. Rule $(\mathcal{S}4)$ uses the {\itshape new\/} mapping to interpret the meaning of a restriction. Rule $(\mathcal{S}5)$ interprets directly parallel composition by the addition of the parallel subprocesses to $\rho$.
+
+Finally, rule $(\mathcal{S}6)$ interprets a replicated process, $!P$, by calculating the higher-order function, $\mathcal{F}:\mathbb{N}\to\mbox{{\itshape Spi\/}}_\bot$, starting from the bottom number, $n=-1$, which computes the bottom semantic element, $\mathcal{F}(-1)=\{\!|\bot|\!\}$. The value of $n$ is increased by $2$ in each iteration to allow for any interactions between the copies of the replication to take place.  This continues until the least fixed-point is reached. Due to the fact that the semantic domain, $\mbox{{\itshape Spi\/}}_\bot$, is infinite, this calculation may not terminate within finite limits.  The rule also uses the labelling mechanism to rename all the bound names and variables, $bnv(P)$, of the spawned processes by subscripting those variables and names with a number signifying each spawned copy. Since this renaming of bound variables and names is, in fact, $\alpha$-conversion, the resulting process on the right side of the rule is structurally equivalent to a subprocess of the replication on the left side. This preserves the compositionality of the denotational semantics.
+
+The rest of the rules rely on the meaning of terms as held by the $\phi_\mathcal{S}$ environment before resolving the analysed process.  In rule $(\mathcal{S}7)$, the meaning of two terms is compared, and depending on the result, one of two processes is chosen and added to $\rho$.  Rules $(\mathcal{S}8)$--$(\mathcal{S}11)$ deal with tuple splitting and cryptographic processes. The result of the tuple splitting and cryptographic operations are used to update the $\phi_\mathcal{S}$ with the appropriate semantic terms.  A residual process, $P$, signifying the success of the operation is also added to $\rho$.  In case an operation fails, an alternative process, $Q$, is chosen and added to $\rho$.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Non-Standard Semantics\label{sect:nonstandspi}}
+The non-standard semantics of the spi calculus extends the standard denotational semantics introduced in Section \ref{sect:denspi}, where term substitutions are recorded in a special environment $\phi_\mathcal{E}:V\to\wp(T)$ that maps each variable of a closed process to the set of semantic terms that may substitute that variable during the evaluation of the meaning of a process.  Since the non-standard semantics is precise (copies of bound names and variables are always distinct), each variable will be mapped to a singleton set at most per choice of control flow, representing the term that substitutes the variable.
+
+A domain, $D_\bot=V\to\wp(T)$, can be constructed, ordered by subset inclusion:
+\[\forall\phi_{\mathcal{E}1},\phi_{\mathcal{E}2}\in D_\bot: \phi_{\mathcal{E}1}\sqsubseteq_{D_\bot}\phi_{\mathcal{E}2}\Leftrightarrow\forall x\in V:\phi_{\mathcal{E}1}(x)\subseteq\phi_{\mathcal{E}2}(x)\]
+With the bottom element, $\bot_{D_\bot}$, being the null environment, $\phi_{\mathcal{E}0}$, that maps each variable to the empty set. The union of environments operation, $\cup_\phi$, can also be defined as follows:
+\[\forall\phi_{\mathcal{E}1},\phi_{\mathcal{E}2}\in D_\bot,x\in V: (\phi_{\mathcal{E}1}\cup_\phi\phi_{\mathcal{E}2})(x)=\phi_{\mathcal{E}1}(x)\cup\phi_{\mathcal{E}2}(x)\]
+The non-standard semantic domain is formed by pairing $D_\bot$ with the standard semantic domain, $\mbox{{\itshape Spi\/}}_\bot$, resulting in $\mbox{{\itshape Spi\/}}_\bot\times D_\bot$.  The bottom element of this domain is the pair $(\bot_{Spi_\bot},\bot_{D_\bot})$.  The non-standard semantics for the spi calculus can now be defined by the semantic function, $\mathcal{E}(\![P]\!)~\rho~\phi_\mathcal{E}\in(\mbox{{\itshape Spi\/}}_\bot\times D_\bot)$, on the structure of $P$ as in Figure \ref{nonstandspi}.
+\begin{figure}[!]
+\begin{footnotesize}
+\begin{center}
+$\begin{array}{|llll|}\hline
+(\mathcal{E} 1)&\mathcal{E}(\![{\bf 0}]\!)~\rho~\phi_\mathcal{E}&=&(\emptyset,\phi_\mathcal{E})\\
+(\mathcal{E} 2)&\mathcal{E}(\![M(x).P]\!)~\rho~\phi_\mathcal{E}&=&(\{\!|\mbox{{\itshape in\/}}(\varphi_\mathcal{E}(\phi_\mathcal{E},M),\lambda x.p')|\!\},\phi_\mathcal{E})\\
+&\multicolumn{3}{l|}{\mbox{where, }(p',\phi'_\mathcal{E})=\mathcal{R}(\![\{\!|P|\!\}_\rho]\!)~\phi_\mathcal{E}\mbox{ and, }\varphi_\mathcal{E}(\phi_\mathcal{E},M)\in N}\\
+(\mathcal{E} 3)&\mathcal{E}(\![\overline{M}\langle L\rangle.P]\!)~\rho~\phi_\mathcal{E}&=&\\
+&\multicolumn{3}{l|}{(\underset{M'(z).P'\in\rho}{\biguplus}\{\!|\mbox{{\itshape tau\/}}(p')|\!\}~\uplus~\{\!|\mbox{{\itshape out\/}}(\varphi_\mathcal{E}(\phi_\mathcal{E},M),\varphi_\mathcal{E}(\phi_\mathcal{E},L),p'')|\!\},\underset{M'(z).P'\in\rho}{\bigcup_\phi}\phi'_\mathcal{E}~\cup_\phi~\phi_\mathcal{E})}\\
+&\multicolumn{3}{l|}{\mbox{if, }\varphi_\mathcal{E}(\phi_\mathcal{E},M)=\varphi_\mathcal{E}(\phi_\mathcal{E},M')\in N}\\
+&\multicolumn{3}{l|}{\mbox{where, }(p',\phi'_\mathcal{E})=\mathcal{R}(\![\{\!|P|\!\}_\rho\uplus_\rho\rho[P'/M'(z).P']]\!)~\phi_\mathcal{E}[z\mapsto\{\varphi_\mathcal{E}(\phi_\mathcal{E},L)\}]}\\
+&\multicolumn{3}{l|}{\mbox{and, }(p'',\phi''_\mathcal{E})=\mathcal{R}(\![\{\!|P|\!\}_\rho]\!)~\phi_\mathcal{E}}\\
+(\mathcal{E} 4)&\mathcal{E}(\![(\nu a)P]\!)~\rho~\phi_\mathcal{E}&=&(\mbox{{\itshape new\/}}(\lambda a.p'),\phi'_\mathcal{E})\mbox{ where, }(p',\phi'_\mathcal{E})=\mathcal{R}(\![\{\!|P|\!\}_\rho\uplus_\rho\rho]\!)~\phi_\mathcal{E}\\
+(\mathcal{E} 5)&\mathcal{E}(\![P\mid Q]\!)~\rho~\phi_\mathcal{E}&=&\mathcal{R}(\![\{\!|P|\!\}_\rho\uplus_\rho\{\!|Q|\!\}_\rho\uplus_\rho\rho]\!)~\phi_\mathcal{E}\\
+(\mathcal{E} 6)&\mathcal{E}(\![!P]\!)~\rho~\phi_\mathcal{E}&=&\mathcal{F}(-1)\\
+&\multicolumn{3}{l|}{\mbox{where, }\mathcal{F}(n)=\mbox{{\itshape let\/} }v_1=\mathcal{E}(\![~\underset{i=1}{\overset{n}{\prod}}P[\mbox{{\itshape bnv\/}}_i(P)/\mbox{{\itshape bnv\/}}(P)]~]\!)~\rho~\phi_\mathcal{E}\mbox{ {\itshape in\/}}}\\
+&\multicolumn{3}{l|}{\mbox{{\itshape let\/} }v_2=\mathcal{E}(\![~\underset{i=1}{\overset{n+2}{\prod}}P[\mbox{{\itshape bnv\/}}_i(P)/\mbox{{\itshape bnv\/}}(P)]~]\!)~\rho~\phi_\mathcal{E}\mbox{ {\itshape in\/} }\mbox{{\itshape if\/} }v_1=v_2\mbox{ {\itshape then\/} }v_1\mbox{ {\itshape else\/} }\mathcal{F}(n+1)}\\
+&\multicolumn{3}{l|}{\mbox{and, }\mbox{{\itshape bnv\/}}_i(P)=\{x_i\mid x\in\mbox{{\itshape bnv\/}}(P)\}}\\
+(\mathcal{E} 7)&\multicolumn{3}{l|}{\mathcal{E}(\![\mbox{{\itshape if\/} }M=L\mbox{ {\itshape then\/} }P\mbox{ {\itshape else\/} }Q]\!)~\rho~\phi_\mathcal{E}=\left\{\begin{array}{ll}
+\mathcal{R}(\![\{\!|P|\!\}_\rho\uplus_\rho\rho]\!)~\phi_\mathcal{E},&\mbox{if }\varphi_\mathcal{E}(\phi_\mathcal{E},M)=\varphi_\mathcal{E}(\phi_\mathcal{E},L)\\
+\mathcal{R}(\![\{\!|Q|\!\}_\rho\uplus_\rho\rho]\!)~\phi_\mathcal{E},&\mbox{otherwise}\\
+\end{array}\right.}\\
+(\mathcal{E}8)&\multicolumn{3}{l|}{\mathcal{E}(\![\mbox{{\itshape let\/} }(x_1,\ldots,x_n)=M\mbox{ {\itshape in\/} }P\mbox{ {\itshape else\/} }Q]\!)~\rho~\phi_\mathcal{E}=\left\{\begin{array}{ll}
+\mathcal{R}(\![\{\!|P|\!\}_\rho\uplus_\rho\rho]\!)~\phi_\mathcal{E}[x_1\mapsto\{t_1\}\ldots\\
+\hspace{28.5mm}x_n\mapsto\{t_n\}],&\\
+\mbox{if }\varphi_\mathcal{E}(\phi_\mathcal{E},M)=(t_1,\ldots,t_n)\\
+\mathcal{R}(\![\{\!|Q|\!\}_\rho\uplus_\rho\rho]\!)~\phi_\mathcal{E}\mbox{, otherwise}\\
+\end{array}\right.}\\
+(\mathcal{E}9)&\multicolumn{3}{l|}{\mathcal{E}(\![\mbox{{\itshape case\/} }L\mbox{ {\itshape of\/} }\{x\}_N\mbox{ {\itshape in\/} }P\mbox{ {\itshape else\/} }Q]\!)~\rho~\phi_\mathcal{E}=\left\{\begin{array}{ll} \mathcal{R}(\![\{\!|P|\!\}_\rho\uplus_\rho\rho]\!)~\phi_\mathcal{E}[x\mapsto\{t\},&\\
+\mbox{if }\varphi_\mathcal{E}(\phi_\mathcal{E},L)=\mbox{{\itshape sec\/}}(t,k)\\
+\mbox{and }\varphi_\mathcal{E}(\phi_\mathcal{E},N)=k\\
+\mathcal{R}(\![\{\!|Q|\!\}_\rho\uplus_\rho\rho]\!)~\phi_\mathcal{E}\mbox{, otherwise}&\\
+\end{array}\right.}\\
+(\mathcal{E}10)&\multicolumn{3}{l|}{\mathcal{E}(\![\mbox{{\itshape case\/} }L\mbox{ {\itshape of\/} }\{\![x]\!\}_{N}\mbox{ {\itshape in\/} }P\mbox{ {\itshape else\/} }Q]\!)~\rho~\phi_\mathcal{E}=\left\{\begin{array}{ll} \mathcal{R}(\![\{\!|P|\!\}_\rho\uplus_\rho\rho]\!)~\phi_\mathcal{E}[x\mapsto\{t\}],&\\
+\mbox{if }\varphi_\mathcal{E}(\phi_\mathcal{E},L)=\mbox{{\itshape pub\/}}(t,k^+)\\
+\mbox{and }\varphi_\mathcal{E}(\phi_\mathcal{E},N)=k^-&\\
+\mathcal{R}(\![\{\!|Q|\!\}_\rho\uplus_\rho\rho]\!)~\phi_\mathcal{E}\mbox{, otherwise}&\\
+\end{array}\right.}\\
+(\mathcal{E}11)&\multicolumn{3}{l|}{\mathcal{E}(\![\mbox{{\itshape case\/} }L\mbox{ {\itshape of\/} }[\!\{x\}\!]_{N}\mbox{ {\itshape in\/} }P\mbox{ {\itshape else\/} }Q]\!)~\rho~\phi_\mathcal{E}=\left\{\begin{array}{ll} \mathcal{R}(\![\{\!|P|\!\}_\rho\uplus_\rho\rho]\!)~\phi_\mathcal{E}[x\mapsto\{t\}],&\\
+\mbox{if }\varphi_\mathcal{E}(\phi_\mathcal{E},L)=\mbox{{\itshape sig\/}}(t,k^-)\\
+\mbox{and }\varphi_\mathcal{E}(\phi_\mathcal{E},N)=k^+&\\
+\mathcal{R}(\![\{\!|Q|\!\}_\rho\uplus_\rho\rho]\!)~\phi_\mathcal{E}\mbox{, otherwise}&\\
+\end{array}\right.}\\
+(\mathcal{R} 0)&\mathcal{R}(\![\rho]\!)~\phi_\mathcal{E}&=&(\underset{P\in\rho}{\biguplus}p',\underset{P\in\rho}{\bigcup_\phi}\phi'_\mathcal{E}),\mbox{ where, }(p',\phi'_\mathcal{E})=\mathcal{E}(\![P]\!)~(\rho\backslash\{\!|P|\!\}_\rho)~\phi_\mathcal{E}\\\hline
+\end{array}$
+\end{center}
+\end{footnotesize}
+\caption{The non-standard semantics of the spi calculus.\label{nonstandspi}}
+\end{figure}
+
+The $\rho$ multiset holds all the processes in parallel with the process under interpretation.  The definition of the $\varphi_\mathcal{E}:( V\to\wp(T))\times\mbox{{\itshape Term\/}}\to T$ function allows for the meaning of a term to be computed under a particular $\phi_\mathcal{E}$ environment:
+\[\varphi_\mathcal{E}(\phi_\mathcal{E},M)=\left\{\begin{array}{ll}t,&\mbox{if }M\in V~\wedge~\phi_\mathcal{E}(M)=\{t\}\\
+M,&\mbox{if }M\in N\\
+\mbox{{\itshape sec\/}}(\varphi_\mathcal{E}(\phi_\mathcal{E},M'),\varphi_\mathcal{E}(\phi_\mathcal{E},N)),&\mbox{if }M=\{M'\}_{N}\\
+\mbox{{\itshape pub\/}}(\varphi_\mathcal{E}(\phi_\mathcal{E},M'),\varphi_\mathcal{E}(\phi_\mathcal{E},N)),&\mbox{if }M=\{\![M']\!\}_{N}\\
+\mbox{{\itshape sig\/}}(\varphi_\mathcal{E}(\phi_\mathcal{E},M'),\varphi_\mathcal{E}(\phi_\mathcal{E},N)),&\mbox{if }M=[\!\{M'\}\!]_{N}\\
+(\varphi_\mathcal{E}(\phi_\mathcal{E},M_1),\ldots,\varphi_\mathcal{E}(\phi_\mathcal{E},M_n)),&\mbox{if }M=(M_1,\ldots,M_n)\\
+\end{array}\right.\]
+The semantic rules are described as follows.  In $(\mathcal{E}1)$, the meaning of a null process is described as the pair $(\emptyset,\phi_\mathcal{E})$, where $\phi_\mathcal{E}$ is the environment supplied to the rule initially.  Rules $(\mathcal{E}2)$ and $(\mathcal{E}3)$ deal with the cases of input and output actions, respectively. Communications are dealt with in $(\mathcal{E}3)$ for output actions, therefore, $\phi_\mathcal{E}$ remains unchanged in $(\mathcal{E}2)$ for input actions.  The rule for output actions requires that terms used as channels should evaluate to names, and communications occur whenever an input channel is matched in $\rho$.  The value of $\phi_\mathcal{E}$ is updated with the message term substituting the input parameter.  Rule $(\mathcal{E}4)$ interprets the meaning of a restriction using the {\itshape new\/} operation on the first element of the resulting pair, whereas the second element reflects the environment resulting from the residue.  This is justified as internal communications are preserved by restriction. Rule $(\mathcal{E}5)$ composes two parallel processes in $\rho$.
+
+The replication of processes is dealt with in rule $(\mathcal{E}6)$ by computing a special function, $\mathcal{F}:\mathbb{N}\to\mbox{{\itshape Spi\/}}_\bot\times D_\bot$, starting at the bottom number, $n=-1$, and incrementing $n$ by $2$ until we reach a least fixed-point for $v_1\in\mbox{{\itshape Spi\/}}_\bot\times D_\bot$.  Such a computation is not guaranteed to terminate due to the infinite nature of the non-standard semantic domain, $\mbox{{\itshape Spi\/}}_\bot\times D_\bot$. Also, $\alpha$-conversion renames the set of bound names and variables of each process copy, while maintaining the compositionality of the semantics. Rule $(\mathcal{E}7)$ deals with a conditional process, where the meaning of the overall process is chosen from the two branch processes based on the semantic equality of the compared terms.  Pair splitting is dealt with in rule $(\mathcal{E}8)$ where the $\phi_\mathcal{E}$ is updated to hold the result of the substitution of local variables by elements of a tuple. The rest of the rules $(\mathcal{E}9)$--$(\mathcal{E}11)$ deal with cryptographic processes performing secret-key decryption, public-key decryption and digital signature verification.
+
+The correctness requirement for the non-standard semantics of the spi calculus, with respect to its standard semantics, is expressed in the following theorem, which states that the standard element of the non-standard semantics is equivalent to the value obtained from the standard semantics..
+\newtheorem{theor}{Theorem}
+\begin{theor}[Correctness of the Non-Standard Semantics]\label{correctspi}
+$ $\\
+$\forall P\in\mathcal{P}:(\mathcal{S}(\![P]\!)~\rho~\phi_\mathcal{S}=p)~\wedge~(\mathcal{E}(\![P]\!)~\rho~\phi_\mathcal{E}=(p',\phi'_\mathcal{E}))~~\Rightarrow~~p=p'$
+\end{theor}
+{\itshape Proof\/}. The proof is by induction on the standard and non-standard semantics.\\$\square$
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Abstract Semantics\label{sect:abssemspi}}
+We begin by assuming a finite predomain of tags, {\itshape Tag\/}, ranged over by $t, \dot{t}, \ddot{t}$, where $t$ is the tag of a generic term, $\dot{t}$ is the tag of a primitive term (name, variable) and $\ddot{t}$ is the tag of a complex term (ciphertext, signature, tuple).  Next we tag (sub)terms of the analysed process with unique tags.  More precisely, we tag $M$ in the constructs $\mbox{{\itshape let\/} }(x_1,\ldots,x_n)=(M_1,\ldots,M_n)\mbox{ {\itshape in\/} }P\mbox{ {\itshape else\/} }Q$, $\mbox{{\itshape case\/} }\{M\}_L\mbox{ {\itshape of\/} }\{x\}_N\mbox{ {\itshape in\/} }P\mbox{ {\itshape else\/} }Q$, $\mbox{{\itshape case\/} }\{\![M]\!\}_L\mbox{ {\itshape of\/} }\{\![x]\!\}_{N}\mbox{ {\itshape in\/} }P\mbox{ {\itshape else\/} }Q$,\\$\mbox{{\itshape case\/} }[\!\{M\}\!]_L\mbox{ {\itshape of\/} }[\!\{x\}\!]_{N}\mbox{ {\itshape in\/} }P\mbox{ {\itshape else\/} }Q$ and 
+$\overline{N}\langle M\rangle.P$.
+
+For example, tagging the term $\{(\{a\}_c,\{b\}_e)\}_d$ yields $\{(\{a^{\dot{t1}}\}_c^{\ddot{t1}},\{b^{\dot{t2}}\}_e^{\ddot{t2}})^{\ddot{t3}}\}_d^{\ddot{t4}}$. The following functions are also defined over tags, terms and processes:
+
+\noindent
+--~$\mbox{{\itshape value\_of\/}}(\{t_1,\ldots,t_n\})=\{M_1,\ldots,M_n\}$.  This function can be applied to a set of tags, $\{t_1,\ldots,t_n\}$, returning the corresponding set of terms, $\{M_1,\ldots,M_n\}$.  Hence, $\mbox{{\itshape value\_of\/}}(\{\dot{t1}, \ddot{t4}\})=\{a^{\dot{t1}},~\{(\{a^{\dot{t1}}\}_c^{\ddot{t1}},\{b^{\dot{t2}}\}_e^{\ddot{t2}})^{\ddot{t3}}\}_d^{\ddot{t4}}~\}$.
+
+\noindent
+--~$\mbox{{\itshape tags\_of\/}}(P)=\{t_1,\ldots,t_n\}$.  This function returns the set, $\{t_1,\ldots,t_n\}$, of tags used in a process, $P$.\\
+For example: $\mbox{{\itshape tags\_of\/}}(\overline{m}\langle a^{\dot{t1}}\rangle. \overline{m}\langle\{(b^{\dot{t2}},c^{\dot{t3}})^{\ddot{t1}}\}^{\ddot{t2}}_k\rangle.{\bf 0})=\{\dot{t1},\dot{t2},\dot{t3},\ddot{t1},\ddot{t2}\}$.
+
+\noindent
+--~$\mbox{{\itshape untag\/}}(\{M'_1,\ldots,M'_n\})=\{M_1,\ldots,M_n\}$. When applied to a set of tagged terms, $\{M'_1,\ldots,M'_n\}$, this function removes all associated tags yielding a set of untagged terms, $\{M_1,\ldots,M_n\}$.  Hence:\\$\mbox{{\itshape untag\/}}(\{a^{\dot{t}5},~\{(a^{\dot{t}1},\{b^{\dot{t}2}\}_e^{\ddot{t}2})^{\ddot{t}3}\}_d^{\ddot{t}4}~\})=\{a,~\{(a,\{b\}_e)\}_d~\}$. The function behaves as {\itshape id\/} if a term, $M'$, has no tags.
+
+We now introduce the $\alpha_{k,k'}$ abstraction function, which keeps to a finite level, the number of copies of bound variables, names and tags.
+\newtheorem{defen}{Definition}
+\begin{defen}
+Define $\alpha_{k,k'}:\mathbb{N}\times\mathbb{N}\times(V+N+\mbox{{\itshape Tag\/}})\to(V^\sharp+N^\sharp+\mbox{{\itshape Tag\/}}^\sharp)$:
+\begin{equation*}
+\forall M\in(V+N+\mbox{{\itshape Tag\/}}),i,k,k'\in\mathbb{N}:\alpha_{k,k'}(M)=\left\{\begin{array}{ll}
+\dot{t}_{k},&\mbox{if }M=\dot{t}_i\in\mbox{{\itshape Tag\/}}\mbox{ {\itshape and\/} }i>k\\
+\ddot{t}_{k'},&\mbox{if }M=\ddot{t}_i\in\mbox{{\itshape Tag\/}}\mbox{ {\itshape and\/} }i>k'\\
+x_{k},&\mbox{if }M=x_i\in V\mbox{ {\itshape and\/} }i>k\\
+a_{k},&\mbox{if }M=a_i\in N\mbox{ {\itshape and\/} }i>k\\
+M,&\mbox{otherwise}
+\end{array}\right.
+\end{equation*}
+\end{defen}
+The resulting abstract predomains, $V^\sharp$, $N^\sharp$ and $\mbox{{\itshape Tag\/}}^\sharp$, can be defined as $V^\sharp=V\backslash\{x_j\mid j>k\}$, $N^\sharp=N\backslash\{a_j\mid j>k\}$ and $\mbox{{\itshape Tag\/}}^\sharp=\mbox{{\itshape Tag\/}}\backslash(\{\dot{t}_{j}\mid j>k\}\cup\{\ddot{t}_{i}\mid i>k'\})$.  Informally, $k$ constrains the number of bound variables and names, and tags of primitive terms, whereas $k'$ constrains the number of tags of complex terms.  In effect, constraining the tags of primitive terms implies limiting the copies of bound names and variables carrying the tags, whereas constraining the number of tags of complex terms means limiting the depth of data structures.
+
+For example, in the process $!(\nu~\!n)\overline{a}\langle n^{\dot{t}}\rangle~\mid~!a(x)$, it is possible to spawn infinite copies of each replication, $(\nu~\!n_1)\overline{a}\langle n_1^{\dot{t}_1}\rangle~\mid~a(x_1)~\mid~(\nu~\!n_2)\overline{a}\langle n_2^{\dot{t}_2}\rangle~\mid~a(x_2)~\mid\ldots$.  It is clear that $\dot{t}$ is an indicator to the number of copies $n$ has after spawning each process.  On the other hand, the process $!a(x).\overline{a}\langle\{x\}_k^{\ddot{t}}\rangle~\mid~\overline{a}\langle b\rangle$, which also spawns $a(x_1).\overline{a}\langle\{x_1\}_k^{\ddot{t}_1}\rangle~\mid~a(x_2).\overline{a}\langle\{x_2\}_k^{\ddot{t}_2}\rangle~\mid~\overline{a}\langle b\rangle~\mid\ldots$ demonstrates the role of $\ddot{t}$ as an indicator to the number of times the ciphertext, $\{x\}_k$, is applied to $b$.
+
+Using the $\alpha_{k,k'}$ abstraction, we construct the abstract environment $\phi_\mathcal{A}:V^\sharp\to\wp(\mbox{{\itshape Tag\/}}^\sharp)$, which maps each abstract bound variable of the analysed process to a set of tags, representing terms that could substitute that variable during the abstract semantics.  An abstract domain $D^\sharp_\bot=V^\sharp\to\wp(\mbox{{\itshape Tag\/}}^\sharp)$ is formed ordered by subset inclusion:
+\[\forall\phi_{\mathcal{A}1},\phi_{\mathcal{A}2}\in D^\sharp_\bot,x\in V^\sharp: \phi_{\mathcal{A}1}\sqsubseteq_{D^\sharp_\bot}\phi_{\mathcal{A}2}\Leftrightarrow\phi_{\mathcal{A}1}(x)\subseteq\phi_{\mathcal{A}2}(x)\]
+The bottom element, $\bot_{D^\sharp_\bot}$, is the null environment, $\phi_{\mathcal{A}0}$, mapping each variable to $\{\}$.  Taking $D^\sharp_\bot$ as the abstract semantic domain, we can define the abstract semantics of the spi calculus by the function $\mathcal{A}(\![P]\!)~\rho~\phi_\mathcal{A}\in D^\sharp_\bot$, as in Figure \ref{abssemspi}.
+\begin{figure}[!]
+\begin{footnotesize}
+\begin{center}
+$\begin{array}{|llll|}\hline
+(\mathcal{A} 1)&\multicolumn{3}{l|}{\mathcal{A}(\![{\bf 0}]\!)~\rho~\phi_\mathcal{A}=\phi_\mathcal{A}\hspace{30mm}(\mathcal{A} 2)\hspace{3mm}\mathcal{A}(\![M(x).P]\!)~\rho~\phi_\mathcal{A}=\phi_\mathcal{A}}\\
+(\mathcal{A} 3)&\mathcal{A}(\![\overline{M}\langle L^t\rangle.P]\!)~\rho~\phi_\mathcal{A}&=&(\underset{M'(z).P'\in\rho}{\bigcup_\phi}\phi'_\mathcal{A})~~\cup_\phi~\phi_\mathcal{A}\\
+&\multicolumn{3}{l|}{\mbox{if, }\mbox{{\itshape untag\/}}(\varphi_\mathcal{A}(\phi_\mathcal{A},M))\cap\mbox{{\itshape untag\/}}(\varphi_\mathcal{A}(\phi_\mathcal{A},M'))\cap\mathcal{N}\ne\{\}}\\
+&\multicolumn{3}{l|}{\mbox{where, }\phi'_\mathcal{A}=\mathcal{R}(\![\{\!|P|\!\}_\rho\uplus_\rho\rho[P'/M'(z).P']]\!)~\phi''_\mathcal{A}}\\
+&\multicolumn{3}{l|}{\mbox{and, }\phi''_\mathcal{A}=\phi_\mathcal{A}[\alpha_{k,k'}(z)\mapsto~\phi_\mathcal{A}(\alpha_{k,k'}(z))\cup\{\alpha_{k,k'}(t)\}]}\\
+(\mathcal{A} 4)&\mathcal{A}(\![(\nu a)P]\!)~\rho~\phi_\mathcal{A}&=&\mathcal{R}(\![\{\!|P|\!\}_\rho\uplus_\rho\rho]\!)~\phi_\mathcal{A}\\
+(\mathcal{A} 5)&\mathcal{A}(\![P\mid Q]\!)~\rho~\phi_\mathcal{A}&=&\mathcal{R}(\![\{\!|P|\!\}_\rho\uplus_\rho\{\!|Q|\!\}_\rho\uplus_\rho\rho]\!)~\phi_\mathcal{A}\\
+(\mathcal{A} 6)&\mathcal{A}(\![!P]\!)~\rho~\phi_\mathcal{A}&=&\mathcal{F}(-1)\mbox{ where, }\mathcal{F}(n)=\mbox{{\itshape let\/} }\phi_1=\mathcal{A}(\![~\underset{i=1}{\overset{n}{\prod}}\mbox{{\itshape ren\/}}(P,i)~]\!)~\rho~\phi_\mathcal{A}\mbox{ {\itshape in\/}}\\
+&\multicolumn{3}{l|}{\mbox{{\itshape let\/} }\phi_2=\mathcal{A}(\![~\underset{i=1}{\overset{n+2}{\prod}}\mbox{{\itshape ren\/}}(P,i)~]\!)~\rho~\phi_\mathcal{A}\mbox{ {\itshape in\/} }\mbox{{\itshape if\/} }\phi_1=\phi_2\mbox{ {\itshape then\/} }\phi_1\mbox{ {\itshape else\/} }\mathcal{F}(n+1)}\\
+
+&\multicolumn{3}{l|}{\mbox{and, }\forall x\in\mbox{{\itshape bnv\/}}(P),t\in\mbox{{\itshape tags\_of\/}}(P):\mbox{{\itshape ren\/}}(P,i)=(P[x_i/x])[{t_i}/t]}\\
+(\mathcal{A} 7)&\multicolumn{3}{l|}{\mathcal{A}(\![\mbox{{\itshape if\/} }M=L\mbox{ {\itshape then\/} }P\mbox{ {\itshape else\/} }Q]\!)~\rho~\phi_\mathcal{A}=}\\
+&\multicolumn{3}{l|}{\left\{\begin{array}{ll}
+\mathcal{R}(\![\{\!|P|\!\}_\rho\uplus_\rho\rho]\!)~\phi_\mathcal{A},&\mbox{if, }\mbox{{\itshape untag\/}}(\varphi_\mathcal{A}(\phi_\mathcal{A},M))\cap\mbox{{\itshape untag\/}}(\varphi_\mathcal{A}(\phi_\mathcal{A},L))\ne\{\}\\
+\mathcal{R}(\![\{\!|Q|\!\}_\rho\uplus_\rho\rho]\!)~\phi_\mathcal{A},&\mbox{otherwise}\\
+\end{array}\right.}\\
+(\mathcal{A}8)&\multicolumn{3}{l|}{\mathcal{A}(\![\mbox{{\itshape let\/} }(x_1,\ldots,x_n)=M\mbox{ {\itshape in\/} }P\mbox{ {\itshape else\/} }Q]\!)~\rho~\phi_\mathcal{A}=}\\
+&\multicolumn{3}{l|}{\left\{\begin{array}{ll}
+\underset{(M_1^{t_1},\ldots,M_n^{t_n})\in\varphi_\mathcal{A}(\phi_\mathcal{A},M)}{\bigcup_\phi}\mathcal{R}(\![\{\!|P|\!\}_\rho\uplus_\rho\rho]\!)~\phi'_\mathcal{A}&\mbox{ if, }\exists(M_1^{t_1},\ldots,M_n^{t_n})\in\varphi_\mathcal{A}(\phi_\mathcal{A},M)\\
+\multicolumn{2}{l}{\mbox{where, }\phi'_\mathcal{A}=\phi_\mathcal{A}[\alpha_{k,k'}(x_1)\mapsto\phi_\mathcal{A}(\alpha_{k,k'}(x_1))\cup\{\alpha_{k,k'}(t_1)\},\ldots,}\\
+\multicolumn{2}{l}{\hspace{24mm}\alpha_{k,k'}(x_n)\mapsto\phi_\mathcal{A}(\alpha_{k,k'}(x_n))\cup\{\alpha_{k,k'}(t_n)\}]}\\
+\mathcal{R}(\![\{\!|Q|\!\}_\rho\uplus_\rho\rho]\!)~\phi_\mathcal{A},&\mbox{otherwise}\\
+\end{array}\right.}\\
+(\mathcal{A}9)&\multicolumn{3}{l|}{\mathcal{A}(\![\mbox{{\itshape case\/} }L\mbox{ {\itshape of\/} }\{x\}_N\mbox{ {\itshape in\/} }P\mbox{ {\itshape else\/} }Q]\!)~\rho~\phi_\mathcal{A}=}\\
+&\multicolumn{3}{l|}{\left\{\begin{array}{ll}
+\underset{\{M^t\}_{n}\in\varphi_\mathcal{A}(\phi_\mathcal{A},L)}{\bigcup_\phi}\mathcal{R}(\![\{\!|P|\!\}_\rho\uplus_\rho\rho]\!)~\phi'_\mathcal{A},&\mbox{if, }n\in\varphi_\mathcal{A}(\phi_\mathcal{A},N)\\
+\multicolumn{2}{l}{\mbox{where, }\phi'_\mathcal{A}=\phi_\mathcal{A}[\alpha_{k,k'}(x)\mapsto\phi_\mathcal{A}(\alpha_{k,k'}(x))\cup\{\alpha_{k,k'}(t)\}]}\\
+\mathcal{R}(\![\{\!|Q|\!\}_\rho\uplus_\rho\rho]\!)~\phi_\mathcal{A},&\mbox{otherwise}\\
+\end{array}\right.}\\
+(\mathcal{A}10)&\multicolumn{3}{l|}{\mathcal{A}(\![\mbox{{\itshape case\/} }L\mbox{ {\itshape of\/} }\{\![x]\!\}_{N}\mbox{ {\itshape in\/} }P\mbox{ {\itshape else\/} }Q]\!)~\rho~\phi_\mathcal{A}=}\\
+&\multicolumn{3}{l|}{\left\{\begin{array}{ll}
+\underset{\{\![M^t]\!\}_{n^+}\in\varphi_\mathcal{A}(\phi_\mathcal{A},L)}{\bigcup_\phi}\mathcal{R}(\![\{\!|P|\!\}_\rho\uplus_\rho\rho]\!)~\phi'_\mathcal{A},&\mbox{if, }n^-\in\varphi_\mathcal{A}(\phi_\mathcal{A},N)\\
+\multicolumn{2}{l}{\mbox{where, }\phi'_\mathcal{A}=\phi_\mathcal{A}[\alpha_{k,k'}(x)\mapsto\phi_\mathcal{A}(\alpha_{k,k'}(x))\cup\{\alpha_{k,k'}(t)\}]}\\
+\mathcal{R}(\![\{\!|Q|\!\}_\rho\uplus_\rho\rho]\!)~\phi_\mathcal{A},&\mbox{otherwise}\\
+\end{array}\right.}\\
+(\mathcal{A}11)&\multicolumn{3}{l|}{\mathcal{A}(\![\mbox{{\itshape case\/} }L\mbox{ {\itshape of\/} }[\!\{x\}\!]_{N}\mbox{ {\itshape in\/} }P\mbox{ {\itshape else\/} }Q]\!)~\rho~\phi_\mathcal{A}=}\\
+&\multicolumn{3}{l|}{\left\{\begin{array}{ll}
+\underset{[\!\{M^t\}\!]_{n^-}\in\varphi_\mathcal{A}(\phi_\mathcal{A},L)}{\bigcup_\phi}\mathcal{R}(\![\{\!|P|\!\}_\rho\uplus_\rho\rho]\!)~\phi'_\mathcal{A},&\mbox{if, }n^+\in\varphi_\mathcal{A}(\phi_\mathcal{A},N)\\
+\multicolumn{2}{l}{\mbox{where, }\phi'_\mathcal{A}=\phi_\mathcal{A}[\alpha_{k,k'}(x)\mapsto\phi_\mathcal{A}(\alpha_{k,k'}(x))\cup\{\alpha_{k,k'}(t)\}]}\\
+\mathcal{R}(\![\{\!|Q|\!\}_\rho\uplus_\rho\rho]\!)~\phi_\mathcal{A},&\mbox{otherwise}\\
+\end{array}\right.}\\
+(\mathcal{R} 0)&\mathcal{R}(\![\rho]\!)~\phi_\mathcal{A}&=&\underset{P\in\rho}{\bigcup_\phi}~\mathcal{A}(\![P]\!)~(\rho\backslash\{\!|P|\!\}_\rho)~\phi_\mathcal{A}\\\hline
+\end{array}$
+\end{center}
+\end{footnotesize}
+\caption{The abstract semantics of the spi calculus.\label{abssemspi}}
+\end{figure}
+$\rho$ again is a multiset of processes in parallel with the analysed process.  The special function, $\varphi_\mathcal{A}:(V^\sharp\to\wp(\mbox{{\itshape Tag\/}}^\sharp))\times\mbox{{\itshape Term\/}}\to\wp(\mbox{{\itshape Term\/}})$, returns a set of terms corresponding to a term, $M$, given substitutions captured by $\phi_\mathcal{A}$:
+
+\noindent
+$\varphi_\mathcal{A}(\phi_\mathcal{A},M)=\varphi'_\mathcal{A}(\phi_\mathcal{A},M')_{\{\}}$,\\where, $M'=M[\alpha_{k,k'}(t)/t][\alpha_{k,k'}(x)/x][\alpha_{k,k'}(n)/n]$\\and $\varphi'_\mathcal{A}(\phi_\mathcal{A},M)_s=\mbox{{\itshape if\/} }M\in s\mbox{ {\itshape then\/} }\{\}\mbox{ {\itshape else\/}}$\vspace{5mm}
+
+\noindent
+$\left\{\begin{array}{ll}
+\underset{L\in value\_of(\phi_\mathcal{A}(untag(M)))}{\bigcup}\varphi'_\mathcal{A}(\phi_\mathcal{A},L)_{s\cup\{M\}}&\mbox{if }M\in\mathcal{V}\\
+\{M\},&\mbox{if, }M\in\mathcal{N}\\
+\{\forall N'\in\varphi'_\mathcal{A}(\phi_\mathcal{A},N)_{s\cup\{M\}},L'\in\varphi'_\mathcal{A}(\phi_\mathcal{A},L)_{s\cup\{M\}}:~\{N'\}^t_{L'}\},&\mbox{if, }M=\{N\}^t_{L}\\
+\{\forall N'\in\varphi'_\mathcal{A}(\phi_\mathcal{A},N)_{s\cup\{M\}},L'\in\varphi'_\mathcal{A}(\phi_\mathcal{A},L)_{s\cup\{M\}}:~\{\!{[}N'\!{]}\}^t_{L'}\},&\mbox{if, }M=\{\![N]\!\}^t_{L}\\
+\{\forall N'\in\varphi'_\mathcal{A}(\phi_\mathcal{A},N)_{s\cup\{M\}},L'\in\varphi'_\mathcal{A}(\phi_\mathcal{A},L)_{s\cup\{M\}}:~{[}\!\{N'\}\!{]}^t_{L'}\},&\mbox{if, }M={[}\!\{N\}\!{]}^t_{L}\\
+\multicolumn{2}{l}{\{\forall M'_1\in\varphi'_\mathcal{A}(\phi_\mathcal{A},M_1)_{s\cup\{M\}},\ldots,M'_n\in\varphi'_\mathcal{A}(\phi_\mathcal{A},M_n)_{s\cup\{M\}}:}\\
+\multicolumn{2}{l}{~~(M'_1,\ldots,M'_n)^t~\},\hspace{52mm}\mbox{if, }M=(M_1,\ldots,M_n)^{t}}
+\end{array}\right.$\vspace{5mm}
+
+\noindent
+The description of the rules is as follows.  Rules $(\mathcal{A}1)$ and $(\mathcal{A}2)$ return the $\phi_\mathcal{A}$ environment unchanged.  Communications are dealt with in rule $(\mathcal{A}3)$ for output actions, where synchronising output and input channels yield a communication, in which the tag of the message is captured by $\phi_\mathcal{A}$. The semantics is imprecise, since $\phi_\mathcal{A}$ only captures an abstract tag as a value for an abstract variable.  Rules $(\mathcal{A}4)$ and $(\mathcal{A}5)$ deal with the cases of restriction and parallel composition directly by placing the subprocesses with the rest in $\rho$.  The rule for replication, $(\mathcal{A}6)$, performs a least fixed-point calculation using a special function, $\mathcal{F}:\mathbb{N}\to D^\sharp_\bot$.  This least fixed-point occurs at the minimum number, $n$, such that $\mathcal{A}(\![~\underset{i=1}{\overset{n}{\prod}}\mbox{{\itshape ren\/}}(P,i)~]\!)~\rho~\phi_\mathcal{A}=\mathcal{A}(\![~\underset{i=1}{\overset{n+2}{\prod}}\mbox{{\itshape ren\/}}(P,i)~]\!)~\rho~\phi_\mathcal{A}$.  The termination property of this calculation is stated formally in the following theorem.
+\begin{theor}[Termination of the least fixed-point calculation]
+$ $
+
+\noindent
+The calculation of rule $(\mathcal{A}6)$ terminates.
+\end{theor}
+{\itshape Proof.\/} To prove the termination property, it is necessary to satisfy two requirements.  First, the semantic domain must be finite. This is satisfied by the definition of $D^\sharp_\bot$. The second requirement is to prove the monotonicity of $\mathcal{A}(\![~\overset{n}{\prod}P~]\!)~\rho~\phi_\mathcal{A}$, i.e. $\mathcal{A}(\![~\overset{n}{\prod}P~]\!)~\rho~\phi_\mathcal{A}\sqsubseteq\mathcal{A}(\![~\overset{n+2}{\prod}P~]\!)~\rho~\phi_\mathcal{A}$.  To prove this, we simplify the inequality into $\mathcal{A}(\![~Q~]\!)~\rho~\phi_\mathcal{A}\sqsubseteq\mathcal{A}^\pi(\![~Q\mid P~]\!)~\rho~\phi_\mathcal{A}$, where $Q=\overset{n}{\prod}P$. This is further simplified to become $\mathcal{A}(\![~Q~]\!)~\rho~\phi_\mathcal{A}\sqsubseteq\mathcal{A}^\pi(\![~Q~]\!)~\rho'~\phi_\mathcal{A}$, where $\rho'=\rho\uplus_\rho\{\!|P|\!\}_\rho$. This can be proven by induction over $\mathcal{A}(\![~P~]\!)~\rho~\phi_\mathcal{A}$. In particular, the most interesting cases are rules $(\mathcal{A} 3)$ and $(\mathcal{A} 8)$--$(\mathcal{A} 11)$, where $\phi_\mathcal{A}$ changes.  For example, in rule $(\mathcal{A} 3)$, we have that since $\rho\subseteq\rho'$, then $M'(y).P'\in\rho\Rightarrow M'(y).P'\in\rho'$. From this we can conclude that $\mathcal{A}(\![~Q~]\!)~\rho~\phi_\mathcal{A}\sqsubseteq\mathcal{A}(\![~Q~]\!)~\rho'~\phi_\mathcal{A}$, since the environment resulting from $\mathcal{A}(\![~Q~]\!)~\rho~\phi_\mathcal{A}$ will necessarily be a subset of the environment resulting from $\mathcal{A}(\![~Q~]\!)~\rho'~\phi_\mathcal{A}$ (i.e. the larger system induces more term substitutions).\hfill$\square$\\
+
+\noindent
+The rule for replication also uses the labelling mechanism to $\alpha$-convert the set of bound names and variables of each copy of the replication, $bnv(P)$, as well as its set of tags.  This renaming retains the compositionality of the semantics.  The rule for conditional processes, $(\mathcal{A}7)$, relies on the equality of two untagged terms under $\phi_\mathcal{A}$. If in the case that the equality does not hold, a different alternative process is chosen.  The rule for tuple splitting, $(\mathcal{A}8)$, attempts to split elements of a set of tuples corresponding to the value of $\varphi_\mathcal{A}(\phi_\mathcal{A},L)$ of a term, $L$.  The $\phi_\mathcal{A}$ environment is updated with the tags of the elements of each tuple. In case no tuples exist in the set, an alternative process is chosen and $\phi_\mathcal{A}$ is left unchanged.  The rest of the rules, $(\mathcal{A}9)$--$(\mathcal{A}11)$, deal with cryptographic processes.  Again, a process attempts to decipher (verify) a term, $L$, closed by $\varphi_\mathcal{A}(\phi_\mathcal{A},L)$. The tags of the deciphered terms are added to $\phi_\mathcal{A}$.  Else a different process is chosen without affecting $\phi_\mathcal{A}$. Finally, rule $(\mathcal{R}0)$ groups all the environments resulting from the interpretation of processes in $\rho$ with the union of environments operation, $\cup_\phi$.
+
+We can state the safety of the abstract semantics by the following theorem.
+\begin{theor}[Safety of the abstract semantics for the spi calculus]\label{theor4}
+$ $
+
+\noindent
+$(\mathcal{E}(\![P]\!)~\rho~\phi_\mathcal{E}=(p,\phi'_\mathcal{E}))~\wedge~(\mathcal{A}(\![P]\!)~\rho~\phi_\mathcal{A}=\phi'_\mathcal{A})~\wedge$\\
+$(\exists M\in\mbox{{\itshape Term\/}}:\varphi_\mathcal{E}(\phi_\mathcal{E},M)\in\phi_\mathcal{E}(x)~\Rightarrow~\exists t\in\phi_\mathcal{A}(\alpha_{k,k'}(x)):\mbox{{\itshape value\_of\/}}(\{t\})=\{M'\}~\wedge~\mbox{{\itshape untag\/}}(M')=(\forall y\in\mbox{{\itshape bnv\/}}(M):M[\alpha_{k,k'}(y)/y]))$\\
+
+\noindent
+$\Rightarrow~~~(\exists M\in\mbox{{\itshape Term\/}}:\varphi_\mathcal{E}(\phi'_\mathcal{E},M)\in\phi'_\mathcal{E}(x)~\Rightarrow~\exists t\in\phi'_\mathcal{A}(\alpha_{k,k'}(x)): \mbox{{\itshape value\_of\/}}(\{t\})=\{M'\}~\wedge~\mbox{{\itshape untag\/}}(M')=(\forall y\in\mbox{{\itshape bnv\/}}(M):M[\alpha_{k,k'}(y)/y]))$
+\end{theor}
+
+\noindent
+{\itshape Proof\/}. The proof is by induction over the structure of the abstract semantics.\hfill$\square$\\
+
+
+\noindent
+The theorem states that for any term, $M$, captured in the non-standard semantics by including its $\varphi_\mathcal{E}(\phi'_\mathcal{E},M)$ value in the value of a variable, $\phi'_\mathcal{E}(x)$, then that will correspond to capturing a tag, $t$, in the abstract semantics, by $\phi'_\mathcal{A}(\alpha_{k,k'}(x))$.  The appropriateness of $t$ is expressed by the ability to obtain an abstract form, 
+$\forall x\in\mbox{{\itshape bnv\/}}(M):M[\alpha_{k,k'}(x)/x]$, of the concrete term, $M$, by evaluating $t$ using {\itshape value\_of\/} and untagging the resulting term, $M'$, using {\itshape untag\/}.  More concisely, every concrete term, $M$, captured in the non-standard semantics is captured as the corresponding abstract tag, $t$, in the abstract semantics.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Secrecy and Authenticity}
+To reason about the secrecy and authenticity properties of a system, it is necessary to give formal definitions of these properties with respect to the result of the static analysis, i.e. $\phi_\mathcal{A}$.  We start by assuming that $S$ and $A$ are finite chains of secrecy and trust levels, respectively, where $l,l'\in S$ and $a,a'\in A$.  A well-defined security policy, controlled by the system administrators, classifies (sub)processes of a system with their secrecy and trust levels using the $S$ and $A$ chains, and according to the security requirements of the system.
+
+Furthermore, let $\xi_S:(\mathcal{N}\cup\mathcal{V})\to S$ and $\xi_A:(\mathcal{N}\cup\mathcal{V})\to A$ be two environments that map the new names and variables of {\itshape classified processes\/}, $\lceil P\rceil^l$ and $\lceil P\rceil^a$, to their secrecy and trust levels, respectively. The null environments are defined as: $\forall x\in\mathcal{N}\cup\mathcal{V}:\xi_{S0}(x)=\bot_S,\xi_{A0}(x)=\bot_A$.  To construct a general environment $\xi$ for some classified process, the function $\mathcal{Z}$ is defined over the structure of $\lceil P\rceil^z$ as in Figure \ref{zeta2}, where $\xi=\xi_S$ whenever $z\in S$, and $\xi=\xi_A$ whenever $z\in A$.
+
+\begin{figure}[bht]
+\begin{center}
+\begin{footnotesize}
+$\begin{array}{|lll|}
+
+\hline
+\mathcal{Z}(\lceil {\bf 0}\rceil^z)~\xi&=&~~\xi\\
+\mathcal{Z}(\lceil M(y).P\rceil^z)~\xi&=&~~\mathcal{Z}(P)~\xi[y\mapsto z]\\
+\mathcal{Z}(\lceil \overline{M}\langle N\rangle.P\rceil^z)~\xi&=&~~\mathcal{Z}(P)~\xi\\
+\mathcal{Z}(\lceil (\nu~\!a)P\rceil^z)~\xi&=&~~\mathcal{Z}(P)~\xi[a\mapsto z]\\
+\mathcal{Z}(\lceil P\mid Q\rceil^z)~\xi&=&~~\mathcal{Z}(P)~\xi\cup_\xi\mathcal{Z}(Q)~\xi\\
+\mathcal{Z}(\lceil !P\rceil^z)~\xi&=&~~\mathcal{Z}(P)~\xi\\
+\mathcal{Z}(\lceil \mbox{{\itshape if\/} }M=N\mbox{ {\itshape then\/} }P\mbox{ {\itshape else\/} }Q\rceil^z)~\xi&=&~~\mathcal{Z}(P)~\xi\cup_\xi\mathcal{Z}(Q)~\xi\\
+\mathcal{Z}(\lceil \mbox{{\itshape let\/} }(x_0,\ldots,x_{n-1})=M\mbox{ {\itshape in\/} }P\mbox{ {\itshape else\/} }Q\rceil^z)~\xi~~&=&~~\mathcal{Z}(P)~\xi[x_0\mapsto z,\ldots,x_{n-1}\mapsto z]~ \cup_\xi\\
+&&~~\mathcal{Z}(Q)~\xi[x_0\mapsto z,\ldots,x_{n-1}\mapsto z]\\
+\mathcal{Z}(\lceil \mbox{{\itshape case\/} }L\mbox{ {\itshape of\/} }\{x\}_N\mbox{ {\itshape in\/} }P\mbox{ {\itshape else\/} }Q\rceil^z)~\xi&=&~~\mathcal{Z}(P)~\xi[x\mapsto z]~\cup_\xi~\mathcal{Z}(Q)~\xi[x\mapsto z]\\
+\mathcal{Z}(\lceil \mbox{{\itshape case\/} }L\mbox{ {\itshape of\/} }\{\![x]\!\}_N\mbox{ {\itshape in\/} }P\mbox{ {\itshape else\/} }Q\rceil^z)~\xi&=&~~\mathcal{Z}(P)~\xi[x\mapsto z]~\cup_\xi~\mathcal{Z}(Q)~\xi[x\mapsto z]\\
+\mathcal{Z}(\lceil \mbox{{\itshape case\/} }L\mbox{ {\itshape of\/} }[\!\{x\}\!]_N\mbox{ {\itshape in\/} }P\mbox{ {\itshape else\/} }Q\rceil^z)~\xi&=&~~\mathcal{Z}(P)~\xi[x\mapsto z]~\cup_\xi~\mathcal{Z}(Q)~\xi[x\mapsto z]\\
+\hline
+\end{array}$
+\end{footnotesize}
+\end{center}
+\caption{Definition of the $\mathcal{Z}$ function over classified processes.\label{zeta2}}
+\end{figure}
+
+The rules use the $\cup_\xi$ operation defined as follows:
+\begin{equation}
+\forall x\in\mathcal{N}\cup\mathcal{V}:~(\xi_1\cup_\xi\xi_2)(x)=\xi_1(x)\sqcup\xi_2(x)
+\end{equation}
+The use of $\sqcup$ is due to the fact that $x$ can be defined in one environment at most, $\xi_1$ or $\xi_2$.  One may now define the following secrecy and authenticity threats:
+\newtheorem{prope}{Property}
+\begin{prope}[Information Leakage $\&$ Authenticity Breach]
+Given a process $P$, the static analysis environment $\phi_\mathcal{A}=\mathcal{A}(\![P]\!)_s~\rho_0~\phi_{\mathcal{A}0}$, and the environments $\xi_S$ and $\xi_A$, then the {\itshape information leakage\/} and {\itshape authenticity breach\/} threats occur whenever the following conditions hold true:\\
+
+\noindent
+$\exists x\in\mbox{{\itshape dom\/}}(\phi_\mathcal{A}),y\in\phi_\mathcal{A}(x):\xi_S(x)\sqsubseteq\xi_S(y)$~~~~~~~(Information Leakage)\\
+$\exists x\in\mbox{{\itshape dom\/}}(\phi_\mathcal{A}),y\in\phi_\mathcal{A}(x):\xi_A(x)\sqsupseteq\xi_A(y)$~~~~~~~(Authenticity Breach)\end{prope}
+The information leakage property captures instances where names created by high-secrecy-level processes are obtained by processes classified at low secrecy levels.  The word {\itshape obtained\/} refers to substitutions occurring as a result of input actions or the success of cryptographic and tuple-splitting operations.  On the other hand, the direction of concern in the authenticity breach property is reversed. Here, the authenticity requirements of a high-trust-level process are breached whenever it inputs a name, or decrypts, verifies or splits a term resulting in a name, which was created by a less trusted process.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusion and Future Work}
+We have presented a static analysis for security properties in cryptographic processes modelled by the spi calculus.  The analysis is characterized as being fully denotational; this leads to implementations that are closely related to functional programming.  The applicability of the analysis in detecting instances of information leakage and authenticity breaches was demonstrated for a number of cryptographic protocols, with the results shown in Figure \ref{protocols}.  All of these protocols were analysed in the presence of an intruder process, $I$, such that $I$ represents the most general attacker of Dolev-Yao \cite{dolev1}.  The analysis is then performed by applying $\mathcal{A}(\![\mbox{{\itshape Protocol\/}}]\!)~\{\!|I|\!\}~\phi_\mathcal{A}$, where {\itshape Protocol\/} is the specification of the protocol.
+\begin{figure}[bht]
+\begin{center}
+\begin{tabular}{|l|l|l|}\hline
+\bf{Protocol}&\bf{Attack}&\bf{Breach}\\\hline
+Needham-Schroeder public-key&man-in-the-middle~~~~&A,S\\
+SPLICE/AS&impersonation attack&A,S\\
+Otway-Rees&impersonation&A,S\\
+Kerberos&none&--\\
+Yahalom&none&--\\
+Woo-Lam one-way authentication~~~~&impersonation&A,S\\
+\hline
+\multicolumn{3}{|l|}{{\footnotesize A: Authenticiy, S: Secrecy}}\\
+\hline 
+\end{tabular}
+\end{center}
+\caption{Results of the analysis of some authentication protocols.\label{protocols}}
+\end{figure}
+
+Future work is under way to expand the analysis to be able to use the non-uniformity of the domain of $\phi_\mathcal{A}$ in defining security properties, in particular, the freshness property.  This non-uniformity also permits the definition of a resource exhaustion property based on a cost-resource relationship, where variables denote the available resources and the captured names, the cost.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliography{../biblio}
+\end{document}

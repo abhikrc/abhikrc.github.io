@@ -1,0 +1,30 @@
+body {
+#  padding-top: 5rem;
+}
+.apr-navbar {
+    padding-right: 0;
+    padding-left: 0;
+}
+.apr-pageheader {
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+}
+.apr-header {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+.apr-content {
+    padding-left: 0;
+}
+.list-group li{
+    padding-left: 0;
+    border-top: 0 none;
+    border-bottom: 0 none;
+    border-left: 0 none;
+    border-right: 0 none;
+}
+footer {
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+}
+

@@ -1,0 +1,44 @@
+
+% PROOF OBLIGATION :   (thm <=> false)
+
+toplevel(thm/3).
+
+%--------------------------------------------------
+
+x(0, k, _, _).
+x(s(N), k, 0, 0).
+x(s(N), p, A, B) :- bit_neq(A, B).
+x(s(N), g, 1, 1).
+
+y(0, k, [], []).
+y(s(N), Y, [A|AList], [B|BList]) :- 
+	y(N, Y1, AList, BList), x(s(N), X, A, B), cstat(Y1, X, Y).
+
+cstat(_X, k, k).
+cstat(X, p, X).
+cstat(_X, g, g).
+
+c(0, 0, [], []).
+c(s(N), A, [A|_], [A|_]).
+c(s(N), C, [A|AList], [B|BList]) :- 
+	c(N, C, AList, BList), bit_neq(A, B).
+
+prop(N, A, B) :- y(N, p, A, B).
+prop(N, A, B) :- y(N, k, A, B), c(N, 1, A, B).
+prop(N, A, B) :- y(N, g, A, B), c(N, 0, A, B).
+
+nat(0).
+nat(s(N)) :- nat(N).
+
+thm(N, A, B) :- nat(N), prop(N, A, B).
+
+bit_neq(0, 1).
+bit_neq(1, 0).
+
+%----------------------------------------------------------------
+
+unfold_flag(suspend_expand).
+
+maxDepthConstant(8).
+
+cleanup_flag([]).

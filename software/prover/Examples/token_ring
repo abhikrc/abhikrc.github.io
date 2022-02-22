@@ -1,0 +1,46 @@
+
+% PROOF OBLIGATIONS:  (bad_start => false, bad_dest => bad_src)
+
+toplevel(bad_start/1).
+toplevel(bad_src/2).
+toplevel(bad_dest/2).
+
+%----------------------------------------------------------
+
+gen([0,1]).
+gen([0|X]) :- gen(X).
+
+trans(X, Y) :- trans1(X, Y).
+trans([1|X], [0|Y]) :- trans2(X, Y).
+
+trans1([0,1|T], [1,0|T]).
+trans1([0|T], [0|T1]) :- trans1(T, T1).
+trans1([1|T], [1|T1]) :- trans1(T, T1).
+
+trans2([0], [1]).
+trans2([0|X], [0|Y]) :- trans2(X, Y).
+trans2([1|X], [1|Y]) :- trans2(X, Y).
+
+bad([1|X]) :- one_more(X).
+bad([0|X]) :- bad(X).
+
+one_more([1|_]).
+one_more([0|X]) :- one_more(X).
+
+bad_start(X) :- gen(X), bad(X).
+
+bad_src(X,Y) :- trans(X,Y), bad(X).
+bad_dest(X,Y) :- trans(X,Y), bad(Y).
+
+%----------------------------------------------------
+%unf_beyond_depth(one_more([_|_])).
+%unf_beyond_depth(bad([_|_])).
+
+consumer(bad/1).
+consumer(one_more/1).
+
+unfold_flag(suspend_expand).
+
+maxDepthConstant(8).   
+
+cleanup_flag([]).

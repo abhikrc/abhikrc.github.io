@@ -1,0 +1,434 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="./project.css" type="text/css">
+
+<title>Automated Program Repair</title>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<table align="center" bgcolor="black" width="100%">
+<tbody><tr>
+<td></td>
+<td><div class="whitefont">
+ <a href="#overview" class="tag">Overview </a>  |
+  <!--<a href="#updates" class="tag">Updates  </a> | -->
+  <a href="#publications" class="tag">Publications </a> | 
+  <a href="#people" class="tag">People </a> | 
+  <a href="#acknowledge" class="tag">Acknowledgement</a>
+</div>
+</td>
+<td align="right"><a href="mailto:abhik@comp.nus.edu.sg" class="tag">Contact Us</a></td>
+</tr>
+</tbody></table>
+
+<!-- Header -->
+<table align="center" width="100%" bgcolor="white" id="header">
+<tbody><tr align="center">
+<td></td>
+<td></td> 
+<td></td>
+</tr>
+</tbody></table>
+<hr>
+
+<!-- Overview part -->
+<table align="center" width="100%">
+<tbody>
+<tr>
+<td></td>
+<td>
+<a name="overview"><h2>+Overview:</h2></a>
+</td>
+</tr>
+
+<tr>
+<td></td>
+<td>
+<div id="parag"><img src="./enter.png" alt="" width="200">
+<p class="content">
+Software almost always has bugs. Many of these bugs cause serious
+  problems such as software crash and leaking sensitive user
+  information. To fix these bugs, software engineers have been
+  fighting an endless battle with bugs. The cost of this battle is
+  enormous—$312 billion per year globally as of 2012 according to <a
+  href="http://insight.jbs.cam.ac.uk/2013/financial-content-cambridge-university-study-states-software-bugs-cost-economy-312-billion-per-year/"
+  class="content">Cambridge
+  University research</a> (in comparison, the GDP of Singapore is $308
+  billion as of 2014). This high cost is due to that software
+  developers spend about 50% of their time debugging. To reduce this
+  high cost, debugging needs to be automated. In this regard, we are conducting research on automated program repair.
+<br></p></div>
+<p class="content">
+The main innovation of our automated program repair lies in our semantic approach. 
+Instead of randomly mutating the buggy program to find a repair, our tools analyze the semantics of the buggy program to extract repair constraints. 
+A repair that satisfies these repair constraints is guaranteed to fix the bug (this repair passes the failing test that manifested the bug of the buggy program).
+Our repair tools automatically synthesize such a repair that satisfies the repair constraints that are also automatically extracted.
+Apart from this semantics-based program repair, our research also involves other useful repair and repair-related techniques such as repairing regression errors and reproducing crashes of code so that developers can repair the bug.
+We envision that in the future, automatic bug fix will be integrated into a software development toolset. Similar to that automatic spelling correction is widely used nowadays, we believe that automatic bug fix will be widespread in the future.
+</p><br>
+</td>
+<td></td>
+<td></td>
+</tr>
+
+<!-- Updates part -->
+<!--
+<tr>
+<td></td>
+<td></td>
+</tr>
+-->
+
+
+<!-- Publications part -->
+<!-- Data of publication is stored within 'li' tag.-->
+<tr>
+<td></td>
+<td colspan="2"><a name="publications"><h2>+Publications:</h2></a>
+<font face="Arial">
+
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>[ICSE]</b></p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>Hercules: Reproducing Crashes in Real-World
+Application Binaries ( <a href="http://www.comp.nus.edu.sg/~abhik/pdf/ICSE15-Hercules.pdf">PDF</a> )</b></p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">Van-Thuan Pham, Wei Boon Ng, Konstantin Rubinov, Abhik Roychoudhury</p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">ACM/IEEE International Conference 
+on Software Engineering (ICSE) 2015.</p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">&nbsp;</p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">&nbsp;</p>
+
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>[ICSE]</b></p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>relifix: Automated Repair of Software Regressions
+ ( <a href="http://www.comp.nus.edu.sg/~abhik/pdf/ICSE15-relifix.pdf">PDF</a> )</b></p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">Shin Hwei Tan, Abhik Roychoudhury</p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">ACM/IEEE International Conference 
+on Software Engineering (ICSE) 2015.</p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">&nbsp;</p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">&nbsp;</p>
+
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>[ICSE]</b></p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>DirectFix: Looking for Simple Program Repairs
+ ( <a href="http://www.comp.nus.edu.sg/~abhik/pdf/ICSE15-directfix.pdf">PDF</a> )</b></p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">Sergey Mechtaev, Jooyong Yi, Abhik Roychoudhury</p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">ACM/IEEE International Conference 
+on Software Engineering (ICSE) 2015.</p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">&nbsp;</p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">&nbsp;</p>
+
+
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>[ICSE]</b></p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>SemFix: Program Repair via Semantic Analysis
+ ( <a href="http://www.comp.nus.edu.sg/~abhik/pdf/ICSE13-SEMFIX.pdf">PDF</a> )</b></p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">Hoang Duong Thien Nguyen, Dawei Qi, Abhik Roychoudhury, Satish Chandra</p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">ACM/IEEE International Conference 
+on Software Engineering (ICSE) 2013.</p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">&nbsp;</p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">&nbsp;</p>
+
+</td>
+<td></td>
+</tr>
+
+<!-- People part -->
+<tr>
+<td></td>
+<td><a name="people"><h2>+Current Members:</h2></a>
+
+<ul>
+<li>
+  <div class="title">Faculty Member: 
+    <table cellpadding="0" cellspacing="20" border="0">
+    <tr><td align="left" width="40%">
+    <img src="./abhik.jpg" alt="Abhik" width="100" height="150">
+    </td>
+    <td width="56%" align = "left"> <font face="Arial">
+        <a class="author" href="http://www.comp.nus.edu.sg/~abhik/" >
+        <span style="font-style: normal">
+           <font color="#800080">Abhik Roychoudhury </font>
+        </span>
+        </a>
+      </font>
+    </td>
+    </tr>
+    </table>
+   <p> </p>
+   </div>
+</li>
+
+<li>
+  <div class="title">Post-doctoral Research Fellows:
+    <table cellpadding="0" cellspacing="20" border="0">
+    <tr><td align="left" width="40%">
+    <img src="./jooyong.jpg" alt="Jooyong" width="100" height="100">
+    </td>
+    <td width="50%"> <font face="Arial">
+        <a class="author" href="http://www.comp.nus.edu.sg/~leejy/" >
+        <span style="font-style: normal">
+           <font color="#800080">Jooyong Yi </font>
+        </span>
+        </a>
+      </font>
+    </td>
+    </tr>
+
+    <tr><td align="left" width="40%">
+    <img src="./marcel.jpg" alt="Marcel" width="100" height="100">
+    </td>
+    <td width="50%"> <font face="Arial">
+        <a class="author" href="http://www.comp.nus.edu.sg/~mboehme/" >
+        <span style="font-style: normal">
+           <font color="#800080">Marcel Böhme</font>
+        </span>
+        </a>
+      </font>
+    </td>
+    </tr>
+    </table>
+
+<br>
+<li>
+<div class="title">PhD Students:</div>
+<table cellpadding="0" cellspacing="20" border="0">
+    <tr><td align="left" width="40%">
+    <img src="./shinhwei.jpg" alt="shinhwei" width="100" height="100">
+    </td>
+    <td width="50%"> <font face="Arial">
+        <a class="author" href="http://www.comp.nus.edu.sg/~shinhwei/" >
+        <span style="font-style: normal">
+           <font color="#800080">Shin Hwei Tan </font>
+        </span>
+        </a>
+      </font>
+    </td>
+    </tr>
+
+    <tr>
+      <td align="left" width="40%">
+      <img src="./sergey_mechtaev.jpg" alt="sergey_mechtaev" width="100" height="100">
+      </td>
+      <td width="50%"> <font face="Arial">
+          <a class="author" href="http://www.comp.nus.edu.sg/~mechtaev/" >
+          <span style="font-style: normal">
+             <font color="#800080">Sergey Mechtaev</font>
+          </span>
+          </a>
+        </font>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="left" width="40%">
+      <img src="./thuan.png" alt="thuan" width="100" height="100">
+      </td>
+      <td width="50%"> <font face="Arial">
+          <a class="author" href="http://www.comp.nus.edu.sg/~thuanpv/" >
+          <span style="font-style: normal">
+             <font color="#800080">Thuan Pham Van</font>
+          </span>
+          </a>
+        </font>
+      </td>
+    </tr>
+    </table>
+
+</li>
+<li>
+<div class="title">Research Interns:</div>
+<table cellpadding="0" cellspacing="20" border="0">
+    <tr><td align="left" width="40%">
+    <img src="./priyanka.jpg" alt="priyanka" width="100" height="100">
+    </td>
+    <td width="50%"> <font face="Arial">
+        <a class="author" href="http://priyanka-bose.in" >
+        <span style="font-style: normal">
+           <font color="#800080">Priyanka Bose </font>
+        </span>
+        </a>
+      </font>
+    </td>
+    </tr>
+
+    <tr><td align="left" width="40%">
+    <img src="./dipanjan.jpg" alt="Dipanjan" width="100" height="100">
+    </td>
+    <td width="50%"> <font face="Arial">
+        <a class="author" href="http://dipanjan.in" >
+        <span style="font-style: normal">
+           <font color="#800080">Dipanjan Das</font>
+        </span>
+        </a>
+      </font>
+    </td>
+    </tr>
+    </table>
+</li>
+
+</ul>
+  
+
+<!--
+<ul>
+<li>
+  <div class="title">Faculty Member: 
+    <ul><li>
+    <p>
+      <font face="Arial">
+        <a class="author" href="http://www.comp.nus.edu.sg/~abhik/">
+	  <span style="font-style: normal">
+            <font color="#800080">Abhik Roychoudhury </font>
+          </span>
+        </a>
+      </font>
+    </p>
+    </li></ul>
+   </div>
+</li>
+
+<br>
+</p>
+<li>
+  <div class="title">Post-doctoral Research Fellows:
+    <ul>
+      <li>
+        <p>
+          <font face="Arial">
+            <a class="author" href="http://www.comp.nus.edu.sg/~leejy/">
+	      <span style="font-style: normal">
+                <font color="#800080">Jooyong Yi</font>
+              </span>
+            </a>
+          </font>
+        </p>
+      </li>
+
+      <li>
+        <p>
+          <font face="Arial">
+            <a class="author" href="http://www.comp.nus.edu.sg/~mboehme/">
+	      <span style="font-style: normal">
+                <font color="#800080">Marcel Böhme</font>
+              </span>
+            </a>
+          </font>
+        </p>
+      </li>
+    </ul>
+  </div>
+</li>
+
+<br>
+
+<li>
+<div class="title">PhD Students:</div>
+<ul>
+  <p>
+    <li>
+      <font face="Arial">
+        <a class="author" href="http://www.comp.nus.edu.sg/~shinhwei/">
+	  <span style="font-style: normal">
+            <font color="#800080">Shin Hwei Tan</font>
+          </span>
+        </a>
+      </font>
+    </li>
+  </p>
+
+  <p>
+    <li>
+      <font face="Arial">
+        <a class="author" href="http://www.comp.nus.edu.sg/~mechtaev/">
+	  <span style="font-style: normal">
+            <font color="#800080">Sergey Mechtaev</font>
+          </span>
+        </a>
+      </font>
+    </li>
+  </p>
+
+  <p>
+    <li>
+      <font face="Arial">
+        <a class="author" href="http://www.comp.nus.edu.sg/~thuanpv/">
+	  <span style="font-style: normal">
+            <font color="#800080">Thuan Pham Van</font>
+          </span>
+        </a>
+      </font>
+    </li>
+  </p>
+</ul>
+
+<li>
+<div class="title">Research Interns:</div>
+<ul>
+  <p>
+    <li>
+      <font face="Arial">
+	  <span style="font-style: normal">
+            <font color="#800080">Dipanjan Das</font>
+          </span>
+      </font>
+    </li>
+  </p>
+
+  <p>
+    <li>
+      <font face="Arial">
+	  <span style="font-style: normal">
+            <font color="#800080">Priyanka Bose</font>
+          </span>
+      </font>
+    </li>
+  </p>
+</ul>
+</li>
+-->
+
+</td>
+<td></td>
+</tr>
+
+
+<!-- Acknowledgement part -->
+<tr>
+<td></td>
+<td><a name="acknowledge"><h2>+Acknowledgements:</h2></a>
+<p class="content">This project is part of an umbrella project, <a
+  href="http://www.comp.nus.edu.sg/~tsunami/" class="content"><b>TSUNAMi</b></a>, funded by a substantial research grant from
+ <a href="http://www.nrf.gov.sg/" class="content"><b>NRF</b></a> (National Research Foundation, Singapore). This support is gratefully acknowledged.</p><br>
+</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<!-- Footbar part -->
+<table align="center" bgcolor="black" width="100%">
+<tbody><tr>
+<td></td>
+<td><div class="whitefont">
+ <a href="#overview" class="tag">Overview </a>  |
+  <!--<a href="#updates" class="tag">Updates  </a> | -->
+  <a href="#publications" class="tag">Publications </a> | 
+  <a href="#people" class="tag">People </a> | 
+  <a href="#acknowledge" class="tag">Acknowledgement</a>
+</div>
+</td>
+<td align="right"><a href="mailto:abhik@comp.nus.edu.sg" class="tag">Contact Us</a></td>
+</tr>
+</tbody></table>
+
+<!-- Links -->
+<table align="center" width="100%">
+<tbody><tr>
+<td></td>
+<td valign="middle" align="center" colspan="2">
+<a href="http://www.nus.edu.sg/" class="content">National University of Singapore</a> &nbsp; | &nbsp;
+<a href="http://www.comp.nus.edu.sg/" class="content">School of Computing</a> &nbsp; | &nbsp;
+<a href="http://www.nrf.gov.sg/" class="content">National Research Foundation</a>
+</td>
+<td></td>
+</tr>
+</tbody></table>
+
+
+
+</body></html>

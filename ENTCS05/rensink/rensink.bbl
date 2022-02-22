@@ -1,0 +1,142 @@
+\begin{thebibliography}{10}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\newcommand{\enquote}[1]{``#1''}
+
+\bibitem{BalKoeKoe03}
+Baldan, P., B.~K{\"o}nig and B.~K{\"o}nig, \emph{A logic for analyzing
+  abstractions of graph transformation systems}, in: R.~Cousot, editor,
+  \emph{Static Analysis},  LNCS  \textbf{2694} (2003), pp. 255--272.
+
+\bibitem{Corr+04}
+Corradini, A., F.~L. Dotti, L.~Foss and L.~Ribeiro, \emph{Translating java into
+  graph transformation systems}, in: Ehrig et~al.  \cite{ICGT04}, pp. 383--389.
+
+\bibitem{DPO}
+Corradini, A., U.~Montanari, F.~Rossi, H.~Ehrig, R.~Heckel and M.~L{\"o}we,
+  \emph{Algebraic approaches to graph transformation, part {I}: Basic concepts
+  and double pushout approach}, in: Rozenberg  \cite{Handbook-GG-I} pp.
+  163--246.
+
+\bibitem{CouCou79}
+Cousot, P. and R.~Cousot, \emph{Systematic design of program analysis
+  frameworks}, in: \emph{Conference Record of the Sixth Annual ACM
+  SIGPLAN-SIGACT Symposium on Principles of Programming Languages} (1979), pp.
+  269--282.
+
+\bibitem{CouCou99}
+Cousot, P. and R.~Cousot, \emph{Refining model checking by abstract
+  interpretation}, Automated Software Engineering \textbf{6} (1999),
+  pp.~69--95.
+
+\bibitem{DepHecKue02}
+Depke, R., R.~Heckel and J.~M. K{\"u}ster, \emph{Formal agent-oriented modeling
+  with {UML} and graph transformation}, Science of Computer Programming
+  \textbf{44} (2002), pp.~229--252.
+
+\bibitem{DisKatRen04}
+Distefano, D., J.-P. Katoen and A.~Rensink, \emph{Who is pointing when to whom?
+  {On} the automated verification of linked list structures}, in: \emph{The
+  24th Conference on Foundations of Software Technology and Theoretical
+  Computer Science (FSTTCS)},  LNCS  \textbf{3328} (2004), pp. 250--262.
+
+\bibitem{DisRenKat02}
+Distefano, D., A.~Rensink and J.-P. Katoen, \emph{Model checking birth and
+  death}, in: R.~A. Baeza-Yates, U.~Montanari and N.~Santoro, editors,
+  \emph{Foundations of Information Technology in the Era of Network and Mobile
+  Computing},  IFIP Conference Proceedings  \textbf{223} (2002), pp. 435--447.
+
+\bibitem{Dott+03}
+Dotti, F.~L., L.~Foss, L.~Ribeiro and O.~M. dos Santos, \emph{Verification of
+  distributed object-based systems}, in: E.~Najm, U.~Nestmann and P.~Stevens,
+  editors, \emph{Formal Methods for Open Object-based Distributed Systems},
+  LNCS  \textbf{2884} (2003), pp. 261--275.
+
+\bibitem{ICGT04}
+Ehrig, H., G.~Engels, F.~Parisi-Presicce and G.~Rozenberg, editors,
+  \enquote{International Conference on Graph Transformations (ICGT),}  LNCS
+  \textbf{3256}, Springer, 2004.
+
+\bibitem{HabHecTae96}
+Habel, A., R.~Heckel and G.~Taentzer, \emph{Graph grammars with negative
+  application conditions}, Fundamenta Informaticae \textbf{26} (1996),
+  pp.~287--313.
+
+\bibitem{Jeannet+2004}
+Jeannet, B., A.~Loginov, T.~W. Reps and S.~Sagiv, \emph{A relational approach
+  to interprocedural shape analysis.}, in: R.~Giacobazzi, editor, \emph{Static
+  Analysis: 11th International Symposium (SAS)},  LNCS  \textbf{3148} (2004),
+  pp. 246--264.
+
+\bibitem{Kusk+02}
+Kuska, S., M.~Gogolla, R.~Kollmann and H.-J. Kreowski, \emph{An integrated
+  semantics for {UML} class, object and state diagrams based on graph
+  transformation}, in: M.~Butler, L.~Petre and K.~Sere, editors, \emph{IFM
+  2002},  LNCS  \textbf{2235} (2002), pp. 11--28.
+
+\bibitem{OHeReyYan01}
+O'Hearn, P., J.~Reynolds and H.~Yang, \emph{Local reasoning about programs that
+  alter data structures}, in: L.~Fribourg, editor, \emph{CSL 2001},  LNCS
+  \textbf{2142} (2001), pp. 1--19.
+
+\bibitem{PolChaCor01}
+Pollet, I., B.~L. Charlier and A.~Cortesi, \emph{Distinctness and sharing
+  domains for static analysis of java programs.}, in: J.~L. Knudsen, editor,
+  \emph{ECOOP 2001 - Object-Oriented Programming, 15th European Conference,
+  Budapest, Hungary, June 18-22, 2001, Proceedings},  LNCS  \textbf{2072}
+  (2001), pp. 77--98.
+
+\bibitem{Rens04-esop}
+Rensink, A., \emph{Canonical graph shapes}, in: D.~A. Schmidt, editor,
+  \emph{Programming Languages and Systems --- European Symposium on Programming
+  (ESOP)},  LNCS  \textbf{2986} (2004), pp. 401--415.
+
+\bibitem{Rens03-agtive}
+Rensink, A., \emph{The {GROOVE} simulator: A tool for state space generation},
+  in: J.~Pfalz, M.~Nagl and B.~B{\"o}hlen, editors, \emph{Applications of Graph
+  Transformations with Industrial Relevance (AGTIVE)},  LNCS  \textbf{3063}
+  (2004), pp. 479--485.
+
+\bibitem{Rens04-avis}
+Rensink, A., \emph{State space abstraction using shape graphs}, in: \emph{ETAPS
+  2004 Workshop on Automatic Verification of Infinite-State Systems (AVIS)},
+  2004, see \url{http://www.cs.utwente.nl/~rensink/papers/avis2004.pdf}
+  (unpublished proceedings).
+
+\bibitem{RensinkDis2005a}
+Rensink, A. and D.~Distefano, \emph{Abstract graph transformation}, CTIT
+  Technical Report TR--CTIT--05--04, Department of Computer Science, University
+  of Twente (2005).
+
+\bibitem{RenSchVar04}
+Rensink, A., {\'A}.~Schmidt and D.~Varr{\'o}, \emph{Model checking graph
+  transformations: A comparison of two approaches}, in: Ehrig et~al.
+  \cite{ICGT04}, pp. 226--241.
+
+\bibitem{Reyn02}
+Reynolds, J., \emph{Separation logic: A logic for shared mutable data
+  structures}, in: \emph{Seventeenth Annual IEEE Symposium on Logic in Computer
+  Science}, IEEE (2002).
+
+\bibitem{Rinetzky+2005}
+Rinetzky, N., J.~Bauer, T.~W. Reps, S.~Sagiv and R.~Wilhelm, \emph{A semantics
+  for procedure local heaps and its abstractions.}, in: J.~Palsberg and
+  M.~Abadi, editors, \emph{Proceedings of the 32nd ACM SIGPLAN-SIGACT Symposium
+  on Principles of Programming Languages (POPL)} (2005), pp. 296--309.
+
+\bibitem{Handbook-GG-I}
+Rozenberg, G., editor, \enquote{Handbook of Graph Grammars and Computing by
+  Graph Transformation,} World Scientific, Singapore, 1997.
+
+\bibitem{SagRepWil98}
+Sagiv, M., T.~Reps and R.~Wilhelm, \emph{Solving shape-analysis problems in
+  languages with destructive updating}, ACM Transactions on Programming
+  Languages and Systems \textbf{20} (1998), pp.~1--50.
+
+\bibitem{SagRepWil02}
+Sagiv, M., T.~Reps and R.~Wilhelm, \emph{Parametric shape analysis via 3-valued
+  logic}, ACM Transactions on Programming Languages and Systems \textbf{24}
+  (2002), pp.~217--298.
+
+\end{thebibliography}

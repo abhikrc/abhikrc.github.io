@@ -1,0 +1,226 @@
+\section{Definitions}
+\stlabel{def}
+
+\textit{Graphs and their transformations.}
+%
+In this section we define the basic graph formalism that we will use. In the
+following, $\L$ denotes a fixed, finite set of labels.
+
+\begin{definition}[graph and morphism]\dlabel{graph} 
+  A graph over $\L$ is a tuple $G=\tuple{N,E}$ where $N$ is a set of nodes
+  and $E \subseteq N \times \L \times N$ a set of labelled edges. $G$ is
+  called \emph{deterministic} if $(v,a,w),(v,a,w')\in E$ implies $w=w'$.
+  
+  If $G=\tuple{N_G,E_G}$ and $H=\tuple{N_H,E_H}$ are graphs over $\L$, a {\em
+  morphism} $\phi\ftype G H$ is a function $\phi\ftype{N_G}{N_H}$, extended to
+  $E_G$ by $\phi((v,a,w))=(\phi(v),a,\phi(w))$, such that $\phi(E_G)\subseteq
+  E_H$.
+\end{definition}
+%
+An example deterministic graph was given in \fref{init-buffer}. Note that the
+node labels (\LB, \LC{} etc.) are actually not part of the formal
+definition; in fact they are superfluous (they can be derived from the edge
+labels), we have just included them for the sake of readability.  In the
+following, $\Graph_\L$ denotes the class of graphs and $\DetGraph_\L$ the class
+of deterministic graphs.  Given a edge $e=(v,a,w) \in E$ we call $v$ the
+source, $a$ the label and $w$ the target of $e$. They denoted
+$\src(e)$, $\lab(e)$, and $\tgt(e)$ respectively.
+
+A bijective morphism $\phi:G \func H$ is called an {\em isomorphism}, and 
+$G$ and $H$ are called {\em isomorphic} (denoted $G \iso H$) if
+there exists an isomorphism between them.
+
+In the following definitions, we present production rules and their
+applications constructively, instead of the standard algebraic
+characterisation \cite{DPO}. %; however, the
+%resulting framework precisely corresponds to the so-called \emph{double
+%pushout approach}.
+%
+\begin{definition}[production rule]\dlabel{rule}
+  A {\em graph production rule} is a pair of graphs $P=(L,R)$ with $L,R\in
+  \DetGraph_\L$, called the \emph{left hand side} (LHS) and \emph{right hand
+  side} (RHS), respectively. We also sometimes regard $P$ itself as a single
+  graph given by the union $L\cup R$, and we distinguish the following sets:
+%
+  \begin{itemize}\smalltopsep\noitemsep
+  \item $N^\del = N_L\setminus N_R$ and $E^\del = E_L\setminus E_R$, the
+    elements to be deleted;
+  \item $N^\use = N_L\cap N_R$ and $E^\use = E_L\cap E_R$, the elements used
+    (but not changed);
+  \item $N^\new = N_R\setminus N_L$ and $E^\new = E_R\setminus E_L$, the
+    elements to be created.
+  \end{itemize}
+\end{definition}
+%
+Two example production rules were given in \fref{init-buffer}. The set of
+production rules over $\L$ is denoted $\Prod_\L$.  The \emph{application} of a
+production rule $P=(L,R)$ to a graph $G$ entails finding a \emph{matching}
+$m\ftype L G$, which is an injective morphism from the LHS to the graph (also
+satisfying some other conditions, introduced below), and then removing from $G$
+the images of $N^\del$ and $E^\del$ and adding to the resulting graph the
+elements in $N^\new$ and $E^\new$. Care must be taken, however, to ensure that
+the new elements do not coincide with elements already in $G$.
+For this purpose, when discussing the application of a rule $P$ to a graph $G$
+we will always assume $P$ and $G$ to be disjoint, i.e., $N_P\cap N_G=
+\emptyset$. This assumption can be satisfied without loss of generality by
+taking an isomorphic copy of $P$ (and the result of the transformation does not
+depend on which isomorphic copy we take, modulo isomorphism).
+%
+\begin{definition}[graph transformation]\dlabel{graph-transformation}
+  Let $P=(L,R)\in \Prod_\L$ and $G\in \Graph_\L$ be disjoint. A \emph{matching}
+  for $P$ in $G$ is an injective morphism $m\ftype L G$ such that the following
+  conditions hold for all $e\in E_G$:
+  \begin{enumerate}\noitemsep\smalltopsep
+  \item If $\src(e)\in m(N^\del)$ or $\tgt(e)\in m(N^\del)$, then $e\in
+    m(E^\del)$;
+  \item If $\src(e)\in m(N^\use)$ and $\exists(m^{-1}(\src(e)), \lab(e), w)\in
+    E^\new$, then $e\in m(E^\del)$.
+  \end{enumerate}\smallbottomsep
+  If $m$ is a matching for $P$ in $G$, the transformation of $G$ according to
+  $P$ and $m$ is defined by $((N_G\setminus m(N^\del))\cup N^\new,(E_G
+  \setminus m(E^\del))\cup E^\new)$. We write $G\trans{P,m} H$ to denote that
+  $m$ is a matching for $P$ in $G$ and $H$ is the resulting transformed graph.
+\end{definition}
+%
+Application condition~1 is called the \emph{dangling edge condition}; it is
+standard in the so-called \emph{double pushout approach} to graph
+transformation (cf.\ \cite{DPO}). Condition~2 could be called
+\emph{preservation of determinism}; it is the most straightforward way to
+ensure that transformations remain in $\DetGraph$ (see
+\stref{concl} for a brief discussion). Example transformations (without the matchings) were shown in
+\fref{buffer-ts}.
+%
+\begin{proposition}
+  Let $P\in \Prod_\L$, $G\in \DetGraph_\L$. If $G\trans{P,m} H$ then $H\in
+  \DetGraph_\L$.
+\end{proposition}
+%
+\textit{Multiplicities and shapes.}
+%
+A multiplicity is an interval of natural numbers. Formally, we define the
+set of multiplicities as $\Mult = \genset{(i,j)\in \Nat \times (\Nat \cup
+\set\star)}{i\leq j}$, where $\star$ is used to denote infinity (i.e.,
+$i<\star$ for all $i\in \Nat$).  We use $\mu$ to range over multiplicities.  We
+write $\meq i$ for $(i,i)$, $\mgt i$ for $(i+1,\star)$ and $\mgeq i$ for
+$(i,\star)$. The lower bound of a multiplicity $\mu \in \Mult$ is denoted by
+$\lbnd \mu$ and the upper bound $\ubnd \mu$; thus $\lbnd{(i,j)}=i$ and
+$\ubnd{(i,j)}=j$. Multiplicity $\mu$ is called positive if $\lbnd \mu >0$.  We
+write $i\in \mu$ if $\lbnd\mu \leq i \leq \ubnd\mu$; based on this we define
+inclusion, $\mu_1\subseteq \mu_2$, as $\forall i:i\in \mu_1\Rightarrow i\in
+\mu_2$.  A given set $X$ {\em has multiplicity} $\mu$, denoted $X{:}\mu$, if
+$\card X\in \mu$.
+%We define a {\em subsumption} ordering ${\subsumes} \subseteq \Mult \times
+%\Mult$ over multiplicities, such that
+%\[\mu_1 \subsumes \mu_2
+%\ \mbox{ if } \
+%  \lbnd {\mu_1} \leq \lbnd {\mu_2}  \mbox{ and }  \ubnd {\mu_1} \geq \ubnd
+%  {\mu_2}.
+%\]
+%
+The following defines two operations over multiplicities, where $\mu, \mu_1,
+\mu_2\in \Mult$ and $i\in \Nat$ (note that $\star-i= \star+i= \star$ for all
+$i\in \Nat$):
+%
+\begin{eqnarray*}
+\mu_1+\mu_2
+ & = & (\lbnd{\mu_1}+\lbnd{\mu_2}, \ubnd{\mu_1}+\ubnd{\mu_2}) \\
+\mu - i
+ & = & (\max(0,\lbnd{\mu}-i), \ubnd{\mu}-i) \quad\mbox{if $\ubnd\mu \geq i$.}
+\end{eqnarray*}
+%
+The following expresses some algebraic properties of these various concepts.
+%
+\begin{proposition}\plabel{mult}
+Let $\mu\in \Mult$, and let $A,B$ be arbitrary finite sets.
+\begin{enumerate}\noitemsep\notopsep
+\item If $A:\mu$ then $(A\setminus B):\mu-\card{A\cap B}$.
+\item If $i\leq \ubnd\mu$ then $(\mu-i)+\meq i\subseteq \mu$.
+\end{enumerate}
+\end{proposition}
+%
+Multiplicities are used as basic ingredients for the definition of {\em
+shapes}. These are graphs where a multiplicity is associated with each node,
+stating how many concrete nodes it represents, and with each pair of node $v$
+and label $a$, stating how many incoming $a$-edges \emph{each instance} of $v$
+has.  Formally:
+%
+\begin{definition}[shape]\dlabel{shape}
+  A {\em shape} is a tuple $S=\tuple{N,E,\nodeMult,\inMult}$ with
+  $\tuple{N,E}\in \Graph_\L$ (sometimes denoted by $G_S$), and
+%
+\begin{itemize}\noitemsep\smalltopsep
+\item $\nodeMult:N \func \Mult$  a node multiplicity function;
+\item $\inMult:N \func \L \func \Mult$  an
+  incoming edge multiplicity function. %satisfying $\ubnd{\inMult(v)(a)} \leq
+%  \sum_{(w,a,v) \in E} \ubnd{\nodeMult(w)}$ for all $v \in N$ and $a \in \L$.
+\end{itemize}\smallbottomsep
+%
+$S$ is called \emph{deterministic} if the following property holds:
+%
+\begin{itemize}\smalltopsep\noitemsep
+\item for all $v\in N$ such that $\nodeMult(v)=\meq1$ and all $a\in \L$,
+  $\card{\genset{w}{(v,a,w)\in E}}\leq 1$ and 
+  $\card{\genset{w}{(w,a,v)\in E}}\leq \ubnd{\inMult(v)(a)}$.
+\end{itemize}
+\end{definition}
+%
+An example deterministic shape was shown in \fref{init-buffer}.
+We use $\Shape_\L$ to denote the class of shapes over $\L$, and $\DetShape_\L$
+for the deterministic shapes. Each shape stands for a number of
+\emph{instances}, which are concrete (deterministic) graphs. In this sense, a
+shape is comparable to a \emph{type graph}; however, the multiplicities provide
+far more control over the structure of the instances. The relation between a
+shape and its instances is defined by the following notion of \emph{shaping}.
+%
+\begin{definition}[shaping]\dlabel{shaping}
+  Given a graph $G \in \DetGraph_\L$ and a shape $S \in \Shape_\L$, a {\em
+  shaping} of $G$ into $S$ is a morphism $s:G \func G_S$ such that:
+  \begin{enumerate}\noitemsep\smalltopsep
+  \item for all $v \in N_S$, $s^{-1}(v):\nodeMult(v)$;
+  \item for all $v \in N_G$ and $a \in \L$, $\genset{w \in N_G}{(w,a,v) \in
+    E_G}:\inMult(s(v))(a)$;
+  \item for all $v\in N_G$ and $a\in \L$, if $\exists (s(v),a,w)\in E_S$
+    then $\exists (v,a,w')\in E_G$.
+  \end{enumerate}
+\end{definition}
+%
+We write $s:G \func S$ to denote that $s$ is a shaping of $G$ into $S$. It is
+important to note that, due to possible inconsistencies between multiplicity
+constraints, not all shapes have instances. If a shape admits instances we call
+it {\em consistent}. In \cite{Rens04-esop} we have shown that the notion of
+consistency is decidable for arbitrary (finite) $S \in \Shape_\L$.
+
+A graph typically has (shapings into) many shapes; for instance, by changing the
+multiplicities of a shape into more permissive ones (i.e., that extend the old
+ones), all shapings remain preserved.  In fact, shapes are interrelated by
+so-called \emph{abstraction morphisms}.
+%
+\begin{definition}[abstraction morphism]\dlabel{abstraction}
+  Let $S,T \in \Shape_\L$. An {\em abstraction morphism} $\alpha$ from $S$ to
+  $T$ (written $\alpha:S \func T$) is a morphism $\alpha:G_S \func G_T$ with:
+  \begin{enumerate}\noitemsep\smalltopsep
+  \item for all $v \in N_T$, $\nodeMult_T(v) \supseteq \sum
+    \nodeMult_S(\alpha^{-1}(v))$;
+  \item for all $v \in N_S$ and $a\in \L$, $\inMult_T(\alpha(v))(a) \supseteq
+    \inMult_S(v)(a)$.;
+  \item for all $v \in N_S$ and $a\in \L$, $\exists(\alpha(v),a,w)\in E_T$
+    implies $\exists(v,a,w')\in E_S$.
+  \end{enumerate}
+\end{definition}
+%
+The following proposition states that (as expected) any instance of a shape is
+also an instance of a more abstract shape.
+%
+\begin{proposition}\plabel{abstraction}
+  Let $G\in \DetGraph_\L$ and $S,T\in \Shape_\L$. If $s\ftype G S$ is a shaping
+  and $\alpha\ftype S T$ an abstraction, then $\alpha\circ s$ is a shaping
+  of $G$ into $T$.
+\end{proposition}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "agt"
+%%% End: 
+
+
+

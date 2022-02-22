@@ -1,0 +1,23 @@
+==========Template for each paper===================================
+Paper Title:              WAVer: A Model Checking-based Tool to Verify Web Application Design
+Journal title:            Electronic Notes in Theoretical Computer Science
+Journal Acronym:          ENTCS
+First Author Initials:      D.C.
+First Author Last Name:     Castelluccia
+Corr Author Title:          Engineer
+Corr Author Initials:       M.R.
+Corr Author Last Name:      Ruta
+Corr Author Institute:      Politecnico di Bari
+Corr Author Address 1:      via Re David 200
+Corr Author Address 2:      (to be supplied by the author)
+Corr Author City:           Bari
+Corr Author Country:        Italy
+Corr Author Postcode:       I-70125
+Corr Author Phone:          +39 080 5963515
+Corr Author Fax:            +39 080 5963410
+Corr Author Email:          m.ruta@poliba.it
+Editorial Office No.:       (to be supplied by the managing editor)
+Date of Receipt:            (to be supplied by the editor)
+Date of last Revision:      (to be supplied by the editor)
+Date of acceptance:         (to be supplied by the editor)
+=============End of template===========================================

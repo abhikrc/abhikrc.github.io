@@ -1,0 +1,69 @@
+toplevel(bad_src/2).
+toplevel(bad_dest/2).
+
+toplevel(unsafe/1).
+
+%-----------------------------------------------------------
+
+unsafe(X) :- gen(X), tc(X).
+
+tc(X) :- bad(X).
+tc(X) :- trans(X, Y), tc(X).
+
+%-----------------------------------------------------------
+
+gen((0,0,0,N)) :- nat(N).
+
+nat(0).
+nat(s(X)) :- nat(X).
+
+add(0, X, X) :- nat(X).
+add(s(N), X, s(Z)) :- add(N, X, Z).
+
+%-------------------------------------------------------
+
+trans(X, Y) :- trans_bcast(X, Y).
+trans(X, Y) :- trans_local(X, Y).
+
+trans_bcast(X, Y) :- trans_bcast(X, inv, Y).
+trans_bcast(X, Y) :- trans_bcast(X, cp, Y).
+
+trans_bcast((M, E, s(S), I), inv, (0, s(0), 0, N)) :-
+	add(M, E, A1), add(A1, S, A2), add(A2, I, N).
+
+trans_bcast((M, E, S, s(I)), cp, (0, 0, s(N), I)) :-
+	add(M, E, A1), add(A1, S, N).
+
+trans_local(X, Y) :- trans_local(X, read, Y).
+trans_local(X, Y) :- trans_local(X, write, Y).
+
+trans_local((M, E, S, I), read, (M, E, S, I)).
+trans_local((M, s(E), S, I), write, (s(M), E, S, I)).
+trans_local((M, E, S, I), write, (M, E, S, I)).
+
+%--------------------------------------------------
+
+bad((M, E, S, I)) :- nat(S), nat(I), add(M, E, s(s(_))).
+
+%---------------------------------------------------
+
+consumer(bad/1).
+
+maxDepthConstant(4).   % maximum term depth to restrict infinite 
+                       % call sequences during unfolding.  
+
+unfold_flag(suspend_expand).   % expand suspended atoms if they
+                               % get instantiated.
+
+%unfold_flag(nonconsumer_freeze). % do not expand a clause body 
+				 % if it has only open atoms.
+
+cleanup_flag([]).   
+		    % allows setting options for cleanup of clauses
+		    % periodically. Currently, allows removing subsumed
+		    % and failed clauses. Obviously then we have 4
+		    % User options: cleanup_flag([])
+		    %               cleanup_flag([subsumed]).
+		    %               cleanup_flag([failed]).
+	            %               cleanup_flag([subsumed, failed]).
+		    % Caution: Cleanups may slow down the prover considerably.

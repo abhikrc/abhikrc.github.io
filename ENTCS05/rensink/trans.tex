@@ -1,0 +1,75 @@
+\section{Transformation}
+\stlabel{trans}
+
+In this section we prove the correctness of the abstraction we have defined, in
+the sense that a transformation of a shape with respect to a singular
+pre-shaping simulates a transformation of the underlying instance graphs and
+vice-versa.
+
+First we extend the transformation definition (see
+\dref{graph-transformation}) to shapes.
+%
+\begin{definition}[shape transformation]\dlabel{shape-transformation}
+  Let $P=(L,R)\in \Prod_\L$ and $S\in \Shape_\L$ be disjoint. An \emph{abstract 
+  matching}
+  for $P$ in $S$ is a concrete pre-shaping $c\ftype L S$ such that $c\ftype
+  L{G_S}$ is a (concrete) matching for $P$ in the graph part of $S$. If $c$ is
+  an abstract matching
+  for $P$ in $S$, then the transformation of $S$ according to $P$ and $s$ is
+  defined by $T\in \Shape_\L$ such that
+%  \begin{eqnarray*}
+%    N_H & = & (N_S\setminus m(N^\del))\cup N^\new \\
+%    E_H & = & (E_S\setminus m(E^\del))\cup E^\new \\
+%    \nodeMult_H
+%        & = & \nodeMult_S\restr{N_H} \cup \genset{(v,\meq 1)}{v\in N^\new} \\
+%    \inMult_H
+%        & = & \inMult_S\restr{N_H} \cup
+%              \genset{(v,a,\meq1)}{(w,a,v)\in E^\new} \enspace.
+%  \end{eqnarray*}
+\begin{eqnarray*}
+N_T & = & (N_{S} \backslash c(N^\del)) \cup N^{\new} \\
+E_{T} & = & (E_{S} \backslash c(E^\del)) \cup E^{\new} \\
+\nodeMult_{T}(v) & = & \cases{ %\left \{\begin{array}{ll}
+      \nodeMult_{S}(v) & \mbox{if $v \in N_{S}$} \cr %\\[-\medskipamount]
+      \meq{1} & \mbox{otherwise}
+}%\end{array}
+%\right. 
+\\
+\inMult_{T}(v)(a) & = & \left\{
+  \begin{array}{ll}
+        \begin{array}[b]{@{}r}
+          \inMult_{S}(v)(a) 
+          -\card{\genset{w}{(w,a,v) \in c(E^\del)}}\\[-\medskipamount]
+          {}+\meq{\card{ \genset{w}{(w,a,v) \in E^\new}}}
+        \end{array} & 
+        \mbox{if     $v \in N_{S}$} \\[-\smallskipamount]
+     \meq{\card{\genset{w}{(w,a,v) \in E^\new}}} & \mbox{otherwise}
+  \end{array}
+  \right.
+\end{eqnarray*} 
+We write $S\trans{P,c} T$ to denote that $c$ is an abstract matching for $P$ in $S$ and
+$T$ is the resulting transformed shape.
+\end{definition}
+%
+The following are two of the crucial theorems of this paper, providing the
+connection between abstract and concrete transitions.
+%
+\begin{theorem}
+\label{th:abs2con}
+Let $P=(L,R)\in \Prod_\L$, $S,T\in \Shape_\L$ and assume $S\trans{P,c} T$.
+For any shaping $s\ftype G S$, there exists a matching $m$ for $P$ in
+$G$ such that $c=s\circ m$, and for $G\trans{P,m} H$ there is a shaping
+$t\ftype H T$.
+\end{theorem}
+%
+\begin{theorem}
+\label{th:con2abs}
+  Let $P=(L,R)\in \Prod_\L$, $G\in \DetGraph_\L$ and assume $G\trans{P,m} H$.
+  For any shaping $s\ftype G S$ such that $c=s\circ m$ is concrete,
+  $S\trans{P,c} T$ with a shaping $t\ftype H T$.
+\end{theorem}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "agt"
+%%% End: 

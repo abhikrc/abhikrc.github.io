@@ -1,0 +1,109 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title></title>
+</head>
+
+<body bgcolor="#F7F7F7">
+
+<table width="100%" border="0" id="table1" height="710">
+	<!-- MSTableType="layout" -->
+	<tr>
+		<td valign="top" height="706" width="774">
+		<!-- MSCellType="ContentBody" -->
+		<blockquote>
+		<p align="left"><b><i><font face="Times New Roman" size="5">Identifying 
+		the Buggy Locations in a Program</font></i></b></p>
+		<p align="left"><font face="Times New Roman">Software fault localization 
+		involves locating the exact cause of error for a &quot;failing&quot; execution run 
+		&#8211; a run which exhibits an unexpected behavior. We have proposed 
+		several methods for identifying the cause of error, which are based on 
+		execution tracing and analysis. Our key contributions are:</font></p>
+		<ul>
+			<li>
+			<p align="left"><font face="Times New Roman"><b>Dynamic Slicing</b>: 
+			Dynamic slicing finds out statements in the buggy program which 
+			affected the unexpected behavior during the failing execution run, 
+			via dynamic control or data dependencies. It is performed on an 
+			execution trace to detect dynamic control and data dependencies. In 
+			practice, execution traces maybe be&nbsp; too huge to fit into the 
+			memory. We have proposed a method which can collect, store, and 
+			analyze (for slicing) an execution trace all in compressed form. 
+			Initial experiments show that our method is efficient in both time 
+			and space.</font></p>
+			</li>
+		</ul>
+			<p align="left"><b><font face="Times New Roman">
+            <a href="http://jslice.sourceforge.net">Check out our Jslice dynamic 
+            slicing tool for Java programs.</a></font></b></p>
+		<ul>
+			<li>
+			<p align="left"><font face="Times New Roman"><b>Distance Metric 
+			Evaluation</b>: The fault localization is done by comparing the 
+			&quot;failing&quot; execution run with one that does not exhibits the 
+			erroneous behavior (&quot;successful&quot; run). Furthermore, a decision shall 
+			be made to choose a particular &quot;successful&quot; run among a large pool 
+			of such runs. We have been studying a metric based on the &quot;distance&quot; 
+			between a &quot;failing&quot; run and a &quot;successful&quot; run, which can be used to 
+			both select a &quot;nearest&quot; successful run to a failing run and locate 
+			the buggy statement.</font></p></li>
+			<li>
+			<p align="left"><font face="Times New Roman"><b>Automated Path 
+			Generation</b>: When fault localization is proceeded by comparing 
+			the &quot;failing&quot; run with some &quot;successful&quot; run, an issue here is to 
+			generate or choose a suitable successful run; this task is often 
+			left to the programmer. We have proposed an efficient technique 
+			where the construction of the successful run as well its comparison 
+			with the failing run is automated. Our method constructs a 
+			successful program run by toggling the outcomes of some conditional 
+			branch instances in the failing run. If such a successful run 
+			exists, program statements for these branches are returned as bug 
+			report.</font></p></li>
+		</ul>
+		<hr>
+		<p align="left"><i><font face="Times New Roman" size="4"><b>People 
+		Involved:</b></font></i></p>
+		<p align="left"><a href="http://www.comp.nus.edu.sg/~abhik">
+		Abhik&nbsp;Roychoudhury</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="http://www.comp.nus.edu.sg/~wangtao">Tao Wang</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="http://www.comp.nus.edu.sg/~guol">Liang Guo</a></p>
+		<hr>
+		<p align="left"><i><font face="Times New Roman" size="4"><b>Current 
+		Work:</b></font></i></p>
+		<ul>
+			<li>
+			<p align="left">
+			<font face="Times New Roman">
+			<a href="http://www.comp.nus.edu.sg/~abhik/pdf/icse04.pdf">A paper 
+			on dynamic slicing</a> appeared in ICSE 2004. A more detailed
+			<a href="http://www.comp.nus.edu.sg/~abhik/pdf/slice-jnl.pdf">
+			journal paper</a> is submitted for publication.</font></li>
+			<li>
+			<p align="left"><font face="Times New Roman">We have proposed the method for 
+			<a href="http://www.comp.nus.edu.sg/~abhik/pdf/pathgen.pdf">automated path 
+			generation</a>, appearing in ASE 2005.</font></li>
+			<li>
+			<p align="left"><font face="Times New Roman">The work on distance 
+			metric is submitted and accepted by CC 2006.</font></li>
+		</ul>
+		<p align="left"><font face="Times New Roman">
+		<a href="papers.htm#Software_Debugging">Here</a> is a list of related 
+		publications.</font></p>
+		<p align="left"><i><font face="Times New Roman" size="4"><b>Tools Used:</b></font></i></p>
+		<p align="left"><font face="Times New Roman">
+		<a href="http://jslice.sourceforge.net">Jslice</a> ( dynamic slicing 
+		tool for Java programs)</font></p>
+		<p align="left"><font face="Times New Roman">
+		<a href="http://www.grammatech.com/products/codesurfer/overview.html">
+		Codesurfer</a>&nbsp; (used under Academic program)</font></p>
+		<p align="left">&nbsp;</p>
+		</blockquote>
+		</td>
+	</tr>
+</table>
+
+</body>
+
+</html>

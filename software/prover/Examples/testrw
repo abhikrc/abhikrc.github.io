@@ -1,0 +1,22 @@
+
+pgm_clause(c1, (thm(X) :- gen(X), test(X)), (1,1)).
+pgm_clause(c2, (gen([]) :- true), (1,1)).
+pgm_clause(c3, (gen([0|X]) :- gen(X)), (1,1)).
+pgm_clause(c4, (test(X) :- canon(X)), (1,1)).
+pgm_clause(c5, (test(X) :- trans(X, Y), test(Y)), (1,1)).
+pgm_clause(c6, (canon([]) :- true), (1,1)).
+pgm_clause(c7, (canon([1|X]) :- canon(X)), (1,1)).
+pgm_clause(c8, (trans([0|T], [1|T]) :- true), (1,1)).
+pgm_clause(c9, (trans([1|T], [1|T1]) :- trans(T, T1)), (1,1)).
+
+inductive(thm(_)).
+inductive(gen(_)).
+inductive(test(_)).
+inductive(canon(_)).
+inductive(trans(_,_)).
+
+%-------------------------------------------------------------------
+% The toplevel proof obligation.
+
+pending(thm/1, gen/1).
+

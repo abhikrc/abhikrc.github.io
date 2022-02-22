@@ -1,0 +1,56 @@
+Paper: Compositional Analysis of Mobile Network Protocols
+
+Authors: Wu and Zhang
+
+
+1 - How do you classify this paper? 2
+
+   3: Strong Accept
+
+   2: Weak Accept
+
+   1: Weak Reject
+
+   0: Strong Reject
+
+2 - What is your overall expertise concerning the subject areas of this
+paper? X
+
+   X: I am an expert.
+   Y: I am knowledgeable in the area, though not an expert
+   Z: I am not an expert. My evaluation is that of an informed outsider.
+
+3 Main Contributions of the Paper:
+The paper presents a compositional framework for modeling and verifying
+mobile network protocols. A mobile network protocol is represented as a
+set of communicating sequential tasks. Each task is modeled as a symmbolic
+transition graph with assignment. It is shown that persistently resettable
+protocols are deadlock free if all the component tasks. Mobile IP is used
+as a case study
+
+4 Points in Favor or Against:
+The paper seems to have been written in a rush with many notions kept
+undefined. For example while defining STGA's no syntax for Exp or bExp is
+provided. On page 3, the authors suddenlty start using process calculus
+notation without introducing it. Which model checker was used in Section
+4? Besides all you show is checking for deadlock. What about properties
+like mutual exclusion? What was the use of using a mu calculus formula for
+specifying deadlock freedom without introducing mu calculus?
+
+5. Comments for Improvement:
+The paper has a lot of typos. For example space should be introduced in
+"outside(true)..." on page 6. Before stating a notion formally, you should
+first describe it in English and then use a formal description.
+
+On Tue, 26 Oct 2004, Abhik Roychoudhury wrote:
+
+>
+> i have uploaded everything that I have received. papers 3,5,7,9
+> still have only 1 review. I have not yet received anything from
+> Ramesh, and from you so far I have got 1 review. The others have
+> mostly sent in their reviews.
+>
+> regards
+> -Abhik
+> http://www.comp.nus.edu.sg/~abhik
+>

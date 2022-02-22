@@ -1,0 +1,145 @@
+MODULE main()
+{
+   HTRANS : {IDLE, NONSEQ, SEQ};
+             -- BUSY not modeled : masters always ready to transfer
+   m1 : master(a.HGRANT1, s.RESP);
+   m2 : master(a.HGRANT2, s.RESP);
+    s : slave(HTRANS, a.HMASTER);
+    a : arbiter(HTRANS,m1.HBUSREQ, m2.HBUSREQ, s.RESP, s.HSPLIT);
+
+    HTRANS := case{
+        a.HMASTER=1 : m1.HTRANS;
+        a.HMASTER=2 : m2.HTRANS;
+    };
+
+--no_starve1: assert G(m1.HBUSREQ -> F a.HGRANT1);
+no_starve2: assert G(m2.HBUSREQ -> F a.HGRANT2);
+fair1: assert G((m1.HBUSREQ & ~a.MASK[1]) -> F a.HGRANT1);
+fair2: assert G((m2.HBUSREQ & ~a.MASK[2]) -> F a.HGRANT2);
+slave_live1: assert G(s.MASK[1] -> F s.HSPLIT[1]);
+slave_live2: assert G(s.MASK[2] -> F s.HSPLIT[2]);
+slave_op1: assert G( ~s.HSPLIT[1] | ~s.MASK[1]);
+slave_op2: assert G( ~s.HSPLIT[2] | ~s.MASK[2]);
+mutex: assert G(~a.HGRANT1 | ~a.HGRANT2);
+
+using fair1, fair2, mutex, slave_live1, slave_live2,slave_op1, slave_op2
+     prove no_starve2;
+assume fair1,fair2,mutex,slave_live1,slave_live2,slave_op1,slave_op2;
+}
+
+MODULE master(HGRANT, RESP)
+{
+   HBUSREQ: boolean;
+   HTRANS: {IDLE, NONSEQ, SEQ};
+
+   init(HBUSREQ) := 1;
+   next(HBUSREQ) := 1;  -- hardcoded to 1; may remove it
+                        -- in this simplified version
+                        -- assume only bursts of length exactly 2
+   init(HTRANS) := IDLE;
+   next(HTRANS) := case{
+        (HGRANT & HTRANS = NONSEQ & RESP = ok1): SEQ;
+        (HGRANT & HTRANS = SEQ & RESP = ok1) : IDLE;
+        (HGRANT & ~(HTRANS = IDLE) & RESP = ok0): HTRANS;
+        (HGRANT & ~(HTRANS=IDLE) & RESP=split0 ): IDLE;
+        (HGRANT & HTRANS = IDLE & (RESP=ok1|RESP=split1)) : NONSEQ;
+        default : IDLE;
+   };
+}
+
+   
+MODULE slave(HTRANS, HMASTER)   
+{
+    RESP : {ok0, ok1, split0, split1};
+       -- s.RESP is the tuple (s.HRESP, s.HREADY)
+    HSPLIT : array 1..2 of boolean;
+    MASK: array 1..2 of boolean;
+    event: array 1..2 of boolean; 
+                          -- set for 0 or more cycles after split
+    prev_HMASTER : {0,1,2};
+
+    init(RESP) := ok1;
+    init(HSPLIT[1]) := 0;
+    init(HSPLIT[2]) := 0;
+    init(prev_HMASTER) := 0; -- junk value
+    next(prev_HMASTER) := HMASTER;
+
+    next(RESP) := case{
+	(HTRANS = IDLE) : ok1;
+	(~HTRANS = IDLE & RESP = ok1) : {ok1,split0};
+        (~HTRANS = IDLE & RESP = split0) : split1;
+        1: ok1;
+    };
+    
+    init(event[1]) := 0;
+    init(event[2]) := 0;
+
+    MASK[1] := (RESP=split0 & prev_HMASTER=1) | event[1];
+    MASK[2] := (RESP=split0 & prev_HMASTER=2) | event[2];
+    
+    next(event[1]):= case{
+         MASK[1] : {0,1};
+         default : 0;
+    };
+
+    next(event[2]) := case{
+         MASK[2] : {0,1};
+         default : 0;
+    };
+
+     next(HSPLIT[1]) := case{
+         (~HSPLIT[1] & MASK[1]) : {0,1};
+         default: 0;
+     }; 
+     next(HSPLIT[2]) := case{
+         (~HSPLIT[2] & MASK[2]) : {0,1};
+         default: 0;
+     }; 
+}
+
+MODULE arbiter(HTRANS, BUSREQ1, BUSREQ2, RESP, HSPLIT)
+{
+    HGRANT1: boolean;
+    HGRANT2: boolean;
+    HMASTER: {1,2};
+    MASK: array 1..2 of boolean;
+
+    init(HGRANT1):= 1;
+    init(HGRANT2):= 0;
+    init(HMASTER):= 1;
+    init(MASK[1]) := 0;
+    init(MASK[2]) := 0;
+
+    next(HGRANT1) := case{
+          MASK[1] : 0;
+          (~MASK[1] & BUSREQ1 & HTRANS=NONSEQ & (RESP=ok1|RESP=split1))
+                                                     : {0,1};
+                  -- arbitrate at the second transfer of a burst
+          default : HGRANT1;
+    };
+    next(HGRANT2) := case{
+          MASK[2] : 0;
+          (~MASK[2] & BUSREQ2 & HTRANS=NONSEQ & (RESP=ok1|RESP=split1))
+                                                     : {0,1};
+          default : HGRANT2;
+    };
+
+    next(HMASTER):= case{
+          (HMASTER=2 & HGRANT1 & (RESP=ok1|RESP=split1)): 1;
+          (HMASTER=1 & HGRANT2 & (RESP=ok1|RESP=split1)): 2;
+          --(HMASTER=1 & ~HGRANT1) : 2;
+          --(HMASTER=2 & ~HGRANT2) : 1;
+          default : HMASTER;
+    };
+   
+    next(MASK[1]) := case{
+          ( ~MASK[1] & RESP=split0 & HMASTER=1): 1;
+          (MASK[1] & HSPLIT[1]) : 0;
+          default : MASK[1];
+    };
+    next(MASK[2]) := case{
+          ( ~MASK[2] & RESP=split0 & HMASTER=2): 1;
+          (MASK[2] & HSPLIT[2]) : 0;
+          default : MASK[2];
+    };
+}

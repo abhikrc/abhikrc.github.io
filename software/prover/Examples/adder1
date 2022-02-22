@@ -1,0 +1,50 @@
+
+toplevel(thm/2).
+toplevel(gen/2).
+
+%-----------------------------------------------------
+
+thm(X, Y) :- gen(X), gen(Y), add(X, Y, Z), 
+	     convert(X, X1), convert(Y, Y1),
+	     sum(X1, Y1, Z1), convert(Z, Z1).
+
+gen(X, Y) :- gen(X), gen(Y).
+
+%------------------------------------------------------
+
+add(N, 0, N).
+
+add(N, 1, M) :- add_one(N, M).
+
+add(0, (Q, R), (Q, R)).
+
+add(1, (Q, R), Res) :- add((Q, R), 1, Res).
+
+add((Q1, 0), (Q2, 0), (Res, 0)) :- add(Q1, Q2, Res).
+
+add((Q1, 0), (Q2, 1), (Res, 1)) :- add(Q1, Q2, Res).
+
+add((Q1, 1), (Q2, 0), (Res, 1)) :- add(Q1, Q2, Res).
+
+add((Q1, 1), (Q2, 1), (Res, 0)) :- 
+	add(Q1, Q2, Res1), add_one(Res1, Res).
+
+
+add_one(0, 1).
+add_one(1, (1, 0)).
+add_one((Q, 0), (Q, 1)).
+add_one((Q, 1), (Q1, 0)) :- add_one(Q, Q1).
+
+sum(0, M, M).
+sum(s(N), M, s(K)) :- sum(N, M, K).
+
+convert(0, 0).
+convert(1, s(0)).
+convert((Q, 0), N) :- convert(Q, N1), sum(N1, N1, N).
+convert((Q, 1), s(N)) :- convert(Q, N1), sum(N1, N1, N).
+
+gen(0).
+gen(1).
+gen((X, 0)) :- gen(X).
+gen((X, 1)) :- gen(X).
+

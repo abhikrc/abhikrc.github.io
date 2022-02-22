@@ -1,0 +1,168 @@
+toplevel(bad_dest/2).
+toplevel(bad_src/2).
+
+toplevel(zero_dest/2).
+toplevel(zero_src/2).
+
+%--------------------------------------------------
+
+bad_src(X, Y) :- trans(X, Y), bad(X).
+bad_dest(X, Y) :- trans(X, Y), bad(Y).
+
+zero_src(X, Y) :- trans(X, Y), zero_read(X).
+zero_dest(X, Y) :- trans(X, Y), zero_read(Y).
+
+%----------------------------------------------
+
+gen([think,read]).
+gen([think|X]) :- gen(X).
+
+trans(S, T) :- trans1(S, T, Xn, X1, Xn, X1, SRest).
+
+trans1([], [], Xn, X1, Xn, X1, []).
+
+trans1([P|Rest], [P1|Rest1], Xn, X1, MSel, CSel, [PSel|SRest]) :-
+	ptrans(P, P1, MSel, CSel, PSel),
+	trans1(Rest, Rest1, Xn, X1, CSel, PSel, SRest).
+
+%----------------------------------------
+
+zero_read([]).
+zero_read([think|X]) :- zero_read(X).
+zero_read([eat|X]) :- zero_read(X).
+
+%---------------------------------------------------
+
+bad([read|X]) :- one_more(X).
+bad([think|X]) :- bad(X).
+bad([eat|X]) :- bad(X).
+
+one_more([read|X]) :- any(X).
+one_more([think|X]) :- one_more(X).
+one_more([eat|X]) :- one_more(X).
+
+any([]).
+any([read|X]) :- any(X).
+any([think|X]) :- any(X).
+any([eat|X]) :- any(X).
+
+%-----------------------------------------
+
+bad_eat([eat|X]) :- eat_next(X).
+bad_eat([read|X]) :- bad_eat(X).
+bad_eat([think|X]) :- bad_eat(X).
+
+eat_next([eat|X]) :- any(X).
+eat_next([read|X]) :- bad_eat(X).
+eat_next([think|X]) :- bad_eat(X).
+
+%-----------------------------------------------------
+
+ptrans(think,eat,think,hungry,think).
+ptrans(think,eat,think,hungry,hungry).
+ptrans(think,eat,think,hungry,read).
+ptrans(think,eat,read,hungry,think).
+ptrans(think,eat,read,hungry,hungry).
+ptrans(think,eat,read,hungry,read).
+
+ptrans(think,read,read,think,think).
+ptrans(think,read,read,think,hungry).
+ptrans(think,read,read,think,eat).
+ptrans(think,read,read,think,read).
+
+ptrans(think,think,think,think,think).
+ptrans(think,think,think,think,hungry).
+ptrans(think,think,think,think,eat).
+ptrans(think,think,think,think,read).
+ptrans(think,think,think,hungry,eat).
+ptrans(think,think,hungry,think,think).
+ptrans(think,think,hungry,think,hungry).
+ptrans(think,think,hungry,think,eat).
+ptrans(think,think,hungry,think,read).
+ptrans(think,think,hungry,hungry,think).
+ptrans(think,think,hungry,hungry,hungry).
+ptrans(think,think,hungry,hungry,eat).
+ptrans(think,think,hungry,hungry,read).
+ptrans(think,think,eat,think,think).
+ptrans(think,think,eat,think,hungry).
+ptrans(think,think,eat,think,eat).
+ptrans(think,think,eat,think,read).
+ptrans(think,think,eat,hungry,think).
+ptrans(think,think,eat,hungry,hungry).
+ptrans(think,think,eat,hungry,eat).
+ptrans(think,think,eat,hungry,read).
+ptrans(think,think,read,hungry,eat).
+
+
+ptrans(eat,think,think,think,think).
+ptrans(eat,think,think,think,hungry).
+ptrans(eat,think,think,think,eat).
+ptrans(eat,think,think,think,read).
+ptrans(eat,think,hungry,think,think).
+ptrans(eat,think,hungry,think,hungry).
+ptrans(eat,think,hungry,think,eat).
+ptrans(eat,think,hungry,think,read).
+ptrans(eat,think,eat,think,think).
+ptrans(eat,think,eat,think,hungry).
+ptrans(eat,think,eat,think,eat).
+ptrans(eat,think,eat,think,read).
+
+ptrans(eat,read,read,think,think).
+ptrans(eat,read,read,think,hungry).
+ptrans(eat,read,read,think,eat).
+ptrans(eat,read,read,think,read).
+
+ptrans(eat,eat,think,eat,think).
+ptrans(eat,eat,think,eat,hungry).
+ptrans(eat,eat,think,eat,eat).
+ptrans(eat,eat,think,eat,read).
+ptrans(eat,eat,hungry,eat,think).
+ptrans(eat,eat,hungry,eat,hungry).
+ptrans(eat,eat,hungry,eat,eat).
+ptrans(eat,eat,hungry,eat,read).
+ptrans(eat,eat,eat,eat,think).
+ptrans(eat,eat,eat,eat,hungry).
+ptrans(eat,eat,eat,eat,eat).
+ptrans(eat,eat,eat,eat,read).
+ptrans(eat,eat,read,eat,think).
+ptrans(eat,eat,read,eat,hungry).
+ptrans(eat,eat,read,eat,eat).
+ptrans(eat,eat,read,eat,read).
+
+ptrans(read,think,think,read,think).
+ptrans(read,think,hungry,read,think).
+ptrans(read,think,eat,read,think).
+ptrans(read,think,read,read,think).
+
+ptrans(read,read,think,read,hungry).
+ptrans(read,read,think,read,eat).
+ptrans(read,read,think,read,read).
+ptrans(read,read,hungry,read,hungry).
+ptrans(read,read,hungry,read,eat).
+ptrans(read,read,hungry,read,read).
+ptrans(read,read,eat,read,hungry).
+ptrans(read,read,eat,read,eat).
+ptrans(read,read,eat,read,read).
+ptrans(read,read,read,read,hungry).
+ptrans(read,read,read,read,eat).
+ptrans(read,read,read,read,read).
+
+
+%----------------------------------------------------
+
+
+consumer(one_more/1).
+consumer(bad/1).
+consumer(any/1).
+%consumer(zero_read/1).
+
+maxDepthConstant(4).   % maximum term depth to restrict infinite 
+                       % call sequences during unfolding.  
+
+unfold_flag(suspend_expand).   % expand suspended atoms if they
+                               % get instantiated.
+
+unfold_flag(nonconsumer_freeze). % do not expand a clause body 
+				 % if it has only open atoms.
+
+cleanup_flag([failed]).

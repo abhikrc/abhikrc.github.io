@@ -1,0 +1,199 @@
+toplevel(bad_start/1).
+toplevel(bad_src/2).
+toplevel(bad_dest/2).
+toplevel(bad_src1/2).
+toplevel(bad_dest1/2).
+%------------------------------------------------------
+
+bad_start(X) :- gen(X), bad(X).
+bad_dest(X, Y) :- trans(X, Y), bad(Y).
+bad_src(X, Y) :- trans(X, Y), bad(X).
+
+bad_dest1(X, Y) :- trans(X, Y), bad1(Y).
+bad_src1(X, Y) :- trans(X, Y), bad1(X).
+
+%--------------------------------------------------
+
+gen([]).
+gen([i|X]) :- gen(X).
+
+%---------------------------------------
+% out(read) = read action by own processor
+% in(read)  = read action by some other processor
+
+trans(S, T) :- action(A),  trans_bcast1(S, A, T), all_inv(S).
+trans(S, T) :- action(A), trans_bcast2(S, A, T), not_all_inv(S).
+
+trans_bcast1([H|T], Act, [H1|T1]) :- 
+	ltrans1(H, out(Act), H1), trans_all1(T, Act, T1).
+trans_bcast1([H|T], Act, [H1|T1]) :- 
+	ltrans1(H, in(Act), H1), trans_bcast1(T, Act, T1).
+
+trans_all1([], _, []).
+trans_all1([H|T], Act, [H1|T1]) :-
+	ltrans1(H, in(Act), H1), trans_all1(T, Act, T1).
+
+trans_bcast2([H|T], Act, [H1|T1]) :- 
+	ltrans2(H, out(Act), H1), trans_all2(T, Act, T1).
+trans_bcast2([H|T], Act, [H1|T1]) :- 
+	ltrans2(H, in(Act), H1), trans_bcast2(T, Act, T1).
+
+trans_all2([], _, []).
+trans_all2([H|T], Act, [H1|T1]) :-
+	ltrans2(H, in(Act), H1), trans_all2(T, Act, T1).
+
+%--------------------------
+
+action(read).
+action(write).
+action(replace).
+
+%-----------------------------------------------------------
+
+% local states : i = invalid
+%                v = valid-exclusive
+%		 s = shared
+%                d = dirty
+
+% read = read miss
+% write_hit and write_miss have been combined
+% replace = replacing a block into main memory
+% Encoding obtained directly from Pong and Dubois paper [PD95]
+
+ltrans1(i, in(read), i).
+ltrans1(i, in(write), i).
+ltrans1(i, in(replace), i).
+
+ltrans1(i, out(read), v).
+ltrans1(i, out(write), d).
+
+ltrans1(v, in(read), s).
+ltrans1(v, in(write), i).
+ltrans1(v, in(replace), v).   % can never occur
+
+ltrans1(v, out(replace), i).
+ltrans1(v, out(write), d).
+ltrans1(v, out(read), v).
+
+ltrans1(s, in(read), s).
+ltrans1(s, in(write), i).
+ltrans1(s, in(replace), s).
+
+ltrans1(s, out(replace), i).
+ltrans1(s, out(write), d).
+
+ltrans1(d, in(read), s).
+ltrans1(d, in(write), i).
+ltrans1(d, in(replace), d).   % can never occur
+
+ltrans1(d, out(read), d).
+ltrans1(d, out(write), d).
+ltrans1(d, out(replace), i).
+
+%-----------------------------
+
+ltrans2(i, in(read), i).
+ltrans2(i, in(write), i).
+ltrans2(i, in(replace), i).
+
+ltrans2(i, out(read), s).
+ltrans2(i, out(write), d).
+
+ltrans2(v, in(read), s).
+ltrans2(v, in(write), i).
+ltrans2(v, in(replace), v).  % can never occur
+
+ltrans2(v, out(replace), i).
+ltrans2(v, out(write), d).
+ltrans2(v, out(read), v).
+
+ltrans2(s, in(read), s).
+ltrans2(s, in(write), i).
+ltrans2(s, in(replace), s).
+
+ltrans2(s, out(replace), i).
+ltrans2(s, out(write), d).
+
+ltrans2(d, in(read), s).
+ltrans2(d, in(write), i).
+ltrans2(d, in(replace), d).  % can never occur
+
+ltrans2(d, out(read), d).
+ltrans2(d, out(write), d).
+ltrans2(d, out(replace), i).
+
+%--------------------------------
+
+all_inv([]).
+all_inv([i|X]) :- all_inv(X).
+
+not_all_inv([d|X]) :- any(X).
+not_all_inv([s|X]) :- any(X).
+not_all_inv([v|X]) :- any(X).
+not_all_inv([i|X]) :- not_all_inv(X).
+
+%********************************
+
+bad([d|X]) :- one_more(X).
+bad([s|X]) :- bad(X).
+bad([v|X]) :- bad(X).
+bad([i|X]) :- bad(X).
+
+one_more([d|X]) :- any(X).
+one_more([s|X]) :- one_more(X).
+one_more([v|X]) :- one_more(X).
+one_more([i|X]) :- one_more(X).
+
+any([]).
+any([d|X]) :- any(X).
+any([s|X]) :- any(X).
+any([v|X]) :- any(X).
+any([i|X]) :- any(X).
+
+%----------------------------------------------------------------------
+
+bad1([d|X]) :- one_more_s(X).
+bad1([s|X]) :- one_more(X).
+bad1([v|X]) :- bad1(X).
+bad1([i|X]) :- bad1(X).
+
+one_more_s([d|X]) :- one_more_s(X).
+one_more_s([s|X]) :- any(X).
+one_more_s([v|X]) :- one_more_s(X).
+one_more_s([i|X]) :- one_more_s(X).
+
+%----------------------------------------------------------------------
+
+consumer(one_more/1).
+consumer(bad/1).
+consumer(any/1).
+
+consumer(bad1/1).
+consumer(one_more_s/1).
+consumer(all_inv/1).
+consumer(not_all_inv/1).
+
+always_unfold(ltrans1/3).
+always_unfold(ltrans2/3).
+
+maxDepthConstant(4).   % maximum term depth to restrict infinite 
+                       % call sequences during unfolding.  
+
+unfold_flag(suspend_expand).   % expand suspended atoms if they
+                               % get instantiated.
+
+%unfold_flag(nonconsumer_freeze). % do not expand a clause body 
+				 % if it has only open atoms.
+
+cleanup_flag([failed]).   
+		    % allows setting options for cleanup of clauses
+		    % periodically. Currently, allows removing subsumed
+		    % and failed clauses. Obviously then we have 4
+		    % User options: cleanup_flag([])
+		    %               cleanup_flag([subsumed]).
+		    %               cleanup_flag([failed]).
+	            %               cleanup_flag([subsumed, failed]).
+		    % Caution: Cleanups may slow down the prover considerably.
+
+
+% verbose_proof.

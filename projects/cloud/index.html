@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>	Engineering Multi-tenant Software</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<style type="text/css"> 
+<!-- 
+body  {
+	font: 100% Verdana, Arial, Helvetica, sans-serif;
+	background: #FFFFFF;
+	margin: 0; /* it's good practice to zero the margin and padding of the body element to account for differing browser defaults */
+	padding: 0;
+	text-align: center; /* this centers the container in IE 5* browsers. The text is then set to the left aligned default in the #container selector */
+	color: #000000;
+}
+.twoColFixLtHdr #container { 
+	width: 1000px;  /* using 20px less than a full 800px width allows for browser chrome and avoids a horizontal scroll bar */
+	background: #FFFFFF;
+	margin: 0 auto; /* the auto margins (in conjunction with a width) center the page */
+	border: 1px solid #000000;
+	text-align: left; /* this overrides the text-align: center on the body element. */
+} 
+.twoColFixLtHdr #header { 
+	background: red; 
+	background-image:url('header.jpg');
+	background-repeat:no-repeat;
+	padding: 0 10px 0 250px;  /* this padding matches the left alignment of the elements in the divs that appear beneath it. If an image is used in the #header instead of text, you may want to remove the padding. */
+} 
+.twoColFixLtHdr #header h1 {
+	margin: 0; /* zeroing the margin of the last element in the #header div will avoid margin collapse - an unexplainable space between divs. If the div has a border around it, this is not necessary as that also avoids the margin collapse */
+	padding: 10px 0px; /* using padding instead of margin will allow you to keep the element away from the edges of the div */
+}
+.twoColFixLtHdr #sidebar1 {
+	float: left; /* since this element is floated, a width must be given */
+	width: 200px; /* the actual width of this div, in standards-compliant browsers, or standards mode in Internet Explorer will include the padding and border in addition to the width */
+	background: #EBEBEB; /* the background color will be displayed for the length of the content in the column, but no further */
+	padding: 15px 10px 15px 20px;
+}
+.twoColFixLtHdr #mainContent { 
+	margin: 0 0 0 250px; /* the left margin on this div element creates the column down the left side of the page - no matter how much content the sidebar1 div contains, the column space will remain. You can remove this margin if you want the #mainContent div's text to fill the #sidebar1 space when the content in #sidebar1 ends. */
+	padding: 0 20px; /* remember that padding is the space inside the div box and margin is the space outside the div box */
+} 
+.twoColFixLtHdr #footer { 
+	padding: 0 10px 0 20px; /* this padding matches the left alignment of the elements in the divs that appear above it. */
+	background:#DDDDDD; 
+} 
+.twoColFixLtHdr #footer p {
+	margin: 0; /* zeroing the margins of the first element in the footer will avoid the possibility of margin collapse - a space between divs */
+	padding: 10px 0; /* padding on this element will create space, just as the the margin would have, without the margin collapse issue */
+}
+.fltrt { /* this class can be used to float an element right in your page. The floated element must precede the element it should be next to on the page. */
+	float: right;
+	margin-left: 8px;
+}
+.fltlft { /* this class can be used to float an element left in your page */
+	float: left;
+	margin-right: 8px;
+}
+.clearfloat { /* this class should be placed on a div or break element and should be the final element before the close of a container that should fully contain a float */
+	clear:both;
+    height:0;
+    font-size: 1px;
+    line-height: 0px;
+}
+--> 
+</style><!--[if IE 5]>
+<style type="text/css"> 
+/* place css box model fixes for IE 5* in this conditional comment */
+.twoColFixLtHdr #sidebar1 { width: 230px; }
+</style>
+<![endif]--><!--[if IE]>
+<style type="text/css"> 
+/* place css fixes for all versions of IE in this conditional comment */
+.twoColFixLtHdr #sidebar1 { padding-top: 30px; }
+.twoColFixLtHdr #mainContent { zoom: 1; }
+/* the above proprietary zoom property gives IE the hasLayout it needs to avoid several bugs */
+span.SpellE
+	{}
+</style>
+<![endif]--></head>
+
+<body class="twoColFixLtHdr">
+<a name="top"></a>
+<div id="container">
+  <div id="header">
+    <h1>Multi-tenant Software Engineering for Cloud Computing	</h1>
+    Funded by <em>Academic Research Fund, NUS</em><br />
+    <br />
+  </div>
+  <div id="sidebar1">
+    <p>
+      <!-- end #sidebar1 -->
+      <a href="#overview">Project Overview</a></p>
+    <p><a href="#people">People</a></p>
+    <p><a href="#publications">Publications</a></p>
+    <p><a href="#funding">Funding</a></p>
+    <p>&nbsp;</p>
+  </div>
+  <div id="mainContent">
+  <a name="overview"></a>
+    <h2> Project Overview</h2>
+    <p class="MsoNormal">
+	<span lang="EN-GB" style="font-family: Arial,sans-serif"><font size="3">The 
+	emergence of Cloud Computing has been noticed by one and all in the 
+	Information and Communication Technology (ICT) industry. Companies are 
+	increasingly adopting this new paradigm where they do not wish to commit 
+	resources for engineering computing infra-structure. Instead, they acquire 
+	these resources as and when they need it as services. Indeed there is 
+	increasing focus on so-called Software-as-a-Service. However, what are the 
+	technical issues behind software-as-a-service (SaaS)? And, more importantly 
+	as researchers in computing and software engineering, how do we de-mystify 
+	the cloud to identify the key technical issues behind software design and 
+	construction for cloud computing. This proposed project seeks to address 
+	these issues.</font></span></p>
+	<p class="MsoNormal">
+	<span lang="EN-GB" style="font-family: Arial,sans-serif"><font size="3">&nbsp;We 
+	observe that one of the key technical issues behind SaaS lies in it being a
+	<i>shared, centrally hosted software service. </i>Thus SaaS vendors </font>
+	</span>
+	<span lang="EN-GB" style="font-family: Arial,sans-serif; color: black">
+	<font size="3">support different customer needs from the same common base 
+	(application, infrastructure) through appropriate sharing and customizations 
+	(termed <b><i>multi-tenancy</i></b> in SaaS parlance). In this project, we 
+	seek to study the research issues behind multi-tenant software engineering. 
+	First of all, multi-tenant software involves a complex sequence of 
+	interactions between service providers and consumers. Modelling, 
+	comprehending and simulating such interaction sequences is key to 
+	understanding the functionality and performance of software running on 
+	distributed clouds. Secondly, we develop analysis and optimization 
+	methodologies for the individual SaaS components which are then fed to the 
+	higher-level modelling and simulation framework. Overall, the following 
+	deliverables will be obtained as key outputs from our analysis framework – (i) 
+	understanding of tenant usage profiles and service-level agreements (SLAs), 
+	(ii) interaction of SLAs with SaaS functionality and performance.</font></span></p>
+    <p><a href="#top">back to the top</a></p>
+    <a name="people"></a>
+	<h2>People</h2>
+	<p>&nbsp;</p>
+    <p><strong>Faculty Members</strong></p>
+	<ul>
+    <li><a href="http://www.comp.nus.edu.sg/~abhik/">Abhik Roychoudhury
+    </a>(Principal Investigator)</li>
+	</ul>
+	<p><strong>External Collaborator</strong></p>
+	<ul><li>Bikram Sengupta, IBM Research</li>
+		</ul>
+    <p><b>Research Assistants and Associates</b></p>
+	<ul>
+		<li>&nbsp;Ju Lei, Research Associate</li>
+		<li>&nbsp;Seth Normand Hetu, Research Assistant</li>
+	</ul>
+    <p><a href="#top">back to the top</a><br />
+    </p>
+    <a name="publications"></a>
+	<h2>Relevant Publications</h2>
+    <ul>
+      
+<li><font face="Arial" size="3">
+		<font face="Arial">
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>Engineering Multi-tenant 
+Software-as-a-Service Systems ( <a href="../../pdf/icse11-pesos.pdf">PDF</a> )</b><br>
+<span class="SpellE">Bikram Sengupta</span>, <span class="SpellE">Abhik</span>
+<span class="SpellE">Roychoudhury</span></p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">Position Paper, ICSE 2011 - 
+Principles of Engineering Service Oriented Systems (PESOS).</p>
+</font>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">&nbsp;</p>
+		</font></li>
+
+<li><font face="Arial" size="3">
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>Footprinter: Roundtrip 
+		Engineering via Scenario and State based Models </b></p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">Ankit Goel, Bikram 
+		Sengupta and Abhik Roychoudhury, </p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">ACM International 
+		Conference on Software Engineering (ICSE) 2009, [Short paper].</p>
+</font>&nbsp;</li>
+<li><strong><font face="Arial">S</font></strong><font face="Arial" size="3"><strong>ymbolic 
+		Message Sequence Charts, </strong><strong style="font-weight: 400">Abhik 
+		Roychoudhury, Ankit Goel and Bikram Sengupta, </strong>
+<span style="font-weight: 400"><strong style="font-weight: 400">A</strong></span>C<span style="font-weight: 400">M 
+Transactions on Software Engineering and Methodology (TOSEM), To appear.</span></font><span style="font-weight: 400"></li>
+    </ul></span>
+    <p>&nbsp;</p>
+    <p><a href="#top">back to the top</a></p>
+    <a name="funding"></a>
+	<h2>Funding</h2>
+    <p align="left">This project is funded by                         the 
+	<strong>Academic Research Fund (NUS 
+	Singapore) </strong>for a period of two                         years (2010-2012). This support is gratefully                         acknowledged.
+<!-- end #mainContent -->
+  </p>
+    <p align="left"><a href="#top">back to the top</a></p>
+  </div>
+	<!-- This clearing element should immediately follow the #mainContent div in order to force the #container div to contain all child floats --><br class="clearfloat" />
+  <div id="footer">
+    <p>School of Computing, NUS, 2009</p>
+  <!-- end #footer --></div>
+<!-- end #container --></div>
+</body>
+</html>

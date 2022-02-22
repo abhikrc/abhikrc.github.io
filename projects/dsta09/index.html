@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>Symbolic Taint Analysis	</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<style type="text/css"> 
+<!-- 
+body  {
+	font: 100% Verdana, Arial, Helvetica, sans-serif;
+	background: #FFFFFF;
+	margin: 0; /* it's good practice to zero the margin and padding of the body element to account for differing browser defaults */
+	padding: 0;
+	text-align: center; /* this centers the container in IE 5* browsers. The text is then set to the left aligned default in the #container selector */
+	color: #000000;
+}
+.twoColFixLtHdr #container { 
+	width: 1000px;  /* using 20px less than a full 800px width allows for browser chrome and avoids a horizontal scroll bar */
+	background: #FFFFFF;
+	margin: 0 auto; /* the auto margins (in conjunction with a width) center the page */
+	border: 1px solid #000000;
+	text-align: left; /* this overrides the text-align: center on the body element. */
+} 
+.twoColFixLtHdr #header { 
+	background: red; 
+	background-image:url('header.jpg');
+	background-repeat:no-repeat;
+	padding: 0 10px 0 250px;  /* this padding matches the left alignment of the elements in the divs that appear beneath it. If an image is used in the #header instead of text, you may want to remove the padding. */
+} 
+.twoColFixLtHdr #header h1 {
+	margin: 0; /* zeroing the margin of the last element in the #header div will avoid margin collapse - an unexplainable space between divs. If the div has a border around it, this is not necessary as that also avoids the margin collapse */
+	padding: 10px 0px; /* using padding instead of margin will allow you to keep the element away from the edges of the div */
+}
+.twoColFixLtHdr #sidebar1 {
+	float: left; /* since this element is floated, a width must be given */
+	width: 200px; /* the actual width of this div, in standards-compliant browsers, or standards mode in Internet Explorer will include the padding and border in addition to the width */
+	background: #EBEBEB; /* the background color will be displayed for the length of the content in the column, but no further */
+	padding: 15px 10px 15px 20px;
+}
+.twoColFixLtHdr #mainContent { 
+	margin: 0 0 0 250px; /* the left margin on this div element creates the column down the left side of the page - no matter how much content the sidebar1 div contains, the column space will remain. You can remove this margin if you want the #mainContent div's text to fill the #sidebar1 space when the content in #sidebar1 ends. */
+	padding: 0 20px; /* remember that padding is the space inside the div box and margin is the space outside the div box */
+} 
+.twoColFixLtHdr #footer { 
+	padding: 0 10px 0 20px; /* this padding matches the left alignment of the elements in the divs that appear above it. */
+	background:#DDDDDD; 
+} 
+.twoColFixLtHdr #footer p {
+	margin: 0; /* zeroing the margins of the first element in the footer will avoid the possibility of margin collapse - a space between divs */
+	padding: 10px 0; /* padding on this element will create space, just as the the margin would have, without the margin collapse issue */
+}
+.fltrt { /* this class can be used to float an element right in your page. The floated element must precede the element it should be next to on the page. */
+	float: right;
+	margin-left: 8px;
+}
+.fltlft { /* this class can be used to float an element left in your page */
+	float: left;
+	margin-right: 8px;
+}
+.clearfloat { /* this class should be placed on a div or break element and should be the final element before the close of a container that should fully contain a float */
+	clear:both;
+    height:0;
+    font-size: 1px;
+    line-height: 0px;
+}
+--> 
+</style><!--[if IE 5]>
+<style type="text/css"> 
+/* place css box model fixes for IE 5* in this conditional comment */
+.twoColFixLtHdr #sidebar1 { width: 230px; }
+</style>
+<![endif]--><!--[if IE]>
+<style type="text/css"> 
+/* place css fixes for all versions of IE in this conditional comment */
+.twoColFixLtHdr #sidebar1 { padding-top: 30px; }
+.twoColFixLtHdr #mainContent { zoom: 1; }
+/* the above proprietary zoom property gives IE the hasLayout it needs to avoid several bugs */
+</style>
+<![endif]--></head>
+
+<body class="twoColFixLtHdr">
+<a name="top"></a>
+<div id="container">
+  <div id="header">
+    <h1>Symbolic Taint Analysis	</h1>
+    Funded by <em>Defence Research and Technology Office (DRTech), Singapore</em><br />
+    <br />
+  </div>
+  <div id="sidebar1">
+    <p>
+      <!-- end #sidebar1 -->
+      <a href="#overview">Project Overview</a></p>
+    <p><a href="#people">People</a></p>
+    <p><a href="#publications">Publications</a></p>
+    <p><a href="#funding">Funding</a></p>
+    <p>&nbsp;</p>
+  </div>
+  <div id="mainContent">
+  <a name="overview"></a>
+    <h2> Project Overview</h2>
+    <p>Much of the functionalities in our daily lives are software controlled and hence protecting our software against security vulnerabilities is of extreme importance. A common source of  vulnerabilities comes from the input to the software, which may not be checked within the application. These vulnerabilities take different forms and names such as <em>cross-site scripting</em>, <em>SQL injection </em>and so on. In particular cross-site scripting allows attackers to pass unchecked input in the form of problematic scripts which may then get executed on the site of a non-malicious user. SQL injection refers to unchecked program input being used to construct database queries (which may then be exploited by an attacker to reveal confidential information such as user passwords).    </p>
+    <p>  In this project, we propose to develop and employ <strong>analysis methods </strong>for detecting impact of program inputs on (parts of) an application. The main purpose is to detect or explain potential software attacks – thereby enhancing software security. One of the innovative outputs of the project will be to use software analysis and symbolic execution methods for generating and explaining potential attack scenarios, without actually encountering the attacks. </p>
+    <p> Our infrastructure will be geared to find out and summarize the input 
+	dependent parts of an application. It may suggest mechanisms to the 
+	programmer for making their applications more robust by inserting more 
+	checks at the appropriate places in their program. More interestingly, our 
+	analysis infrastructure can potentially reveal attack scenarios prior to the 
+	deployment of an application. This will be done by tracking the input 
+	propagation within an application, finding the input-dependent parts and 
+	summarizing them to the programmer.    </p>
+	<p> As part of our work, we observed that often a software may come with a 
+	reference implementation. For example, web-servers implement the HTTP 
+	protocol - so for testing and debugging a specific web-server we can use a 
+	well-known and well-tested web-server such as Apache as the reference 
+	implementation. Based on this observation, our project has developed several 
+	test generation, debugging and validation methods, as evidenced by the 
+	relevant publications.</p>
+    <p><a href="#top">back to the top</a></p>
+    <a name="people"></a>
+	<h2>People</h2>
+    <p><strong>Faculty Members</strong></p>
+	<ul>
+    <li><a href="http://www.comp.nus.edu.sg/~abhik/">Abhik Roychoudhury
+    </a>(Principal Investigator)</li>
+    <li><a href="http://www.comp.nus.edu.sg/~liangzk/">Liang Zhenkai</a> 
+	(Co-Principal Investigator)</li>
+	</ul>
+    <p><strong>Post-doctoral Fellow</strong></p>
+	<ul>
+    <li><a href="http://www3.ntu.edu.sg/home/mnngo">Cristal Ngo Minh Ngoc</a></li>
+	</ul>
+    <p><strong>PhD Student</strong></p>
+    <ul><li><a href="http://www.comp.nus.edu.sg/~dawei/">Qi Dawei</a></li>
+</ul>
+	<p><strong>Research Assistants and Interns</strong></p>
+	<ul><li>Hoang Thien (Intern)</li>
+		<li>Sun Tao (RA)</li></ul>
+    <p><a href="#top">back to the top</a><br />
+    </p>
+    <a name="publications"></a>
+	<h2>Publications</h2>
+    <ul>
+      <li><font face="Verdana" size="3">
+		<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>Test Generation to 
+		Expose Changes in Evolving Programs [ <a href="../../pdf/ase10.pdf">PDF</a> ]</b></p>
+		<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">Dawei Qi, Abhik 
+		Roychoudhury, Zhenkai Liang</p>
+		<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">25nd IEEE/ACM 
+		International Conference on Automated Software Engineering (ASE) 2010.
+		</p>
+&nbsp;</font></li>
+		<li><font face="Verdana" size="3"><b>Golden Implementation Driven Software 
+		Debugging [ <a href="../../pdf/fse10.pdf">PDF</a> ]</b><p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">Ansuman 
+		Banerjee, Abhik Roychoudhury, Johannes A. Harlie, Zhenkai Liang</p>
+		<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">International 
+		Symposium on Foundations of Software Engineering (FSE) 2010.
+		<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">&nbsp;</li>
+
+		</font>
+		<li><strong>DARWIN: An Approach for Debugging Evolving Programs</strong>
+ [<b><a href="fse09.pdf">PDF</a></b>], Dawei Qi, Abhik Roychoudhury, Zhenkai Liang, Kapil Vaswani. 
+ESEC and ACM SIGSOFT Symposium on the Foundations of Software  Engineering (FSE), ESEC-FSE, Amsterdam, the Netherlands, August 2009.<strong><font color="red">(ACM SIGSOFT Distinguished  paper award)<br>
+		<br></font></strong></li>
+      
+ <li><font face="Verdana" size="3">
+		<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>Debugging as a 
+		Science, that too, when your Program is Changing </b>(
+		<a href="../../pdf/ttss-entcs10.pdf"><font color="#800080">pdf</font></a> 
+		)</p>
+		<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">Abhik Roychoudhury</p>
+		<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><i>Keynote</i> at the Intl. 
+		Workshop on Harnessing Theories for Tool Support in Software (TTSS) 
+		2009, to appear in Electronic Notes in Theoretical Computer Science (ENTCS) 
+		in 2010.</font></li>
+    </ul>
+    <p><a href="#top">back to the top</a></p>
+    <a name="funding"></a>
+	<h2>Funding</h2>
+    <p align="left">This project is funded by                         the <strong>Defence 
+	Research and Technology Office (DRTech) 
+	Singapore </strong>for a period of three                         years (2009-2012). This support is gratefully                         acknowledged.
+<!-- end #mainContent -->
+  </p>
+    <p align="left"><a href="#top">back to the top</a></p>
+  </div>
+	<!-- This clearing element should immediately follow the #mainContent div in order to force the #container div to contain all child floats --><br class="clearfloat" />
+  <div id="footer">
+    <p>School of Computing, NUS, 2009</p>
+  <!-- end #footer --></div>
+<!-- end #container --></div>
+</body>
+</html>

@@ -1,0 +1,85 @@
+\begin{thebibliography}{10}\setlength{\itemsep}{-1ex}\small
+
+\bibitem{dragon}
+A.~Aho, R.~Sethi, and J.~Ullman.
+\newblock {\em Compilers: Principles, Techniques, and Tools}.
+\newblock Addison-Wesley, 1986.
+
+\bibitem{slam}
+T.~Ball and S.~Rajamani.
+\newblock The {SLAM} project: {D}ebugging system software via static analysis.
+\newblock In {\em POPL}. ACM Press, 2002.
+
+\bibitem{website:blast}
+Blast website.
+\newblock \texttt{http://www-cad.eecs.berkeley.edu/rupak/blast}.
+
+\bibitem{sagar:modularverification}
+S.~Chaki, E.~Clarke, A.~Groce, S.~Jha, and H.~Veith.
+\newblock Modular verification of software components in {C}.
+\newblock In {\em ICSE}. IEEE Computer Society, 2003.
+
+\bibitem{sagar:efficientverification}
+S.~Chaki, E.~Clarke, A.~Groce, J.~Ouaknine, O.~Strichman, and K.~Yorav.
+\newblock Efficient verification of sequential and concurrent {C} programs.
+\newblock {\em Formal Methods in System Design}, 25(2-3):129--166, 2004.
+
+\bibitem{IFM05}
+S.~Chaki, E.~M. Clarke, O.~Grumberg, J.~Ouaknine, N.~Sharygina, T.~Touili, and
+  H.~Veith.
+\newblock State/event software verification for branching-time specifications.
+\newblock In {\em IFM}. Springer LNCS, 2005.
+
+\bibitem{FACJ05}
+S.~Chaki, E.~M. Clarke, J.~Ouaknine, N.~Sharygina, and N.~Sinha.
+\newblock Concurrent software verification with states, events, and deadlocks.
+\newblock {\em Formal Aspects of Computing (to appear)}, 2005.
+
+\bibitem{cegar}
+E.~Clarke, O.~Grumberg, S.~Jha, Y.~Lu, and H.~Veith.
+\newblock Counterexample-guided abstraction refinement for symbolic model
+  checking.
+\newblock {\em J. ACM}, 50(5):752--794, 2003.
+
+\bibitem{partialorder}
+E.~Clarke, O.~Grumberg, M.~Minea, and D.~Peled.
+\newblock State space reduction using partial order techniques.
+\newblock {\em Int.\ J. on Soft.\ Tools for Tech.\ Transfer}, 2:279--287, 1999.
+
+\bibitem{modelchecking}
+E.~Clarke, O.~Grumberg, and D.~Peled.
+\newblock {\em Model Checking}.
+\newblock MIT Press, 1999.
+
+\bibitem{np}
+M.~Garey and D.~Johnson.
+\newblock {\em Computers and Intractability}.
+\newblock Bell Telephone Laboratories, 1979.
+
+\bibitem{comfort}
+J.~Ivers and N.~Sharygina.
+\newblock Overview of {ComFoRT}: A model checking reasoning framework.
+\newblock Technical Report CMU/SEI-2004-TN-018, Carnegie Mellon Software
+  Engineering Institute, 2004.
+
+\bibitem{pathslicing}
+R.~Jhala and R.~Majumdar.
+\newblock Path slicing.
+\newblock In {\em PLDI}. ACM Press, 2005.
+
+\bibitem{website:magic}
+Magic website.
+\newblock \texttt{http://www.cs.cmu.edu/\~\/chaki/magic}.
+
+\bibitem{cil}
+G.~Necula, S.McPeak, S.~Rahul, and W.~Weimer.
+\newblock {CIL}: Intermediate language and tools for analysis and
+  transformation of {C} programs.
+\newblock In {\em CC}, volume 2304. Springer LNCS, 2002.
+
+\bibitem{sethi}
+R.~Sethi.
+\newblock A note on implementing parallel assignment instructions.
+\newblock {\em Information Processing Letters}, 2:91--95, 1973.
+
+\end{thebibliography}

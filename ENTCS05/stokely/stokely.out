@@ -1,0 +1,13 @@
+\BOOKMARK [1][]{section.0.1}{Introduction}{}
+\BOOKMARK [2][]{subsection.1.1}{Outline}{section.0.1}
+\BOOKMARK [1][]{section.0.2}{Parallel Assignment}{}
+\BOOKMARK [2][]{subsection.2.1}{Classical Parallel Assignment}{section.0.2}
+\BOOKMARK [2][]{subsection.2.2}{Tractable General Parallel Assignment}{section.0.2}
+\BOOKMARK [2][]{subsection.2.3}{Concurrent Parallel Assignment}{section.0.2}
+\BOOKMARK [2][]{subsection.2.4}{Parallel Assignment and Weakest Preconditions}{section.0.2}
+\BOOKMARK [1][]{section.0.3}{Experimental Evaluation}{}
+\BOOKMARK [2][]{subsection.3.1}{Assignment Compression Results}{section.0.3}
+\BOOKMARK [2][]{subsection.3.2}{Model Checking Results}{section.0.3}
+\BOOKMARK [2][]{subsection.3.3}{Observations}{section.0.3}
+\BOOKMARK [1][]{section.0.4}{Future Work}{}
+\BOOKMARK [1][]{section*.1}{References}{}

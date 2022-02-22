@@ -1,0 +1,33 @@
+\documentclass{entcs}
+\usepackage{prentcsmacro}
+
+\usepackage{gastex}
+\usepackage{epsfig}
+\usepackage{xspace}
+\usepackage{martinmakros_entcs}
+
+\def\lastname{Berg, Jonsson, Leucker, Saksena}
+\input{local_macros_entcs.tex}
+
+% to see overful boxes in the dvi file
+%\overfullrule=2pt
+
+%\pagestyle{plain}
+
+\begin{document}
+
+
+\input{titleentcs}
+\input{introduction}
+\input{preliminaries}
+\input{angluinentcs}
+\input{resultsentcs}
+\input{conclusionentcs}
+
+%
+% ---- Bibliography ----
+%
+
+\input{lit}
+
+\end{document}

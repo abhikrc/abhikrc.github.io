@@ -1,0 +1,77 @@
+toplevel(bad_dest/2).
+toplevel(bad_src/2).
+%--------------------------------------------------------
+
+bad_dest(S, T) :- trans(S, T), bad(T).
+bad_src(S, T) :- trans(S, T), bad(S).
+
+%---------------------------------------------------------
+
+
+trans(S, T) :- trans_first(S, T).  % transitions of the first philosopher
+trans(S, T) :- trans_other(S, T).  % transitions of the other philosophers
+
+trans_other([L,Phil,R| T], [L1, Phil1, R1 |T]) 
+	:- phil_trans(L, Phil, R, L1, Phil1, R1).
+
+trans_other([H|T], [H|T1]) :- trans_other(T, T1).
+
+
+phil_trans(L, l1, R, L, l2, R). % exiting noncritical section
+phil_trans(1, l2, R, 0, l3, R). % acquire left fork
+phil_trans(L, l3, 1, L, l4, 0). % acquire right fork
+phil_trans(L, l4, R, L, l5, R). % exiting critical section
+phil_trans(0, l5, R, 1, l6, R). % release left fork
+phil_trans(L, l6, 0, L, l1, 1). % release right fork
+
+
+trans_first([Phil,R |T], [Phil1, R1|T1]) :-
+	phil1_trans(L, Phil, R, L1, Phil1, R1),
+	last_fork_trans(L, L1, T, T1).
+
+last_fork_trans(L, L1, [L], [L1]).
+last_fork_trans(L, L1, [H|T], [H|T1]) :- last_fork_trans(L, L1, T, T1).
+
+phil1_trans(L, l1, R, L, l2, R).  % exiting noncritical section
+phil1_trans(L, l2, 1, L, l3, 0).  % acquire right fork
+phil1_trans(1, l3, R, 0, l4, R).  % acquire left fork
+phil1_trans(L, l4, R, L, l5, R).  % exiting critical section
+phil1_trans(L, l5, 0, L, l6, 1).  % release right fork
+phil1_trans(0, l6, R, 1, l1, R).  % release left fork
+
+%----------------------------------------------------------------
+
+bad([l4,Fork1,l4, Fork2|Rest]) :- fork(Fork), one_more(Rest).
+bad([Phil,Fork|Rest]) :- not_crit(Phil), fork(Fork), bad(Rest).
+
+one_more([l4,Fork|Rest]) :- fork(Fork), any(Rest).
+one_more([Phil,Fork|Rest]) :- not_crit(Phil), fork(Fork), one_more(Rest).
+
+any([]).
+any([l4,Fork|Rest]) :- fork(Fork), any(Rest).
+any([Phil,Fork|Rest]) :- not_crit(Phil), fork(Fork), any(Rest).
+
+%--------------------------------------------------------------
+
+not_crit(l1).
+not_crit(l2).
+not_crit(l3).
+not_crit(l5).
+not_crit(l6).
+
+fork(0).
+fork(1).
+
+%--------------------------
+
+consumer(bad/1).
+consumer(one_more/1).
+consumer(any/1).
+
+maxDepthConstant(6).   % maximum term depth to restrict infinite 
+                       % call sequences during unfolding.  
+
+unfold_flag(suspend_expand).   % expand suspended atoms if they
+                               % get instantiated.
+
+cleanup_flag([failed]).

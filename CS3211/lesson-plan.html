@@ -1,0 +1,234 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en"> <html> <head>  
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">   
+ <meta name="GENERATOR" content="Microsoft FrontPage 6.0">   
+ <title>CS 3211 Lesson Plan</title> </head> <body bgcolor="#FFFFFF", background ="../CHALK.JPG">  <h1> <a href="http://www.comp.nus.edu.sg/"><img SRC="sclogo.gif" BORDER=0 height=48 width=40></a> 
+CS 3211- Parallel and Concurrent Programming</h1>
+<h1> &nbsp;&nbsp;&nbsp;&nbsp; Lesson Plan for 2009-10 Semester 2<font size="4"><i><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</b></i></h1>  
+<table border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="96%" id="AutoNumber1" height="1645">
+  <tr>
+    <td width="12%" height="54">
+    <p align="center"><font size="4" color="#0000FF">
+    <i><b>DATES</b></i></td>
+    <td width="44%" height="54">
+    <p align="center"><font size="4" color="#0000FF">
+    <i><b>Lecture&nbsp; Summary&nbsp; </b></i></td>
+    <td width="33%" height="54">
+    <p align="center"><font size="4">
+    <i><b><font color="#0000FF">Readings&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+    </font>
+    </b></i></td>
+    <td width="10%" height="54">
+    <p align="center"><font size="4" color="#0000FF">
+    <i><b>Resources</b></i></td>
+  </tr>
+  <tr>
+    <td width="12%" height="114"><font face="Arial"><font size="2">Week 1, 14 
+	January</font></font></td>
+    <td width="44%" height="114"><font face="Arial" size="2"><strong>
+    Introductory Lecture </strong>Discussion on concurrency concepts, with the 
+	aid of a modeling language (Promela). Concepts of interleavings, shared 
+	variables, and message passing are introduced.</font><p>&nbsp;</td>
+    <td width="33%" height="114">
+    <p><font face="Arial" size="2">The chapter &quot;An overview of Promela&quot; from the 
+	book &quot;The SPIN model checker&quot; by Gerard Holzmann (posted in IVLE 
+	E-reserves).</font></td>
+    <td width="10%" height="114"><font size="2" face="Arial">&nbsp;<a href="lectures/Lec1.pdf">Lec1.pdf</a></font></td>
+  </tr>
+  <tr>
+    <td width="12%" height="95"><font size="2" face="Arial">Week 2, 21 January</font></td>
+    <td width="44%" height="95"><font size="2" face="Arial">
+    <strong>More on Concurrency Concepts:</strong><strong style="font-weight: 400"> 
+	We continue our discussion of concurrency concepts with focus on 
+	synchronization mechanisms. A demo of the SPIN tool will be given. SPIN is a 
+	good tool for understanding concurrency - performing a search of all interleavings in a concurrent program. In this course we will primarily use 
+	its programming front-end the Promela modeling language, to get our feet wet 
+	with concurrency concepts.</strong></font><p>&nbsp;</td>
+    <td width="33%" height="95">
+    <font face="Arial" size="2">The chapter &quot;Synchronization&quot; from the book 
+	&quot;Principles of SPIN model checker by Ben-Ari (posted in IVLE 
+	E-reserves).</font></td>
+    <td width="10%" height="95">
+    <font face="Arial" size="2"><a href="lectures/Lec2.pdf">Lec2.pdf</a></font></td>
+  </tr>
+  <tr>
+    <td width="12%" height="117"><font size="2" face="Arial">Week 3, 28 January</font></td>
+    <td width="44%" height="117"><font size="2" face="Arial">
+    <strong>Multi-threaded Java Programming:</strong><strong style="font-weight: 400"> 
+	A basic discussion of programming constructs for multi-threaded Java 
+	programming.</strong></font><p><font face="Arial" size="2">
+	<font color="#FF0000"><strong>First Homework Posted:</strong></font><strong style="font-weight: 400">&nbsp;
+	<a href="HW/HW1-new.pdf">HW1-new.pdf</a></strong></font></td>
+    <td width="33%" height="117"><font face="Arial" size="2">Lot of online 
+	tutorials exist such as </font><font FACE="Tahoma" SIZE="1" COLOR="#b393cb">&nbsp;<a href="http://java.sun.com/docs/books/tutorial/essential/concurrency/index.html">http://java.sun.com/docs/books/tutorial/essential/concurrency/index.html</a></font><p>&nbsp;</td>
+    <td width="10%" height="117">
+    <font face="Arial" size="2">Lecture:</font><p><font face="Arial" size="2">
+	<a href="lectures/Lec3.pdf">Lec3.pdf</a></font></p>
+	<p><font face="Arial" size="2">Tutorial:</font></p>
+	<p><font face="Arial" size="2"><a href="tutorials/Tut1.pdf">Tut1.pdf</a></font></td>
+  </tr>
+  <tr>
+    <td width="12%" height="128"><font size="2" face="Arial">Week 4, 4 February</font></td>
+    <td width="44%" height="128">
+	<font class="font-default" face="Arial" size="2"><strong>Threads &amp; 
+	Concurrent Execution:</strong>&nbsp; We continue with Java threads and their 
+	concurrent execution in this lecture. There will be less focus on shared 
+	objects and ensuring of mutual exclusion in this lecture.</font></td>
+    <td width="33%" height="128">
+	<p><font size="2" face="Arial">Chapter 2,3 of textbook</font></td>
+    <td width="10%" height="128">
+    <font face="Arial" size="2">Lecture:</font><p><font face="Arial" size="2">
+	<a href="lectures/Lec4-1.pdf">Lec4-1</a>&nbsp; and</font></p>
+	<p><font face="Arial" size="2"><a href="lectures/Lec4-2.pdf">Lec4-2</a></font></p>
+	<p><font face="Arial" size="2">
+	Tutorial: <a href="tutorials/Tut2.zip">Tut2.zip</a></font></p></td>
+  </tr>
+  <tr>
+    <td width="12%" height="115"><font size="2" face="Arial">Week 5, 11 February</font></td>
+    <td width="44%" height="115"><font face="Arial" size="2"><b>Multi-threaded 
+	programming with shared objects</b>: We finish the discussion on concurrent 
+	execution (Lec4-2.pdf) and move on to discussion on multi-threaded 
+	programming with locks.</font><p><font face="Arial" size="2">
+	<font color="#FF0000"><b>Second Homework posted</b></font>:&nbsp;
+	<a href="HW/HW2-new.pdf">HW2-new.pdf</a></font></td>
+    <td width="33%" height="115"><font face="Arial" size="2">Chapter 3,4 of 
+	textbook</font></td>
+    <td width="10%" height="115">
+    <font size="2" face="Arial">
+    <p style="margin-top: 0; margin-bottom: 0">Lecture:</p>
+	<p style="margin-top: 0; margin-bottom: 0"><a href="lectures/Lec4-2.pdf">
+	Lec4-2</a> and</p>
+	<p style="margin-top: 0; margin-bottom: 0"><a href="lectures/Lec5.pdf">Lec5</a></p>
+	<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+	<p style="margin-top: 0; margin-bottom: 0">Tutorial:</p>
+	<p style="margin-top: 0; margin-bottom: 0">
+	<a href="tutorials/CS3211-Tut3.pdf">Tut3</a></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="12%" height="103"><font size="2" face="Arial">Week 6, 25 February</font></td>
+    <td width="44%" height="103">
+    <font face="Arial" size="2"><b>Monitors</b>: We discuss monitors as a 
+	structured concurrency control primitive in this lecture.</font><p>&nbsp;</td>
+    <td width="33%" height="103">
+	<p><font size="2" face="Arial">Chapter 5 of textbook</font></td>
+    <td width="10%" height="103"><font size="2" face="Arial">Lecture:
+	<a href="lectures/Lec6.pdf">Lec6</a></font><p><font size="2" face="Arial">
+	Tutorial: <a href="tutorials/CS3211-Tut-Week6.docx">Tut4</a></font></td>
+  </tr>
+  <tr>
+    <td width="96%" height="50" colspan="4"><font face="Arial"><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </font></font></td>
+  </tr>
+  <tr>
+    <td width="12%" height="65"><font size="2" face="Arial">Week 7, 4 March</font></td>
+    <td width="44%" height="65"><strong><font face="Arial" color="#FF0000">
+	<a href="lectures/mid.pdf">Midterm 
+    Examination</a></font></strong><p>&nbsp;</td>
+    <td width="33%" height="65"><font face="Arial" size="2">Material:&nbsp; 
+	first five lectures of the course.</font></td>
+    <td width="10%" height="65"><font face="Arial" size="2">Tutorial:
+	<a href="tutorials/CS3211-Tut-Week7.pdf">Tut5</a></font></td>
+  </tr>
+  <tr>
+    <td width="12%" height="97"><font size="2" face="Arial">Week 8, 11 March</font></td>
+    <td width="44%" height="97">
+	<p><font face="Arial" size="2"><b>Deadlocks in 
+	concurrent programming: </b>The reasons for encountering deadlock in 
+	concurrent systems are discussed in this lecture. </font></p>
+	<p><font face="Arial" size="2">The tutorial this week will discuss the 
+	<i>solutions for the midterm.</i></font></p>
+	<p><b>
+	<font face="Arial" size="2" color="#FF0000">Third</font></b><font face="Arial" size="2"><font color="#FF0000"><b> Homework posted</b></font>:&nbsp;
+	<a href="HW/HW3-new.pdf">HW3-new.pdf</a></font><p>&nbsp;</td>
+    <td width="33%" height="97">
+    <p><font face="Arial" size="2">Chapter 6 of textbook</font></td>
+    <td width="10%" height="97"><font size="2" face="Arial">Lecture:
+	<a href="lectures/Lec8.pdf">Lec8</a></font><p><font size="2" face="Arial">
+	Tutorial: <a href="tutorials/midsol.pdf">Midterm Solutions</a></font></td>
+  </tr>
+  <tr>
+    <td width="12%" height="162"><font size="2" face="Arial">Week 9, 18 March</font></td>
+    <td width="44%" height="162"><b><font size="2" face="Arial">
+	Safety and Liveness issues in concurrent programming:&nbsp;</font></b><font class="font-default" face="Arial" size="2">So 
+	far we have studied specific properties to think of while writing concurrent 
+	programs - such as mutual exclusion and no deadlocks. In this lecture, we 
+	put them in proper perspective by presenting two general classes of 
+	properties, namely safety and progress. This will also conclude our 
+	discussion on concurrent programming, and we move on to parallel programming 
+	from the next week onwards.</font></td>
+    <td width="33%" height="162"><font face="Arial" size="2">Chapter 7 of 
+	textbook</font></td>
+    <td width="10%" height="162"><font size="2">
+	<p>
+    <font face="Arial">Lecture: <a href="lectures/Lec9.pdf">Lec9</a></font><p>
+    <font face="Arial">Tutorial: <a href="tutorials/CS3211-Tut-Week9.pdf">Tut7</a></font></td>
+  </tr>
+  <tr>
+    <td width="12%" height="110"><font size="2" face="Arial">Week 10, 25 March</font></td>
+    <td width="44%" height="110">
+    <p><font face="Arial" size="2"><b>Parallel Programming using MPI</b> --- We 
+	start our discussion on parallel programming in this lecture. Point to point 
+	communication is discussed. We start with discussion on blocking 
+	send-receives, and then move on to discussing non-blocking send-receives.</font></td>
+    <td width="33%" height="110"><font size="2" face="Arial">
+	<p>Chapter 7 of Principles of Parallel Programming by Lin and Snyder (posted 
+	in IVLE E-reserves). The online tutorial
+	<a href="https://computing.llnl.gov/tutorials/mpi/">
+	https://computing.llnl.gov/tutorials/mpi/</a> is also useful.</td>
+    <td width="10%" height="110"><font face="Arial" size="2">Lecture:&nbsp;
+	<a href="lectures/MPI-1.pdf">Lec10</a></font><p><font face="Arial" size="2">
+	Tutorial:&nbsp; <a href="tutorials/CS3211-Tut-Week10.pdf">Tut8</a></font></td>
+  </tr>
+  <tr>
+    <td width="12%" height="133"><font size="2" face="Arial">Week 11, 1 April</font></td>
+    <td width="44%" height="133"><font face="Arial" size="2"><b>Parallel 
+	Programming using MPI</b> --- We 
+	continue our discussion on parallel programming in this lecture. Point to point 
+	communication is completed, in particular our discussion on non-blocking 
+	send receives is completed. We start our discussion on collective 
+	communication primitives such as broadcast, scatter, gather and reduce. </font>
+	<p><font face="Arial" size="2"><font color="#FF0000"><b> Fourth and last Homework posted</b></font>:&nbsp;<a href="HW/HW4-new.pdf">HW4-new.pdf</a></font></td>
+    <td width="33%" height="133">
+	<p><font size="2" face="Arial"><i>Readings</i>:&nbsp; As in Week 10</font><p>
+	<font face="Arial" size="2"><i>Guidelines for accessing tembusu for MPI 
+	programming</i>: <a href="tutorials/tembusu-MPI-access.pdf">
+	tembusu-MPI-access.pdf</a></font></td>
+    <td width="10%" height="133">
+    <font size="2" face="Arial">Lecture:<a href="lectures/MPI-2.pdf">Lec11</a></font><p><font size="2" face="Arial">
+	Tutorial: <a href="tutorials/CS3211-Tut-Week11.pdf">Tut9</a></font></td>
+  </tr>
+  <tr>
+    <td width="12%" height="93"><font size="2" face="Arial">Week 12, 8 April</font></td>
+    <td width="44%" height="93"><font face="Arial" size="2"><b>Parallel 
+	Programming using MPI --- </b>We complete our discussion of collective 
+	communication, and move on to process communicators.</font></td>
+    <td width="33%" height="93"><font size="2" face="Arial">As in Week 10</font></td>
+    <td width="10%" height="93"><font face="Arial" size="2">Lecture:
+	<a href="lectures/MPI-3.pdf">Lec12</a></font><p><font size="2" face="Arial">
+	Tutorial: <a href="tutorials/CS3211-Tut-Week12.pdf">Tut10</a></font></td>
+  </tr>
+  <tr>
+    <td width="12%" height="137"><font size="2" face="Arial">Week 13, 15 April</font></td>
+    <td width="44%" height="137">
+	<p>
+    <font size="2" face="Arial">
+    <b>Revision of all materials covered in the 
+	course: </b>The lecture notes for this lecture will be posted <i>after </i>
+	the lecture.</font></p>
+	<p>
+    &nbsp;</p>
+    <p><b><font color="#FF0000" face="Arial">Final Examination is on May 4 2010, Afternoon.</font></b></td>
+    <td width="33%" height="137"><font face="Arial" size="2">&nbsp;&nbsp; All materials 
+	covered in the past 12 weeks.</font></td>
+    <td width="10%" height="137">
+    <p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+	Lecture: <a href="lectures/Lec13.pdf">Lec13</a></font></p>
+	<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+	<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" size="2">
+	Tutorial: <a href="tutorials/CS3211-Tut-Week13.pdf">Tut11</a></font></p>
+    </td>
+  </tr>
+</table>
+
+</body> </html>

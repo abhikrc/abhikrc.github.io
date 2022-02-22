@@ -1,0 +1,164 @@
+\section{Normalisation}
+\stlabel{norm}
+
+Materialisation and transformation are
+two essential ingredients of abstract graph transformations. However, there is
+a third ingredient still missing for an effective technique: namely, we need to
+identify a \emph{canonical abstraction level}, on which there exist only a
+finite number of shapes and to which the target graph of each transformation
+will be re-normalised. Failing this, due to materialisation the graphs under
+transformation will become ever larger and more concrete, so that the state
+space is still infinite and the advantages of abstraction are lost.
+
+For this canonical abstraction level, we will rely on the ideas developed in
+\cite{Rens04-esop}. First of all, we select a collection of {\em
+base multiplicities} $\Base=\set{\meq0, \meq1, \mgt1}$ (chosen in such a way
+that every finite set has exactly one base multiplicity). $\Base^{>0}=\Base
+\setminus \set{\meq0}$ denotes the set of {\em positive} base multiplicities.
+Next, we define the following notion of similarity ${\sim_S} \subseteq N_S
+\times N_S$ over nodes of a shape $S$:
+
+%\vspace*{-\bigskipamount}
+\begin{equation}\eqlabel{sim}
+   v_1 \sim_S v_2 \enspace\Leftrightarrow\enspace 
+       \inMult_S(v_1)=\inMult_S(v_2) \wedge 
+       \lab(\src^{-1}_S(v_1))=\lab(\src^{-1}_S(v_2)) \enspace.
+\end{equation}
+%
+Hence, two nodes are similar if they have the same incoming edge multiplicities
+and outgoing edge labels.
+%
+\begin{definition}[canonical shape]\dlabel{canonical}
+A shape $S\in \Shape_\L$ is called {\em canonical} if
+\begin{enumerate}\smalltopsep\noitemsep
+\item $S$ is deterministic;
+\item for all $v \in N$, $\nodeMult(v) \in \Base^{>0}$;
+\item for all $(v,a,w) \in E$, $\inMult(v)(a)\in \Base^{>0}$;
+\item for all $v,w \in N$, $v \sim_S w$ implies $v=w$.
+\end{enumerate}
+\end{definition}
+%
+In words, a shape is canonical if it is deterministic, specifies positive base
+multiplicities for all nodes and edges (Clauses 2 and~3) and contains no
+non-trivially similar nodes (Clause~4).%\footnote{In \cite{Rens04-avis} we
+%required canonical shapes to be ``fully satisfiable'', meaning that there
+%should exist a surjective shaping into them. The requirement of determinism is
+%easier to maintain, but weaker than full satisfiability. As a consequence, in
+%contrast to \cite{Rens04-avis} it is not true that every graph has a unique
+%canonical shaping.} 
+The class of canonical shapes is denoted $\Canon_\L$. An
+important fact from \cite{Rens04-esop} is that $\Canon_\L$ is finite for every
+finite set $\L$.
+
+We use the term \emph{canonical} because, as we have shown in \cite{Rens04-avis}, 
+there is an automatic way to obtain the \emph{most
+concrete} canonical shape $\GCanon(G)$ of a given deterministic graph $G$. 
+%,
+%namely by taking the node partitioning of $G$ with respect to a node similarity
+%relation again based on the incoming and outgoing edges, analogous to
+%\eqref{sim}.
+%This
+%construction gives rise to a mapping $\SCanon \ftype{\DetGraph_\L}{\Canon_\L}$
+%(details are recalled below). 
+For an arbitrary shape $S$, on the other hand, there is typically not a
+\emph{single} canonical shape that ``covers'' $S$ in the sense of being more
+abstract (see \dref{abstraction}). Instead, we define a function $\SCanon$ such
+that $\SCanon(S)$ is a \emph{set} of canonical shapes, which is optimal in a
+sense (shown below).
+
+To normalise multiplicities, we take all (non-empty) intersections of the
+multiplicities occurring in $S$ with $\Base$. This is defined as follows (where
+$\mu \in \Mult$ and $f:X \func \Mult$):
+%
+\begin{eqnarray*}
+\mu/\Base & = & \genset{\mu'\in \Base}{\exists i:i\in \mu \wedge i\in \mu'} \\
+f/\Base & = & \genset{g\ftype X\Base}{\forall x\in X:g(x)\in f(x)/\Base} \enspace.
+\end{eqnarray*}
+%
+The function $\SCanon:\Shape_\L \func \powerset{\Canon_\L}$ is then defined as follows:
+\[ \SCanon:  S \mapsto 
+   \genset{\partition(T)}{T \in \DetShape_\L, 
+                          T\triangleleft S,
+                          T \mbox{ consistent}} \enspace.
+\]
+where the property $T\triangleleft S$ is defined as the conjunction
+of the following conditions:
+\begin{eqnarray*}
+%\begin{array}{@{}lll@{}}
+N_T
+ & \subseteq
+ & \genset{(v,f)}{v \in N_S,\ f \in \inMult_S(v)/\Base} \\
+E_T
+ & \subseteq
+ & \genset{((v,f),a,(w,g))}{(v,a,w) \in E_S,\ g(a) \neq \meq0}  \\
+\nodeMult_T
+ & \in
+ & \genset{h\ftype{N_T}{\Base^{>0}}}
+          {\forall v \in N_S: \nodeMult_S(v) \subseteq \sum_{(v,f) \in N_T} h((v,f))} \\
+\inMult_T
+ & =
+ & \genset{((v,f),f)}{(v,f) \in N_T} 
+%\end{array}
+\end{eqnarray*}
+%
+and $\partition(S)=T$ is defined by:
+%
+\begin{eqnarray*}
+N_T
+  & = & N_S/{\sim_S} \\
+E_T
+  & = & \genset{([v]_{\sim_S},a,[w]_{\sim_S})}{(v,a,w) \in E_S} \\
+\nodeMult_T
+  & = & \genset{([v]_{\sim_S},(\sum_{v \sim_S w} \nodeMult_S(w))/\Base)}{v \in N_S} \\
+\inMult_T
+  & = & \genset{([v]_{\sim_S},\inMult_S(v))}{v \in N_S} 
+\end{eqnarray*}
+%
+$T\triangleleft S$ means that $T$ is essentially obtained from $S$ by assigning
+normalised incoming edge multiplicities and positive normalised node
+multiplicities to the nodes of $S$. This may result in $S$-nodes disappearing
+(if they otherwise would have multiplicity $\meq0$) or being split (if there is
+a choice of incoming edge multiplicities). The conditions on $T$ ensure that it
+satisfies Clauses 2 and~3 of \dref{canonical}. $\partition(S)$, on the other
+hand, combines $\sim_S$-similar nodes, and so ensures Clause~4 of the
+definition provided that $S$ already satisfies Clauses 1--3.
+
+An example can be found in \fref{buffer-norm}, which shows the normalisation of
+the shape obtained by transforming $S$ using the materialisation in
+\fref{buffer-mat}. This normalisation contains four shapes, two of which (on
+the right hand side) contain a sub-structure consisting of one or more
+$\Ln$-linked $\LC$-nodes disconnected from the rest of the buffer. Such a
+structure does not model any graph occurring on the concrete level; it is an
+example of the ambiguity introduced by abstraction.
+
+\texfig{buffer-norm}{Normalisation of the shape $T$ with $\mat p
+S\trans{\Rput,\id_L} T$ (with $S$ and $p$ as in \fref{buffer-mat})}%
+%
+The canonical shape of an arbitrary deterministic graph is
+defined through a mapping $\GCanon\ftype{\DetGraph_\L}{\Canon_\L}$, defined by
+%
+\begin{equation}\eqlabel{canon}
+\GCanon: G \mapsto \partition(S^\ic_G)
+\end{equation}
+%
+where $S^\ic_G=(N_G, E_G, \nodeMult, \inMult)$ is the ``instance shape'' of
+$G$, defined such that $\nodeMult$ assigns $\meq1$ to all nodes $v\in N$ and
+$\inMult(v)(a)=\mu$ is the unique multiplicity in $\Base$ such that
+$(\tgt^{-1}_G(v)\cap \lab^{-1}_G(a)):\mu$. For instance, the shape in
+\fref{init-buffer} is the image under $\GCanon$ of the graph in that figure. The
+following results are recalled from \cite{Rens04-avis}.
+
+\begin{theorem}\thlabel{S^canon_G}
+For arbitrary $G\in \DetGraph_\L$, $\GCanon(G)\in \Canon_\L$ and 
+$\exists s\ftype G \GCanon(G)$.
+\end{theorem}
+
+\begin{theorem}\thlabel{canon(S)}
+  For arbitrary $S\in \Shape_\L$, $\SCanon(S)=\genset{\GCanon(G)}{\exists
+  s\ftype G S}$.
+\end{theorem}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "agt"
+%%% End: 

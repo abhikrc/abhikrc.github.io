@@ -1,0 +1,16 @@
+\BOOKMARK [1][]{section.1}{Introduction}{}
+\BOOKMARK [1][]{section.2}{Protocol Model}{}
+\BOOKMARK [2][]{subsection.2.1}{Trace Semantics}{section.2}
+\BOOKMARK [1][]{section.3}{A Trace Logic}{}
+\BOOKMARK [2][]{subsection.3.1}{Appending local security properties to protocol roles}{section.3}
+\BOOKMARK [2][]{subsection.3.2}{Verifying the local security properties}{section.3}
+\BOOKMARK [1][]{section.4}{A Case Study: the TMN protocol}{}
+\BOOKMARK [2][]{subsection.4.1}{Original Version}{section.4}
+\BOOKMARK [2][]{subsection.4.2}{First modification}{section.4}
+\BOOKMARK [2][]{subsection.4.3}{First novel attack}{section.4}
+\BOOKMARK [2][]{subsection.4.4}{Second modification}{section.4}
+\BOOKMARK [2][]{subsection.4.5}{Mutual authentication}{section.4}
+\BOOKMARK [2][]{subsection.4.6}{Novel authentication attacks}{section.4}
+\BOOKMARK [1][]{section.5}{Related Work}{}
+\BOOKMARK [1][]{section.6}{Conclusions and Future Work}{}
+\BOOKMARK [1][]{section*.1}{References}{}

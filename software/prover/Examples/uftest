@@ -1,0 +1,22 @@
+
+toplevel(thm/1).
+
+%--------------------------
+
+thm(X) :- p(X), q(X).
+
+p(0).
+p(s(X)) :- p(X).
+
+q(X) :- q1(X), q2(X).
+
+q1(s(X)) :- q1(X).
+
+q2(s(X)) :- q2(X).
+
+
+%-----------------------------
+
+annot(inductive(p(_))).
+annot(inductive(q1(_))).
+annot(inductive(q2(_))).

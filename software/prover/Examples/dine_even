@@ -1,0 +1,27 @@
+
+pgm_clause(c1, (thm(D) :- num(D), live([1,D])), (1,1)).
+
+pgm_clause(c3, (num(1) :- true), (1,1)).
+pgm_clause(c4, (num(f(D,0)) :- num(D)), (1,1)).
+pgm_clause(c5, (num(f(D,1)) :- num(D)), (1,1)).
+
+pgm_clause(c4, (live(X) :- X = [3,_]), (1,1)).
+pgm_clause(c5, (live(X) :- trans(X, Y), live(Y)), (1,1)).
+
+pgm_clause(c6, (trans([1,N], [2,N]) :- even(N)), (1,1)).
+pgm_clause(c7, (trans([1,N], [3,N]) :- odd(N)), (1,1)).
+pgm_clause(c8, (trans([2,N], [1,M]) :- divby2(N,M)), (1,1)).
+
+pgm_clause(c9, (even(f(_, 0)) :- true), (1,1)).
+
+pgm_clause(c10, (odd(1) :- true), (1,1)).
+pgm_clause(c11, (odd(f(_, 1)) :- true), (1,1)).
+
+pgm_clause(c12, (divby2(f(D,0), D) :- true), (1,1)).
+
+inductive(thm(_)).
+inductive(num(_)).
+inductive(live(_)).
+inductive(trans(_,_)).
+
+proof_stack([]).

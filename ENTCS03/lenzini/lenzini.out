@@ -1,0 +1,17 @@
+\BOOKMARK [1][]{section.0.1}{Introduction}{}
+\BOOKMARK [1][]{section.0.2}{Modelling Fault-Tolerant Systems}{}
+\BOOKMARK [2][]{subsection.2.1}{CCS}{section.0.2}
+\BOOKMARK [2][]{subsection.2.2}{Specifying a System}{section.0.2}
+\BOOKMARK [2][]{subsection.2.3}{Fault Assumption Models}{section.0.2}
+\BOOKMARK [2][]{subsection.2.4}{Equational -calculus}{section.0.2}
+\BOOKMARK [1][]{section.0.3}{Logic Characterisation of Fault Tolerance}{}
+\BOOKMARK [2][]{subsection.3.1}{Partial Model Checking}{section.0.3}
+\BOOKMARK [2][]{subsection.3.2}{Fault Tolerance Analysis Through Partial Model Checking}{section.0.3}
+\BOOKMARK [1][]{section.0.4}{Analysis techniques}{}
+\BOOKMARK [2][]{subsection.4.1}{Fault Tolerance Analysis as Theorem Proving}{section.0.4}
+\BOOKMARK [2][]{subsection.4.2}{Fault Tolerance against a fixed Scenario}{section.0.4}
+\BOOKMARK [2][]{subsection.4.3}{Universal formulas}{section.0.4}
+\BOOKMARK [2][]{subsection.4.4}{Linear time formulas}{section.0.4}
+\BOOKMARK [1][]{section.0.5}{Example}{}
+\BOOKMARK [1][]{section.0.6}{Conclusions}{}
+\BOOKMARK [1][]{section*.1}{References}{}

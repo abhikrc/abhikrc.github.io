@@ -1,0 +1,55 @@
+Please follow these instructions if you want to use xspin in tembusu cluster for doing the assignment 2:
+==========================================================
+
+I have installed xspin in the tembusu cluster. For logging into this machine, you need to have an SOC unix acccount. 
+
+If you do not have one, please create one by doing the following:
+Go to https://mysoc.nus.edu.sg/~newacct/  and login with your 
+NUSNET account. Follow the instructions further.
+
+If you already have an account and forgot your password, go to the link https://mysoc.nus.edu.sg/~myacct/ with your NUSNET id  to manage 
+your SOC account.
+
+Follow these steps to use the xspin in tembusu:
+====================================
+
+1. Download and install xming in your PC. It is a free software available in 
+ http://sourceforge.net/projects/xming/. If you are doing the assignment in 
+ Embedded systems teaching lab, it already has the xming installed. 
+
+2. Launch the "xlaunch" application. Just keep all the default settings. 
+
+3. Launch ssh secure client (installed in every machine of SOC). Go to 
+"Edit menu" and go to "settings". Goto "Profile settings->Connection->Tunneling".
+ Check the box "Tunnel X11 connections".
+For a graphic help check 
+"https://www.comp.nus.edu.sg/cf/x/xwin32-sshsecureshell.html" .
+You need to give your SOC unix id and password to check this help. 
+
+3. Login to sunfire.comp.nus.edu.sg with your SOC unix account and password.
+
+4. Login from sunfire to tembusu by the command 
+"ssh -X tembusu.comp.nus.edu.sg" (note the "-X" option here).
+
+5. Check for a ".bashrc" (note the ".") file in your home directory. If available, edit the file by putting the following two lines at the end 
+of the file:
+
+export PATH=$PATH:/home/s/sudiptac/TA-4271/SPIN_HOME/Spin/Src5.2.4
+alias xspin=/home/s/sudiptac/TA-4271/SPIN_HOME/Spin/Src5.2.4/xspin
+
+If the file is not in your home directory, then create one with that name (i.e. ".bashrc") by putting the above two lines in ".bashrc" file.
+
+Save and close the file ".bashrc".
+
+6. Type the command "source ~/.bashrc" (Note the "." again).
+
+7. Type "xspin &" , the xspin window should appear. Try some 
+test files to check whether it works.
+
+8. In your next login to tembusu, you only need to type "source ~/.bashrc" command before launching "xspin".
+
+If you have any problem using the application, contact me (sudiptac@comp.nus.edu.sg).
+
+
+Regards,
+Sudipta 

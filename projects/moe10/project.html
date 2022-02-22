@@ -1,0 +1,323 @@
+<html>
+<head>
+<link rel=stylesheet href="project.css" type="text/css">
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<title>Analysis and Test Case Generation of Evolving Software</title>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<table align="center" bgcolor="black" width="100%">
+<tr>
+<td></td>
+<td><div class="whitefont">
+ <a href="#overview" class="tag">Overview </a>  |
+  <a href="#updates" class="tag">Updates  </a> |
+  <a href="#publications" class="tag">Publications </a> | 
+  <a href="#people" class="tag">People </a> | 
+  <a href="#acknowledge" class="tag">Acknowledgement</a>
+</div>
+</td>
+<td align="right"><a href="mailto:abhik@comp.nus.edu.sg" class="tag">Contact Us</a></td>
+</tr>
+</table>
+
+<!-- Header -->
+<table align="center" width="100%" bgcolor="#EFEFEF" id="header">
+<tr align="center">
+<td></td>
+<td ></td> 
+<td></td>
+</tr>
+</table>
+<hr>
+
+<!-- Overview part -->
+<table align="center" width="100%">
+<tr>
+<td></td>
+<td>
+<a name="overview"><h2>+Overview:</h2></a>
+<div id="parag"><img src="changes.jpg" alt="" width="200" >
+<p class="content">Programmers do not write programs entirely 
+from scratch. Over time, a program gradually evolves from one program version to another. However, as software evolves from one version 
+to another - testing/debugging to ensure that the program continues to meet its intended functionality is difficult. Validation of 
+such evolving programs (say, to address possible bugs introduced via program changes) remains a huge problem in software development. 
+This adds to the cost for software maintenance, which is much larger than the initial software development cost. The cost of maintaining 
+a  software and managing its evolution is said to account for more than 90% of the total cost of a software project, prompting authors 
+to call it the "legacy crisis".  In this project, we seek to develop testing and validation methods for evolving software to bring down 
+such costs.<br></p></div>
+<p class="content">The main innovation of the proposed work lies in making testing/debugging methods change-aware.  A commonly used terminology in software 
+engineering is "regression testing" where a changed program version is tested to check for possible regressions (some functionality which 
+worked earlier but is broken due to the changes).  In practice, regression testing often amounts to re-testing, or testing a selected sub-set 
+of tests. Ideally, as changes are made in the program, the test-suite should also evolve with the program - an aspect that we study in this 
+project. Akin to regression testing, we also study regression debugging, where we root-cause the reason for any detected software regression. 
+The innovative aspect of our proposed work in regression debugging lies in using symbolic execution based semantic analysis of the failed 
+test case as opposed to enumerating the changes across program versions. 
+</p><br>
+</td>
+<td></td>
+<td></td>
+</tr>
+
+<!-- Updates part -->
+<tr>
+<td></td>
+<td colspan="2"><a name="updates"><h2>+Updates:</h2></a>
+<ul>
+<li><font color="#FF0000"><b>All RFpositions and RA&nbsp; have been filled, as 
+of now. . [Sept 2012].</b></font></li>
+<li>Some of the positions have been filled for now, but <b>one RA position, and 
+one RF position is still 
+open</b>&nbsp; [Oct 2011]</li>
+<li>Our work on analysis of evolving programs has received a substantial grant from Ministry of Education (
+<a href="http://www.comp.nus.edu.sg/~abhik/projects/moe10/RF-Abhik.pdf">Postdocs</a>, 
+<a href="http://www.comp.nus.edu.sg/~abhik/projects/moe10/RA-Abhik.pdf">RAs</a> 
+being recruited) [March 2011]</li><br>
+</ul>
+</td>
+<td></td>
+</tr>
+
+
+<!-- Publications part -->
+<!-- Data of publication is stored within 'li' tag.-->
+<tr>
+<td></td>
+<td colspan="2"><a name="publications"><h2>+Publications:</h2></a>
+<font face="Arial">
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>[ISSTA]</b></p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>CoREBench: Studying Complexity 
+of Regression Errors ( <a href="../../pdf/issta14.pdf">PDF</a> )</b></p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">Marcel
+<span class="scopediv profilePagePersonStringStringString profilePage" id="profilePagePersonStringStringString2">
+	<span class="scopediv body" id="body2"><span class="section section1">
+	<span class="scopediv pageHeader" id="pageHeader2">
+	<span class="scopediv ofPersonPerson ofPerson" id="ofPersonPerson2">
+	<span class="scopediv ofUserUser ofUser" id="ofUserUser2">
+	Böhme</span></span></span></span></span></span>, Abhik Roychoudhury</p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">ACM International Symposium on 
+Software Testing and Analysis (ISSTA) 2014.</p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">&nbsp;</p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">&nbsp;</p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>[ESEC-FSE]</b></p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>Regression Tests to Expose 
+Change Interaction Errors ( <a href="../../pdf/fse13.pdf">PDF</a> )</b></p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">Marcel
+<span class="scopediv profilePagePersonStringStringString profilePage" id="profilePagePersonStringStringString1">
+	<span class="scopediv body" id="body1"><span class="section section1">
+	<span class="scopediv pageHeader" id="pageHeader1">
+	<span class="scopediv ofPersonPerson ofPerson" id="ofPersonPerson1">
+	<span class="scopediv ofUserUser ofUser" id="ofUserUser1">
+	Böhme</span></span></span></span></span></span>, Bruno C.d.S. 
+Oliveira, Abhik Roychoudhury</p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">ESEC/FSE '13, Joint meeting of ACM SIGSOFT symposium and European conference on Foundations of 
+software engineering,&nbsp;2013</p>
+
+<font face="Arial" size="2">
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">&nbsp;</p>
+</font>
+
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>[ISSTA]</b></p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>Expressing and Checking 
+Intended Changes via Software Change Contracts ( <a href="../../pdf/issta13.pdf">
+PDF</a> )</b></p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">Jooyong Yi, Dawei Qi, Shin Hwei 
+Tan, Abhik Roychoudhury</p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">International Symposium on 
+Software Testing and Analysis (ISSTA) 2013.</p>
+
+<font face="Arial" size="2">
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">&nbsp;</p>
+</font>
+
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>[ICSE]</b></p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>Partition-based Regression 
+Verification ( <a href="../../pdf/ICSE13-PRV.pdf">PDF</a> )</b></p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">Marcel
+<span class="scopediv profilePagePersonStringStringString profilePage" id="profilePagePersonStringStringString">
+<span class="scopediv body" id="body"><span class="section section1">
+<span class="scopediv pageHeader" id="pageHeader">
+<span class="scopediv ofPersonPerson ofPerson" id="ofPersonPerson">
+<span class="scopediv ofUserUser ofUser" id="ofUserUser">Böhme</span></span></span></span></span></span>, Bruno C.d.S. 
+Oliveira, Abhik Roychoudhury</p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">ACM/IEEE International Conference 
+on Software Engineering (ICSE) 2013.</p><font face="Arial" size="2">
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">&nbsp;</p></font>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>[ICSE]</b></p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>SemFix: Program Repair via 
+Semantic Analysis ( <a href="../../pdf/ICSE13-SEMFIX.pdf">PDF</a> )</b></p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">Hoang D.T. Nguyen, Dawei Qi, 
+Abhik Roychoudhury, Satish Chandra</p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">ACM/IEEE International Conference 
+on Software Engineering (ICSE) 2013.</p><font face="Arial" size="2">
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">&nbsp;</p></font>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>[TOSEM-jnl]</b></p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>Path Exploration based on 
+Symbolic Output ( <a href="../../pdf/tosem-peso.pdf">PDF</a> )</b></p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">Dawei Qi, Hoang D.T. Nguyen, 
+Abhik Roychoudhury</p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">ACM Transactions on Software 
+Engineering and Methodology (TOSEM), To appear.</p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">&nbsp;</p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>[FSE] </b></p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>Software Change Contracts </b>( 
+<b><a href="../../pdf/fse12.pdf"><font color="#800080">PDF</font></a> </b>)</p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">Dawei Qi, Jooyong Yi, Abhik 
+Roychoudhury</p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">New Ideas and Emerging Results (NIER) 
+Track,</p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">ACM SIGSOFT 
+Symposium on Foundations of Software Engineering (FSE) 2012.</p></font>
+<font face="Arial" size="2">
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">&nbsp;</p></font>
+<font face="Arial">
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>[STTT-journal]</b></p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>Relating Software Validation 
+to Technology Trends</b></p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">Zhiming Liu, Abhik 
+Roychoudhury</p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">International Journal on Software 
+Tools for Technology Transfer (STTT), Springer, To appear.</p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">&nbsp;</p></font>
+<font face="Arial">
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>[WCRE]</b></p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>Modeling Software Execution 
+Environment ( <a href="../../pdf/wcre12.pdf"><font color="#800080">PDF</font></a> )</b><br>Dawei Qi, William Sumner, Feng Qin, Mai Zheng, Xiangyu Zhang, Abhik Roychoudhury<br>19th IEEE Working Conference on Reverse Engineering (WCRE), 2012.<font face="Arial" size="2">
+</p></font></font>
+
+<p><font face="Arial"><b>[FSE]</b><a href="http://www.comp.nus.edu.sg/~abhik/pdf/fse11.pdf" class="paper">&nbsp; 
+Path Exploration based on Symbolic Output</a>&nbsp; (<b><a href="../../pdf/fse11.pdf"><font color="#800080">PDF</font></a></b> 
+)</font><br>
+<span style="font-style: normal"><font face="Arial">Dawei Qi, Hoang D.T. Nguyen, Abhik Roychoudhury<br/>
+	</font><font face="Arial" color="#000000">Joint meeting of ESEC and ACM SIGSOFT Symposium on the 
+Foundations of Software Engineering (FSE), ESEC-FSE 2011.</font></span></div>
+
+<br>
+<p><b>[<font face="Arial">PASTE]</font></b><br>
+<font face="Arial">
+<a href="http://www.comp.nus.edu.sg/~abhik/pdf/paste11.pdf" class="paper">Locating Failure Inducing Environment Changes</a> 
+( <b><a href="../../pdf/paste11.pdf"><font color="#800080">PDF</font></a></b> )</font><br>
+<font face="Arial">Dawei Qi, Cristal Ngo, Tao Sun, Abhik Roychoudhury<br>
+	</font><font face="Arial" color="#000000">10th ACM SIGPLAN-SIGSOFT Workshop on Program Analysis for Software Tools and Engineering (PASTE) 2011.</font></div>
+<br>
+<p>
+<font face="Arial">
+<b>
+[TOSEM-jnl] DARWIN: An Approach for Debugging Evolving Programs 
+(
+<a href="http://www.comp.nus.edu.sg/~abhik/pdf/tosem12-darwin.pdf"><font color="#800080">PDF</font></a>
+<span class="Apple-converted-space">&nbsp;</span>)</b></font><br style="color: rgb(0, 0, 0); font-family: Arial; font-size: small; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); ">
+<span class="SpellE" style="color: rgb(0, 0, 0); font-family: Arial; font-size: small; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); ">Dawei Qi</span><span style="color: rgb(0, 0, 0); font-family: Arial; font-size: small; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); display: inline !important; float: none; ">,<span class="Apple-converted-space">&nbsp;</span></span><span class="SpellE" style="color: rgb(0, 0, 0); font-family: Arial; font-size: small; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); ">Abhik</span><span style="color: rgb(0, 0, 0); font-family: Arial; font-size: small; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); display: inline !important; float: none; "><span class="Apple-converted-space">&nbsp;</span></span><span class="SpellE" style="color: rgb(0, 0, 0); font-family: Arial; font-size: small; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); ">Roychoudhury</span><span style="color: rgb(0, 0, 0); font-family: Arial; font-size: small; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); display: inline !important; float: none; ">,<span class="Apple-converted-space">&nbsp;</span></span><span class="SpellE" style="color: rgb(0, 0, 0); font-family: Arial; font-size: small; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); ">Zhenkai 
+Liang</span><span style="color: rgb(0, 0, 0); font-family: Arial; font-size: small; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); display: inline !important; float: none; ">,<span class="Apple-converted-space">&nbsp;</span></span><span class="SpellE" style="color: rgb(0, 0, 0); font-family: Arial; font-size: small; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); ">Kapil 
+Vaswani</span><br style="color: rgb(0, 0, 0); font-family: Arial; font-size: small; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); ">
+<span style="color: rgb(0, 0, 0); font-family: Arial; font-size: small; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); display: inline !important; float: none; ">ACM Transactions on Software Engineering and Methodology, 21(3), 2012.</span></p>
+<p>
+<span style="font-family: Arial; letter-spacing: normal; background-color: #FFFFFF">&nbsp;<i>Conference 
+version:</i></span></p>
+<p style="color: rgb(0, 0, 0); font-family: Arial; font-size: small; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); margin-top: 0px; margin-bottom: 0px;">
+<font color="#FF0000"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [SIGSOFT Distinguished 
+paper award]</b></font></p>
+<div class="acmdlitem" id="item1595704" style="color: rgb(0, 0, 0); font-family: Arial; font-size: small; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255);">
+	<span style="vertical-align: middle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+	<a title="Darwin: an approach for debugging evolving programs" href="../../pdf/fse09.pdf">
+	Darwin: an approach for debugging evolving programs</a><div style="margin-left: 25px;">
+		Dawei Qi,<span class="Apple-converted-space">&nbsp;</span>Abhik Roychoudhury,<span class="Apple-converted-space">&nbsp;</span>Zhenkai 
+		Liang,<span class="Apple-converted-space">&nbsp;</span>Kapil Vaswani<br>
+		ESEC/FSE &#39;09 Proceedings of the the 7th joint meeting of the European 
+		software engineering conference and<span class="Apple-converted-space">&nbsp;</span><br>
+		the ACM SIGSOFT symposium on The foundations of software 
+		engineering,&nbsp;2009</div>
+</div>
+<div class="conference"><br></div>
+</td>
+<td></td>
+</tr>
+
+<!-- People part -->
+<tr>
+<td></td>
+<td><a name="people"><h2>+Current Members:</h2></a>
+
+<ul>
+<li><div class="title">Faculty Member: 
+	<p><font face="Arial"><a class="author" href="http://www.comp.nus.edu.sg/~abhik/">
+	<span style="font-style: normal"><font color="#800080">Abhik Roychoudhury </li>
+	</font></span>
+	</a></font></p>
+	<p><br></div>
+<li><div class="title">Post-doctoral Research Fellows:
+	<p><span style="font-weight: 400">Bruno Oliveira&nbsp; (Senior Research 
+	Fellow 2012-13, joined Hon Kong University as Asst Prof from Sept 2013)</span></p>
+	<p><span style="font-weight: 400"><font face="Arial">
+	<a href="http://formal.korea.ac.kr/~jlee"><font color="#800080">Jooyong Lee</font></a></font>&nbsp; 
+	(Research Fellow)</span></p>
+	<p> <br></div>
+<li>
+<div class="title">PhD Students:</div><br>
+	<ul>
+	<li><span style="font-style: normal"><font face="Arial">
+	<a href="http://www.comp.nus.edu.sg/~dawei"><font color="#800080">Dawei Qi</font></a></font> (August 2008 - )</span> <span class="researchtopic">Dynamic Analysis based Debugging of Evolving Programs.</span></li><br>
+	<li><font face="Arial"><a href="http://www.comp.nus.edu.sg/~mboehme">
+	<font color="#800080">Marcel Böhme</font></a></font> (August 2009 - ) : <span class="researchtopic">Testing of Evolving Programs.</span></li><br>
+	<li>Shin Hwei Tan (Aug 2012 - )
+	<li>Sergey Mechtaev (Aug 2012 - ...)<br>
+	</ul>
+</li> <br>
+
+<li>
+<div class="title"> Research Assistants <ul>
+		<li><a  class="author"> <span style="font-style: normal">Rashmi Vinayak Hungund (August 2011 - ...)</span></a></li>
+		<li><span style="font-weight: 400; ">Tushar Mehta (Dec 2011 - ...)</span></li>
+	</ul>
+</div>
+</li>
+</ul>
+
+</td>
+<td></td>
+</tr>
+
+
+<!-- Acknowledgement part -->
+<tr>
+<td></td>
+<td><a name="acknowledge"><h2>+Acknowledgements:</h2></a>
+<p class="content">This project is funded by a substantial research grant from
+ <b>MOE</b> (the Ministry of Education, Singapore) up to <b>2014</b>. This support is gratefully acknowledged.</p><br>
+</td>
+<td></td>
+</tr>
+</table>
+
+<!-- Footbar part -->
+<table align="center" bgcolor="black" width="100%">
+<tr>
+<td></td>
+<td><div class="whitefont">
+ <a href="#overview" class="tag">Overview </a>  |
+  <a href="#updates" class="tag">Updates  </a> |
+  <a href="#publications" class="tag">Publications </a> | 
+  <a href="#people" class="tag">People </a> | 
+  <a href="#acknowledge" class="tag">Acknowledgement</a>
+</div>
+</td>
+<td align="right"><a href="mailto:abhik@comp.nus.edu.sg" class="tag">Contact Us</a></td>
+</tr>
+</table>
+
+<!-- Links -->
+<table align="center" width="100%">
+<tr>
+<td></td>
+<td  valign="middle" align="center" colspan="2">
+<a href="http://www.nus.edu.sg" class="content">National University of Singapore</a> &nbsp; | &nbsp;
+<a href="http://www.comp.nus.edu.sg" class="content">School of Computing</a> &nbsp; | &nbsp;
+<a href="http://www.moe.gov.sg/" class="content">Ministry of Education</a>
+</td>
+<td></td>
+</tr>
+</table>
+
+</body>
+</html>

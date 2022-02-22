@@ -1,0 +1,51 @@
+\def\lastname{Berg, Jonsson, Leucker, Saksena}
+\begin{frontmatter}
+  \title{Insights to Angluin's Learning} 
+	\author{Therese Berg\thanksref{thereseb}} 
+	\author{Bengt Jonsson\thanksref{thereseb}} 
+	\author{Martin Leucker\thanksref{thereseb},\thanksref{martin}} 
+	\author{Mayank Saksena\thanksref{thereseb}}
+  \address{Department of Computer Systems\\ Uppsala University\\
+    Uppsala, Sweden} \thanks[thereseb]{E-mail addresses:
+    \href{mailto:thereseb@docs.uu.se} {\texttt{\normalshape
+        thereseb@docs.uu.se}}, 
+    \href{mailto:bengt@docs.uu.se} {\texttt{\normalshape
+        bengt@docs.uu.se}},
+    \href{mailto:leucker@docs.uu.se} {\texttt{\normalshape
+        leucker@docs.uu.se}},
+    \href{mailto:mayanks@docs.uu.se} {\texttt{\normalshape
+        mayanks@docs.uu.se}}}
+  \thanks[martin]{This author is supported by the 
+   European Research Training Network ``Games''.}
+\begin{abstract} 
+Among other domains, learning finite-state machines is important for
+obtaining a model of a system under development, so that powerful
+formal methods such as model checking can be applied.
+  
+A prominent algorithm for learning such devices was developed by
+Angluin. We have implemented this algorithm in a straightforward way
+to gain further insights to practical applicability. Furthermore, we
+have analyzed its performance on randomly generated as well as
+real-world examples. Our experiments focus on the impact of the
+alphabet size and the number of states on the needed number of
+membership queries. Additionally, we have implemented and analyzed an
+optimized version for learning prefix-closed regular languages.
+Memory consumption is one major obstacle when we attempted to learn
+large examples.
+  
+We see that prefix-closed languages are relatively hard to learn
+compared to arbitrary regular languages. The optimization, however,
+shows positive results.
+
+\end{abstract}
+\begin{keyword}
+  deterministic finite-state automata, learning algorithm, regular languages,
+prefix-closed regular languages
+\end{keyword}
+\end{frontmatter}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End:
+

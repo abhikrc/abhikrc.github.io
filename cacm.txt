@@ -1,0 +1,53 @@
+
+CACM Special Section on East Asia and Oceania
+
+
+
+Communications of the ACM, the flagship publication of the Association, been chronicling advances in all fields of computing since 1958. 
+Throughout the decades, many of the greatest pioneering achievements and innovations in technology were introduced first in Communications.
+
+In 2018, Communications debuted the first in a series of special sections designed to spotlight a region of the world, with the goal of 
+introducing readers to new voices, innovations, and research on a global scale. The most recent section, in the April 2019 issue, covered the Europe region.
+ 
+This is a call for articles for the inaugural 
+Special Section on East Asia and Oceania. This region includes Japan, Korea, Taiwan, 
+South East Asia (Singapore, Malaysia, Indonesia, Brunei, Vietnam, Thailand, Myanmar, Philippines, Laos, Cambodia), 
+and Oceania (Australia, New Zealand, Papua New Guinea, Fiji, Melanesia, Polynesia, Micronesia).
+
+The submission of articles for this section is a two-step process: In the first step, in response to this call, 
+the authors are requested to submit a one page free-format PDF file, describing an abstract of their planned article. 
+
+Articles can be in any aspect or field of computing, and cover research, education, or innovation.
+
+Some potential areas of interest could include:
+
+> Technical and governance challenges that can benefit from data science and AI;
+
+> Key advances in cyber-security and privacy;
+
+> Key technological advances to aid healthcare and aging population;
+
+> Technology to advance sustainable social and environmental development;
+
+> Key technological advances to aid and enhance education;
+
+> Regional advances in supercomputing;
+
+> Regional advances in consumer electronics, embedded systems, and robotics; 
+
+> Research advances showing translation in any field of computing; and,
+
+> Technology initiatives featuring engagement of academia, industry, and government.
+
+Potential authors are requested to send a one-page PDF file giving title, author name, and description to:
+
+ cacm20@comp.nus.edu.sg by 15th July 2019.
+
+
+Based on the submissions, a workshop will be held at the National University of Singapore. 
+Selected authors will be invited to the workshop to be held in Singapore on August 30th, 2019. 
+The workshop will involve discussions and brainstorming to shape the narrative for the Special Section on East Asia and Oceania.
+
+The types of articles chosen for inclusion in this section will be designated as either short Hot Topics articles (800–1,200 words max), 
+or longer Big Trends articles (15,00–1,800 words max). 
+Submissions are actively sought from academia, industry, and government agencies.

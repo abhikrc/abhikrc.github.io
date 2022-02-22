@@ -1,0 +1,53 @@
+From MAILER-DAEMON Mon Jul 16 13:20:35 2001
+Date: 16 Jul 2001 13:20:35 +0800
+From: Mail System Internal Data <MAILER-DAEMON@comp.nus.edu.sg>
+Subject: DON'T DELETE THIS MESSAGE -- FOLDER INTERNAL DATA
+X-IMAP: 0995260835 0000000000
+Status: RO
+
+This text is part of the internal format of your mail folder, and is not
+a real message.  It is created automatically by the mail system software.
+If deleted, important folder data will be lost, and it will be re-created
+with the data reset to initial values.
+
+From abhik@comp.nus.edu.sg Fri Jul  6 14:35:43 2001 +0800
+Status: R
+X-Status: A
+X-Keywords:
+Return-Path: <tanhl@comp.nus.edu.sg>
+Received: from localhost (tanhl@localhost)
+	by sunA.comp.nus.edu.sg (8.8.5/8.8.5) with ESMTP id OAA19826;
+	Fri, 6 Jul 2001 14:35:42 +0800 (GMT-8)
+Date: Fri, 6 Jul 2001 14:35:42 +0800 (GMT-8)
+From: Tan Hong Lay <tanhl@comp.nus.edu.sg>
+To: Abhik Roychoudhury <abhik@comp.nus.edu.sg>
+cc: Liow Lay Hoon <liowlh@comp.nus.edu.sg>
+Subject: remote login
+Message-ID: <Pine.GSO.4.21.0107061430050.18111-100000@sunA.comp.nus.edu.sg>
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
+
+Hi Dr Roychoudhury,
+
+
+This is regarding your application to login to SoC from overseas. It has
+been done. Pls use this command to login:
+
+For telnet:
+          telnet sunA.comp.nus.edu.sg 525
+
+For ssh:
+        ssh -p 524 sunA.comp.nus.edu.sg
+
+
+I would also like to know, can I remove it after 23rd July?
+
+
+Thanks.
+
+
+
+Regards,
+Hong Lay
+SoC Helpdesk
+

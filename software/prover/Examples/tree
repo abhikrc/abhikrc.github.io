@@ -1,0 +1,83 @@
+
+toplevel(bad_start/1).
+toplevel(bad_dest/2).
+toplevel(bad_src/2).
+
+toplevel(zero_dest/2).
+toplevel(zero_src/2).
+%--------------------------------------------------------------------
+
+bad_start(X) :- gen(X), bad(X).
+
+bad_dest(X, Y) :- trans(X, Y), bad(Y).
+bad_src(X, Y) :- trans(X, Y), bad(X).
+
+zero_dest(X, Y) :- trans(X, Y), zero_owner(Y).
+zero_src(X, Y) :- trans(X, Y), zero_owner(X).
+
+%------------------------------------------------------------
+
+gen(f(d, L, R)) :- gen1(L), gen1(R).
+
+gen1(nil).
+gen1(f(i, L, R)) :- gen1(L), gen1(R).
+
+trans(f(Par, f(LC, LL, LR), R), f(Par1, f(LC1, LL, LR), R)) :-
+	trans_exchange(Par, LC, Par1, LC1).
+trans(f(Par, L, f(RC, RL, RR)), f(Par1, L, f(RC1, RL, RR)) ):-
+	trans_exchange(Par, RC, Par1, RC1).
+trans(f(N, L, R), f(N1, L, R)) :- trans_auto(N, N1).
+trans(f(N, L, R), f(N, L1, R)) :- trans(L, L1).
+trans(f(N, L, R), f(N, L, R1)) :- trans(R, R1).
+
+trans_auto(i, t).
+
+trans_exchange(t, i, t, t).
+trans_exchange(i, t, t, t).
+trans_exchange(t, d, d, i).
+trans_exchange(d, t, i, d).
+
+bad(f(i, L, R)) :- bad(L), any(R).
+bad(f(i, L, R)) :- any(L), bad(R).
+bad(f(i, L, R)) :- one_more(L), one_more(R).
+bad(f(t, L, R)) :- bad(L), any(R).
+bad(f(t, L, R)) :- any(L), bad(R).
+bad(f(t, L, R)) :- one_more(L), one_more(R).
+bad(f(d, L, R)) :- one_more(L), any(R).
+bad(f(d, L, R)) :- any(L), one_more(R).
+
+one_more(f(i, L, R)) :- one_more(L), any(R).
+one_more(f(i, L, R)) :- any(L), one_more(R).
+one_more(f(t, L, R)) :- one_more(L), any(R).
+one_more(f(t, L, R)) :- any(L), one_more(R).
+one_more(f(d, L, R)) :- any(L), any(R).
+
+any(nil).
+any(f(i, L, R)) :- any(L), any(R).
+any(f(t, L, R)) :- any(L), any(R).
+any(f(d, L, R)) :- any(L), any(R).
+
+
+zero_owner(nil).
+zero_owner(f(i, L, R)) :- zero_owner(L), zero_owner(R).
+zero_owner(f(t, L, R)) :- zero_owner(L), zero_owner(R).
+
+%---------------------------------------
+
+consumer(one_more/1).
+consumer(bad/1).
+consumer(any/1).
+consumer(zero_owner/1).
+
+maxDepthConstant(4).   % maximum term depth to restrict infinite 
+                       % call sequences during unfolding.  
+
+unfold_flag(suspend_expand).   % expand suspended atoms if they
+                               % get instantiated.
+
+%unfold_flag(nonconsumer_freeze). % do not expand a clause body 
+				 % if it has only open atoms.
+
+cleanup_flag([failed]).
+
+topology_annot(f(finite, recur, recur)).

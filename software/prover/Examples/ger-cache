@@ -1,0 +1,144 @@
+toplevel(bad_start/1).
+toplevel(bad_src/2).
+toplevel(bad_dest/2).
+
+%------------------------------------------------------
+
+bad_start(X) :- gen(X), bad(X).
+bad_dest(X, Y) :- trans(X, Y), bad(Y).
+bad_src(X, Y) :-  trans(X, Y), bad(X).
+
+%--------------------------------------------------
+
+% write the gen/1 predicate here.
+
+%------------------------------------------------------
+
+trans(S, T) :- trans_bcast(S, T).  % Broadcast Actions
+trans(S, T) :- trans_hshk(S, T).   % rendezvous actions
+trans(S, T) :- trans_local(S, T).  % local/internal actions
+
+% Global state = (Server-state, List of client-states).
+
+trans_local((S,C), (S1, C)) :- 
+	strans(S, self(_), S1).
+trans_local((S,C), (S,C1)) :- 
+	trans_one(C, self(_), C1).
+
+trans_bcast((S,C), (S1, C1)) :-
+	strans(S, b_out(X), S1),
+	trans_all(C, b_in(X), C1).
+
+trans_hshk((S,C), (S1, C1)) :-
+	strans(S, in(X), S1), trans_one(C, out(X), C1).
+trans_hshk((S,C), (S1,C1)) :-
+	strans(S, out(X), S1), trans_one(C, in(X), C1).
+
+
+trans_all([], _, []).
+trans_all([H|T], Act, [H1|T1]) :-
+	ctrans(H, Act, H1), trans_all(T, Act, T1).
+
+trans_one([H|T], Act, [H1|T]) :- ctrans(H, Act, H1).
+trans_one([H|T], Act, [H|T1]) :- trans_one(T, Act, T1).
+
+%-----------------------------------------------------------
+
+bit(0).
+bit(1).
+
+% transitions of the server process
+
+strans(idle(X), in(reqS), serveS(X)) :- bit(X).
+strans(serveS(1), out(inv), grantS(0)).
+strans(serveS(0), self(nonex), grantS(0)).
+strans(grantS(X), out(grantS), idle(X)) :- bit(X).
+
+% slightly different from Bultan and Delzanno's encoding
+% in CP 2001 paper
+strans(idle(X), in(reqE), serveE(X)) :- bit(X).
+strans(serveE(X), b_out(invSE), grantE(0)):- bit(X).
+strans(grantE(0), out(grantE), idle(1)).
+
+% only one broadcast action which invalidates
+% shared/exclusive clients.
+
+ctrans(null, out(reqS), waitS).
+ctrans(waitS, in(grantS), sh).
+ctrans(sh, out(reqE), waitE).   % can request for upgrade 
+ctrans(sh, b_in(invSE), null).
+ctrans(null, b_in(invSE), null).
+ctrans(waitS, b_in(invSE), waitS).
+
+ctrans(null, out(reqE), waitE).
+ctrans(waitE, in(grantE), ex).
+ctrans(ex, in(inv), null).
+ctrans(ex, b_in(invSE), null).
+ctrans(waitE, b_in(invSE), waitE).
+
+%------------------------------------
+
+bad((idle(0), C)) :- badc1(C).
+bad((idle(1), C)) :- badc(C).
+bad((serveS(0), C)) :- badc1(C).
+bad((serveS(1), C)) :- badc(C).
+bad((serveE(0), C)) :- badc1(C).
+bad((serveE(1), C)) :- badc(C).
+bad((grantS(0), C)) :- badc1(C).
+bad((grantS(1), C)) :- badc(C).
+bad((grantE(0), C)) :- badc1(C).
+bad((grantE(1), C)) :- badc(C).
+
+
+badc([ex|X]) :- badc1(X).
+badc([sh|X]) :- badc(X).
+badc([null|X]) :- badc(X).
+badc([waitS|X]) :- badc(X).
+badc([waitE|X]) :- badc(X).
+
+badc1([ex|X]) :- any(X).
+badc1([sh|X]) :- badc1(X).
+badc1([null|X]) :- badc1(X).
+badc1([waitS|X]) :- badc1(X).
+badc1([waitE|X]) :- badc1(X).
+
+
+any([]).
+any([sh|X]) :- any(X).
+any([ex|X]) :- any(X).
+any([null|X]) :- any(X).
+any([waitS|X]) :- any(X).
+any([waitE|X]) :- any(X).
+
+%----------------------------------------------------------------------
+% user annotations : should be inferred automatically later
+% the following says that it is safe to unfold an instance of 
+% bad([_|_]) (even if exceeds a pre-specified maximum depth)
+% since unfolding will only consume bindings, rather than 
+% creating bindings.
+
+consumer(badc/1).
+consumer(badc1/1).
+consumer(bad/1).
+consumer(any/1).
+
+maxDepthConstant(6).   % maximum term depth to restrict infinite 
+                       % call sequences during unfolding.  
+
+unfold_flag(suspend_expand).   % expand suspended atoms if they
+                               % get instantiated.
+
+%unfold_flag(nonconsumer_freeze). % do not expand a clause body 
+				 % if it has only open atoms.
+
+%cond_shape(disjunct).  % otherwise try to match only conjuncts
+
+cleanup_flag([failed]).   
+		    % allows setting options for cleanup of clauses
+		    % periodically. Currently, allows removing subsumed
+		    % and failed clauses. Obviously then we have 4
+		    % User options: cleanup_flag([])
+		    %               cleanup_flag([subsumed]).
+		    %               cleanup_flag([failed]).
+	            %               cleanup_flag([subsumed, failed]).
+		    %Caution: Cleanups may slow down the prover considerably.

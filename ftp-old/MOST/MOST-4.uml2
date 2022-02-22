@@ -1,0 +1,994 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:uml="http://www.eclipse.org/uml2/1.0.0/UML" xmi:id="_6B7ZABiOEduAiZRF6gzozg" name="MOST">
+  <ownedMember xmi:type="uml:Class" xmi:id="_BZsQwBiPEduAiZRF6gzozg" name="NetworkMaster">
+    <packageImport xmi:id="_uQYGkC0TEdunPMW9xWvKQQ" importedPackage="_eagS0CuOEduFNp-EmWxS7Q"/>
+    <ownedStateMachine xmi:id="_DuOnkCwJEduPwetnWD_-nQ" name="NM">
+      <ownedTrigger xmi:type="uml:CallTrigger" xmi:id="_FOVvcCwJEduPwetnWD_-nQ" name="NMNetOn" operation="_6N4ioBiUEduAiZRF6gzozg"/>
+      <ownedTrigger xmi:type="uml:CallTrigger" xmi:id="_FOVvcSwJEduPwetnWD_-nQ" name="NMInitComplete" operation="_cto7YBiVEduAiZRF6gzozg"/>
+      <ownedTrigger xmi:type="uml:CallTrigger" xmi:id="_FOVvcywJEduPwetnWD_-nQ" name="NCE" operation="_ygmiUBieEduAiZRF6gzozg"/>
+      <ownedTrigger xmi:type="uml:CallTrigger" xmi:id="_FOVvdCwJEduPwetnWD_-nQ" name="breakCurrent" operation="_bVOLYBifEduAiZRF6gzozg"/>
+      <ownedTrigger xmi:type="uml:CallTrigger" xmi:id="_FOVvdSwJEduPwetnWD_-nQ" name="setDoRequestTrue" operation="_OiQwEBi8EduAiZRF6gzozg"/>
+      <ownedTrigger xmi:type="uml:CallTrigger" xmi:id="_FOVvdiwJEduPwetnWD_-nQ" name="ProcessReceivedFBlockID" operation="_fxqXEC0PEdunPMW9xWvKQQ"/>
+      <ownedTrigger xmi:type="uml:CallTrigger" xmi:id="_FOVvciwJEduPwetnWD_-nQ" name="NMInitProgress" operation="_iPSesBiYEduAiZRF6gzozg"/>
+      <ownedTrigger xmi:type="uml:CallTrigger" xmi:id="_HSVTwCxGEdunPMW9xWvKQQ" name="NMReqProgress" operation="_-actECxFEdunPMW9xWvKQQ"/>
+      <ownedTrigger xmi:type="uml:CallTrigger" xmi:id="_HarXcCxGEdunPMW9xWvKQQ" name="NMRcvProgress" operation="_-0YQACxFEdunPMW9xWvKQQ"/>
+      <region xmi:id="_FOfgcCwJEduPwetnWD_-nQ" name="NM">
+        <subvertex xmi:type="uml:Pseudostate" xmi:id="_FOfgcSwJEduPwetnWD_-nQ" name="NMInitial" outgoing="_FOfg4SwJEduPwetnWD_-nQ"/>
+        <subvertex xmi:type="uml:State" xmi:id="_FOfgciwJEduPwetnWD_-nQ" name="NMIdle" outgoing="_FOfg4iwJEduPwetnWD_-nQ" incoming="_FOfg4SwJEduPwetnWD_-nQ"/>
+        <subvertex xmi:type="uml:State" xmi:id="_FOfgcywJEduPwetnWD_-nQ" name="NMGenInit" outgoing="_FOfg4ywJEduPwetnWD_-nQ" incoming="_FOfg4iwJEduPwetnWD_-nQ">
+          <region xmi:id="_FOfgdCwJEduPwetnWD_-nQ" name="NMGenInit">
+            <subvertex xmi:type="uml:Pseudostate" xmi:id="_FOfgdSwJEduPwetnWD_-nQ" name="NMGenInitInitial" outgoing="_FOfgfSwJEduPwetnWD_-nQ"/>
+            <subvertex xmi:type="uml:State" xmi:id="_FOfgdiwJEduPwetnWD_-nQ" name="NMGenInitDefault" outgoing="_FOfgfywJEduPwetnWD_-nQ" incoming="_FOfgfSwJEduPwetnWD_-nQ">
+              <entry xmi:id="_FOfgdywJEduPwetnWD_-nQ" name="entry" body="baseClass.AssignNodeAddress();baseClass.InitProgress();"/>
+            </subvertex>
+            <subvertex xmi:type="uml:Pseudostate" xmi:id="_FOfgeCwJEduPwetnWD_-nQ" name="GenInitDefaultchoice" outgoing="_FOfggCwJEduPwetnWD_-nQ _FOfggywJEduPwetnWD_-nQ" incoming="_FOfgfywJEduPwetnWD_-nQ" kind="choice"/>
+            <subvertex xmi:type="uml:State" xmi:id="_FOfgeSwJEduPwetnWD_-nQ" name="NMGenInitSysConfigUpdate" outgoing="_FOfghiwJEduPwetnWD_-nQ" incoming="_FOfggCwJEduPwetnWD_-nQ">
+              <entry xmi:id="_FOfgeiwJEduPwetnWD_-nQ" name="entry" body="SystemConfigurationUpdate scu = new SystemConfigurationUpdate();scu.update(new Integer(ConfigUpdateChoice.Error));baseClass.InitProgress();"/>
+            </subvertex>
+            <subvertex xmi:type="uml:State" xmi:id="_FOfgeywJEduPwetnWD_-nQ" name="NMGenInitInitializeVariable" incoming="_FOfggywJEduPwetnWD_-nQ _FOfghiwJEduPwetnWD_-nQ">
+              <entry xmi:id="_FOfgfCwJEduPwetnWD_-nQ" name="entry" body="for(int i=0; i&lt;MOSTSystem.slaves.size(); i++) { CentralRegistry.numErrs.add(i, new Integer(0)); CentralRegistry.requests.add(i, new Boolean(true));}  baseClass.InitComplete(); baseClass.setDoRequestTrue();"/>
+            </subvertex>
+            <transition xmi:id="_FOfgfSwJEduPwetnWD_-nQ" name="InitialGenInit" source="_FOfgdSwJEduPwetnWD_-nQ" target="_FOfgdiwJEduPwetnWD_-nQ"/>
+            <transition xmi:id="_FOfgfywJEduPwetnWD_-nQ" name="NMGenInitDefault" source="_FOfgdiwJEduPwetnWD_-nQ" target="_FOfgeCwJEduPwetnWD_-nQ" trigger="_FOVvciwJEduPwetnWD_-nQ"/>
+            <transition xmi:id="_FOfggCwJEduPwetnWD_-nQ" name="NMGenInitDefaultChoice1" source="_FOfgeCwJEduPwetnWD_-nQ" target="_FOfgeSwJEduPwetnWD_-nQ">
+              <guard xmi:id="_FOfggSwJEduPwetnWD_-nQ" name="baseClass.NodeAddress==65535 || CentralRegistry.isEmpty()">
+                <specification xmi:type="uml:OpaqueExpression" xmi:id="_FOfggiwJEduPwetnWD_-nQ">
+                  <body>baseClass.NodeAddress==65535 || CentralRegistry.isEmpty()</body>
+                </specification>
+              </guard>
+            </transition>
+            <transition xmi:id="_FOfggywJEduPwetnWD_-nQ" name="NMGenInitDefaultChoice2" source="_FOfgeCwJEduPwetnWD_-nQ" target="_FOfgeywJEduPwetnWD_-nQ">
+              <guard xmi:id="_FOfghCwJEduPwetnWD_-nQ" name="else">
+                <specification xmi:type="uml:OpaqueExpression" xmi:id="_FOfghSwJEduPwetnWD_-nQ">
+                  <body>else</body>
+                </specification>
+              </guard>
+            </transition>
+            <transition xmi:id="_FOfghiwJEduPwetnWD_-nQ" name="NMGenInitSysCfgUpd" source="_FOfgeSwJEduPwetnWD_-nQ" target="_FOfgeywJEduPwetnWD_-nQ" trigger="_FOVvciwJEduPwetnWD_-nQ">
+              <effect xmi:id="_5IHV4Cz3EdunPMW9xWvKQQ" body="CentralRegistry.clear();"/>
+            </transition>
+          </region>
+        </subvertex>
+        <subvertex xmi:type="uml:State" xmi:id="_FOfghywJEduPwetnWD_-nQ" name="NMRunning" incoming="_FOfg4ywJEduPwetnWD_-nQ">
+          <region xmi:id="_FOfgiCwJEduPwetnWD_-nQ" name="NMRequestConfig">
+            <subvertex xmi:type="uml:Pseudostate" xmi:id="_FOfgiSwJEduPwetnWD_-nQ" name="NMReqInitial" outgoing="_FOfgoiwJEduPwetnWD_-nQ"/>
+            <subvertex xmi:type="uml:State" xmi:id="_FOfgiiwJEduPwetnWD_-nQ" name="NMReqRequestConfiguration" outgoing="_FOfgoywJEduPwetnWD_-nQ" incoming="_FOfgoiwJEduPwetnWD_-nQ _FOfgoywJEduPwetnWD_-nQ">
+              <region xmi:id="_FOfgiywJEduPwetnWD_-nQ" name="NMReqCfgNormal">
+                <subvertex xmi:type="uml:Pseudostate" xmi:id="_FOfgjCwJEduPwetnWD_-nQ" name="NMReqCfgNormalInitial" outgoing="_FOfgkiwJEduPwetnWD_-nQ"/>
+                <subvertex xmi:type="uml:State" xmi:id="_FOfgjSwJEduPwetnWD_-nQ" name="NMReqNormalDefault" outgoing="_FOfgkywJEduPwetnWD_-nQ" incoming="_FOfgkiwJEduPwetnWD_-nQ _FOfglywJEduPwetnWD_-nQ"/>
+                <subvertex xmi:type="uml:State" xmi:id="_FOfgjiwJEduPwetnWD_-nQ" name="NMRegNormalDefault2" outgoing="_FOfglSwJEduPwetnWD_-nQ" incoming="_FOfgkywJEduPwetnWD_-nQ">
+                  <entry xmi:id="_FOfgjywJEduPwetnWD_-nQ" name="entry" body="baseClass.ReqProgress();"/>
+                </subvertex>
+                <subvertex xmi:type="uml:State" xmi:id="_FOfgkCwJEduPwetnWD_-nQ" name="NMReqNormalAfterTimer" outgoing="_FOfglywJEduPwetnWD_-nQ" incoming="_FOfglSwJEduPwetnWD_-nQ">
+                  <entry xmi:id="_FOfgkSwJEduPwetnWD_-nQ" name="entry" body="for(int i=0;i&lt;CentralRegistry.requests.size();i++) { if(CentralRegistry.hasRequest(i)) {MOSTSystem.getSlave(i).GetFBlockID();} } baseClass.ReqProgress();"/>
+                </subvertex>
+                <transition xmi:id="_FOfgkiwJEduPwetnWD_-nQ" name="NMIntialReqCfgNormal" source="_FOfgjCwJEduPwetnWD_-nQ" target="_FOfgjSwJEduPwetnWD_-nQ"/>
+                <transition xmi:id="_FOfgkywJEduPwetnWD_-nQ" name="NMReqNormalChangeRequest" source="_FOfgjSwJEduPwetnWD_-nQ" target="_FOfgjiwJEduPwetnWD_-nQ" trigger="_FOVvdSwJEduPwetnWD_-nQ">
+                  <effect xmi:id="_FOfglCwJEduPwetnWD_-nQ" body="baseClass.doRequest=false;"/>
+                </transition>
+                <transition xmi:id="_FOfglSwJEduPwetnWD_-nQ" name="NMReqNormalBeforeTimer" source="_FOfgjiwJEduPwetnWD_-nQ" target="_FOfgkCwJEduPwetnWD_-nQ" trigger="_HSVTwCxGEdunPMW9xWvKQQ">
+                  <effect xmi:id="_FOfgliwJEduPwetnWD_-nQ" body="baseClass.updateNumNodes();"/>
+                </transition>
+                <transition xmi:id="_FOfglywJEduPwetnWD_-nQ" name="NMReqNormalAfterTimer" source="_FOfgkCwJEduPwetnWD_-nQ" target="_FOfgjSwJEduPwetnWD_-nQ" trigger="_HSVTwCxGEdunPMW9xWvKQQ"/>
+              </region>
+              <region xmi:id="_FOfgmCwJEduPwetnWD_-nQ" name="NMRegCfgException">
+                <subvertex xmi:type="uml:Pseudostate" xmi:id="_FOfgmSwJEduPwetnWD_-nQ" name="NMRegCfgExceptionInitial" outgoing="_FOfgnywJEduPwetnWD_-nQ"/>
+                <subvertex xmi:type="uml:State" xmi:id="_FOfgmiwJEduPwetnWD_-nQ" name="NMRegExceptionDefault" outgoing="_FOfgoCwJEduPwetnWD_-nQ" incoming="_FOfgnywJEduPwetnWD_-nQ"/>
+                <subvertex xmi:type="uml:State" xmi:id="_FOfgmywJEduPwetnWD_-nQ" name="NMReqExceptionProcessNCE" outgoing="_FOfgoSwJEduPwetnWD_-nQ" incoming="_FOfgoCwJEduPwetnWD_-nQ">
+                  <entry xmi:id="_FOfgnCwJEduPwetnWD_-nQ" name="entry" body="for(int i=0; i&lt;MOSTSystem.slaves.size();i++) {CentralRegistry.numErrs.set(i, new Integer(0)); CentralRegistry.requests.set(i, new Boolean(true)); MOSTSystem.getSlave(i).NCE();} baseClass.breakCurrent(); baseClass.setDoRequestTrue(); "/>
+                </subvertex>
+                <subvertex xmi:type="uml:State" xmi:id="_FOfgnSwJEduPwetnWD_-nQ" name="NMReqExceptionSendEvent" incoming="_FOfgoSwJEduPwetnWD_-nQ">
+                  <entry xmi:id="_FOfgniwJEduPwetnWD_-nQ" body="for(int i=0;i&lt;MOSTSystem.slaves.size();i++) { MOSTSystem.getSlave(i).NCE(); } baseClass.breakCurrent();"/>
+                </subvertex>
+                <transition xmi:id="_FOfgnywJEduPwetnWD_-nQ" name="NMRegExceptionInitial" source="_FOfgmSwJEduPwetnWD_-nQ" target="_FOfgmiwJEduPwetnWD_-nQ"/>
+                <transition xmi:id="_FOfgoCwJEduPwetnWD_-nQ" name="NMReqExceptionProcessNCEBefore" source="_FOfgmiwJEduPwetnWD_-nQ" target="_FOfgmywJEduPwetnWD_-nQ" trigger="_FOVvcywJEduPwetnWD_-nQ"/>
+                <transition xmi:id="_FOfgoSwJEduPwetnWD_-nQ" name="NMReqExceptionSendEventBefore" source="_FOfgmywJEduPwetnWD_-nQ" target="_FOfgnSwJEduPwetnWD_-nQ" trigger="_HSVTwCxGEdunPMW9xWvKQQ"/>
+              </region>
+            </subvertex>
+            <transition xmi:id="_FOfgoiwJEduPwetnWD_-nQ" name="NMReqInitalRequestConfig" source="_FOfgiSwJEduPwetnWD_-nQ" target="_FOfgiiwJEduPwetnWD_-nQ"/>
+            <transition xmi:id="_FOfgoywJEduPwetnWD_-nQ" name="NMReqRestart" source="_FOfgiiwJEduPwetnWD_-nQ" target="_FOfgiiwJEduPwetnWD_-nQ" trigger="_FOVvdCwJEduPwetnWD_-nQ"/>
+          </region>
+          <region xmi:id="_FOfgpCwJEduPwetnWD_-nQ" name="NMReceiveConfig">
+            <subvertex xmi:type="uml:Pseudostate" xmi:id="_FOfgpSwJEduPwetnWD_-nQ" name="NMRcvInitial" outgoing="_FOfgzCwJEduPwetnWD_-nQ"/>
+            <subvertex xmi:type="uml:State" xmi:id="_FOfgpiwJEduPwetnWD_-nQ" name="NMRcvDefault" outgoing="_FOfgzSwJEduPwetnWD_-nQ" incoming="_FOfgzCwJEduPwetnWD_-nQ _FOfguywJEduPwetnWD_-nQ">
+              <entry xmi:id="_OwZjkC0REdunPMW9xWvKQQ" body="if(!baseClass.receivedFBlockIDList.isEmpty()) { baseClass.processReceivedFBlockID();  }"/>
+            </subvertex>
+            <subvertex xmi:type="uml:State" xmi:id="_FOfgpywJEduPwetnWD_-nQ" name="NMRcvReceived" outgoing="_FOfgzywJEduPwetnWD_-nQ" incoming="_FOfgzSwJEduPwetnWD_-nQ">
+              <entry xmi:id="_FOfgqCwJEduPwetnWD_-nQ" name="entry" body="baseClass.RcvProgress();"/>
+            </subvertex>
+            <subvertex xmi:type="uml:Pseudostate" xmi:id="_FOfgqSwJEduPwetnWD_-nQ" name="NMRcvValidationChoice" outgoing="_FOfg0CwJEduPwetnWD_-nQ _FOfg0ywJEduPwetnWD_-nQ _FOfg3CwJEduPwetnWD_-nQ" incoming="_FOfgzywJEduPwetnWD_-nQ" kind="choice"/>
+            <subvertex xmi:type="uml:State" xmi:id="_FOfgqiwJEduPwetnWD_-nQ" name="NMRcvNodeAddressInvalid" outgoing="_FOfg1iwJEduPwetnWD_-nQ" incoming="_FOfg0CwJEduPwetnWD_-nQ">
+              <entry xmi:id="_71LioC0DEdunPMW9xWvKQQ" body="baseClass.RcvProgress();"/>
+            </subvertex>
+            <subvertex xmi:type="uml:State" xmi:id="_FOfgqywJEduPwetnWD_-nQ" name="NMRcvSysCfgUpd" outgoing="_FOfg2iwJEduPwetnWD_-nQ" incoming="_FOfg1iwJEduPwetnWD_-nQ">
+              <entry xmi:id="_FOfgrCwJEduPwetnWD_-nQ" body="SystemConfigurationUpdate scu=new SystemConfigurationUpdate();scu.update(new Integer(ConfigUpdateChoice.Error));baseClass.RcvProgress();"/>
+            </subvertex>
+            <subvertex xmi:type="uml:State" xmi:id="_FOfgrSwJEduPwetnWD_-nQ" name="NMRcvNodeAddrInvalidAction" outgoing="_FOfg3ywJEduPwetnWD_-nQ" incoming="_FOfg2iwJEduPwetnWD_-nQ">
+              <entry xmi:id="_FOfgriwJEduPwetnWD_-nQ" name="entry" body="for(int i=0;i&lt;CentralRegistry.requests.size();i++) {CentralRegistry.requests.set(i, new Boolean(true));} baseClass.setDoRequestTrue(); baseClass.RcvProgress();"/>
+            </subvertex>
+            <subvertex xmi:type="uml:State" xmi:id="_FOfgrywJEduPwetnWD_-nQ" name="NMRcvInstIDInvalid" outgoing="_FOfg4CwJEduPwetnWD_-nQ" incoming="_FOfg0ywJEduPwetnWD_-nQ">
+              <entry xmi:id="_FOfgsCwJEduPwetnWD_-nQ" body="((NetworkSlave)MOSTSystem.getSlave(baseClass.currReceivedFBlockID.nodepos)).GetSetFBlockID();baseClass.RcvProgress();"/>
+            </subvertex>
+            <subvertex xmi:type="uml:State" xmi:id="_FOfgsSwJEduPwetnWD_-nQ" name="NMRcvUpdate" outgoing="_FOfgyywJEduPwetnWD_-nQ" incoming="_FOfg3CwJEduPwetnWD_-nQ _FOfg3ywJEduPwetnWD_-nQ _FOfg4CwJEduPwetnWD_-nQ">
+              <entry xmi:id="_FOfgsiwJEduPwetnWD_-nQ" body="CentralRegistry.updateEntry(baseClass.currReceivedFBlockID); baseClass.currReceivedFBlockID=null; baseClass.RcvProgress();"/>
+            </subvertex>
+            <subvertex xmi:type="uml:Pseudostate" xmi:id="_FOfgsywJEduPwetnWD_-nQ" name="NMRcvAfterUpdateChoice" outgoing="_FOfgxSwJEduPwetnWD_-nQ _FOfgyCwJEduPwetnWD_-nQ" incoming="_FOfgyywJEduPwetnWD_-nQ" kind="choice"/>
+            <subvertex xmi:type="uml:State" xmi:id="_FOfgtCwJEduPwetnWD_-nQ" name="NMRcvSysCfgUpdNotOK" outgoing="_FOfgwywJEduPwetnWD_-nQ" incoming="_FOfgxSwJEduPwetnWD_-nQ">
+              <entry xmi:id="_FOfgtSwJEduPwetnWD_-nQ" name="entry" body="SystemConfigurationUpdate scu=new SystemConfigurationUpdate();scu.update(new Integer(ConfigUpdateChoice.Success));SystemState.CurrentState=SystemState.OK;baseClass.RcvProgress();"/>
+            </subvertex>
+            <subvertex xmi:type="uml:State" xmi:id="_FOfgtiwJEduPwetnWD_-nQ" name="NMRcvSysCfgUpdOK" outgoing="_FOfgxCwJEduPwetnWD_-nQ" incoming="_FOfgyCwJEduPwetnWD_-nQ">
+              <entry xmi:id="_FOfgtywJEduPwetnWD_-nQ" name="entry" body="SystemConfigurationUpdate scu=new SystemConfigurationUpdate();scu.update(new Integer(ConfigUpdateChoice.Success));baseClass.RcvProgress();"/>
+            </subvertex>
+            <subvertex xmi:type="uml:State" xmi:id="_FOfguCwJEduPwetnWD_-nQ" name="NMRcvDummy" outgoing="_FOfguywJEduPwetnWD_-nQ" incoming="_FOfgxCwJEduPwetnWD_-nQ _FOfgwywJEduPwetnWD_-nQ">
+              <entry xmi:id="_FOfguSwJEduPwetnWD_-nQ" name="entry" body="baseClass.numNodes--; baseClass.RcvProgress();"/>
+            </subvertex>
+            <transition xmi:id="_FOfguywJEduPwetnWD_-nQ" name="NMRcvRestart" source="_FOfguCwJEduPwetnWD_-nQ" target="_FOfgpiwJEduPwetnWD_-nQ" trigger="_HarXcCxGEdunPMW9xWvKQQ"/>
+            <transition xmi:id="_FOfgwywJEduPwetnWD_-nQ" name="NMRcvNotOKDummy" source="_FOfgtCwJEduPwetnWD_-nQ" target="_FOfguCwJEduPwetnWD_-nQ" trigger="_HarXcCxGEdunPMW9xWvKQQ"/>
+            <transition xmi:id="_FOfgxCwJEduPwetnWD_-nQ" name="NMRcvOKDummy" source="_FOfgtiwJEduPwetnWD_-nQ" target="_FOfguCwJEduPwetnWD_-nQ" trigger="_HarXcCxGEdunPMW9xWvKQQ"/>
+            <transition xmi:id="_FOfgxSwJEduPwetnWD_-nQ" name="NMRcvAfterUpdateNotOKchoice" source="_FOfgsywJEduPwetnWD_-nQ" target="_FOfgtCwJEduPwetnWD_-nQ">
+              <guard xmi:id="_FOfgxiwJEduPwetnWD_-nQ" name="SystemState.CurrentState==SystemState.NotOK">
+                <specification xmi:type="uml:OpaqueExpression" xmi:id="_FOfgxywJEduPwetnWD_-nQ">
+                  <body>SystemState.CurrentState==SystemState.NotOK</body>
+                </specification>
+              </guard>
+            </transition>
+            <transition xmi:id="_FOfgyCwJEduPwetnWD_-nQ" name="NMRcvAfterUpdateOKchoice" source="_FOfgsywJEduPwetnWD_-nQ" target="_FOfgtiwJEduPwetnWD_-nQ">
+              <guard xmi:id="_FOfgySwJEduPwetnWD_-nQ" name="SystemState.CurrentState==SystemState.OK">
+                <specification xmi:type="uml:OpaqueExpression" xmi:id="_FOfgyiwJEduPwetnWD_-nQ">
+                  <body>SystemState.CurrentState==SystemState.OK</body>
+                </specification>
+              </guard>
+            </transition>
+            <transition xmi:id="_FOfgyywJEduPwetnWD_-nQ" name="NMRcvAfterUpdate" source="_FOfgsSwJEduPwetnWD_-nQ" target="_FOfgsywJEduPwetnWD_-nQ" trigger="_HarXcCxGEdunPMW9xWvKQQ"/>
+            <transition xmi:id="_FOfgzCwJEduPwetnWD_-nQ" name="NMRcvInitial" source="_FOfgpSwJEduPwetnWD_-nQ" target="_FOfgpiwJEduPwetnWD_-nQ"/>
+            <transition xmi:id="_FOfgzSwJEduPwetnWD_-nQ" name="NMRcvReceiveStatus" source="_FOfgpiwJEduPwetnWD_-nQ" target="_FOfgpywJEduPwetnWD_-nQ" trigger="_FOVvdiwJEduPwetnWD_-nQ">
+              <effect xmi:id="_SNXL8C0MEdunPMW9xWvKQQ" body="baseClass.currReceivedFBlockID=(FBlockIDEntry)baseClass.receivedFBlockIDList.remove(0);"/>
+            </transition>
+            <transition xmi:id="_FOfgzywJEduPwetnWD_-nQ" name="NMRcvGoToValidationChoice" source="_FOfgpywJEduPwetnWD_-nQ" target="_FOfgqSwJEduPwetnWD_-nQ" trigger="_HarXcCxGEdunPMW9xWvKQQ"/>
+            <transition xmi:id="_FOfg0CwJEduPwetnWD_-nQ" name="NMRcvNodeAddressInvalidchoice" source="_FOfgqSwJEduPwetnWD_-nQ" target="_FOfgqiwJEduPwetnWD_-nQ">
+              <guard xmi:id="_FOfg0SwJEduPwetnWD_-nQ" name="!CentralRegistry.validateNodeAddress(baseClass.currReceivedFBlockID)">
+                <specification xmi:type="uml:OpaqueExpression" xmi:id="_FOfg0iwJEduPwetnWD_-nQ">
+                  <body>!CentralRegistry.validateNodeAddress(baseClass.currReceivedFBlockID)</body>
+                </specification>
+              </guard>
+            </transition>
+            <transition xmi:id="_FOfg0ywJEduPwetnWD_-nQ" name="NMRcvInstIDInvalidchoice" source="_FOfgqSwJEduPwetnWD_-nQ" target="_FOfgrywJEduPwetnWD_-nQ">
+              <guard xmi:id="_FOfg1CwJEduPwetnWD_-nQ" name="!CentralRegistry.validateInstID(baseClass.currReceivedFBlockID)">
+                <specification xmi:type="uml:OpaqueExpression" xmi:id="_FOfg1SwJEduPwetnWD_-nQ">
+                  <body>!CentralRegistry.validateInstID(baseClass.currReceivedFBlockID)</body>
+                </specification>
+              </guard>
+            </transition>
+            <transition xmi:id="_FOfg1iwJEduPwetnWD_-nQ" name="NMRcvRcvCfgSysCfgUpd" source="_FOfgqiwJEduPwetnWD_-nQ" target="_FOfgqywJEduPwetnWD_-nQ" trigger="_HarXcCxGEdunPMW9xWvKQQ">
+              <effect xmi:id="_FOfg2SwJEduPwetnWD_-nQ" body="//CentralRegistry.numErrs.set(baseClass.currReceivedNode, new Integer(CentralRegistry.getNumErr(baseClass.currReceivedNode)+1));"/>
+            </transition>
+            <transition xmi:id="_FOfg2iwJEduPwetnWD_-nQ" name="NMRcvNodeAddrInvalidAction" source="_FOfgqywJEduPwetnWD_-nQ" target="_FOfgrSwJEduPwetnWD_-nQ" trigger="_HarXcCxGEdunPMW9xWvKQQ">
+              <effect xmi:id="_FOfg2ywJEduPwetnWD_-nQ" body="SystemState.CurrentState=SystemState.OK;CentralRegistry.clear();baseClass.AssignNodeAddress();"/>
+            </transition>
+            <transition xmi:id="_FOfg3CwJEduPwetnWD_-nQ" name="NMRcvReceivedElseChoice" source="_FOfgqSwJEduPwetnWD_-nQ" target="_FOfgsSwJEduPwetnWD_-nQ">
+              <guard xmi:id="_FOfg3SwJEduPwetnWD_-nQ" name="else">
+                <specification xmi:type="uml:OpaqueExpression" xmi:id="_FOfg3iwJEduPwetnWD_-nQ">
+                  <body>else</body>
+                </specification>
+              </guard>
+            </transition>
+            <transition xmi:id="_FOfg3ywJEduPwetnWD_-nQ" name="NMRcvAfterNodeAddrInvalidAction" source="_FOfgrSwJEduPwetnWD_-nQ" target="_FOfgsSwJEduPwetnWD_-nQ" trigger="_HarXcCxGEdunPMW9xWvKQQ"/>
+            <transition xmi:id="_FOfg4CwJEduPwetnWD_-nQ" name="NMRcvAfterInstIDInvalid" source="_FOfgrywJEduPwetnWD_-nQ" target="_FOfgsSwJEduPwetnWD_-nQ" trigger="_HarXcCxGEdunPMW9xWvKQQ"/>
+          </region>
+        </subvertex>
+        <transition xmi:id="_FOfg4SwJEduPwetnWD_-nQ" name="NMInitial" source="_FOfgcSwJEduPwetnWD_-nQ" target="_FOfgciwJEduPwetnWD_-nQ"/>
+        <transition xmi:id="_FOfg4iwJEduPwetnWD_-nQ" name="NMIdleNetOn" source="_FOfgciwJEduPwetnWD_-nQ" target="_FOfgcywJEduPwetnWD_-nQ" trigger="_FOVvcCwJEduPwetnWD_-nQ"/>
+        <transition xmi:id="_FOfg4ywJEduPwetnWD_-nQ" name="NMGenInitComplete" source="_FOfgcywJEduPwetnWD_-nQ" target="_FOfghywJEduPwetnWD_-nQ" trigger="_FOVvcSwJEduPwetnWD_-nQ"/>
+      </region>
+    </ownedStateMachine>
+    <ownedAttribute xmi:id="_apOT8BiSEduAiZRF6gzozg" name="doRequest" type="_PPqasBiSEduAiZRF6gzozg">
+      <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_t2RBoC0MEdunPMW9xWvKQQ">
+        <body>false</body>
+      </defaultValue>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_triuUBiSEduAiZRF6gzozg" name="ConfigUpdate" type="_XW75QBiREduAiZRF6gzozg"/>
+    <ownedAttribute xmi:id="_y7j2cBiSEduAiZRF6gzozg" name="numNodes" type="_XW75QBiREduAiZRF6gzozg">
+      <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_sDrpsC0MEdunPMW9xWvKQQ">
+        <body>0</body>
+      </defaultValue>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_jPGrABiaEduAiZRF6gzozg" name="NodeAddress" type="_XW75QBiREduAiZRF6gzozg">
+      <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_ohz6wBiaEduAiZRF6gzozg">
+        <body>0</body>
+      </defaultValue>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_2oANoCwHEduPwetnWD_-nQ" name="self" visibility="private" isStatic="true" type="_BZsQwBiPEduAiZRF6gzozg"/>
+    <ownedAttribute xmi:id="_3Eg1kCwqEduPwetnWD_-nQ" name="address" type="_tB1PsCwqEduPwetnWD_-nQ"/>
+    <ownedAttribute xmi:id="_62_noCz5EdunPMW9xWvKQQ" name="currReceivedFBlockID" type="_lM5dQCz6EdunPMW9xWvKQQ">
+      <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_eNOv4C0PEdunPMW9xWvKQQ">
+        <body>null</body>
+      </defaultValue>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_JDUW4C0PEdunPMW9xWvKQQ" name="receivedFBlockIDList" type="_hNrKUBiQEduAiZRF6gzozg">
+      <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_Omj9AC0PEdunPMW9xWvKQQ">
+        <body>new ArrayList()</body>
+      </defaultValue>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_ouyQsCwrEduPwetnWD_-nQ" name="addrCount" type="_XW75QBiREduAiZRF6gzozg">
+      <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_rpV9UCwrEduPwetnWD_-nQ">
+        <body>0</body>
+      </defaultValue>
+    </ownedAttribute>
+    <ownedOperation xmi:id="_JxoJ4CwIEduPwetnWD_-nQ" name="NetworkMaster" visibility="protected">
+      <ownedComment xmi:id="_ZmgqACwrEduPwetnWD_-nQ">
+        <body>this.address=address;</body>
+      </ownedComment>
+      <ownedParameter xmi:id="_mITzICwqEduPwetnWD_-nQ" name="address" type="_tB1PsCwqEduPwetnWD_-nQ"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_9h0lICwHEduPwetnWD_-nQ" name="getInstance" isStatic="true" type="_BZsQwBiPEduAiZRF6gzozg">
+      <ownedComment xmi:id="_HlaJ8CwIEduPwetnWD_-nQ">
+        <body>return self;</body>
+      </ownedComment>
+      <returnResult xmi:id="__y9hUCwHEduPwetnWD_-nQ" name="return" type="_BZsQwBiPEduAiZRF6gzozg"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_Lx-jICwrEduPwetnWD_-nQ" name="createInstance" isStatic="true" type="_ARwwoBiVEduAiZRF6gzozg">
+      <ownedComment xmi:id="_SdVn4CwrEduPwetnWD_-nQ">
+        <body>self=new NetworkMaster(address);</body>
+      </ownedComment>
+      <returnResult xmi:id="_PErC8CwrEduPwetnWD_-nQ" name="return" type="_ARwwoBiVEduAiZRF6gzozg"/>
+      <ownedParameter xmi:id="_Va4XECwrEduPwetnWD_-nQ" name="address" type="_tB1PsCwqEduPwetnWD_-nQ"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_6N4ioBiUEduAiZRF6gzozg" name="NetOn" type="_ARwwoBiVEduAiZRF6gzozg">
+      <returnResult xmi:id="_95LIoBiUEduAiZRF6gzozg" name="return" type="_ARwwoBiVEduAiZRF6gzozg"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_cto7YBiVEduAiZRF6gzozg" name="InitComplete" type="_ARwwoBiVEduAiZRF6gzozg">
+      <returnResult xmi:id="_cto7YRiVEduAiZRF6gzozg" name="return" type="_ARwwoBiVEduAiZRF6gzozg"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_SwOvsBiYEduAiZRF6gzozg" name="AssignNodeAddress" visibility="package" type="_ARwwoBiVEduAiZRF6gzozg">
+      <ownedComment xmi:id="_9uzu4BiYEduAiZRF6gzozg">
+        <body>//for(int i=0; i&lt;numNodes; i++) { CentralRegistry.nodeAddresses.add(i,new Integer(i+1));}</body>
+      </ownedComment>
+      <ownedComment xmi:id="_ZO7s8CwqEduPwetnWD_-nQ">
+        <body>NodeAddress=address[addrCount];</body>
+      </ownedComment>
+      <ownedComment xmi:id="_2TOGECwrEduPwetnWD_-nQ">
+        <body>if(addrCount&lt;address.length-1)</body>
+      </ownedComment>
+      <ownedComment xmi:id="_yXi6sCwrEduPwetnWD_-nQ">
+        <body>addrCount++;</body>
+      </ownedComment>
+      <returnResult xmi:id="_UydtMBiYEduAiZRF6gzozg" name="return" type="_ARwwoBiVEduAiZRF6gzozg"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_iPSesBiYEduAiZRF6gzozg" name="InitProgress" visibility="package" type="_ARwwoBiVEduAiZRF6gzozg">
+      <returnResult xmi:id="_iPSesRiYEduAiZRF6gzozg" name="return" type="_ARwwoBiVEduAiZRF6gzozg"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_ygmiUBieEduAiZRF6gzozg" name="NCE" type="_ARwwoBiVEduAiZRF6gzozg">
+      <returnResult xmi:id="_ygmiURieEduAiZRF6gzozg" name="return" type="_ARwwoBiVEduAiZRF6gzozg"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_bVOLYBifEduAiZRF6gzozg" name="breakCurrent" type="_ARwwoBiVEduAiZRF6gzozg">
+      <returnResult xmi:id="_bVOLYRifEduAiZRF6gzozg" name="return" type="_ARwwoBiVEduAiZRF6gzozg"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_OiQwEBi8EduAiZRF6gzozg" name="setDoRequestTrue" type="_ARwwoBiVEduAiZRF6gzozg">
+      <ownedComment xmi:id="_RuQyABi8EduAiZRF6gzozg">
+        <body>doRequest=true;</body>
+      </ownedComment>
+      <returnResult xmi:id="_OiQwERi8EduAiZRF6gzozg" name="return" type="_ARwwoBiVEduAiZRF6gzozg"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_Efq-4Bi-EduAiZRF6gzozg" name="updateNumNodes" type="_ARwwoBiVEduAiZRF6gzozg">
+      <ownedComment xmi:id="_Efq-4Ri-EduAiZRF6gzozg">
+        <body>int numNodes=0; for(int i=0;i&lt;CentralRegistry.requests.size();i++) { if(((Boolean)CentralRegistry.requests.get(i)).booleanValue()){numNodes++;} } this.numNodes = this.numNodes+numNodes;</body>
+      </ownedComment>
+      <returnResult xmi:id="_Efq-4hi-EduAiZRF6gzozg" name="return" type="_ARwwoBiVEduAiZRF6gzozg"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_CrKv0BjIEduAiZRF6gzozg" name="ReceiveFBlockIDStatus" type="_ARwwoBiVEduAiZRF6gzozg">
+      <ownedComment xmi:id="_zEqRwC0PEdunPMW9xWvKQQ">
+        <body>receivedFBlockIDList.add(FBlockID);</body>
+      </ownedComment>
+      <ownedComment xmi:id="_nZqqQC0PEdunPMW9xWvKQQ">
+        <body>if(currReceivedFBlockID==null)</body>
+      </ownedComment>
+      <ownedComment xmi:id="_u0HpoC0PEdunPMW9xWvKQQ">
+        <body>       processReceivedFBlockID();</body>
+      </ownedComment>
+      <returnResult xmi:id="_CrKv0RjIEduAiZRF6gzozg" name="return" type="_ARwwoBiVEduAiZRF6gzozg"/>
+      <ownedParameter xmi:id="_yv16UCz5EdunPMW9xWvKQQ" name="FBlockID" type="_lM5dQCz6EdunPMW9xWvKQQ"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_fxqXEC0PEdunPMW9xWvKQQ" name="processReceivedFBlockID" type="_ARwwoBiVEduAiZRF6gzozg">
+      <returnResult xmi:id="_ijbUEC0PEdunPMW9xWvKQQ" name="return" type="_ARwwoBiVEduAiZRF6gzozg"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_NMQI8BjIEduAiZRF6gzozg" name="ReceiveFBlockIDError" type="_ARwwoBiVEduAiZRF6gzozg">
+      <ownedComment xmi:id="_us1OgC0SEdunPMW9xWvKQQ">
+        <body>numNodes--;</body>
+      </ownedComment>
+      <returnResult xmi:id="_NMQI8RjIEduAiZRF6gzozg" name="return" type="_ARwwoBiVEduAiZRF6gzozg"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_-actECxFEdunPMW9xWvKQQ" name="ReqProgress" visibility="package" type="_ARwwoBiVEduAiZRF6gzozg">
+      <returnResult xmi:id="_-actESxFEdunPMW9xWvKQQ" name="return" type="_ARwwoBiVEduAiZRF6gzozg"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_-0YQACxFEdunPMW9xWvKQQ" name="RcvProgress" visibility="package" type="_ARwwoBiVEduAiZRF6gzozg">
+      <returnResult xmi:id="_-0YQASxFEdunPMW9xWvKQQ" name="return" type="_ARwwoBiVEduAiZRF6gzozg"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_GyltUC2yEdunPMW9xWvKQQ" name="ManualRescan" type="_ARwwoBiVEduAiZRF6gzozg">
+      <ownedComment xmi:id="_aAhh0C2yEdunPMW9xWvKQQ">
+        <body>for(int i=0; i&lt;CentralRegistry.requests.size(); i++)</body>
+      </ownedComment>
+      <ownedComment xmi:id="_fxxuwC2yEdunPMW9xWvKQQ">
+        <body>      CentralRegistry.requests.set(i, new Boolean(true));</body>
+      </ownedComment>
+      <ownedComment xmi:id="_l0mz4C2yEdunPMW9xWvKQQ">
+        <body>setDoRequestTrue();</body>
+      </ownedComment>
+      <returnResult xmi:id="_PtvqcC2yEdunPMW9xWvKQQ" name="return" type="_ARwwoBiVEduAiZRF6gzozg"/>
+    </ownedOperation>
+  </ownedMember>
+  <ownedMember xmi:type="uml:Class" xmi:id="_70ZmwBiPEduAiZRF6gzozg" name="CentralRegistry">
+    <packageImport xmi:id="_TK6KQCwEEduPwetnWD_-nQ" importedPackage="_eagS0CuOEduFNp-EmWxS7Q"/>
+    <ownedAttribute xmi:id="_btthsBiQEduAiZRF6gzozg" name="FBlockIDs" isStatic="true" type="_hNrKUBiQEduAiZRF6gzozg">
+      <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_fWDE4BiREduAiZRF6gzozg">
+        <body>new ArrayList()</body>
+      </defaultValue>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_yrtHcBiQEduAiZRF6gzozg" name="requests" isStatic="true" type="_hNrKUBiQEduAiZRF6gzozg">
+      <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_pgopkBiREduAiZRF6gzozg">
+        <body>new ArrayList()</body>
+      </defaultValue>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_zwtAoBiQEduAiZRF6gzozg" name="numErrs" isStatic="true" type="_hNrKUBiQEduAiZRF6gzozg">
+      <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_qhdNYBiREduAiZRF6gzozg">
+        <body>new ArrayList()</body>
+      </defaultValue>
+    </ownedAttribute>
+    <ownedOperation xmi:id="_qYJKcBi_EduAiZRF6gzozg" name="hasRequest" isStatic="true" type="_PPqasBiSEduAiZRF6gzozg">
+      <ownedComment xmi:id="_yyhVwBi_EduAiZRF6gzozg">
+        <body>return ((Boolean)requests.get(pos)).booleanValue();</body>
+      </ownedComment>
+      <returnResult xmi:id="_wq6wEBi_EduAiZRF6gzozg" name="return" type="_PPqasBiSEduAiZRF6gzozg"/>
+      <ownedParameter xmi:id="_ttO28Bi_EduAiZRF6gzozg" name="pos" type="_XW75QBiREduAiZRF6gzozg"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_C4juwBjMEduAiZRF6gzozg" name="getNumErr" isStatic="true" type="_XW75QBiREduAiZRF6gzozg">
+      <ownedComment xmi:id="_C4juwRjMEduAiZRF6gzozg">
+        <body>return ((Integer)numErrs.get(pos)).intValue();</body>
+      </ownedComment>
+      <returnResult xmi:id="_C4juwhjMEduAiZRF6gzozg" name="return" type="_XW75QBiREduAiZRF6gzozg"/>
+      <ownedParameter xmi:id="_C4juwxjMEduAiZRF6gzozg" name="pos" type="_XW75QBiREduAiZRF6gzozg"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_WLbv0BjbEduAiZRF6gzozg" name="anyRequestTrue" isStatic="true" type="_PPqasBiSEduAiZRF6gzozg">
+      <ownedComment xmi:id="_WLbv0RjbEduAiZRF6gzozg">
+        <body>boolean any=false; for(int i=0;i&lt;requests.size();i++) { if(hasRequest(i)) any=true; break; } return any;</body>
+      </ownedComment>
+      <returnResult xmi:id="_WLbv0hjbEduAiZRF6gzozg" name="return" type="_PPqasBiSEduAiZRF6gzozg"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_ZpPpMCwQEduPwetnWD_-nQ" name="validateNodeAddress" isStatic="true" type="_PPqasBiSEduAiZRF6gzozg">
+      <ownedComment xmi:id="_gmgAQC0CEdunPMW9xWvKQQ">
+        <body>       if(entry.NodeAddress==0xFFFF || entry.NodeAddress==0x0) return false;</body>
+      </ownedComment>
+      <ownedComment xmi:id="_b4b2ACz_EdunPMW9xWvKQQ">
+        <body>       if(contains(entry)) return true;</body>
+      </ownedComment>
+      <ownedComment xmi:id="_A10EkCz8EdunPMW9xWvKQQ">
+        <body>       for(int j=0; j&lt;FBlockIDs.size(); j++) {</body>
+      </ownedComment>
+      <ownedComment xmi:id="_LIvF4Cz8EdunPMW9xWvKQQ">
+        <body>              FBlockIDEntry existing = (FBlockIDEntry)FBlockIDs.get(j);</body>
+      </ownedComment>
+      <ownedComment xmi:id="_Sz4MoCz8EdunPMW9xWvKQQ">
+        <body>            if(entry.nodepos!=existing.nodepos &amp;&amp; entry.NodeAddress==existing.NodeAddress)</body>
+      </ownedComment>
+      <ownedComment xmi:id="_UIOpECz_EdunPMW9xWvKQQ">
+        <body>                   return false;</body>
+      </ownedComment>
+      <ownedComment xmi:id="_WK6SgCz_EdunPMW9xWvKQQ">
+        <body>       }</body>
+      </ownedComment>
+      <ownedComment xmi:id="_ahHdwCz_EdunPMW9xWvKQQ">
+        <body>return true;</body>
+      </ownedComment>
+      <returnResult xmi:id="_dUrZICwQEduPwetnWD_-nQ" name="return" type="_PPqasBiSEduAiZRF6gzozg"/>
+      <ownedParameter xmi:id="_GMrGcCz6EdunPMW9xWvKQQ" name="entry" type="_lM5dQCz6EdunPMW9xWvKQQ"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_msl8ICz_EdunPMW9xWvKQQ" name="contains" isStatic="true" type="_PPqasBiSEduAiZRF6gzozg">
+      <ownedComment xmi:id="_KXPXcC3AEdu-YY2G7Pcf3Q">
+        <body>if(entry.nodepos>=FBlockIDs.size()) return false;</body>
+      </ownedComment>
+      <ownedComment xmi:id="_xs0IUCz_EdunPMW9xWvKQQ">
+        <body>FBlockIDEntry existing = (FBlockIDEntry)FBlockIDs.get(entry.nodepos);</body>
+      </ownedComment>
+      <ownedComment xmi:id="_2q82QCz_EdunPMW9xWvKQQ">
+        <body>if(entry.equals(existing))</body>
+      </ownedComment>
+      <ownedComment xmi:id="__OkdICz_EdunPMW9xWvKQQ">
+        <body>           return true;</body>
+      </ownedComment>
+      <ownedComment xmi:id="_D7kXwC0AEdunPMW9xWvKQQ">
+        <body>return false;</body>
+      </ownedComment>
+      <returnResult xmi:id="_oJuBcCz_EdunPMW9xWvKQQ" name="return" type="_PPqasBiSEduAiZRF6gzozg"/>
+      <ownedParameter xmi:id="_qdieMCz_EdunPMW9xWvKQQ" name="entry" type="_lM5dQCz6EdunPMW9xWvKQQ"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_gxgsYCwQEduPwetnWD_-nQ" name="validateInstID" isStatic="true" type="_PPqasBiSEduAiZRF6gzozg">
+      <ownedComment xmi:id="_qmpPgC0CEdunPMW9xWvKQQ">
+        <body>if(entry.InstID==0xFFFF) return false;</body>
+      </ownedComment>
+      <ownedComment xmi:id="_ZTDAyS0CEdunPMW9xWvKQQ">
+        <body>return true;</body>
+      </ownedComment>
+      <returnResult xmi:id="_gxgsYSwQEduPwetnWD_-nQ" name="return" type="_PPqasBiSEduAiZRF6gzozg"/>
+      <ownedParameter xmi:id="_mEKTEC0TEdunPMW9xWvKQQ" name="entry" type="_lM5dQCz6EdunPMW9xWvKQQ"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_9L5TYC0CEdunPMW9xWvKQQ" name="insertNewEntry" isStatic="true" type="_ARwwoBiVEduAiZRF6gzozg">
+      <ownedComment xmi:id="_H6F7cC0DEdunPMW9xWvKQQ">
+        <body>FBlockIDs.add(entry.nodepos, entry);</body>
+      </ownedComment>
+      <ownedComment xmi:id="_IQOZoEk1EduSs6cCGT89sQ">
+        <body>if(entry.nodepos >= requests.size()) {</body>
+      </ownedComment>
+      <ownedComment xmi:id="_V4An0C0DEdunPMW9xWvKQQ">
+        <body>requests.add(entry.nodepos, new Boolean(false));</body>
+      </ownedComment>
+      <ownedComment xmi:id="_ZmkkQC0DEdunPMW9xWvKQQ">
+        <body>numErrs.add(entry.nodepos, new Integer(0));</body>
+      </ownedComment>
+      <ownedComment xmi:id="_JHwekEk1EduSs6cCGT89sQ">
+        <body>} else {</body>
+      </ownedComment>
+      <ownedComment xmi:id="_G9qlkEk1EduSs6cCGT89sQ">
+        <body>requests.set(entry.nodepos, new Boolean(false));</body>
+      </ownedComment>
+      <ownedComment xmi:id="_G9qlkUk1EduSs6cCGT89sQ">
+        <body>numErrs.set(entry.nodepos, new Integer(0));</body>
+      </ownedComment>
+      <ownedComment xmi:id="_KSNfgEk1EduSs6cCGT89sQ">
+        <body>}</body>
+      </ownedComment>
+      <returnResult xmi:id="_B4mTEC0DEdunPMW9xWvKQQ" name="return" type="_ARwwoBiVEduAiZRF6gzozg"/>
+      <ownedParameter xmi:id="_FU_hcC0DEdunPMW9xWvKQQ" name="entry" type="_lM5dQCz6EdunPMW9xWvKQQ"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_5VYLQCz2EdunPMW9xWvKQQ" name="isEmpty" isStatic="true" type="_PPqasBiSEduAiZRF6gzozg">
+      <ownedComment xmi:id="_-df7oCz2EdunPMW9xWvKQQ">
+        <body>return FBlockIDs.isEmpty();</body>
+      </ownedComment>
+      <returnResult xmi:id="_7yu-gCz2EdunPMW9xWvKQQ" name="return" type="_PPqasBiSEduAiZRF6gzozg"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_VE1U4Cz3EdunPMW9xWvKQQ" name="clear" isStatic="true" type="_ARwwoBiVEduAiZRF6gzozg">
+      <ownedComment xmi:id="_f2wmYCz3EdunPMW9xWvKQQ">
+        <body>FBlockIDs.clear();</body>
+      </ownedComment>
+      <ownedComment xmi:id="_kg7PcCz3EdunPMW9xWvKQQ">
+        <body>requests.clear();</body>
+      </ownedComment>
+      <ownedComment xmi:id="_o4UtgCz3EdunPMW9xWvKQQ">
+        <body>numErrs.clear();</body>
+      </ownedComment>
+      <returnResult xmi:id="_VE1U4iz3EdunPMW9xWvKQQ" name="return" type="_ARwwoBiVEduAiZRF6gzozg"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_YFwYIC0LEdunPMW9xWvKQQ" name="updateEntry" isStatic="true" type="_ARwwoBiVEduAiZRF6gzozg">
+      <ownedComment xmi:id="_rQ_kEC2yEdunPMW9xWvKQQ">
+        <body>if(entry.nodepos == FBlockIDs.size())</body>
+      </ownedComment>
+      <ownedComment xmi:id="_2REmUC2yEdunPMW9xWvKQQ">
+        <body>       insertNewEntry(entry);</body>
+      </ownedComment>
+      <ownedComment xmi:id="_5QPtMC2yEdunPMW9xWvKQQ">
+        <body>else if(entry.nodepos > FBlockIDs.size())</body>
+      </ownedComment>
+      <ownedComment xmi:id="_74x1sC2yEdunPMW9xWvKQQ">
+        <body>        System.out.println(&quot;FBlockID inserted wrongly&quot;);</body>
+      </ownedComment>
+      <ownedComment xmi:id="_Am05MC2zEdunPMW9xWvKQQ">
+        <body>else {</body>
+      </ownedComment>
+      <ownedComment xmi:id="_YFwYIS0LEdunPMW9xWvKQQ">
+        <body>FBlockIDs.set(entry.nodepos, entry);</body>
+      </ownedComment>
+      <ownedComment xmi:id="_YFwYIi0LEdunPMW9xWvKQQ">
+        <body>requests.set(entry.nodepos, new Boolean(false));</body>
+      </ownedComment>
+      <ownedComment xmi:id="_YFwYIy0LEdunPMW9xWvKQQ">
+        <body>numErrs.set(entry.nodepos, new Integer(0));</body>
+      </ownedComment>
+      <ownedComment xmi:id="_B598EC2zEdunPMW9xWvKQQ">
+        <body>}</body>
+      </ownedComment>
+      <returnResult xmi:id="_YFwYJC0LEdunPMW9xWvKQQ" name="return" type="_ARwwoBiVEduAiZRF6gzozg"/>
+      <ownedParameter xmi:id="_YFwYJS0LEdunPMW9xWvKQQ" name="entry" type="_lM5dQCz6EdunPMW9xWvKQQ"/>
+    </ownedOperation>
+  </ownedMember>
+  <ownedMember xmi:type="uml:Class" xmi:id="_XQ37cBi7EduAiZRF6gzozg" name="NetworkSlave">
+    <packageImport xmi:id="_M1an4C2xEdunPMW9xWvKQQ" importedPackage="_eagS0CuOEduFNp-EmWxS7Q"/>
+    <ownedStateMachine xmi:id="_424VcCwGEduPwetnWD_-nQ" name="NS">
+      <ownedTrigger xmi:type="uml:CallTrigger" xmi:id="_6eSYICwGEduPwetnWD_-nQ" name="NSNetOn" operation="_m-VcECtBEduPaJa7FRF0aQ"/>
+      <ownedTrigger xmi:type="uml:CallTrigger" xmi:id="_6eSYISwGEduPwetnWD_-nQ" name="NSprogress" operation="_rsBL0CtEEduPaJa7FRF0aQ"/>
+      <ownedTrigger xmi:type="uml:CallTrigger" xmi:id="_6eSYIiwGEduPwetnWD_-nQ" name="UpdateConfigurationStatus" operation="_Anz3ACtKEduPaJa7FRF0aQ"/>
+      <ownedTrigger xmi:type="uml:CallTrigger" xmi:id="_6eSYIywGEduPwetnWD_-nQ" name="GetFBlockID" operation="_VG03ABjBEduAiZRF6gzozg"/>
+      <ownedTrigger xmi:type="uml:CallTrigger" xmi:id="_6eSYJCwGEduPwetnWD_-nQ" name="GetSetFBlockID" operation="_GgqkQBjUEduAiZRF6gzozg"/>
+      <ownedTrigger xmi:type="uml:CallTrigger" xmi:id="_6eSYJSwGEduPwetnWD_-nQ" name="NSInitComplete" operation="_5GzLkCtoEduPaJa7FRF0aQ"/>
+      <region xmi:id="_6ecJICwGEduPwetnWD_-nQ" name="NS">
+        <subvertex xmi:type="uml:Pseudostate" xmi:id="_6ecJISwGEduPwetnWD_-nQ" name="default" outgoing="_6ecJrSwGEduPwetnWD_-nQ"/>
+        <subvertex xmi:type="uml:State" xmi:id="_6ecJIiwGEduPwetnWD_-nQ" name="NSIdle" outgoing="_6ecJriwGEduPwetnWD_-nQ" incoming="_6ecJrSwGEduPwetnWD_-nQ"/>
+        <subvertex xmi:type="uml:State" xmi:id="_6ecJIywGEduPwetnWD_-nQ" name="NSGenInit" outgoing="_6ecJrywGEduPwetnWD_-nQ" incoming="_6ecJriwGEduPwetnWD_-nQ">
+          <region xmi:id="_6ecJJCwGEduPwetnWD_-nQ" name="NSGenInit">
+            <subvertex xmi:type="uml:Pseudostate" xmi:id="_6ecJJSwGEduPwetnWD_-nQ" name="default" outgoing="_6ecJPSwGEduPwetnWD_-nQ"/>
+            <subvertex xmi:type="uml:State" xmi:id="_6ecJJiwGEduPwetnWD_-nQ" name="NSGenInitDefault" outgoing="_6ecJPywGEduPwetnWD_-nQ" incoming="_6ecJPSwGEduPwetnWD_-nQ _6ecJZiwGEduPwetnWD_-nQ">
+              <entry xmi:id="_6ecJJywGEduPwetnWD_-nQ" body="baseClass.progress();"/>
+            </subvertex>
+            <subvertex xmi:type="uml:Pseudostate" xmi:id="_6ecJKCwGEduPwetnWD_-nQ" name="statusMsgNotRcvChoice" outgoing="_6ecJQCwGEduPwetnWD_-nQ _6ecJQywGEduPwetnWD_-nQ" incoming="_6ecJPywGEduPwetnWD_-nQ" kind="choice"/>
+            <subvertex xmi:type="uml:State" xmi:id="_6ecJKSwGEduPwetnWD_-nQ" name="MsgNotRcv" outgoing="_6ecJRiwGEduPwetnWD_-nQ _6ecJRywGEduPwetnWD_-nQ _6ecJWCwGEduPwetnWD_-nQ" incoming="_6ecJQCwGEduPwetnWD_-nQ"/>
+            <subvertex xmi:type="uml:State" xmi:id="_6ecJKiwGEduPwetnWD_-nQ" name="MsgRcv" incoming="_6ecJQywGEduPwetnWD_-nQ">
+              <entry xmi:id="_6ecJKywGEduPwetnWD_-nQ" body="baseClass.InitComplete();"/>
+            </subvertex>
+            <subvertex xmi:type="uml:Pseudostate" xmi:id="_6ecJLCwGEduPwetnWD_-nQ" name="GetFBlockIDChoice" outgoing="_6ecJSCwGEduPwetnWD_-nQ _6ecJTCwGEduPwetnWD_-nQ" incoming="_6ecJRiwGEduPwetnWD_-nQ" kind="choice"/>
+            <subvertex xmi:type="uml:Pseudostate" xmi:id="_6ecJLSwGEduPwetnWD_-nQ" name="GetSetFBlockIDChoice" outgoing="_6ecJUCwGEduPwetnWD_-nQ _6ecJVCwGEduPwetnWD_-nQ" incoming="_6ecJRywGEduPwetnWD_-nQ" kind="choice"/>
+            <subvertex xmi:type="uml:State" xmi:id="_6ecJLiwGEduPwetnWD_-nQ" name="InitPriGet" outgoing="_6ecJYCwGEduPwetnWD_-nQ" incoming="_6ecJSCwGEduPwetnWD_-nQ">
+              <entry xmi:id="_6ecJLywGEduPwetnWD_-nQ" body="baseClass.progress();"/>
+            </subvertex>
+            <subvertex xmi:type="uml:State" xmi:id="_6ecJMCwGEduPwetnWD_-nQ" name="InitSecGet" outgoing="_6ecJYSwGEduPwetnWD_-nQ" incoming="_6ecJTCwGEduPwetnWD_-nQ">
+              <entry xmi:id="_6ecJMSwGEduPwetnWD_-nQ" body="baseClass.progress();"/>
+            </subvertex>
+            <subvertex xmi:type="uml:State" xmi:id="_6ecJMiwGEduPwetnWD_-nQ" name="InitPriGetSet" outgoing="_6ecJYiwGEduPwetnWD_-nQ" incoming="_6ecJUCwGEduPwetnWD_-nQ">
+              <entry xmi:id="_6ecJMywGEduPwetnWD_-nQ" body="baseClass.progress();"/>
+            </subvertex>
+            <subvertex xmi:type="uml:State" xmi:id="_6ecJNCwGEduPwetnWD_-nQ" name="InitSecGetSet" outgoing="_6ecJYywGEduPwetnWD_-nQ" incoming="_6ecJVCwGEduPwetnWD_-nQ">
+              <entry xmi:id="_6ecJNSwGEduPwetnWD_-nQ" body="baseClass.progress();"/>
+            </subvertex>
+            <subvertex xmi:type="uml:Pseudostate" xmi:id="_6ecJNiwGEduPwetnWD_-nQ" name="UpdateConfigStatusChoice" outgoing="_6ecJWSwGEduPwetnWD_-nQ _6ecJXCwGEduPwetnWD_-nQ" incoming="_6ecJWCwGEduPwetnWD_-nQ" kind="choice"/>
+            <subvertex xmi:type="uml:State" xmi:id="_6ecJNywGEduPwetnWD_-nQ" name="InitCfgStatusNotOK" outgoing="_6ecJZCwGEduPwetnWD_-nQ" incoming="_6ecJWSwGEduPwetnWD_-nQ">
+              <entry xmi:id="_6ecJOCwGEduPwetnWD_-nQ" body="baseClass.ResolveNodeAddr();baseClass.progress();"/>
+            </subvertex>
+            <subvertex xmi:type="uml:State" xmi:id="_6ecJOSwGEduPwetnWD_-nQ" name="InitCfgStatusElse" outgoing="_6ecJZSwGEduPwetnWD_-nQ" incoming="_6ecJXCwGEduPwetnWD_-nQ">
+              <entry xmi:id="_6ecJOiwGEduPwetnWD_-nQ" body="baseClass.progress();"/>
+            </subvertex>
+            <subvertex xmi:type="uml:State" xmi:id="_6ecJOywGEduPwetnWD_-nQ" name="InitEnd" outgoing="_6ecJZiwGEduPwetnWD_-nQ" incoming="_6ecJYCwGEduPwetnWD_-nQ _6ecJYSwGEduPwetnWD_-nQ _6ecJYiwGEduPwetnWD_-nQ _6ecJYywGEduPwetnWD_-nQ _6ecJZCwGEduPwetnWD_-nQ _6ecJZSwGEduPwetnWD_-nQ">
+              <entry xmi:id="_6ecJPCwGEduPwetnWD_-nQ" body="baseClass.progress();"/>
+            </subvertex>
+            <transition xmi:id="_6ecJPSwGEduPwetnWD_-nQ" name="init" source="_6ecJJSwGEduPwetnWD_-nQ" target="_6ecJJiwGEduPwetnWD_-nQ">
+              <effect xmi:id="_6ecJPiwGEduPwetnWD_-nQ" body="baseClass.ResolveNodeAddr();"/>
+            </transition>
+            <transition xmi:id="_6ecJPywGEduPwetnWD_-nQ" name="default" source="_6ecJJiwGEduPwetnWD_-nQ" target="_6ecJKCwGEduPwetnWD_-nQ" trigger="_6eSYISwGEduPwetnWD_-nQ"/>
+            <transition xmi:id="_6ecJQCwGEduPwetnWD_-nQ" name="MsgNotRcvChoice" source="_6ecJKCwGEduPwetnWD_-nQ" target="_6ecJKSwGEduPwetnWD_-nQ">
+              <guard xmi:id="_6ecJQSwGEduPwetnWD_-nQ">
+                <specification xmi:type="uml:OpaqueExpression" xmi:id="_6ecJQiwGEduPwetnWD_-nQ">
+                  <body>!baseClass.configStatusRcved</body>
+                </specification>
+              </guard>
+            </transition>
+            <transition xmi:id="_6ecJQywGEduPwetnWD_-nQ" name="MsgRcvChoice" source="_6ecJKCwGEduPwetnWD_-nQ" target="_6ecJKiwGEduPwetnWD_-nQ">
+              <guard xmi:id="_6ecJRCwGEduPwetnWD_-nQ">
+                <specification xmi:type="uml:OpaqueExpression" xmi:id="_6ecJRSwGEduPwetnWD_-nQ">
+                  <body>else</body>
+                </specification>
+              </guard>
+            </transition>
+            <transition xmi:id="_6ecJRiwGEduPwetnWD_-nQ" name="MsgNotRcvGet" source="_6ecJKSwGEduPwetnWD_-nQ" target="_6ecJLCwGEduPwetnWD_-nQ" trigger="_6eSYIywGEduPwetnWD_-nQ"/>
+            <transition xmi:id="_6ecJRywGEduPwetnWD_-nQ" name="MsgNotRcvGetSet" source="_6ecJKSwGEduPwetnWD_-nQ" target="_6ecJLSwGEduPwetnWD_-nQ" trigger="_6eSYJCwGEduPwetnWD_-nQ"/>
+            <transition xmi:id="_6ecJSCwGEduPwetnWD_-nQ" name="InitPriGetBefore" source="_6ecJLCwGEduPwetnWD_-nQ" target="_6ecJLiwGEduPwetnWD_-nQ">
+              <guard xmi:id="_6ecJSSwGEduPwetnWD_-nQ">
+                <specification xmi:type="uml:OpaqueExpression" xmi:id="_6ecJSiwGEduPwetnWD_-nQ">
+                  <body>baseClass.type==NetworkSlave.PRIMARY_TYPE</body>
+                </specification>
+              </guard>
+              <effect xmi:id="_6ecJSywGEduPwetnWD_-nQ" body="NetworkMaster.getInstance().ReceiveFBlockIDStatus(baseClass.getNextFBlockID());"/>
+            </transition>
+            <transition xmi:id="_6ecJTCwGEduPwetnWD_-nQ" name="InitSecGetBefore" source="_6ecJLCwGEduPwetnWD_-nQ" target="_6ecJMCwGEduPwetnWD_-nQ">
+              <guard xmi:id="_6ecJTSwGEduPwetnWD_-nQ">
+                <specification xmi:type="uml:OpaqueExpression" xmi:id="_6ecJTiwGEduPwetnWD_-nQ">
+                  <body>baseClass.type==NetworkSlave.SECONDARY_TYPE</body>
+                </specification>
+              </guard>
+              <effect xmi:id="_6ecJTywGEduPwetnWD_-nQ" body="NetworkMaster.getInstance().ReceiveFBlockIDError();"/>
+            </transition>
+            <transition xmi:id="_6ecJUCwGEduPwetnWD_-nQ" name="InitPriGetSetBefore" source="_6ecJLSwGEduPwetnWD_-nQ" target="_6ecJMiwGEduPwetnWD_-nQ">
+              <guard xmi:id="_6ecJUSwGEduPwetnWD_-nQ">
+                <specification xmi:type="uml:OpaqueExpression" xmi:id="_6ecJUiwGEduPwetnWD_-nQ">
+                  <body>baseClass.type==NetworkSlave.PRIMARY_TYPE</body>
+                </specification>
+              </guard>
+              <effect xmi:id="_6ecJUywGEduPwetnWD_-nQ" body="NetworkMaster.getInstance().ReceiveFBlockIDStatus(baseClass.getNextFBlockID());"/>
+            </transition>
+            <transition xmi:id="_6ecJVCwGEduPwetnWD_-nQ" name="InitSecGetSetBefore" source="_6ecJLSwGEduPwetnWD_-nQ" target="_6ecJNCwGEduPwetnWD_-nQ">
+              <guard xmi:id="_6ecJVSwGEduPwetnWD_-nQ">
+                <specification xmi:type="uml:OpaqueExpression" xmi:id="_6ecJViwGEduPwetnWD_-nQ">
+                  <body>baseClass.type==NetworkSlave.SECONDARY_TYPE</body>
+                </specification>
+              </guard>
+              <effect xmi:id="_6ecJVywGEduPwetnWD_-nQ" body="NetworkMaster.getInstance().ReceiveFBlockIDError();"/>
+            </transition>
+            <transition xmi:id="_6ecJWCwGEduPwetnWD_-nQ" name="MsgNotRcvUpdCfg" source="_6ecJKSwGEduPwetnWD_-nQ" target="_6ecJNiwGEduPwetnWD_-nQ" trigger="_6eSYIiwGEduPwetnWD_-nQ"/>
+            <transition xmi:id="_6ecJWSwGEduPwetnWD_-nQ" name="InitCfgStatusNotOKBefore" source="_6ecJNiwGEduPwetnWD_-nQ" target="_6ecJNywGEduPwetnWD_-nQ">
+              <guard xmi:id="_6ecJWiwGEduPwetnWD_-nQ">
+                <specification xmi:type="uml:OpaqueExpression" xmi:id="_6ecJWywGEduPwetnWD_-nQ">
+                  <body>baseClass.configControlValue==ConfigurationControl.NotOK</body>
+                </specification>
+              </guard>
+            </transition>
+            <transition xmi:id="_6ecJXCwGEduPwetnWD_-nQ" name="InitCfgStatusElseBefore" source="_6ecJNiwGEduPwetnWD_-nQ" target="_6ecJOSwGEduPwetnWD_-nQ">
+              <guard xmi:id="_6ecJXSwGEduPwetnWD_-nQ">
+                <specification xmi:type="uml:OpaqueExpression" xmi:id="_6ecJXiwGEduPwetnWD_-nQ">
+                  <body>else</body>
+                </specification>
+              </guard>
+              <effect xmi:id="_6ecJXywGEduPwetnWD_-nQ" body="//store master addr"/>
+            </transition>
+            <transition xmi:id="_6ecJYCwGEduPwetnWD_-nQ" name="InitPriGetAfter" source="_6ecJLiwGEduPwetnWD_-nQ" target="_6ecJOywGEduPwetnWD_-nQ" trigger="_6eSYISwGEduPwetnWD_-nQ"/>
+            <transition xmi:id="_6ecJYSwGEduPwetnWD_-nQ" name="InitSecGetAfter" source="_6ecJMCwGEduPwetnWD_-nQ" target="_6ecJOywGEduPwetnWD_-nQ" trigger="_6eSYISwGEduPwetnWD_-nQ"/>
+            <transition xmi:id="_6ecJYiwGEduPwetnWD_-nQ" name="InitPriGetSetAfter" source="_6ecJMiwGEduPwetnWD_-nQ" target="_6ecJOywGEduPwetnWD_-nQ" trigger="_6eSYISwGEduPwetnWD_-nQ"/>
+            <transition xmi:id="_6ecJYywGEduPwetnWD_-nQ" name="InitSecGetSetAfter" source="_6ecJNCwGEduPwetnWD_-nQ" target="_6ecJOywGEduPwetnWD_-nQ" trigger="_6eSYISwGEduPwetnWD_-nQ"/>
+            <transition xmi:id="_6ecJZCwGEduPwetnWD_-nQ" name="InitCfgStatusNotOKAfter" source="_6ecJNywGEduPwetnWD_-nQ" target="_6ecJOywGEduPwetnWD_-nQ" trigger="_6eSYISwGEduPwetnWD_-nQ"/>
+            <transition xmi:id="_6ecJZSwGEduPwetnWD_-nQ" name="InitCfgStatusElseAfter" source="_6ecJOSwGEduPwetnWD_-nQ" target="_6ecJOywGEduPwetnWD_-nQ" trigger="_6eSYISwGEduPwetnWD_-nQ"/>
+            <transition xmi:id="_6ecJZiwGEduPwetnWD_-nQ" name="AfterEnd" source="_6ecJOywGEduPwetnWD_-nQ" target="_6ecJJiwGEduPwetnWD_-nQ" trigger="_6eSYISwGEduPwetnWD_-nQ"/>
+          </region>
+        </subvertex>
+        <subvertex xmi:type="uml:Pseudostate" xmi:id="_6ecJZywGEduPwetnWD_-nQ" name="NSnodeTypeChoice" outgoing="_6ecJsCwGEduPwetnWD_-nQ _6ecJsywGEduPwetnWD_-nQ" incoming="_6ecJrywGEduPwetnWD_-nQ" kind="choice"/>
+        <subvertex xmi:type="uml:State" xmi:id="_6ecJaCwGEduPwetnWD_-nQ" name="NSGenRunningPrimary" incoming="_6ecJsCwGEduPwetnWD_-nQ">
+          <region xmi:id="_6ecJaSwGEduPwetnWD_-nQ" name="NSGenRunningPrimary">
+            <subvertex xmi:type="uml:Pseudostate" xmi:id="_6ecJaiwGEduPwetnWD_-nQ" name="initial" outgoing="_6ecJeywGEduPwetnWD_-nQ"/>
+            <subvertex xmi:type="uml:State" xmi:id="_6ecJaywGEduPwetnWD_-nQ" name="NSGenPriDefault" outgoing="_7Y7CMC24EdunPMW9xWvKQQ" incoming="_6ecJeywGEduPwetnWD_-nQ _6ecJmCwGEduPwetnWD_-nQ">
+              <entry xmi:id="_6ecJbCwGEduPwetnWD_-nQ" body="baseClass.progress();"/>
+            </subvertex>
+            <subvertex xmi:type="uml:Pseudostate" xmi:id="_6ecJbSwGEduPwetnWD_-nQ" name="systemStateChoice" outgoing="_6ecJfCwGEduPwetnWD_-nQ _6ecJfywGEduPwetnWD_-nQ" incoming="_7Y7CMC24EdunPMW9xWvKQQ" kind="choice"/>
+            <subvertex xmi:type="uml:State" xmi:id="_6ecJbiwGEduPwetnWD_-nQ" name="NSGenPriSystemStateOK" outgoing="_6ecJgiwGEduPwetnWD_-nQ _6ecJiiwGEduPwetnWD_-nQ _6ecJiywGEduPwetnWD_-nQ" incoming="_6ecJfCwGEduPwetnWD_-nQ"/>
+            <subvertex xmi:type="uml:State" xmi:id="_6ecJbywGEduPwetnWD_-nQ" name="NSGenPriSystemStateNotOK" outgoing="_6ecJjSwGEduPwetnWD_-nQ _6ecJjiwGEduPwetnWD_-nQ _6ecJjywGEduPwetnWD_-nQ" incoming="_6ecJfywGEduPwetnWD_-nQ"/>
+            <subvertex xmi:type="uml:Pseudostate" xmi:id="_6ecJcCwGEduPwetnWD_-nQ" name="StateOKCfgUpdStatusChoice" outgoing="_6ecJgywGEduPwetnWD_-nQ _6ecJhiwGEduPwetnWD_-nQ" incoming="_6ecJgiwGEduPwetnWD_-nQ" kind="choice"/>
+            <subvertex xmi:type="uml:State" xmi:id="_6ecJcSwGEduPwetnWD_-nQ" name="NSGenPriReset" outgoing="_6ecJiSwGEduPwetnWD_-nQ" incoming="_6ecJgywGEduPwetnWD_-nQ">
+              <entry xmi:id="_6ecJciwGEduPwetnWD_-nQ" body="baseClass.ResolveNodeAddr();baseClass.progress();"/>
+            </subvertex>
+            <subvertex xmi:type="uml:State" xmi:id="_6ecJcywGEduPwetnWD_-nQ" name="NSGenPriEnd" outgoing="_6ecJmCwGEduPwetnWD_-nQ" incoming="_6ecJhiwGEduPwetnWD_-nQ _6ecJiSwGEduPwetnWD_-nQ _6ecJjCwGEduPwetnWD_-nQ _6ecJliwGEduPwetnWD_-nQ _6ecJlywGEduPwetnWD_-nQ">
+              <entry xmi:id="_HoaTUC24EdunPMW9xWvKQQ" body="baseClass.progress();"/>
+            </subvertex>
+            <subvertex xmi:type="uml:State" xmi:id="_6ecJdCwGEduPwetnWD_-nQ" name="NSGenPriSendFBlockID" outgoing="_6ecJjCwGEduPwetnWD_-nQ" incoming="_6ecJiiwGEduPwetnWD_-nQ _6ecJiywGEduPwetnWD_-nQ _6ecJjSwGEduPwetnWD_-nQ _6ecJjiwGEduPwetnWD_-nQ">
+              <entry xmi:id="_6ecJdSwGEduPwetnWD_-nQ" body="NetworkMaster.getInstance().ReceiveFBlockIDStatus(baseClass.getNextFBlockID()); baseClass.progress();"/>
+            </subvertex>
+            <subvertex xmi:type="uml:Pseudostate" xmi:id="_6ecJdiwGEduPwetnWD_-nQ" name="StateNotOKCfgUpdStatusChoice" outgoing="_6ecJkCwGEduPwetnWD_-nQ _6ecJkywGEduPwetnWD_-nQ" incoming="_6ecJjywGEduPwetnWD_-nQ" kind="choice"/>
+            <subvertex xmi:type="uml:State" xmi:id="_6ecJdywGEduPwetnWD_-nQ" name="NSGenPriNotOKCfgOK" outgoing="_6ecJliwGEduPwetnWD_-nQ" incoming="_6ecJkCwGEduPwetnWD_-nQ">
+              <entry xmi:id="_6ecJeCwGEduPwetnWD_-nQ" body="baseClass.progress(); //and store master addr"/>
+            </subvertex>
+            <subvertex xmi:type="uml:State" xmi:id="_6ecJeSwGEduPwetnWD_-nQ" name="NSGenPriNotOKCfgNotOK" outgoing="_6ecJlywGEduPwetnWD_-nQ" incoming="_6ecJkywGEduPwetnWD_-nQ">
+              <entry xmi:id="_6ecJeiwGEduPwetnWD_-nQ" body="baseClass.ResolveNodeAddr(); baseClass.progress();"/>
+            </subvertex>
+            <transition xmi:id="_6ecJeywGEduPwetnWD_-nQ" name="initial" source="_6ecJaiwGEduPwetnWD_-nQ" target="_6ecJaywGEduPwetnWD_-nQ" trigger="_6eSYISwGEduPwetnWD_-nQ"/>
+            <transition xmi:id="_7Y7CMC24EdunPMW9xWvKQQ" name="NSGenPriDefaultAfter" source="_6ecJaywGEduPwetnWD_-nQ" target="_6ecJbSwGEduPwetnWD_-nQ" trigger="_6eSYISwGEduPwetnWD_-nQ"/>
+            <transition xmi:id="_6ecJfCwGEduPwetnWD_-nQ" name="NSGenPriSysStateOKBefore" source="_6ecJbSwGEduPwetnWD_-nQ" target="_6ecJbiwGEduPwetnWD_-nQ">
+              <guard xmi:id="_6ecJfSwGEduPwetnWD_-nQ">
+                <specification xmi:type="uml:OpaqueExpression" xmi:id="_6ecJfiwGEduPwetnWD_-nQ">
+                  <body>SystemState.CurrentState==SystemState.OK</body>
+                </specification>
+              </guard>
+            </transition>
+            <transition xmi:id="_6ecJfywGEduPwetnWD_-nQ" name="NSGenPriSysStateNotOKBefore" source="_6ecJbSwGEduPwetnWD_-nQ" target="_6ecJbywGEduPwetnWD_-nQ">
+              <guard xmi:id="_6ecJgCwGEduPwetnWD_-nQ">
+                <specification xmi:type="uml:OpaqueExpression" xmi:id="_6ecJgSwGEduPwetnWD_-nQ">
+                  <body>SystemState.CurrentState==SystemState.NotOK</body>
+                </specification>
+              </guard>
+            </transition>
+            <transition xmi:id="_6ecJgiwGEduPwetnWD_-nQ" name="NSGenPriStateOKCfgUpd" source="_6ecJbiwGEduPwetnWD_-nQ" target="_6ecJcCwGEduPwetnWD_-nQ" trigger="_6eSYIiwGEduPwetnWD_-nQ"/>
+            <transition xmi:id="_6ecJgywGEduPwetnWD_-nQ" name="NSGenOKCfgUpdNotOK" source="_6ecJcCwGEduPwetnWD_-nQ" target="_6ecJcSwGEduPwetnWD_-nQ">
+              <guard xmi:id="_6ecJhCwGEduPwetnWD_-nQ">
+                <specification xmi:type="uml:OpaqueExpression" xmi:id="_6ecJhSwGEduPwetnWD_-nQ">
+                  <body>baseClass.configControlValue==ConfigurationControl.NotOK</body>
+                </specification>
+              </guard>
+            </transition>
+            <transition xmi:id="_6ecJhiwGEduPwetnWD_-nQ" name="NSGenOKCfgUpdElse" source="_6ecJcCwGEduPwetnWD_-nQ" target="_6ecJcywGEduPwetnWD_-nQ">
+              <guard xmi:id="_6ecJhywGEduPwetnWD_-nQ">
+                <specification xmi:type="uml:OpaqueExpression" xmi:id="_6ecJiCwGEduPwetnWD_-nQ">
+                  <body>else</body>
+                </specification>
+              </guard>
+            </transition>
+            <transition xmi:id="_6ecJiSwGEduPwetnWD_-nQ" name="NSGenOKResetAfter" source="_6ecJcSwGEduPwetnWD_-nQ" target="_6ecJcywGEduPwetnWD_-nQ" trigger="_6eSYISwGEduPwetnWD_-nQ"/>
+            <transition xmi:id="_6ecJiiwGEduPwetnWD_-nQ" name="NSGenPriOKGetFBlockID" source="_6ecJbiwGEduPwetnWD_-nQ" target="_6ecJdCwGEduPwetnWD_-nQ" trigger="_6eSYIywGEduPwetnWD_-nQ"/>
+            <transition xmi:id="_6ecJiywGEduPwetnWD_-nQ" name="NSGenPriOKGetSetFBlockID" source="_6ecJbiwGEduPwetnWD_-nQ" target="_6ecJdCwGEduPwetnWD_-nQ" trigger="_6eSYJCwGEduPwetnWD_-nQ"/>
+            <transition xmi:id="_6ecJjCwGEduPwetnWD_-nQ" name="NSGenPriSendFBlockIDAfter" source="_6ecJdCwGEduPwetnWD_-nQ" target="_6ecJcywGEduPwetnWD_-nQ" trigger="_6eSYISwGEduPwetnWD_-nQ"/>
+            <transition xmi:id="_6ecJjSwGEduPwetnWD_-nQ" name="NSGenPriNotOKGetFBlockID" source="_6ecJbywGEduPwetnWD_-nQ" target="_6ecJdCwGEduPwetnWD_-nQ" trigger="_6eSYIywGEduPwetnWD_-nQ"/>
+            <transition xmi:id="_6ecJjiwGEduPwetnWD_-nQ" name="NSGenPriNotOKGetSetFBlockID" source="_6ecJbywGEduPwetnWD_-nQ" target="_6ecJdCwGEduPwetnWD_-nQ" trigger="_6eSYJCwGEduPwetnWD_-nQ"/>
+            <transition xmi:id="_6ecJjywGEduPwetnWD_-nQ" name="NSGenPriNotOKCfgUpd" source="_6ecJbywGEduPwetnWD_-nQ" target="_6ecJdiwGEduPwetnWD_-nQ" trigger="_6eSYIiwGEduPwetnWD_-nQ"/>
+            <transition xmi:id="_6ecJkCwGEduPwetnWD_-nQ" name="NSGenPriNotOKCfgOKBefore" source="_6ecJdiwGEduPwetnWD_-nQ" target="_6ecJdywGEduPwetnWD_-nQ">
+              <guard xmi:id="_6ecJkSwGEduPwetnWD_-nQ">
+                <specification xmi:type="uml:OpaqueExpression" xmi:id="_6ecJkiwGEduPwetnWD_-nQ">
+                  <body>baseClass.configControlValue==ConfigurationControl.OK</body>
+                </specification>
+              </guard>
+            </transition>
+            <transition xmi:id="_6ecJkywGEduPwetnWD_-nQ" name="NSGenPriNotOKCfgNotOKBefore" source="_6ecJdiwGEduPwetnWD_-nQ" target="_6ecJeSwGEduPwetnWD_-nQ">
+              <guard xmi:id="_6ecJlCwGEduPwetnWD_-nQ">
+                <specification xmi:type="uml:OpaqueExpression" xmi:id="_6ecJlSwGEduPwetnWD_-nQ">
+                  <body>baseClass.configControlValue==ConfigurationControl.NotOK</body>
+                </specification>
+              </guard>
+            </transition>
+            <transition xmi:id="_6ecJliwGEduPwetnWD_-nQ" name="NSGenPriNotOKCfgOKAfter" source="_6ecJdywGEduPwetnWD_-nQ" target="_6ecJcywGEduPwetnWD_-nQ" trigger="_6eSYISwGEduPwetnWD_-nQ"/>
+            <transition xmi:id="_6ecJlywGEduPwetnWD_-nQ" name="NSGenPriNotOKCfgNotOKAfter" source="_6ecJeSwGEduPwetnWD_-nQ" target="_6ecJcywGEduPwetnWD_-nQ" trigger="_6eSYISwGEduPwetnWD_-nQ"/>
+            <transition xmi:id="_6ecJmCwGEduPwetnWD_-nQ" name="NSGenPriEndAfter" source="_6ecJcywGEduPwetnWD_-nQ" target="_6ecJaywGEduPwetnWD_-nQ" trigger="_6eSYISwGEduPwetnWD_-nQ"/>
+          </region>
+        </subvertex>
+        <subvertex xmi:type="uml:State" xmi:id="_6ecJmSwGEduPwetnWD_-nQ" name="NSGenRunningSecondary" incoming="_6ecJsywGEduPwetnWD_-nQ">
+          <region xmi:id="_6ecJmiwGEduPwetnWD_-nQ" name="NSGenRunningSecondary">
+            <subvertex xmi:type="uml:Pseudostate" xmi:id="_6ecJmywGEduPwetnWD_-nQ" name="initial" outgoing="_6ecJoSwGEduPwetnWD_-nQ"/>
+            <subvertex xmi:type="uml:State" xmi:id="_6ecJnCwGEduPwetnWD_-nQ" name="NSGenSecDefault" outgoing="_6ecJqSwGEduPwetnWD_-nQ _6ecJqiwGEduPwetnWD_-nQ" incoming="_6ecJoSwGEduPwetnWD_-nQ _6ecJrCwGEduPwetnWD_-nQ"/>
+            <subvertex xmi:type="uml:Pseudostate" xmi:id="_6ecJnSwGEduPwetnWD_-nQ" name="NSGenSecCfgUpdChoice" outgoing="_6ecJoiwGEduPwetnWD_-nQ _6ecJpiwGEduPwetnWD_-nQ" kind="choice"/>
+            <subvertex xmi:type="uml:State" xmi:id="_6ecJniwGEduPwetnWD_-nQ" name="NSGenSecSendFBlockID" outgoing="_6ecJqywGEduPwetnWD_-nQ" incoming="_6ecJqSwGEduPwetnWD_-nQ _6ecJqiwGEduPwetnWD_-nQ">
+              <entry xmi:id="_6ecJnywGEduPwetnWD_-nQ" body="NetworkMaster.getInstance().ReceiveFBlockIDError();baseClass.progress();"/>
+            </subvertex>
+            <subvertex xmi:type="uml:State" xmi:id="_6ecJoCwGEduPwetnWD_-nQ" name="NSGenSecEnd" outgoing="_6ecJrCwGEduPwetnWD_-nQ" incoming="_6ecJoiwGEduPwetnWD_-nQ _6ecJpiwGEduPwetnWD_-nQ _6ecJqywGEduPwetnWD_-nQ">
+              <entry xmi:id="_MpiD0C24EdunPMW9xWvKQQ" body="baseClass.progress();"/>
+            </subvertex>
+            <transition xmi:id="_6ecJoSwGEduPwetnWD_-nQ" name="initial" source="_6ecJmywGEduPwetnWD_-nQ" target="_6ecJnCwGEduPwetnWD_-nQ"/>
+            <transition xmi:id="_6ecJoiwGEduPwetnWD_-nQ" name="NSGenSecCfgUpdNotOK" source="_6ecJnSwGEduPwetnWD_-nQ" target="_6ecJoCwGEduPwetnWD_-nQ">
+              <guard xmi:id="_6ecJoywGEduPwetnWD_-nQ">
+                <specification xmi:type="uml:OpaqueExpression" xmi:id="_6ecJpCwGEduPwetnWD_-nQ">
+                  <body>baseClass.configControl==ConfigurationControl.NotOK</body>
+                </specification>
+              </guard>
+              <effect xmi:id="_6ecJpSwGEduPwetnWD_-nQ" body="baseClass.ResolveNodeAddr();"/>
+            </transition>
+            <transition xmi:id="_6ecJpiwGEduPwetnWD_-nQ" name="NSGenSecCfgUpdElse" source="_6ecJnSwGEduPwetnWD_-nQ" target="_6ecJoCwGEduPwetnWD_-nQ">
+              <guard xmi:id="_6ecJpywGEduPwetnWD_-nQ">
+                <specification xmi:type="uml:OpaqueExpression" xmi:id="_6ecJqCwGEduPwetnWD_-nQ">
+                  <body>else</body>
+                </specification>
+              </guard>
+            </transition>
+            <transition xmi:id="_6ecJqSwGEduPwetnWD_-nQ" name="NSGenSecGetFBlockID" source="_6ecJnCwGEduPwetnWD_-nQ" target="_6ecJniwGEduPwetnWD_-nQ" trigger="_6eSYIywGEduPwetnWD_-nQ"/>
+            <transition xmi:id="_6ecJqiwGEduPwetnWD_-nQ" name="NSGenSecGetSetFBlockID" source="_6ecJnCwGEduPwetnWD_-nQ" target="_6ecJniwGEduPwetnWD_-nQ" trigger="_6eSYJCwGEduPwetnWD_-nQ"/>
+            <transition xmi:id="_6ecJqywGEduPwetnWD_-nQ" name="NSGenSecSendFBlockIDAfter" source="_6ecJniwGEduPwetnWD_-nQ" target="_6ecJoCwGEduPwetnWD_-nQ" trigger="_6eSYISwGEduPwetnWD_-nQ"/>
+            <transition xmi:id="_6ecJrCwGEduPwetnWD_-nQ" name="NSGenSecEndAfter" source="_6ecJoCwGEduPwetnWD_-nQ" target="_6ecJnCwGEduPwetnWD_-nQ" trigger="_6eSYISwGEduPwetnWD_-nQ"/>
+          </region>
+        </subvertex>
+        <transition xmi:id="_6ecJrSwGEduPwetnWD_-nQ" name="default" source="_6ecJISwGEduPwetnWD_-nQ" target="_6ecJIiwGEduPwetnWD_-nQ"/>
+        <transition xmi:id="_6ecJriwGEduPwetnWD_-nQ" name="NSIdle" source="_6ecJIiwGEduPwetnWD_-nQ" target="_6ecJIywGEduPwetnWD_-nQ" trigger="_6eSYICwGEduPwetnWD_-nQ"/>
+        <transition xmi:id="_6ecJrywGEduPwetnWD_-nQ" name="nodeTypeChoice" source="_6ecJIywGEduPwetnWD_-nQ" target="_6ecJZywGEduPwetnWD_-nQ" trigger="_6eSYJSwGEduPwetnWD_-nQ"/>
+        <transition xmi:id="_6ecJsCwGEduPwetnWD_-nQ" name="nodeTypeChoicePri" source="_6ecJZywGEduPwetnWD_-nQ" target="_6ecJaCwGEduPwetnWD_-nQ">
+          <guard xmi:id="_6ecJsSwGEduPwetnWD_-nQ">
+            <specification xmi:type="uml:OpaqueExpression" xmi:id="_6ecJsiwGEduPwetnWD_-nQ">
+              <body>baseClass.type==NetworkSlave.PRIMARY_TYPE</body>
+            </specification>
+          </guard>
+        </transition>
+        <transition xmi:id="_6ecJsywGEduPwetnWD_-nQ" name="nodeTypeChoiceSec" source="_6ecJZywGEduPwetnWD_-nQ" target="_6ecJmSwGEduPwetnWD_-nQ">
+          <guard xmi:id="_6ecJtCwGEduPwetnWD_-nQ">
+            <specification xmi:type="uml:OpaqueExpression" xmi:id="_6ecJtSwGEduPwetnWD_-nQ">
+              <body>baseClass.type==NetworkSlave.SECONDARY_TYPE</body>
+            </specification>
+          </guard>
+        </transition>
+      </region>
+    </ownedStateMachine>
+    <ownedAttribute xmi:id="_SjvDUCtFEduPaJa7FRF0aQ" name="type" type="_XW75QBiREduAiZRF6gzozg">
+      <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_k1BCUCtFEduPaJa7FRF0aQ">
+        <body>NetworkSlave.PRIMARY_TYPE</body>
+      </defaultValue>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_WyC20CtFEduPaJa7FRF0aQ" name="PRIMARY_TYPE" isStatic="true" type="_XW75QBiREduAiZRF6gzozg">
+      <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_b8Zb0CtFEduPaJa7FRF0aQ">
+        <body>1</body>
+      </defaultValue>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_e6FU8CtFEduPaJa7FRF0aQ" name="SECONDARY_TYPE" isStatic="true" type="_XW75QBiREduAiZRF6gzozg">
+      <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_jMtnwCtFEduPaJa7FRF0aQ">
+        <body>2</body>
+      </defaultValue>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_QCR74CxFEdunPMW9xWvKQQ" name="NodeAddress" type="_XW75QBiREduAiZRF6gzozg"/>
+    <ownedAttribute xmi:id="_XpEMICtKEduPaJa7FRF0aQ" name="configStatusRcved" type="_PPqasBiSEduAiZRF6gzozg"/>
+    <ownedAttribute xmi:id="_p7UuoCtiEduPaJa7FRF0aQ" name="configControlValue" type="_XW75QBiREduAiZRF6gzozg"/>
+    <ownedAttribute xmi:id="_ZU_dYCxFEdunPMW9xWvKQQ" name="addressList" type="_tB1PsCwqEduPwetnWD_-nQ"/>
+    <ownedAttribute xmi:id="_ZU_dYSxFEdunPMW9xWvKQQ" name="addrCount" type="_XW75QBiREduAiZRF6gzozg">
+      <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_ZU_dYixFEdunPMW9xWvKQQ">
+        <body>0</body>
+      </defaultValue>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_AhcKQC2wEdunPMW9xWvKQQ" name="FBlockIDList" type="_hNrKUBiQEduAiZRF6gzozg"/>
+    <ownedAttribute xmi:id="_D4UmgC2wEdunPMW9xWvKQQ" name="FBlockIDcount" type="_XW75QBiREduAiZRF6gzozg">
+      <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_nWpgUC2wEdunPMW9xWvKQQ">
+        <body>0</body>
+      </defaultValue>
+    </ownedAttribute>
+    <ownedOperation xmi:id="_VG03ABjBEduAiZRF6gzozg" name="GetFBlockID" type="_ARwwoBiVEduAiZRF6gzozg">
+      <returnResult xmi:id="_XJNlgBjBEduAiZRF6gzozg" name="return" type="_ARwwoBiVEduAiZRF6gzozg"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_GgqkQBjUEduAiZRF6gzozg" name="GetSetFBlockID" type="_ARwwoBiVEduAiZRF6gzozg">
+      <returnResult xmi:id="_GgqkQRjUEduAiZRF6gzozg" name="return" type="_ARwwoBiVEduAiZRF6gzozg"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_OenPwC2wEdunPMW9xWvKQQ" name="getNextFBlockID" type="_lM5dQCz6EdunPMW9xWvKQQ">
+      <ownedComment xmi:id="_T_BkUC2wEdunPMW9xWvKQQ">
+        <body>FBlockIDEntry next = (FBlockIDEntry)FBlockIDList.get(FBlockIDcount);</body>
+      </ownedComment>
+      <ownedComment xmi:id="_e9A74C2wEdunPMW9xWvKQQ">
+        <body>if(FBlockIDcount &lt; FBlockIDList.size() - 1)</body>
+      </ownedComment>
+      <ownedComment xmi:id="_i4sHQC2wEdunPMW9xWvKQQ">
+        <body>FBlockIDcount++;</body>
+      </ownedComment>
+      <ownedComment xmi:id="_l_698C2wEdunPMW9xWvKQQ">
+        <body>return next;</body>
+      </ownedComment>
+      <returnResult xmi:id="_QgZhUC2wEdunPMW9xWvKQQ" name="return" type="_lM5dQCz6EdunPMW9xWvKQQ"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_m-VcECtBEduPaJa7FRF0aQ" name="NetOn" type="_ARwwoBiVEduAiZRF6gzozg">
+      <returnResult xmi:id="_ovlXQCtBEduPaJa7FRF0aQ" name="return" type="_ARwwoBiVEduAiZRF6gzozg"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_rsBL0CtEEduPaJa7FRF0aQ" name="progress" type="_ARwwoBiVEduAiZRF6gzozg">
+      <returnResult xmi:id="_tKMaACtEEduPaJa7FRF0aQ" name="return" type="_ARwwoBiVEduAiZRF6gzozg"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_Cfre8CtHEduPaJa7FRF0aQ" name="ResolveNodeAddr" type="_ARwwoBiVEduAiZRF6gzozg">
+      <ownedComment xmi:id="_cUn3QCxFEdunPMW9xWvKQQ">
+        <body>NodeAddress=addressList[addrCount];</body>
+      </ownedComment>
+      <ownedComment xmi:id="_cUn3QSxFEdunPMW9xWvKQQ">
+        <body>if(addrCount&lt;addressList.length-1)</body>
+      </ownedComment>
+      <ownedComment xmi:id="_cUn3QixFEdunPMW9xWvKQQ">
+        <body>addrCount++;</body>
+      </ownedComment>
+      <returnResult xmi:id="_D1zkYCtHEduPaJa7FRF0aQ" name="return" type="_ARwwoBiVEduAiZRF6gzozg"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_Anz3ACtKEduPaJa7FRF0aQ" name="UpdateConfigurationStatus" type="_ARwwoBiVEduAiZRF6gzozg">
+      <ownedComment xmi:id="_gHUK0CtKEduPaJa7FRF0aQ">
+        <body>this.configStatusRcved = true;</body>
+      </ownedComment>
+      <ownedComment xmi:id="_tR5o4CtiEduPaJa7FRF0aQ">
+        <body>this.configControlValue=configControl.intValue();</body>
+      </ownedComment>
+      <returnResult xmi:id="_CbJc4CtKEduPaJa7FRF0aQ" name="return" type="_ARwwoBiVEduAiZRF6gzozg"/>
+      <ownedParameter xmi:id="_FJyNYCtKEduPaJa7FRF0aQ" name="configControl" type="_siwRYCwGEduPwetnWD_-nQ"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_5GzLkCtoEduPaJa7FRF0aQ" name="InitComplete" type="_ARwwoBiVEduAiZRF6gzozg">
+      <returnResult xmi:id="_ANC1gCtpEduPaJa7FRF0aQ" name="return" type="_ARwwoBiVEduAiZRF6gzozg"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_dfw84CwSEduPwetnWD_-nQ" name="NCE" type="_ARwwoBiVEduAiZRF6gzozg">
+      <returnResult xmi:id="_e-PtECwSEduPwetnWD_-nQ" name="return" type="_ARwwoBiVEduAiZRF6gzozg"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_govX0CxFEdunPMW9xWvKQQ" name="NetworkSlave">
+      <ownedComment xmi:id="_govX0SxFEdunPMW9xWvKQQ">
+        <body>this.addressList=addressList;</body>
+      </ownedComment>
+      <ownedParameter xmi:id="_govX0ixFEdunPMW9xWvKQQ" name="addressList" type="_tB1PsCwqEduPwetnWD_-nQ"/>
+    </ownedOperation>
+  </ownedMember>
+  <ownedMember xmi:type="uml:Class" xmi:id="_Jx8bgBiXEduAiZRF6gzozg" name="SystemState">
+    <ownedAttribute xmi:id="_Jx8bgRiXEduAiZRF6gzozg" name="OK" isStatic="true" type="_XW75QBiREduAiZRF6gzozg">
+      <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_Jx8bghiXEduAiZRF6gzozg">
+        <body>0</body>
+      </defaultValue>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_Jx8bgxiXEduAiZRF6gzozg" name="NotOK" isStatic="true" type="_XW75QBiREduAiZRF6gzozg">
+      <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_Jx8bhBiXEduAiZRF6gzozg">
+        <body>1</body>
+      </defaultValue>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_PAT90BiXEduAiZRF6gzozg" name="CurrentState" isStatic="true" type="_XW75QBiREduAiZRF6gzozg">
+      <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_e32V0CzxEdunPMW9xWvKQQ">
+        <body>SystemState.NotOK</body>
+      </defaultValue>
+    </ownedAttribute>
+  </ownedMember>
+  <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_hNrKUBiQEduAiZRF6gzozg" name="ArrayList"/>
+  <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_XW75QBiREduAiZRF6gzozg" name="int"/>
+  <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_PPqasBiSEduAiZRF6gzozg" name="boolean"/>
+  <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_ARwwoBiVEduAiZRF6gzozg" name="void"/>
+  <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_tB1PsCwqEduPwetnWD_-nQ" name="int[]"/>
+  <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_siwRYCwGEduPwetnWD_-nQ" name="Integer"/>
+  <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_Q3BhkC0AEdunPMW9xWvKQQ" name="Object"/>
+  <ownedMember xmi:type="uml:Class" xmi:id="_1M2joBiSEduAiZRF6gzozg" name="ConfigUpdateChoice">
+    <ownedAttribute xmi:id="_5G5XUBiSEduAiZRF6gzozg" name="Success" isStatic="true" type="_XW75QBiREduAiZRF6gzozg">
+      <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_8l0VQBiSEduAiZRF6gzozg">
+        <body>0</body>
+      </defaultValue>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_92ujgBiSEduAiZRF6gzozg" name="Error" isStatic="true" type="_XW75QBiREduAiZRF6gzozg">
+      <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_92ujgRiSEduAiZRF6gzozg">
+        <body>1</body>
+      </defaultValue>
+    </ownedAttribute>
+  </ownedMember>
+  <ownedMember xmi:type="uml:Class" xmi:id="_ESbUcBi7EduAiZRF6gzozg" name="MOSTSystem">
+    <packageImport xmi:id="_JVC4YCwEEduPwetnWD_-nQ" importedPackage="_eagS0CuOEduFNp-EmWxS7Q"/>
+    <ownedAttribute xmi:id="_GJfjwBi7EduAiZRF6gzozg" name="slaves" isStatic="true" type="_hNrKUBiQEduAiZRF6gzozg">
+      <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_MbwAQCwoEduPwetnWD_-nQ">
+        <body>new ArrayList()</body>
+      </defaultValue>
+    </ownedAttribute>
+    <ownedOperation xmi:id="_FhTwIBjAEduAiZRF6gzozg" name="getSlave" isStatic="true" type="_XQ37cBi7EduAiZRF6gzozg">
+      <ownedComment xmi:id="_LL24IBjAEduAiZRF6gzozg">
+        <body>return (NetworkSlave)slaves.get(pos);</body>
+      </ownedComment>
+      <returnResult xmi:id="_JGMMIBjAEduAiZRF6gzozg" name="return" type="_XQ37cBi7EduAiZRF6gzozg"/>
+      <ownedParameter xmi:id="_HOr38BjAEduAiZRF6gzozg" name="pos" type="_XW75QBiREduAiZRF6gzozg"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_LHeIYCw9EdunPMW9xWvKQQ" name="UpdateConfigurationStatusToSlave" isStatic="true" type="_ARwwoBiVEduAiZRF6gzozg">
+      <ownedComment xmi:id="_TY6aICw9EdunPMW9xWvKQQ">
+        <body>for(int i=0; i&lt;slaves.size(); i++)</body>
+      </ownedComment>
+      <ownedComment xmi:id="_XllO4Cw9EdunPMW9xWvKQQ">
+        <body>((NetworkSlave)slaves.get(i)).UpdateConfigurationStatus(new Integer(value));</body>
+      </ownedComment>
+      <returnResult xmi:id="_P2HBwCw9EdunPMW9xWvKQQ" name="return" type="_ARwwoBiVEduAiZRF6gzozg"/>
+      <ownedParameter xmi:id="_f0fKACw9EdunPMW9xWvKQQ" name="value" type="_XW75QBiREduAiZRF6gzozg"/>
+    </ownedOperation>
+  </ownedMember>
+  <ownedMember xmi:type="uml:Class" xmi:id="_3QF8MBjeEduAiZRF6gzozg" name="SystemConfigurationUpdate">
+    <ownedStateMachine xmi:id="_4BnzUCwEEduPwetnWD_-nQ" name="SCU">
+      <ownedTrigger xmi:type="uml:CallTrigger" xmi:id="_6x5ikCwEEduPwetnWD_-nQ" name="update" operation="_9F9jYBjeEduAiZRF6gzozg"/>
+      <ownedTrigger xmi:type="uml:CallTrigger" xmi:id="_6x5ikSwEEduPwetnWD_-nQ" name="SCUprogress" operation="_HWPD4BjgEduAiZRF6gzozg"/>
+      <region xmi:id="_6yDTkCwEEduPwetnWD_-nQ" name="SCU">
+        <subvertex xmi:type="uml:Pseudostate" xmi:id="_6yDTkSwEEduPwetnWD_-nQ" name="InitalSCU" outgoing="_6yDTpywEEduPwetnWD_-nQ"/>
+        <subvertex xmi:type="uml:State" xmi:id="_6yDTkiwEEduPwetnWD_-nQ" name="DefaultSCU" outgoing="_6yDToCwEEduPwetnWD_-nQ" incoming="_6yDTpywEEduPwetnWD_-nQ"/>
+        <subvertex xmi:type="uml:Pseudostate" xmi:id="_6yDTkywEEduPwetnWD_-nQ" name="ConfigUpdateChoice" outgoing="_6yDToSwEEduPwetnWD_-nQ _6yDTpCwEEduPwetnWD_-nQ" incoming="_6yDToCwEEduPwetnWD_-nQ" kind="choice"/>
+        <subvertex xmi:type="uml:State" xmi:id="_6yDTlCwEEduPwetnWD_-nQ" name="ConfigUpdateSuccess" outgoing="_6yDTnSwEEduPwetnWD_-nQ" incoming="_6yDToSwEEduPwetnWD_-nQ">
+          <entry xmi:id="_6yDTlSwEEduPwetnWD_-nQ" name="entry" body="baseClass.progress();"/>
+        </subvertex>
+        <subvertex xmi:type="uml:State" xmi:id="_6yDTliwEEduPwetnWD_-nQ" name="ConfigUpdateError" incoming="_6yDTpCwEEduPwetnWD_-nQ">
+          <entry xmi:id="_6yDTlywEEduPwetnWD_-nQ" name="entry" body="MOSTSystem.UpdateConfigurationStatusToSlave(ConfigurationControl.NotOK);SystemState.CurrentState=SystemState.NotOK;"/>
+        </subvertex>
+        <subvertex xmi:type="uml:Pseudostate" xmi:id="_6yDTmCwEEduPwetnWD_-nQ" name="ConfigUpdateSuccessChoice" outgoing="_6yDTniwEEduPwetnWD_-nQ _6yDTnywEEduPwetnWD_-nQ" incoming="_6yDTnSwEEduPwetnWD_-nQ" kind="choice"/>
+        <subvertex xmi:type="uml:State" xmi:id="_6yDTmSwEEduPwetnWD_-nQ" name="PreviousNotOK" incoming="_6yDTniwEEduPwetnWD_-nQ">
+          <entry xmi:id="_6yDTmiwEEduPwetnWD_-nQ" name="entry" body="MOSTSystem.UpdateConfigurationStatusToSlave(ConfigurationControl.OK);SystemState.CurrentState=SystemState.OK;"/>
+        </subvertex>
+        <subvertex xmi:type="uml:State" xmi:id="_6yDTmywEEduPwetnWD_-nQ" name="PreviousOK" incoming="_6yDTnywEEduPwetnWD_-nQ">
+          <entry xmi:id="_6yDTnCwEEduPwetnWD_-nQ" name="entry" body="baseClass.progress();"/>
+        </subvertex>
+        <transition xmi:id="_6yDTnSwEEduPwetnWD_-nQ" name="ConfigUpdateSuccessChoice" source="_6yDTlCwEEduPwetnWD_-nQ" target="_6yDTmCwEEduPwetnWD_-nQ" trigger="_6x5ikSwEEduPwetnWD_-nQ"/>
+        <transition xmi:id="_6yDTniwEEduPwetnWD_-nQ" name="PreviousNotOKchoice" source="_6yDTmCwEEduPwetnWD_-nQ" target="_6yDTmSwEEduPwetnWD_-nQ">
+          <guard xmi:id="_kRI18CwFEduPwetnWD_-nQ">
+            <specification xmi:type="uml:OpaqueExpression" xmi:id="_krqOwCwFEduPwetnWD_-nQ">
+              <body>SystemState.CurrentState==SystemState.NotOK</body>
+            </specification>
+          </guard>
+        </transition>
+        <transition xmi:id="_6yDTnywEEduPwetnWD_-nQ" name="PreviousOKchoice" source="_6yDTmCwEEduPwetnWD_-nQ" target="_6yDTmywEEduPwetnWD_-nQ">
+          <guard xmi:id="_qURdECwFEduPwetnWD_-nQ">
+            <specification xmi:type="uml:OpaqueExpression" xmi:id="_qURdESwFEduPwetnWD_-nQ">
+              <body>SystemState.CurrentState==SystemState.OK</body>
+            </specification>
+          </guard>
+        </transition>
+        <transition xmi:id="_6yDToCwEEduPwetnWD_-nQ" name="ConfigUpdateChoice" source="_6yDTkiwEEduPwetnWD_-nQ" target="_6yDTkywEEduPwetnWD_-nQ" trigger="_6x5ikCwEEduPwetnWD_-nQ"/>
+        <transition xmi:id="_6yDToSwEEduPwetnWD_-nQ" name="ConfigUpdateSuccesschoice" source="_6yDTkywEEduPwetnWD_-nQ" target="_6yDTlCwEEduPwetnWD_-nQ">
+          <guard xmi:id="_6yDToiwEEduPwetnWD_-nQ" name="baseClass.configUpdate==ConfigUpdateChoice.Success">
+            <specification xmi:type="uml:OpaqueExpression" xmi:id="_6yDToywEEduPwetnWD_-nQ">
+              <body>baseClass.configUpdate==ConfigUpdateChoice.Success</body>
+            </specification>
+          </guard>
+        </transition>
+        <transition xmi:id="_6yDTpCwEEduPwetnWD_-nQ" name="ConfigUpdateErrorchoice" source="_6yDTkywEEduPwetnWD_-nQ" target="_6yDTliwEEduPwetnWD_-nQ">
+          <guard xmi:id="_6yDTpSwEEduPwetnWD_-nQ" name="baseClass.configUpdate==ConfigUpdateChoice.Error">
+            <specification xmi:type="uml:OpaqueExpression" xmi:id="_6yDTpiwEEduPwetnWD_-nQ">
+              <body>baseClass.configUpdate==ConfigUpdateChoice.Error</body>
+            </specification>
+          </guard>
+        </transition>
+        <transition xmi:id="_6yDTpywEEduPwetnWD_-nQ" name="DefaultSCU" source="_6yDTkSwEEduPwetnWD_-nQ" target="_6yDTkiwEEduPwetnWD_-nQ"/>
+      </region>
+    </ownedStateMachine>
+    <ownedAttribute xmi:id="_u5UpEBjfEduAiZRF6gzozg" name="configUpdate" type="_XW75QBiREduAiZRF6gzozg"/>
+    <ownedOperation xmi:id="_9F9jYBjeEduAiZRF6gzozg" name="update" type="_ARwwoBiVEduAiZRF6gzozg">
+      <ownedComment xmi:id="_y1cgYBjfEduAiZRF6gzozg">
+        <body>configUpdate = value.intValue();</body>
+      </ownedComment>
+      <returnResult xmi:id="_BjUfgBjfEduAiZRF6gzozg" name="return" type="_ARwwoBiVEduAiZRF6gzozg"/>
+      <ownedParameter xmi:id="__ejLYBjeEduAiZRF6gzozg" name="value" type="_siwRYCwGEduPwetnWD_-nQ"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_HWPD4BjgEduAiZRF6gzozg" name="progress" visibility="package" type="_ARwwoBiVEduAiZRF6gzozg">
+      <returnResult xmi:id="_J3UgkBjgEduAiZRF6gzozg" name="return" type="_ARwwoBiVEduAiZRF6gzozg"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_DICX0Ek1EduSs6cCGT89sQ" name="SystemConfigurationUpdate" visibility="package"/>
+  </ownedMember>
+  <ownedMember xmi:type="uml:Class" xmi:id="_Q94jACtJEduPaJa7FRF0aQ" name="ConfigurationControl">
+    <ownedAttribute xmi:id="_a6TI0CtJEduPaJa7FRF0aQ" name="OK" isStatic="true" type="_XW75QBiREduAiZRF6gzozg"/>
+    <ownedAttribute xmi:id="_cvkoYCtJEduPaJa7FRF0aQ" name="NotOK" isStatic="true" type="_XW75QBiREduAiZRF6gzozg"/>
+    <ownedAttribute xmi:id="_dWA9UCtJEduPaJa7FRF0aQ" name="New" isStatic="true" type="_XW75QBiREduAiZRF6gzozg"/>
+    <ownedAttribute xmi:id="_deNQACtJEduPaJa7FRF0aQ" name="Invalid" isStatic="true" type="_XW75QBiREduAiZRF6gzozg"/>
+  </ownedMember>
+  <ownedMember xmi:type="uml:Class" xmi:id="_lM5dQCz6EdunPMW9xWvKQQ" name="FBlockIDEntry">
+    <ownedAttribute xmi:id="_WfCdgC0BEdunPMW9xWvKQQ" name="nodepos" type="_XW75QBiREduAiZRF6gzozg"/>
+    <ownedAttribute xmi:id="_nkveYCz6EdunPMW9xWvKQQ" name="NodeAddress" type="_XW75QBiREduAiZRF6gzozg"/>
+    <ownedAttribute xmi:id="_qzRP4Cz6EdunPMW9xWvKQQ" name="FBlockID" type="_XW75QBiREduAiZRF6gzozg"/>
+    <ownedAttribute xmi:id="_q_MMACz6EdunPMW9xWvKQQ" name="InstID" type="_XW75QBiREduAiZRF6gzozg"/>
+    <ownedOperation xmi:id="_I7WEcC0AEdunPMW9xWvKQQ" name="equals" type="_PPqasBiSEduAiZRF6gzozg">
+      <ownedComment xmi:id="_VPKmgC0AEdunPMW9xWvKQQ">
+        <body>FBlockIDEntry entry = (FBlockIDEntry)obj;</body>
+      </ownedComment>
+      <ownedComment xmi:id="_Y8iQIC0AEdunPMW9xWvKQQ">
+        <body>return this.NodeAddress==entry.NodeAddress &amp;&amp; this.FBlockID==entry.FBlockID &amp;&amp; this.InstID==entry.InstID;</body>
+      </ownedComment>
+      <returnResult xmi:id="_KYn6wC0AEdunPMW9xWvKQQ" name="return" type="_PPqasBiSEduAiZRF6gzozg"/>
+      <ownedParameter xmi:id="_McDLEC0AEdunPMW9xWvKQQ" name="obj" type="_Q3BhkC0AEdunPMW9xWvKQQ"/>
+    </ownedOperation>
+  </ownedMember>
+  <ownedMember xmi:type="uml:Model" xmi:id="_eagS0CuOEduFNp-EmWxS7Q" name="java.util.*"/>
+</uml:Model>

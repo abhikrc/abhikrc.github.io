@@ -1,0 +1,40 @@
+Paper #6
+
+Title: Combining Theorem Proving with Static Analysis for Data Structure
+Consistency 
+
+Authors: Karen Zee et. al.
+
+1 - How do you classify this paper? 3
+
+     3: Strong Accept
+
+     2: Weak Accept
+
+     1: Weak Reject
+
+     0: Strong Reject
+
+
+2 - What is your overall expertise concerning the subject areas of this
+paper? Z
+
+   X: I am an expert.
+   Y: I am knowledgeable in the area, though not an expert
+   Z: I am not an expert. My evaluation is that of an informed outsider.
+
+
+3 - Main Contributions of the paper
+
+The paper is certainly within the topic area of the workshop.  The main
+notion is the ability to combine various techniques (theorem proving and
+static analysis techniques) to verify program properties 
+
+4 - Points in favour or against the paper
+
+The paper is relevant and well-organized
+
+5 - Specific comments for improving the paper
+
+None.
+

@@ -1,0 +1,131 @@
+toplevel(bad_src/2).
+toplevel(bad_dest/2).
+toplevel(bad_start/1).
+
+%***************************************************************
+
+bad_dest(X, Y) :- trans(X, Y), bad(Y).
+bad_src(X, Y) :-  trans(X, Y), bad(X).
+
+bad_start(X) :- gen(X), bad(X).
+
+%-----------------------------------------------------------
+
+gen((T,nobusy, h0)) :- gen_threads(T).
+
+gen_threads([idle,idle]).
+gen_threads([idle|X]) :- gen_threads(X).
+
+%---------------------------------------------------------------
+
+trans((Th, O, H), (Th1, O1, H)) :-
+	handoff_state(H),
+	o_trans(O, in(Act), O1), 
+	trans_threads(Th, out(Act), Th1).
+
+trans((Th, O, H), (Th1, O1, H)) :-
+	handoff_state(H),
+	o_trans(O, out(Act), O1), 
+	trans_threads(Th, in(Act), Th1).
+
+trans((Th, O, H), (Th1, O, H1)) :-
+	object_state(O),
+	h_trans(H, in(Act), H1), 
+	trans_threads(Th, out(Act), Th1).
+
+trans((Th, O, H), (Th1, O, H1)) :-
+	object_state(O),
+	h_trans(H, out(Act), H1), 
+	trans_threads(Th, in(Act), Th1).
+
+
+trans_threads([Th|Rest], A, [Th1|Rest]) :- 
+	t_trans(Th, A, Th1).
+
+trans_threads([Th|Rest], A, [Th|Rest1]) :- 
+	trans_threads(Rest, A, Rest1).
+
+%---------------------------------------------------------
+
+t_trans(idle,  out(get),       owner).
+t_trans(idle,  out(get_slow),  wait_in).
+t_trans(owner, out(put),      idle).
+t_trans(owner, out(put_slow), wait_out).
+t_trans(wait_in, out(request), still_wait).
+t_trans(still_wait, in(go_ahead), owner).
+t_trans(wait_out, out(release), idle).
+
+o_trans(nobusy,    in(get),      busy_excl).
+o_trans(busy_excl, in(put),      nobusy).
+o_trans(busy_excl, in(get_slow), busy_sh).
+o_trans(busy_sh,   in(put_slow), busy_excl).
+
+h_trans(h0, in(request), h1).
+h_trans(h0, in(release), h2).
+h_trans(h1, in(release), h3).
+h_trans(h2, in(request), h3).
+h_trans(h3, out(go_ahead), h0).
+
+%-----------------------------------------------------
+
+bad((T,nobusy, h0)) :- one_more(T).
+bad((T,nobusy, h1)) :- one_more(T).
+bad((T,nobusy, h2)) :- any(T).
+bad((T,nobusy, h3)) :- any(T).
+bad((T,busy_excl, h0)) :- two_more(T).
+bad((T,busy_excl, h1)) :- two_more(T).
+bad((T,busy_excl, h2)) :- one_more(T).
+bad((T,busy_excl, h3)) :- one_more(T).
+bad((T,busy_sh, h0)) :- two_more(T).
+bad((T,busy_sh, h1)) :- two_more(T).
+bad((T,busy_sh, h2)) :- one_more(T).
+bad((T,busy_sh, h3)) :- one_more(T).
+
+
+two_more([H|X]) :- access_state(H), one_more(X).
+two_more([H|X]) :- blocked_state(H), two_more(X).
+
+one_more([H|X]) :- access_state(H), any(X).
+one_more([H|X]) :- blocked_state(H), one_more(X).
+
+any([]).
+any([H|X]) :- access_state(H), any(X).
+any([H|X]) :- blocked_state(H), any(X).
+
+%--------------------------------------------------------------
+
+thread_state(X) :- access_state(X).
+thread_state(X) :- blocked_state(X).
+
+access_state(owner).
+access_state(wait_out).
+
+blocked_state(idle).
+blocked_state(wait_in).
+blocked_state(still_wait).
+
+object_state(nobusy).
+object_state(busy_excl).
+object_state(busy_sh).
+
+handoff_state(h0).
+handoff_state(h1).
+handoff_state(h2).
+handoff_state(h3).
+
+%*****************************************************************
+
+consumer(bad/1).
+consumer(two_more/1).
+consumer(one_more/1).
+consumer(any/1).
+
+maxDepthConstant(5).   % maximum term depth to restrict infinite 
+                       % call sequences during unfolding.  
+
+unfold_flag(suspend_expand).   % expand suspended atoms if they
+                               % get instantiated.
+
+
+cleanup_flag([failed]).
+

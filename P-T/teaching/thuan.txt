@@ -1,0 +1,60 @@
+From thuanhuynh@gmail.com  Fri Jul 21 14:15:21 2006
+Return-Path: <thuanhuynh@gmail.com>
+X-Original-To: abhik@staffunix-av-mb.comp.nus.edu.sg
+Received: from e500c.comp.nus.edu.sg (e500c.comp.nus.edu.sg [137.132.90.68])
+	by sf0.comp.nus.edu.sg (Postfix) with SMTP id 2EA93E
+	for <abhik@staffunix-av-mb.comp.nus.edu.sg>; Fri, 21 Jul 2006 14:15:21 +0800 (GMT-8)
+Received: from postfix0.comp.nus.edu.sg(192.168.21.67) by e500c.comp.nus.edu.sg via csmap 
+	 id f85f6914_1880_11db_951d_003048298555_14663;
+	Fri, 21 Jul 2006 14:20:13 +0800 (SGT)
+Received: from py-out-1112.google.com (py-out-1112.google.com [64.233.166.181])
+	by postfix0.comp.nus.edu.sg (Postfix) with ESMTP id 81F3767D4
+	for <abhik@comp.nus.edu.sg>; Fri, 21 Jul 2006 14:15:19 +0800 (SGT)
+Received: by py-out-1112.google.com with SMTP id n25so1081136pyg
+        for <abhik@comp.nus.edu.sg>; Thu, 20 Jul 2006 23:15:19 -0700 (PDT)
+DomainKey-Signature: a=rsa-sha1; q=dns; c=nofws;
+        s=beta; d=gmail.com;
+        h=received:message-id:from:to:references:subject:date:mime-version:content-type:content-transfer-encoding:x-priority:x-msmail-priority:x-mailer:x-mimeole;
+        b=PDvm0YYoJE9E5qwsXS4knjXpAwuA25aFnnl5zDn30UZAWxpry9Jm3rOMUWC+4rCMxUDeU6Y46q/rI81a4lcWlQs+p5xeGvYhvg3DWGhLvO9U8xevJ2395Z46F82RpLKFRaKDiaSKL8wI4++x15jotvZsoiy6vUFxinnFjX2/vHY=
+Received: by 10.35.93.15 with SMTP id v15mr582823pyl;
+        Thu, 20 Jul 2006 23:15:19 -0700 (PDT)
+Received: from oops ( [58.186.14.67])
+        by mx.gmail.com with ESMTP id 22sm1341706nzn.2006.07.20.23.15.17;
+        Thu, 20 Jul 2006 23:15:18 -0700 (PDT)
+Message-ID: <0f4901c6ac8c$cb8e3010$0100000a@oops>
+From: "Thuan Huynh" <thuanhuynh@gmail.com>
+To: "Abhik Roychoudhury" <abhik@comp.nus.edu.sg>
+References: <Pine.GSO.4.58.0607111502190.6281@sf0.comp.nus.edu.sg> <0eda01c6ac7b$7fd072c0$0100000a@oops> <Pine.GSO.4.58.0607211249000.9870@sf0.comp.nus.edu.sg>
+Subject: Re: paper & code
+Date: Fri, 21 Jul 2006 13:13:28 +0700
+MIME-Version: 1.0
+Content-Type: text/plain;
+	format=flowed;
+	charset="iso-8859-1";
+	reply-type=original
+Content-Transfer-Encoding: 7bit
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2900.2869
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2900.2869
+Status: R
+X-Status: 
+X-Keywords:                  
+
+Dear Dr Abhik,
+
+Today is exactly one year from the time I got the workstation and started 
+working in the lab. It's been a wonderful year for me. I just want to take 
+this opportunity to say thank. You have taught me many important things 
+which will be very useful in my life. I even learned to joke a little near 
+the end! I appreciate the freedom that you usually gave me to think, I 
+believe these week-long comfortable time to work really helped in producing 
+those good results. In the mean time, I love way the meeting times are 
+strictly scheduled and planned.
+It is just impossible to list all the things, I can only say Thank you very 
+much, Dr Abhik :)
+
+Thuan
+
+
+

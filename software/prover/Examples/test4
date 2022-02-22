@@ -1,0 +1,12 @@
+
+pgm_clause(c1, (p :- b), (1,1)).
+pgm_clause(c2, (p :- e,p), (1,1)).
+pgm_clause(c3, (q :- c), (1,1)).
+pgm_clause(c4, (q :- e,q), (1,1)).
+
+pgm_clause(c5, (b :- d), (1,1)).
+pgm_clause(c6, (c :- d), (1,1)).
+
+
+pgm_clause(c7, (p(f(X)) :- q(f(X)), r(g(X))), (1,1)).
+pgm_clause(c8, (p(X) :- q(X)), (1,1)).

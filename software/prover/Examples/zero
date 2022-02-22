@@ -1,0 +1,64 @@
+toplevel(zero_dest/2).
+toplevel(zero_src/2).
+
+%---------------------------
+%  assume the following
+%  	proved(new1/2, new2/2).
+%   	proved(new3/2, new4/2).
+%       proved(new5/2, false/2).
+
+
+new1(a, b).
+new2(c, d).
+new3(_, _).
+new4(_, _).
+new5(_, _).
+zero_owner(_).
+trans_rest(_, _, _).
+
+zero_dest([valid],[valid]).
+
+zero_dest([valid,invalid|_h139281],[valid,invalid|_h139281]) :- zero_owner(_h139281).
+
+zero_dest([valid,valid|_h139281],[valid,valid|_h139281]) :- zero_owner(_h139281).
+
+zero_dest([invalid|_h139281],[invalid|_h139282]) :- zero_dest(_h139281,_h139282).
+
+zero_dest([valid|_h139281],[valid|_h139282]) :- zero_dest(_h139281,_h139282).
+
+zero_dest([valid,invalid|_h139281],[invalid,invalid|_h139282]) :- new1(_h139281,_h139282).
+
+zero_dest([valid,valid|_h139281],[invalid,valid|_h139282]) :- new1(_h139281,_h139282).
+
+zero_dest([invalid,invalid|_h139281],[valid,invalid|_h139282]) :- new3(_h139281,_h139282).
+
+zero_dest([invalid,valid|_h139281],[valid,valid|_h139282]) :- new3(_h139281,_h139282).
+
+%zero_dest([own1,invalid|_h139281],[valid,invalid|_h139282]) :- new5(_h139281,_h139282).
+
+%zero_dest([own1,valid|_h139281],[valid,valid|_h139282]) :- new5(_h139281,_h139282).
+
+%------------------------------------------------------------------
+
+zero_src([valid],[valid]).
+
+zero_src([valid,invalid|_h139281],[valid,invalid|_h139281]) :- zero_owner(_h139281).
+
+zero_src([valid,valid|_h139281],[valid,valid|_h139281]) :- zero_owner(_h139281).
+
+zero_src([valid,invalid|_h139283],[own1,invalid|_h139287]) :- trans_rest(_h139283,out(ot),_h139287)  ','  zero_owner(_h139283).
+
+zero_src([valid,valid|_h139283],[own1,valid|_h139287]) :- trans_rest(_h139283,out(ot),_h139287)  ','  zero_owner(_h139283).
+
+zero_src([invalid|_h139281],[invalid|_h139282]) :- zero_src(_h139281,_h139282).
+
+zero_src([valid|_h139281],[valid|_h139282]) :- zero_src(_h139281,_h139282).
+
+zero_src([valid,invalid|_h139281],[invalid,invalid|_h139282]) :- new2(_h139281,_h139282).
+
+zero_src([valid,valid|_h139281],[invalid,valid|_h139282]) :- new2(_h139281,_h139282).
+
+zero_src([invalid,invalid|_h139281],[valid,invalid|_h139282]) :- new4(_h139281,_h139282).
+
+zero_src([invalid,valid|_h139281],[valid,valid|_h139282]) :- new4(_h139281,_h139282).
+

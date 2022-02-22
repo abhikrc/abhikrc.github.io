@@ -1,0 +1,34 @@
+
+toplevel(p/1).
+toplevel(f1/2).
+toplevel(f2/2).
+
+%--------------------------------------------------------------
+% the MUX program from Pnueli's CAV '97 paper
+% local state of a process = (has, control_state)
+% has : boolean (has the token ?)
+% control_state \in {ncrit, try, crit}
+
+gen([(ncrit, true)]).
+gen([(ncrit, false) | List]) :- gen(List).
+
+trans([H|T], [H|T1]) :- trans(T, T1).
+trans([A|T], [A1|T]) :- rewrite([A], [A1]).
+trans([A,B|T], [A1,B1|T]) :- rewrite([A,B], [A1,B1]).
+
+rewrite( [(ncrit, X)], [(try, X)] ).
+rewrite([(crit, X)], [(ncrit, X)]).
+rewrite( [(try, true)], [(crit, true)]).
+rewrite( [(try, false), (ncrit, true)], [(try, true), (ncrit, false)]).
+
+bad([(_,true) | List]) :- one_more(List).
+bad([_ | List]) :- bad(List).
+
+one_more([(_,true) | _]).
+one_more([_ | List]) :- one_more(List).
+
+p(X) :- gen(X), bad(X).
+
+f1(X, Y) :- trans(X, Y), bad(X).
+f2(X, Y) :- trans(X, Y), bad(Y).
+

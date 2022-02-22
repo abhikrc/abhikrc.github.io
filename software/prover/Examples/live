@@ -1,0 +1,26 @@
+
+toplevel(thm/1).
+
+%---------------------------------------
+
+thm(X) :- gen(X), live(X).
+
+gen([]).
+gen([0|X]) :- gen(X).
+
+live(X) :- canon(X).
+live(X) :- trans(X, Y), live(Y).
+
+canon([]).
+canon([1|X]) :- canon(X).
+
+trans([], []).
+trans([0|T], [1|T]).
+trans([1|T], [1|T1]) :- trans(T, T1).
+
+%------------------------------------
+
+annot(inductive(gen(_))).
+annot(inductive(live(_))).
+annot(inductive(canon(_))).
+annot(inductive(trans(_, _))).

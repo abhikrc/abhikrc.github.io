@@ -1,0 +1,11 @@
+ 
+pgm_clause(c1, (nat(X) :- even(X)), (1,1)).
+pgm_clause(c2, (nat(X) :- odd(X)), (1,1)).
+pgm_clause(c3, (even(0) :- true), (1,1)).
+pgm_clause(c4, (even(s(s(X))) :- even(X)), (1,1)).
+pgm_clause(c5, (odd(s(0)) :- true), (1,1)).
+pgm_clause(c6, (odd(s(s(X))) :- odd(X)), (1,1)).
+
+inductive(even(_)).
+inductive(odd(_)).
+

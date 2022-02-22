@@ -1,0 +1,91 @@
+toplevel(bad_start/1).
+toplevel(bad_src/2).
+toplevel(bad_dest/2).
+
+%------------------------------------------------------
+
+bad_start(X) :- gen(X), bad(X).
+bad_dest(X, Y) :- trans(X, Y), bad(Y).
+bad_src(X, Y) :- trans(X, Y), bad(X).
+
+%--------------------------------------------------
+
+gen([]).
+gen([i|X]) :- gen(X).
+
+%---------------------------------------
+
+trans(S, T) :- trans_bcast(S, read, T).  % only read miss
+trans(S, T) :- trans_bcast(S, write_hit, T).
+trans(S, T) :- trans_bcast(S, write_miss, T).
+
+trans_bcast([H|T], Act, [H1|T1]) :- 
+	ltrans(H, out(Act), H1), trans_all(T, Act, T1).
+trans_bcast([H|T], Act, [H1|T1]) :- 
+	ltrans(H, in(Act), H1), trans_bcast(T, Act, T1).
+
+trans_all([], _, []).
+trans_all([H|T], Act, [H1|T1]) :-
+	ltrans(H, in(Act), H1), trans_all(T, Act, T1).
+
+
+%-----------------------------------------------------------
+% Modelled from Archibald and Baer : AB86
+% local states : i = invalid
+%                v = valid
+%		 s = shared-dirty
+%                d = dirty
+
+% out(read) = read action by own processor  
+%     -- i.e. local processor requests
+% in(read)  = read action by some other processor
+%     -- i.e. remote processor requests over the bus
+
+
+ltrans(i, out(read), 
+
+
+%********************************
+
+bad([d|X]) :- one_more(X).
+bad([s|X]) :- bad(X).
+bad([v|X]) :- bad(X).
+bad([i|X]) :- bad(X).
+
+one_more([d|X]) :- any(X).
+one_more([s|X]) :- one_more(X).
+one_more([v|X]) :- one_more(X).
+one_more([i|X]) :- one_more(X).
+
+any([]).
+any([d|X]) :- any(X).
+any([s|X]) :- any(X).
+any([v|X]) :- any(X).
+any([i|X]) :- any(X).
+
+%----------------------------------------------------------------------
+
+consumer(one_more/1).
+consumer(bad/1).
+consumer(any/1).
+
+always_unfold(ltrans/3).
+
+maxDepthConstant(4).   % maximum term depth to restrict infinite 
+                       % call sequences during unfolding.  
+
+unfold_flag(suspend_expand).   % expand suspended atoms if they
+                               % get instantiated.
+
+%unfold_flag(nonconsumer_freeze). % do not expand a clause body 
+				 % if it has only open atoms.
+
+cleanup_flag([failed]).   
+		    % allows setting options for cleanup of clauses
+		    % periodically. Currently, allows removing subsumed
+		    % and failed clauses. Obviously then we have 4
+		    % User options: cleanup_flag([])
+		    %               cleanup_flag([subsumed]).
+		    %               cleanup_flag([failed]).
+	            %               cleanup_flag([subsumed, failed]).
+		    % Caution: Cleanups may slow down the prover considerably.

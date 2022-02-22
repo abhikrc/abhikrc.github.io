@@ -1,0 +1,20 @@
+toplevel(thm/1).
+
+fib(0, 0).
+fib(s(0), s(0)).
+fib(s(s(X)), F) :- fib(X, F1), fib(s(X), F2), plus_int(F1, F2, F).
+
+plus_int(0, Y, Y).
+plus_int(s(X), Y, s(Z)) :- plus_int(X, Y, Z).
+
+exp2(0, s(0)).
+exp2(s(N), M2) :- exp2(N, M), mul2(M, M2).
+
+mul2(0, 0).
+mul2(s(N), s(s(M))) :- mul2(N, M).
+
+thm(N) :- fib(N, F), exp2(N, E), lt(F, E).
+
+lt(0, s(_X)).
+lt(s(N), s(M)) :- lt(N, M).
+

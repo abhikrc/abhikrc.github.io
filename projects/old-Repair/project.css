@@ -1,0 +1,67 @@
+#header{
+	color: #EFEFEF;
+	height: 100px;
+	background-image: url(./header.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	min-width: 1024px;
+	}
+
+a.tag{
+		font-family: arial;
+		color: white;
+		text-decoration: none;
+	}
+	
+a.tag:hover{
+		background-color: white;
+		color: black;
+	}
+
+.whitefont{
+	color: white;
+}
+	
+.paper{
+		color: black;
+		font-weight: bold; 
+	}
+	
+.author{
+		color: black;
+		font-style: italic;
+		font-weight: normal;
+	}
+		
+.conference {
+		color: red;
+	}
+	
+.award{
+		color: red;
+		font-weight: bold;
+	}
+
+#parag img{float:left; margin:0 10px 10px 0;}
+
+.content{
+	color: black;
+	font-family: arial;
+}
+
+.title{
+	color: black;
+	font-weight: bold;
+	font-family: arial;
+	}	
+	
+.researchtopic{
+	color: red;
+	}
+li {
+		padding-right: 100px;
+	}
+	
+h2, li{
+		font-family: arial;
+	}

@@ -1,0 +1,101 @@
+\section{Introduction}
+
+The last decades have witnessed significant advances in {\em
+  model-based techniques} for specification, implementation,
+verification, and validation of reactive and usually distributed
+systems, e.g., in telecommunication, embedded control, and related
+application areas. The techniques include model
+checking~\cite{Uppaal:nutshell,SPIN}, code
+generation~\cite{Harel:statemate} and model-based test
+generation~\cite{FJJV:scp97,SEG:testtools}.  They all assume that a
+formal model of the system under study is available.  Such formal
+models are assumed to be developed during the specification phase of
+system development, or {\em a posteriori} from an existing
+implementation.
+
+One large obstacle to the adoption of model-based techniques is that
+in practice, quite often \emph{no} formal specification is
+available or it is \emph{outdated} due to the iteration process in the
+development of a system. Even if a formal specification is present
+that captures the latest version of the system intended to develop, it
+is not clear whether it corresponds to its actual realization. 
+
+One approach to overcome these limitations is to develop techniques
+for generating formal models with less manual effort and more automated
+support. In the extreme case, a formal model could be generated
+a posteriori, from the developed system. If no model of the
+system under development was present, this model can be used to
+analyze and validate the implementation. If a formal model was
+available a priori, the generated model can be compared with this one
+to show conformance of the implementation with respect to its
+specification.
+
+For software systems with given source code, various static and
+dynamic analysis techniques have been developed, which can also be used
+to generate abstract models of a developed
+system~\cite{Cetal:bandera,Holzmann:spin00}.
+However, peripheral hardware systems, combined
+hard- and software systems, or third-party software systems do not
+allow means of static analysis. In practice, there is often no other
+way to analyze these systems than by looking at their traces, i.e., 
+their sequences of input and output actions.  Also, a program that
+analyzes the source code statically is heavily dependent on the
+particular implementation language used. A tool that analyzes
+externally observed traces is easier to adapt to a new program written
+in a new language.
+
+In a seminal paper, Angluin \cite{Angluin:regset} described a method
+for learning finite-state automata, if it is possible to ask whether a
+string is a member of the language of the automata. This
+result implies that, in principle, finite-state automata can be
+learned for finite-state systems that have the following two
+characteristics:
+\begin{itemize}
+\item one can send sequences of actions to the system and
+\item the system signals whether it could execute the sequence.
+\end{itemize}
+This approach has been used in projects for test sequence generation
+by Steffen et al.\ 
+\cite{HHNS:modelgeneration}, and by Peled et al.\ for developing
+techniques for conformance testing of finite
+automata~\cite{GPY:adaptive}. 
+The number of reported efforts to use Angluin's algorithm (or some
+related algorithm) for generating finite automata models of reactive systems
+is still rather small and it is still not possible to make
+conclusions about the applicability of the techniques, how well it
+scales, or to pinpoint the crucial bottlenecks.
+
+The objective of the research reported in this project is to
+investigate the efficiency of Angluin's algorithm for learning finite
+automata, and among them models of reactive systems, to investigate
+potential bottlenecks in applying it, and to investigate the effect of
+a rather straight-forward optimization for prefix-closed DFA. For this
+purpose, we have developed a naive implementation of Angluin's
+algorithm together with an optimization, which can optionally be
+invoked. We have applied this implementation to a series of
+synthetically generated systems, and to a set of rather simple models
+of reactive systems intended for verification by the Concurrency
+Workbench. From the results, we draw conclusions regarding the
+applicability and scalability of Angluin's algorithm, as well as the
+effect of our implemented optimization.
+
+\cite{HungarNS03} studies domain-specific optimizations to Angluin's
+learning algorithm including optimizations for prefix-closed
+languages. They have considered examples from telecommunication
+software but not studied the performance on synthetic examples. They
+have in this article used a slightly different model and therefore we
+could not easily compare our results. In \cite{Angluin01}, Angluin
+revisits his algorithm and discusses several variants and their
+complexity. Practical results, however, are not mentioned.
+
+In the next section, we recall basic definition of automata theory. In
+Section~\ref{sec:angluin}, we describe Angluin's learning algorithm as
+well as our optimization for prefix-closed languages. Our experiments
+are described and discussed in Section~\ref{sec:results}.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "main"
+%%% TeX-master: "main"
+%%% End:
+

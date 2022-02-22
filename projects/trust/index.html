@@ -1,0 +1,220 @@
+<html>
+<head>
+<link rel=stylesheet href="project.css" type="text/css">
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<title>Analysis and Test Case Generation of Evolving Software</title>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<table align="center" bgcolor="black" width="100%">
+<tr>
+<td></td>
+<td><div class="whitefont">
+ <a href="#overview" class="tag">Overview </a>  |
+  <a href="#updates" class="tag">Updates  </a> |
+  <a href="#publications" class="tag">Publications </a> | 
+  <a href="#people" class="tag">People </a> | 
+  <a href="#acknowledge" class="tag">Acknowledgement</a>
+</div>
+</td>
+<td align="right"><a href="mailto:abhik@comp.nus.edu.sg" class="tag">Contact Us</a></td>
+</tr>
+</table>
+
+<!-- Header -->
+<table align="center" width="100%" bgcolor="#EFEFEF" id="header">
+<tr align="center">
+<td></td>
+<td ></td> 
+<td></td>
+</tr>
+</table>
+<hr>
+
+<!-- Overview part -->
+<table align="center" width="100%">
+<tr>
+<td></td>
+<td>
+<h2><font size="6">CoDeTest: Comprehension, Detection and Testing via Symbolic 
+Execution</font></h2>
+<a name="overview">
+<h2>&nbsp;</h2>
+<h2>+Overview:</h2></a>
+<div id="parag">&nbsp;<p class="MsoNormal">
+	<span style="font-size:12.0pt;line-height:115%;font-family:
+&quot;Arial&quot;,&quot;sans-serif&quot;">Software is the heart of our societal 
+	infra-structure and software reliability is thus of paramount importance. 
+	Over the decades – various validation techniques for enhancing software 
+	reliability have been studied. These include: testing, debugging, program 
+	analysis, model checking, theorem proving, and various combinations of these 
+	methods.&nbsp; However, (at least) three factors limit their scale / 
+	applicability.</span></p>
+	<p class="MsoNormal">
+	<span style="font-size:12.0pt;line-height:115%;font-family:
+&quot;Arial&quot;,&quot;sans-serif&quot;">First of all, many of the methods 
+	require a specification of intended behavior of the software. This limits 
+	the automated application of such techniques – for example, model checking 
+	requires temporal properties to be verified, and the temporal property has 
+	to be given as an input to the technique. It is widely acknowledged that in 
+	the real-life<i> software is often devoid of any specifications</i>. 
+	Secondly, many of the methods operate on source code. Indeed, parts of a 
+	large program may be obtained from third-parties, even say as a service 
+	downloaded from the internet. Moreover, for widely-used libraries (which are 
+	used in an application), only the binary code may be available. In other 
+	words, in the real-life <i>source code of (parts of) a program may be 
+	unavailable</i>. Last but not the least, almost all validation methods 
+	operate on the latest program version while ignoring its origins. Any 
+	large-scale software development goes through a substantial evolution</span>.</p>
+	<p class="MsoNormal">
+	<span style="font-size:12.0pt;line-height:115%;font-family:
+&quot;Arial&quot;,&quot;sans-serif&quot;">In this project, we aim to build 
+	integrated analysis engines for standard programming languages like C, C++ 
+	which address these three scalability and applicability issues. Apart from 
+	enhancing software reliability, (fragments of) such analysis tools can be 
+	envisioned to enhance programmer productivity. We also discuss three 
+	specific usages of our integrated analysis engine – which we plan to pursue 
+	as part of this project. These three usages lie in software comprehension, 
+	error detection and non-invasive testing. The three specific usages include 
+	- witnessing execution of crashes, continuous software testing and 
+	understanding obfuscated software.</span></p>
+<p class="content">&nbsp;</p></div>
+<p><br>
+</td>
+<td></td>
+<td></td>
+</tr>
+
+<!-- Updates part -->
+<tr>
+<td></td>
+<td colspan="2"><a name="updates"><h2>+Updates:</h2></a>
+<ul>
+<li><font color="#FF0000"><b>RA and RF positions have been filled.</b></font><br></li>
+</ul>
+</td>
+<td></td>
+</tr>
+
+
+<!-- Publications part -->
+<!-- Data of publication is stored within 'li' tag.-->
+<tr>
+<td></td>
+<td colspan="2"><a name="publications"><h2>+Publications:</h2>   
+<font face="Arial"> 
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>[ICSE]</b></p> <p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">
+<b>Hercules: Reproducing Crashes in Real-World Application Binaries</b></p> <p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">
+Van Thuan Pham, Wei Boon Ng, Konstantin Rubinov, Abhik Roychoudhury</p> <p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">ACM/IEEE International Conference  on Software Engineering (ICSE) 2015.</p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">&nbsp;</p> </font>   </a>
+<font face="Arial">
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>[ESEC-FSE]</b></p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>Regression Tests to Expose 
+Change Interaction Errors </b></p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">Marcel
+<span class="scopediv profilePagePersonStringStringString profilePage" id="profilePagePersonStringStringString1">
+	<span class="scopediv body" id="body1"><span class="section section1">
+	<span class="scopediv pageHeader" id="pageHeader1">
+	<span class="scopediv ofPersonPerson ofPerson" id="ofPersonPerson1">
+	<span class="scopediv ofUserUser ofUser" id="ofUserUser1">
+	Böhme</span></span></span></span></span></span>, Bruno C.d.S. 
+Oliveira, Abhik Roychoudhury</p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">ESEC/FSE '13, Joint meeting of ACM SIGSOFT symposium and European conference on Foundations of 
+software engineering,&nbsp;2013</p>
+
+<font face="Arial" size="2">
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">&nbsp;</p>
+</font>
+
+</font>
+<div class="conference"><br></div>
+</td>
+<td></td>
+</tr>
+
+<!-- People part -->
+<tr>
+<td></td>
+<td><a name="people"><h2>+Current Members:</h2></a>
+
+<ul>
+<li><div class="title"><b><font face="Arial">Faculty Member: 
+	</font></b> 
+	<p><font face="Arial"><a class="author" href="http://www.comp.nus.edu.sg/~abhik/">
+	<span style="font-style: normal"><font color="#800080">Abhik Roychoudhury </li>
+	</font></span>
+	</a></font></p>
+	<p><br></div>
+<li><div class="title"><b><font face="Arial">Post-doctoral Research Fellow:
+	</font></b>
+	<p> <font face="Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Konstantin 
+	Rubinov, PhD University of Lugano Switzerland 2013, joined Oct 2013<br></font></div>
+<li>
+<div class="title"><b><font face="Arial">PhD Students:</font></b></div>
+<font face="Arial"><br>
+	</font>
+	<ul>
+	<li><font face="Arial"><a href="http://www.comp.nus.edu.sg/~mboehme">
+	<font color="#800080">Marcel Böhme</font></a> (August 2009 - ) :
+	<span class="researchtopic">Testing of Evolving Programs.</span></li><br>
+	</font>
+	<li><font face="Arial">Thuan Pham Van<br></font>
+	</ul><font face="Arial">
+</li> </font>
+
+<li>
+<div class="title"> <b><font face="Arial">Research Assistants </font></b> <ul>
+		<li><font face="Arial">Mingyuan Gao, Joined Sept 2013</font></li>
+	</ul>
+</div>
+</li>
+</ul>
+
+</td>
+<td></td>
+</tr>
+
+
+<!-- Acknowledgement part -->
+<tr>
+<td></td>
+<td><a name="acknowledge"><h2>+Acknowledgements:</h2></a>
+<p class="content"><font face="Arial">This project is funded by a substantial research grant from
+ DSO Labs (2013-15). This support is gratefully acknowledged.</font></p><br>
+</td>
+<td></td>
+</tr>
+</table>
+
+<!-- Footbar part -->
+<table align="center" bgcolor="black" width="100%">
+<tr>
+<td></td>
+<td><div class="whitefont">
+ <a href="#overview" class="tag">Overview </a>  |
+  <a href="#updates" class="tag">Updates  </a> |
+  <a href="#publications" class="tag">Publications </a> | 
+  <a href="#people" class="tag">People </a> | 
+  <a href="#acknowledge" class="tag">Acknowledgement</a>
+</div>
+</td>
+<td align="right"><a href="mailto:abhik@comp.nus.edu.sg" class="tag">Contact Us</a></td>
+</tr>
+</table>
+
+<!-- Links -->
+<table align="center" width="100%">
+<tr>
+<td></td>
+<td  valign="middle" align="center" colspan="2">
+<a href="http://www.nus.edu.sg" class="content">National University of Singapore</a> &nbsp; | &nbsp;
+<a href="http://www.comp.nus.edu.sg" class="content">School of Computing</a> &nbsp; | &nbsp;
+<a href="http://www.moe.gov.sg/" class="content">Ministry of Education</a>
+</td>
+<td></td>
+</tr>
+</table>
+
+</body>
+</html>

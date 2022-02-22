@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Program repair@NUS</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" integrity="sha384-2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="style.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <nav class="navbar navbar-static-top navbar-light apr-navbar">
+	<ul class="nav navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#projects">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#publications">Publications</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#people">People</a>
+          </li>
+	</ul>
+      </nav>
+
+    </div><!-- /.container -->
+
+    <div class="container">
+
+      <div class="row apr-pageheader">
+	<div class="col-sm-9">
+	  <div>
+            <h1 class="display-3">Program repair@NUS</h1>
+            <p class="lead">Research on practical automated program repair techniques and their applications</p>
+	  </div>
+	</div>
+	<div class="col-sm-3">
+	  <img src="images/nuslogo.jpg" class="img-fluid pull-xs-right">
+      </div>
+
+      </div><!-- /.container -->
+
+    <!-- About
+    ================================================== -->      
+      
+    <div class="container apr-content" id="about">
+      
+      <p>
+	Software almost always has bugs. Many of these bugs cause serious problems such as software crash and leaking sensitive user information. To fix these bugs, software engineers have been fighting an endless battle with bugs. The cost of this battle is enormous—$312 billion per year globally as of 2012 according to <a href="http://insight.jbs.cam.ac.uk/2013/financial-content-cambridge-university-study-states-software-bugs-cost-economy-312-billion-per-year/">Cambridge University research</a> (in comparison, the GDP of Singapore is $308 billion as of 2014). This high cost is due to that software developers spend about 50% of their time debugging. To reduce this high cost, debugging needs to be automated. In this regard, we are conducting research on automated program repair.
+      </p>
+      <p>
+	The main innovation of our automated program repair lies in our semantic approach. Instead of randomly mutating the buggy program to find a repair, our tools analyze the semantics of the buggy program to extract repair constraints. A repair that satisfies these repair constraints is guaranteed to fix the bug (this repair passes the failing test that manifested the bug of the buggy program). Our repair tools automatically synthesize such a repair that satisfies the repair constraints that are also automatically extracted. Apart from this semantics-based program repair, our research also involves other useful repair and repair-related techniques such as repairing regression errors and reproducing crashes of code so that developers can repair the bug. We envision that in the future, automatic bug fix will be integrated into a software development toolset. Similar to that automatic spelling correction is widely used nowadays, we believe that automatic bug fix will be widespread in the future.
+      </p>
+    </div><!-- /.container -->
+      
+
+    <!-- Projects. Recommended image size: 560 x 315
+    ================================================== -->      
+
+    <div class="container apr-content" id="projects">
+      <h1 class="display-4 apr-header">Projects</h1>
+
+      <div class="row">
+	<div class="col-sm-4">
+
+	  <div class="card">
+	    <img class="card-img-top img-fluid" src="images/antipatterns.png">	    
+	    <div class="card-block">
+	      <h4 class="card-title">Anti-patterns</h4>
+	      <p class="card-text">Enforce anti-patterns in repair tools to repair faster, localize better & delete less.</p>
+	      <a href="https://anti-patterns.github.io/search-based-repair/" class="card-link">Visit website</a>
+	    </div>
+	  </div>
+	  
+	</div>
+	
+	<div class="col-sm-4">
+
+	  <div class="card">
+	    <div class="card-img-top embed-responsive embed-responsive-16by9">
+	      <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/EHBjMSQvIpg" allowfullscreen></iframe>
+	    </div>
+	    <div class="card-block">
+	      <h4 class="card-title">Angelix</h4>
+	      <p class="card-text">Test-driven semantics-based program repair tool for C programs.</p>
+	      <a href="http://angelix.io" class="card-link">Visit website</a>
+	    </div>
+	  </div>
+	  
+	</div>
+	<div class="col-sm-4">
+	  <div class="card">
+	    <img class="card-img-top img-fluid" src="images/relifix.png">
+	    <div class="card-block">
+	      <h4 class="card-title font-italic">relifix</h4>
+	      <p class="card-text">Search-based approach for repairing software regressions.</p>
+	      <a href="https://www.comp.nus.edu.sg/~abhik/pdf/ICSE15-relifix.pdf" class="card-link">Publication</a>
+	    </div>
+	  </div>
+	  
+	</div>
+    </div><!-- /.container -->
+
+    
+    <!-- Publications
+    ================================================== -->      
+
+    <div class="container apr-content" id="publications">
+      <h1 class="display-4 apr-header">Publications</h1>
+
+      <div class="list-group">
+
+	<li class="list-group-item">
+	  <h5 class="list-group-item-heading">Formula-based Software Debugging</h5>
+	  <p class="list-group-item-text">Abhik Roychoudhury and Satish Chandra</p>
+	  <p class="list-group-item-text">Communications of the ACM, 59(7), July 2016</p>
+	</li>
+
+	<li class="list-group-item">
+	  <a type="button" href="https://www.comp.nus.edu.sg/~abhik/pdf/FSE16.pdf" class="btn btn-secondary pull-xs-right">PDF</a>
+	  <h5 class="list-group-item-heading">Anti-patterns in Search-based Program Repair</h5>
+	  <p class="list-group-item-text">Shin Hwei Tan, Hiroaki Yoshida, Mukul Prasad, Abhik Roychoudhury</p>
+	  <p class="list-group-item-text">ACM SIGSOFT International Symposium on Foundations of Software Engineering (FSE) 2016</p>
+	</li>
+
+	<li class="list-group-item">
+	  <a type="button" href="http://www.comp.nus.edu.sg/~abhik/pdf/ICSE16-angelix.pdf" class="btn btn-secondary pull-xs-right">PDF</a>
+	  <h5 class="list-group-item-heading">Angelix: Scalable Multiline Program Patch Synthesis via Symbolic Analysis</h5>
+	  <p class="list-group-item-text">Sergey Mechtaev, Jooyong Yi, Abhik Roychoudhury</p>
+	  <p class="list-group-item-text">ACM/IEEE International Conference on Software Engineering (ICSE) 2016</p>
+	</li>
+	
+	<li class="list-group-item">
+	  <a type="button" href="http://www.comp.nus.edu.sg/~abhik/pdf/ICSE15-relifix.pdf" class="btn btn-secondary pull-xs-right">PDF</a>
+	  <h5 class="list-group-item-heading">relifix: Automated Repair of Software Regressions</h5>
+	  <p class="list-group-item-text">Shin Hwei Tan, Abhik Roychoudhury</p>
+	  <p class="list-group-item-text">ACM/IEEE International Conference on Software Engineering (ICSE) 2015</p>
+	</li>
+
+	<li class="list-group-item">
+	  <a type="button" href="http://www.comp.nus.edu.sg/~abhik/pdf/ICSE15-directfix.pdf" class="btn btn-secondary pull-xs-right">PDF</a>
+	  <h5 class="list-group-item-heading">DirectFix: Looking for Simple Program Repairs</h5>
+	  <p class="list-group-item-text">Sergey Mechtaev, Jooyong Yi, Abhik Roychoudhury</p>
+	  <p class="list-group-item-text">ACM/IEEE International Conference on Software Engineering (ICSE) 2015</p>
+	</li>
+
+	<li class="list-group-item">
+	  <a type="button" href="http://www.comp.nus.edu.sg/~abhik/pdf/ICSE13-SEMFIX.pdf" class="btn btn-secondary pull-xs-right">PDF</a>
+	  <h5 class="list-group-item-heading">SemFix: Program Repair via Semantic Analysis</h5>
+	  <p class="list-group-item-text">Hoang Duong Thien Nguyen, Dawei Qi, Abhik Roychoudhury, Satish Chandra</p>
+	  <p class="list-group-item-text">ACM/IEEE International Conference on Software Engineering (ICSE) 2013</p>
+	</li>
+
+      </div>
+      
+    </div><!-- /.container -->
+
+    <!-- People. Square pictures are recommended.
+    ================================================== -->      
+
+    <div class="container apr-content" id="people">
+      <h1 class="display-4 apr-header">People</h1>
+
+      <div class="row">
+
+	<div class="col-sm-3">
+	  <div class="card">
+	    <img border="0" src="../../abhik-pictures/2011.jpg" width="167" height="244">
+	    <div class="card-block">
+	      <h4 class="card-title">Abhik Roychoudhury</h4>
+	      <h6 class="card-subtitle text-muted">Professor</h6>
+	      <a href="http://www.comp.nus.edu.sg/~abhik/" class="card-link">Visit website</a>
+	    </div>
+	  </div>
+	</div>
+	
+	<div class="col-sm-3">
+	  <div class="card">
+	    <img class="card-img-top img-fluid" src="images/jooyong.jpg">
+	    <div class="card-block">
+	      <h4 class="card-title">Jooyong Yi</h4>
+	      <h6 class="card-subtitle text-muted">Senior Research Fellow</h6>
+	      <a href="http://www.comp.nus.edu.sg/~leejy/" class="card-link">Visit website</a>
+	    </div>
+	  </div>
+	</div>
+      
+	<div class="col-sm-3">
+	  <div class="card">
+	    <img class="card-img-top img-fluid" src="images/shinhwei.jpg">
+	    <div class="card-block">
+	      <h4 class="card-title">Shin Hwei Tan</h4>
+	      <h6 class="card-subtitle text-muted">PhD student</h6>
+	      <a href="http://www.comp.nus.edu.sg/~shinhwei/" class="card-link">Visit website</a>
+	    </div>
+	  </div>
+	</div>
+    
+	<div class="col-sm-3">
+	  <div class="card">
+	    <img class="card-img-top img-fluid" src="images/sergey.jpg">
+	    <div class="card-block">
+	      <h4 class="card-title">Sergey Mechtaev</h4>
+	      <h6 class="card-subtitle text-muted">PhD student</h6>
+	      <a href="http://www.comp.nus.edu.sg/~mechtaev/" class="card-link">Visit website</a>
+	    </div>
+	  </div>
+	</div>
+
+      </div>
+    </div><!-- /.container -->
+
+
+    <footer class="text-muted">
+      <div class="container apr-content">
+        <p class="pull-xs-right">
+          <a href="#">Back to top</a>
+        </p>
+
+	<p>This project is part of an umbrella project, <a href="http://www.comp.nus.edu.sg/~tsunami/" class="content">TSUNAMi</a>, funded by a substantial research grant from <a href="http://www.nrf.gov.sg/" class="content">NRF</a>. <br/> This support is gratefully acknowledged.
+      </div>
+      
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/js/bootstrap.min.js" integrity="sha384-VjEeINv9OSwtWFLAtmc4JCtEJXXBub00gtSnszmspDLCtC0I4z4nqz7rEFbIZLLU" crossorigin="anonymous"></script>
+  </body>
+
+
+</html>

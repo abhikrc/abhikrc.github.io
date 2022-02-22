@@ -1,0 +1,2 @@
+Time to map slice: 159ms
+Time for hierarchy slice: 1086ms

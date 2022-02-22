@@ -1,0 +1,28 @@
+
+pgm_clause(c1, (gen([0,1]) :- true), (1,1)).
+pgm_clause(c2, (gen([0|X]) :- gen(X)), (1,1)).
+pgm_clause(c3, (trans(X, Y) :- trans1(X, Y)), (1,1)).
+pgm_clause(c4, (trans([1|X], [0|Y]) :- trans2(X, Y)), (1,1)).
+pgm_clause(c5, (trans1([0,1|T], [1,0|T]) :- true), (1,1)).
+pgm_clause(c6, (trans1([H|T], [H|T1]) :- trans1(T, T1)), (1,1)).
+pgm_clause(c7, (trans2([0], [1]) :- true), (1,1)).
+pgm_clause(c8, (trans2([H|X], [H|Y]) :- trans2(X, Y)), (1,1)).
+
+pgm_clause(c9,  (bad([1|X]) :- one_more(X)), (1,1)).
+pgm_clause(c10, (bad([0|X]) :- bad(X)), (1,1)).
+pgm_clause(c11, (one_more([1|_]) :- true), (1,1)).
+pgm_clause(c12, (one_more([0|X]) :- one_more(X)), (1,1)).
+
+pgm_clause(c13, (bad_start(X) :- gen(X), bad(X)), (1,1)).
+pgm_clause(c14, (bad_src(X,Y) :- trans(X,Y), bad(X)), (1,1)).
+pgm_clause(c15, (bad_dest(X,Y) :- trans(X,Y),bad(Y)), (1,1)).
+
+%--------------------------------------------------------------
+
+inductive(gen(_)).
+inductive(bad(_)).
+inductive(one_more(_)).
+inductive(trans1(_,_)).
+inductive(trans2(_,_)).
+
+proof_stack([]).

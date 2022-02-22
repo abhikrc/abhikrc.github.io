@@ -1,0 +1,75 @@
+
+toplevel(gen/2).
+toplevel(trans/2).
+
+% O(nlgn) Leader Election protocol with unbounded buffers 
+% parameterized w.r.t. number of processes.
+
+% the local state of a process v is a 4-tuple:
+% 	( cstate(v), max(v), left(v), buffer(v) )
+% cstate(v) \in {init, first, second, winner, inactive}  (Control State)
+% max(v), left(v) \leq N
+% buffer(v) is a FIFO queue in which incoming messages are stored.
+
+% NOTE : Can use this specification to verify safety properties like
+%        AG ( < 2 winner) (like a mutex property)
+
+% Try AGEF ( >= 1 winner) as a challenge problem (with negation)
+%    do not unfold across negation, but handle negation by 
+%    spawning off new proof obligations. 
+
+gen(0, [(init, 0, _, [])]).
+
+gen(s(N), L) :- gen(N, L1), insert((init, s(N), _, []), L1, L).
+
+trans(S, T) :- trans_chain(S, T).
+trans([B|S], [B1|T]) :- 
+	rewrite([A,B], [A1,B1]),
+	trans_round(S, A, A1, T).
+
+trans_round([A], A, A1, [A1]).
+trans_round([H|T], A, A1, [H|T1]) :- trans_round(T, A, A1, T1).
+	
+trans_chain([H|T], [H|T1]) :- trans_chain(T, T1).
+trans_chain([A|T], [A1|T]) :- rewrite([A], [A1]).
+trans_chain([A,B|T], [A1,B1|T]) :- rewrite([A,B], [A1, B1]).
+
+rewrite( [(init, Max, Left, Buf), (C1, Max1, Left1, Buf1)],
+         [(first,Max, Left, Buf), (C1, Max1, Left1, Buf2)] )
+	:- append(Buf1, [Max], Buf2).
+
+rewrite( [(first, Max, Left, [Max|Buf])], [(winner,Max, Left, Buf)] ).
+
+rewrite( [(first, Max, _, [I|Buf]), (C1, Max1, Left1, Buf1)],
+         [(second, Max, I, Buf), (C1, Max1, Left1, Buf2) ] )
+	:- neq(I, Max), append(Buf1, [I], Buf2).
+
+rewrite( [(second, Max, Left, [J|Buf]), (C1, Max1, Left1, Buf1)],
+         [(first, Left, Left, Buf), (C1, Max1, Left1, Buf2)] )
+	:- gt(Left, J), gt(Left, Max), append(Buf1, [Left], Buf2).
+
+rewrite( [(second, Max, Left, [_|Buf])], [(inactive, _, _, Buf)] ) 
+	:- leq(Left, Max).
+
+rewrite( [(second, _, Left, [J|Buf])], [(inactive, _, _, Buf)] ) 
+	:- leq(Left, J).
+
+rewrite( [(inactive, _, _, [I|Buf]), (C1, Max1, Left1, Buf1)],
+         [(inactive, _, _, Buf), (C1, Max1, Left1, Buf2)] )
+	:- append(Buf1, [I], Buf2). 
+
+neq(s(X), s(Y)) :- neq(X, Y).
+neq(0, s(_)).
+neq(s(_), 0).
+
+gt(s(X), s(Y)) :- gt(X, Y).
+gt(s(_), 0).
+
+leq(s(X), s(Y)) :- leq(X, Y).
+leq(0, _).
+
+append([H|X], Y, [H|Z]) :- append(X, Y, Z).
+append([], X, X).
+
+insert(X, [H|T], [H|T1]) :- insert(X, T, T1).
+insert(X, L, [X|L]).

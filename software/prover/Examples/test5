@@ -1,0 +1,14 @@
+
+
+clauseI(c1, (p(0) :- true), (1,1)).
+clauseI(c2, (p(s(X)) :- p(X)), (1,1)).
+
+clauseI(c3, (q(0) :- true), (1,1)).
+clauseI(c4, (q(s(X)) :- q(X)), (1,1)).
+
+clauseI(c0, (thm(X) :- top(X)), (1,1)).
+
+clauseI(c6, (top(X) :- p(X), q(X)), (1,1)).
+  
+inductive(p(_)).
+inductive(q(_)).

@@ -1,0 +1,397 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.73 [en] (Win98; U) [Netscape]">
+   <title>Abhik's Current Research</title>
+	<style>
+<!--
+ h3 {font-weight:bold; text-decoration:none;} h3 {padding-bottom:1px; margin-top:1.2em;margin-bottom:0.3em;} h3 {font-size:1.1em;} h3 {color:#841; background:transparent;} h3 {border-bottom:1px solid #ccc;} h3 {font-weight:bold; text-decoration:none;} h3 {padding-bottom:1px; margin-top:1.2em;margin-bottom:0.3em;} h3 {font-size:1.1em;} h3 {color:#841; background:transparent;} h3 {border-bottom:1px solid #ccc;} h3 {font-weight:bold; text-decoration:none;} h3 {padding-bottom:1px; margin-top:1.2em;margin-bottom:0.3em;} h3 {font-size:1.1em;} h3 {color:#841; background:transparent;} h3 {border-bottom:1px solid #ccc;} h3 {font-weight:bold; text-decoration:none;} h3 {padding-bottom:1px; margin-top:1.2em;margin-bottom:0.3em;} h3 {font-size:1.1em;} h3 {color:#841; background:transparent;} h3 {border-bottom:1px solid #ccc;} h3 {font-weight:bold; text-decoration:none;} h3 {padding-bottom:1px; margin-top:1.2em;margin-bottom:0.3em;} h3 {font-size:1.1em;} h3 {color:#841; background:transparent;} h3 {border-bottom:1px solid #ccc;} h3 {font-weight:bold; text-decoration:none;} h3 {padding-bottom:1px; margin-top:1.2em;margin-bottom:0.3em;} h3 {font-size:1.1em;} h3 {color:#841; background:transparent;} h3 {border-bottom:1px solid #ccc;} h3 {font-weight:bold; text-decoration:none;} h3 {padding-bottom:1px; margin-top:1.2em;margin-bottom:0.3em;} h3 {font-size:1.1em;} h3 {color:#841; background:transparent;} h3 {border-bottom:1px solid #ccc;} h3 {font-weight:bold; text-decoration:none;} h3 {padding-bottom:1px; margin-top:1.2em;margin-bottom:0.3em;} h3 {font-size:1.1em;} h3 {color:#841; background:transparent;} h3 {border-bottom:1px solid #ccc;} h3 {font-weight:bold; text-decoration:none;} h3 {padding-bottom:1px; margin-top:1.2em;margin-bottom:0.3em;} h3 {font-size:1.1em;} h3 {color:#841; background:transparent;} h3 {border-bottom:1px solid #ccc;} h3 {font-weight:bold; text-decoration:none;} h3 {padding-bottom:1px; margin-top:1.2em;margin-bottom:0.3em;} h3 {font-size:1.1em;} h3 {color:#841; background:transparent;} h3 {border-bottom:1px solid #ccc;} h3 {font-weight:bold; text-decoration:none;} h3 {padding-bottom:1px; margin-top:1.2em;margin-bottom:0.3em;} h3 {font-size:1.1em;} h3 {color:#841; background:transparent;} h3 {border-bottom:1px solid #ccc;}span.SpellE
+	{}
+-->
+</style>
+</head>
+<body bgcolor="#FFFFFF">
+
+<p>
+<font face="Arial" size="6" color="#800000"><b>Projects on Software 
+Timing/Performance Validation</b></font><p>
+<b><font face="Arial" size="6" color="#800000">(offered by
+<a href="http://www.comp.nus.edu.sg/~abhik">Abhik Roychoudhury</a>)</font></b><p>
+&nbsp;</p>
+<p><b><font face="Arial" size="5" color="#800000">1. Timing Analysis and 
+Optimization for Multi-cores </font>
+<font face="Arial" size="5" color="#FF0000">(Current)</font></b></p>
+<p>
+<b><font face="Arial" color="#800000">[Description]</font></b><hr>
+<p><img border="0" src="figures/multicore.jpg" width="243" height="245"></p>
+<p>
+										<font size="2" face="Arial">Timing 
+										analysis is a critical problem for real 
+										time embedded systems. Giving a tight 
+										estimate is important so that real time 
+										tasks should meet the expected deadline. 
+										With the advent of multi-core 
+										technologies, giving a tight time 
+										estimate becomes an increasingly 
+										difficult problem. While there had been 
+										extensive research developments for 
+										single processor systems in this area, 
+										very few of them concentrate on multiple 
+										cores. The safe solution developed for 
+										single processor systems may not be safe 
+										at all in presence of multiple cores due 
+										to the timing anomaly problem. At the 
+										same time giving a tighter estimate is 
+										also important considering the effect of 
+										all the processing elements. Our goal is 
+										to develop analysis methods for timing 
+										estimate as well as develop techniques 
+										for efficient usage of system resources 
+										(e.g. cache memory) in presence of 
+										multiple cores.
+										First we want to concentrate on the WCET (Worst Case Execution Time) 
+										parameter for a single tasking non-preemptive system. This means that once 
+										a thread is run in one core, it cannot 
+										be preempted. In this case our aim is to 
+										analyze the interference in shared 
+										memory hierarchy (e.g. shared L2 cache 
+										among all cores) to obtain a tight WCET 
+										estimate.
+										Subsequently we want to concentrate on 
+										preemptive multi-tasking system 
+										executing in multiple cores. One of the 
+										main parameter to be analyzed here is 
+										cache related preemption delay (CRPD).&nbsp;
+										Lastly we want to perform compile time 
+										analysis technique to optimize the 
+										performance of programs executing in 
+										multiple cores. Specifically we want to 
+										concentrate on efficient use of memory for 
+										concurrent embedded programs in multiple 
+										cores leading to optimized WCET and/or 
+										average case execution time (ACET).</font></p>
+<p>
+<b><font face="Arial" color="#800000">[Project Webpage]</font></b><hr><p>
+<b><font face="Arial" size="2">
+<a href="http://www.comp.nus.edu.sg/~rpembed/chronos"><font color="#800080">
+Click Here</font></a></font></b><p>
+&nbsp;<p>
+<b><font face="Arial" color="#800000">[PhD Student]</font></b><hr>
+<p><font face="Arial" size="2"><b>
+<a href="http://www.comp.nus.edu.sg/~sudiptac"><font color="#800080">Sudipta 
+Chattopadhyay</font></a> </b>(current)<b>, Vivy Suhendra </b>(graduated)</font></p>
+<p>
+&nbsp;<p>
+<b><font face="Arial" color="#800000">[Sample Publications]</font></b><hr>
+<font face="Arial" size="2">
+
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">&nbsp;</p>
+
+<font face="Arial">
+
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>A Unified WCET Analysis 
+Framework for Multi-core Platforms</b></font><font face="Arial" size="4"><font face="Arial" size="2"><br>
+Sudipta Chattopadhyay, Chong Lee Kee, Abhik Roychoudhury, Timon Kelter, Peter 
+Marwedel and Heiko Falk<br>
+18th IEEE Real-time and Embedded Technology and Applications Symposium (RTAS) 
+2012.</font></p>
+
+</font><p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">&nbsp;</p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>Scalable and Precise 
+Refinement of Cache Timing Analysis via Model Checking 
+</b>( <a href="../pdf/rtss11-aimc.pdf"><font color="#800080">pdf </font></a>)</p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">Sudipta Chattopadhyay and Abhik Roychoudhury</p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">IEEE Real-time Systems Symposium (RTSS) 2011. <font color="#FF0000">Best paper Award nomination.</font></p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">&nbsp;</p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>Bus-Aware Multicore WCET 
+Analysis through TDMA Offset Bounds</b></p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">Timon Kelter, Heiko Falk, Peter 
+Marwedel, Sudipta Chattopadhyay and Abhik Roychoudhury</p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">23rd Euromicro Conference on 
+Real-time Systems (ECRTS) 2011.</p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">&nbsp;</p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>
+Static Bus Schedule aware Scratchpad Allocation in Multiprocessors </b>[
+<font color="#800080"><a href="../pdf/lctes11.pdf"><font color="#800080">Paper</font></a></font> 
+]<br>
+Sudipta Chattopadhyay and Abhik Roychoudhury<br>
+ACM SIGPLAN/SIGBED Conference on Languages, Compilers and Tools for Embedded 
+Systems (LCTES) 2011.</p>
+</font>
+<p><span class="multiline">
+											<font face="Arial" size="2"><strong>
+											Modeling 
+											Shared Cache and Bus in Multi-core 
+											Platforms for Timing Analysis (
+<a href="../pdf/scopes10.pdf"><font color="#800080">pdf </font></a>)</strong></font></span><font face="Arial" size="2"><span class="multiline"><br>
+											<em style="font-style: normal">Sudipta Chattopadhyay, Abhik 
+											Roychoudhury and Tulika Mitra</em><br>
+											</span>13th International Workshop 
+on Software and Compilers for Embedded Systems (SCOPES) 2010.</font></p>
+<p>
+<font face="Arial" size="2">
+<b>Timing Analysis of Concurrent 
+Programs Running on Shared Cache Multi-cores </b>(
+<a href="http://www.comp.nus.edu.sg/~abhik/pdf/rtss09-sharedCache.pdf">
+<font color="#800080">pdf</font></a> )<br>
+<span class="SpellE">Yan Li, Vivy Suhendra, Yun Liang, Tulika Mitra </span>and
+<span class="SpellE">Abhik</span> <span class="SpellE">Roychoudhury</span><br>
+IEEE Real-time System Symposium (RTSS) 2009.</font></p>
+<hr><hr>
+<p style="margin-top: 0px; margin-bottom: 0px">&nbsp;</p>
+<p>
+&nbsp;<p>
+<b><font size="5" face="Arial" color="#800000">2. Timing Analysis of 
+Model-driven Software 
+</font><font size="5" face="Arial" color="#FF0000">(Current)</font></b><p>
+<b><font face="Arial" color="#800000">[Description]</font></b><hr>
+<p>
+<img border="0" src="figures/timing.jpg" width="212" height="215"><p>
+<font size="2" face="Arial">Real-time embedded 
+					systems are ubiquitous, appearing in diverse application 
+					domains such as avionics, automobiles, and consumer 
+					electronics. For safety-critical embedded systems,system 
+					design from high-level behavioral models is of paramount 
+					importance. In such design flows,the entire system 
+					description is developed as a high-level model and code is 
+					automatically generated from these models. In this project, 
+					we develop methodologies/tools to support timing analysis at 
+					the model level for model-based design of real-time control 
+					software. In particular, we plan to pursue the following 
+					research directions in this project.</font><ul style="margin-left: 0.5em; padding-left: 1.5em">
+							<li><font size="2" face="Arial">Relating software timing 
+						analysis to high-level behavioral models </font></li>
+							<li><font size="2" face="Arial">Relating system-level 
+						performance analysis to high-level behavioral models</font></li>
+							<li><font size="2" face="Arial">Validating idealized 
+						timing assumptions made at model level via 
+						platform-aware software analysis</font></li>
+						</ul>
+						<p>
+<b><font face="Arial" color="#800000">[Project Webpage]</font></b><hr><p>
+<b><font face="Arial" size="2">
+<a href="http://www.comp.nus.edu.sg/~abhik/projects/model-timing/index.html">
+<font color="#800080">Click Here</font></a></font></b><p>
+&nbsp;<p>
+<b><font face="Arial" color="#800000">[PhD Student]</font></b><hr>
+<p>
+<font color="#800080"><b><a href="http://www.comp.nus.edu.sg/~julei">
+<font color="#800080" face="Arial" size="2">Ju Lei</font></a><font face="Arial" size="2"> 
+(graduated), 
+Huynh Bach Khoa.</font></b></font><p>
+&nbsp;<p>
+<b><font face="Arial" color="#800000">[Sample Publications]</font></b><hr>
+<font face="Arial" size="2">
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>Timing Analysis of Esterel 
+Programs on General-purpose Multiprocessors</b></p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">Lei Ju, Bach Khoa Huynh, Abhik 
+Roychoudhury and Samarjit Chakraborty</p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">ACM Design Automation Conference 
+(DAC) 2010.</p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">&nbsp;</p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>Context-Sensitive Timing 
+Analysis of Esterel Programs </b>(<a href="http://www.comp.nus.edu.sg/~abhik/pdf/dac09-esterel.pdf"><font color="#800080">pdf</font></a>)</p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">Lei Ju, Bach Khoa Huynh, Samarjit 
+Chakraborty and Abhik Roychoudhury</p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">ACM Design Automation Conference 
+(DAC) 2009, [Short Paper].</p>
+</font><font face="Arial" size="2">
+<p><b>Performance Debugging of Esterel Specifications</b> (<font color="#800080">
+</font><a href="http://www.comp.nus.edu.sg/~abhik/pdf/codes08-esterel.pdf">
+<font color="#800080">pdf</font></a><font color="#800080"> </font>)<br>
+Lei Ju, Bach Khoa Huynh, Abhik Roychoudhury and Samarjit Chakraborty<br>
+ACM Intl. Conference on Hardware/Software Codesign and System Synthesis (CODES+ISSS) 
+2008. </p>
+</font>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b><font face="Arial" size="2">
+Schedulability analysis of MSC-based system models</font></b><font face="Arial" size="2"> 
+( <a href="http://www.comp.nus.edu.sg/~abhik/pdf/rtas08.pdf">
+<font color="#800080">pdf</font></a> )<br>
+Lei Ju, Abhik Roychoudhury and Samarjit Chakraborty<br>
+IEEE Real-Time and Embedded Technology and Applications Symposium (RTAS) 2008.</font></p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">&nbsp;</p>
+<hr><hr>
+<p>
+&nbsp;
+</p>
+<p style="margin-top: 0px; margin-bottom: 0px"><b>
+<font face="Arial" size="5" color="#800000">3. Worst-case Execution Time 
+Analysis </font><font face="Arial" size="5" color="#FF0000">(Still Active)</font></b></p>
+<p style="margin-top: 0px; margin-bottom: 0px">&nbsp;</p>
+<p>
+<b><font face="Arial" color="#800000">[Description]</font></b><hr>
+<p> 									
+										<font face="Arial" size="2">
+										<img border="0" src="figures/chronos.png" width="147" height="166"></font></p>
+<p> 									<font face="Arial" size="2">
+										We have built a WCET analyzer Chronos, 
+										which performs timing analysis of 
+										embedded software through static 
+										analysis. In particular, Chronos 
+										estimates Worst Case Execution Time (WCET), 
+										which is the upper bound on the 
+										execution time of a program over all 
+										possible data inputs on a specific 
+										hardware platform. WCET of a task is an 
+										essential input to the schedulability 
+										analysis of hard real-time systems. It 
+is difficult to estimate the WCET through simulation for any non-trivial program 
+due to the very large number of possible inputs. Thus static analysis techniques 
+are employed to derive an upper bound on the WCET of a program. One important 
+yet difficult problem for static timing analysis is to model the timing effects 
+of complex micro-architectural features present in modern processors, such as 
+out-of-order execution, branch prediction, and caches. Chronos accurately models 
+various architectural features (including out-of-order execution, branch 
+prediction, instruction cache) and their interactions for WCET analysis.</font></p>
+<p>
+<b><font face="Arial" color="#800000">[PhD Student]</font></b><hr>
+<p><b><font face="Arial" size="2">Li Xianfeng (graduated, joined Beijing 
+University, China)</font></b></p>
+<p>
+&nbsp;<p>
+<b><font face="Arial" color="#800000">[Sample Publications]</font></b><hr>
+<font face="Arial" size="2">
+
+</font><p><font face="Arial" size="2">
+											<span class="multiline"><strong>
+											Chronos: A Timing Analyzer for 
+											Embedded Software </strong>(<a class="externalLink" title="External link to http://www.comp.nus.edu.sg/~abhik/pdf/scp07.pdf" target="_blank" href="http://www.comp.nus.edu.sg/~abhik/pdf/scp07.pdf">pdf</a>)<br>
+											<em>Xianfeng Li, Yun Liang, Tulika 
+											Mitra and Abhik Roychoudhury</em><br>
+											Science of Computer Programming, 
+											Volume 69, December 2007.</span></font></p>
+<font face="Arial" size="2">
+
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>Timing Analysis of a Protected 
+Operating System Kernel
+</b>( <a href="../pdf/rtss11-os.pdf"><font color="#800080">pdf </font></a>)</p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">Bernard Blackham, Yao Shi, 
+Sudipta Chattopadhyay, Abhik Roychoudhury and Gernot Heiser</p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">IEEE Real-time Systems Symposium (RTSS) 2011.</p>
+
+</font><font face="Arial" size="4">
+
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">&nbsp;</p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><font face="Arial" size="2"><b>
+Scope-aware Data Cache Analysis for WCET Estimation [ </b><font color="#800080">
+<a href="../pdf/RTAS11.pdf">
+<font color="#800080">Paper</font></a>, <a href="../pdf/TR20-10.pdf"><font color="#800080">Technical Report with all proofs</font></a></font></a><font color="#800080">
+</font><b>]</b><br>
+Bach Khoa Huynh, Lei Ju and Abhik Roychoudhury<br>
+17th IEEE Real-time and Embedded Technology and Applications Symposium (RTAS) 
+2011. <font color="#FF0000">Best paper Award nomination.</font></font></p>
+
+</font>
+<p><span class="multiline">
+											<font face="Arial" size="2"><strong>
+											Unified Cache Modeling for WCET 
+											Analysis and Layout Optimizations (<a href="../pdf/rtss09.pdf">pdf</a>)</strong><br>
+											<em>Sudipta Chattopadhyay, Abhik 
+											Roychoudhury </em><br>
+											IEEE Real-time Systems Symposium (RTSS) 
+											2009</font>.</span></p>
+<p><font face="Arial" size="2">
+											<span class="multiline"><strong>
+											Modeling Control Speculation for 
+											Timing Analysis </strong>(<a class="externalLink" title="External link to http://www.comp.nus.edu.sg/~abhik/pdf/rts-jnl04.pdf" target="_blank" href="http://www.comp.nus.edu.sg/~abhik/pdf/rts-jnl04.pdf">pdf</a>)<br>
+											<em>Xianfeng Li, Tulika Mitra and 
+											Abhik Roychoudhury</em><br>
+											Real-Time Systems Journal, Springer, 
+											29(1), 2005</span></font></p>
+<p><font face="Arial" size="2">
+											<span class="multiline"><strong>
+											Modeling Out-of-Order Processors for 
+											WCET Analysis </strong>(<a class="externalLink" title="External link to http://www.comp.nus.edu.sg/~abhik/pdf/rts-jnl06.pdf" target="_blank" href="http://www.comp.nus.edu.sg/~abhik/pdf/rts-jnl06.pdf">pdf</a>)<br>
+											<em>Xianfeng Li, Abhik Roychoudhury 
+											and Tulika Mitra</em><br>
+											Real-Time Systems Journal, Springer, 
+											34(3), pg 195-227, 2006</span></font></p>
+<hr><hr>
+<p><b><font face="Arial" size="5" color="#800000">4. Worst-case Execution Time 
+driven Optimizations </font><font face="Arial" size="5" color="#FF0000">(Completed)</font></b></p>
+<p>
+<b><font face="Arial" color="#800000">[Description]</font></b><hr>
+<p>
+										<font face="Arial" size="2">
+										<img border="0" src="figures/vivy_project.jpg" width="276" height="177"></font></p>
+<p><font face="Arial" size="2">
+										Embedded systems generally include fast 
+										memory on-chip to speed up execution 
+										time. In the presence of real-time 
+										constraints, the concern is to improve 
+										the worst-case execution time (WCET) of 
+										the application. Most systems configure 
+										these memories as caches, whose effect 
+										has to be modeled in the WCET analysis. 
+										Alternatively, software-controlled 
+										caching techniques (locking, 
+										partitioning) are employed to enable 
+										tighter WCET estimation. In the 
+										multiprocessing context, there has not 
+										been much advances in shared cache 
+										analysis. Recent years have seen the 
+										surge in popularity of scratchpad 
+										memory, which has completely predictable 
+										timing behavior. Researches have 
+										investigated methods to select most 
+										beneficial memory blocks to be allocated 
+										into the scratchpad, mostly focusing on 
+										the average-case optimization of 
+										sequential applications.
+										Our project have looked at scratchpad 
+										allocation techniques specifically 
+										targeted at worst-case performance 
+										optimization. The techniques are coupled 
+										with the WCET analysis routine based on 
+										the
+										<a class="externalLink" title="External link to http://www.comp.nus.edu.sg/~rpembed/chronos/" target="_blank" href="http://www.comp.nus.edu.sg/~rpembed/chronos/">
+										Chronos tool</a>. Following this effort, 
+										we have proposed scratchpad allocation 
+										schemes aimed at minimizing the 
+										worst-case response time of concurrent 
+										applications, taking into account the 
+										effect of process interactions. Still in 
+										the context of multiprocessing, we have 
+										also proposed integrated scratchpad 
+										allocation and task scheduling to 
+										achieve optimal scratchpad utilization. 
+										Finally, complementing the research on 
+										cache-based multiprocessors, we have 
+										evaluated shared cache management 
+										schemes that maintain complete 
+										predictability by combining the cache 
+										locking and partitioning strategies.</font><br>
+&nbsp;</p>
+<p>
+<b><font face="Arial" color="#800000">[PhD Student]</font></b><hr>
+<p><b><font face="Arial" size="2">Vivy Suhendra (graduated, joined Institute of 
+Infocomm Research, Singapore)</font></b></p>
+<p>
+&nbsp;<p>
+<b><font face="Arial" color="#800000">[Sample Publications]</font></b><hr>
+<p><font face="Arial" size="2">
+											<span class="multiline"><strong>WCET 
+											Centric Data Allocation to 
+											Scratchpad Memory </strong>(<a class="externalLink" title="External link to http://www.comp.nus.edu.sg/~vivy/Research/rtss2005.pdf" target="_blank" href="../pdf/rtss05.pdf">pdf</a>)<br>
+											<em>Vivy Suhendra, Tulika Mitra, 
+											Abhik Roychoudhury and Ting Chen</em><br>
+											IEEE Real-Time Systems Symposium (RTSS) 
+2005</span></font></p>
+<p><span class="multiline">
+											<font face="Arial" size="2"><strong>
+											Scratchpad Allocation for Concurrent 
+											Embedded Software</strong>(<a href="http://www.comp.nus.edu.sg/~abhik/pdf/codes08-spm.pdf"> 
+											Conference version </a>,
+<a href="../pdf/toplas10.pdf">Journal version</a>)<br>
+											<em>Vivy Suhendra, Abhik 
+											Roychoudhury and Tulika Mitra</em><br>
+											ACM Transactions on Programming 
+											Languages and Systems (TOPLAS), 
+32(4), 2010. Initial Version appeard in 
+											ACM International Conference on 
+											Hardware/Software Codesign and 
+											System Synthesis (CODES+ISSS) 2008</font></span></p>
+<hr><hr>
+</body>
+</html>

@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99c (Web2C 7.4.5)
+The top-level auxiliary file: rensink.aux
+The style file: entcs.bst
+Database file #1: local.bib
+Warning--empty pages in Rens04-avis
+Warning--empty pages in Reyn02
+You've used 25 entries,
+            2561 wiz_defined-function locations,
+            785 strings with 9805 characters,
+and the built_in function-call counts, 11073 in all, are:
+= -- 959
+> -- 554
+< -- 28
++ -- 193
+- -- 163
+* -- 1009
+:= -- 1576
+add.period$ -- 27
+call.type$ -- 25
+change.case$ -- 146
+chr.to.int$ -- 0
+cite$ -- 27
+duplicate$ -- 528
+empty$ -- 881
+format.name$ -- 191
+if$ -- 2397
+int.to.chr$ -- 0
+int.to.str$ -- 25
+missing$ -- 23
+newline$ -- 82
+num.names$ -- 75
+pop$ -- 157
+preamble$ -- 1
+purify$ -- 122
+quote$ -- 0
+skip$ -- 389
+stack$ -- 0
+substring$ -- 712
+swap$ -- 283
+text.length$ -- 27
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 97
+warning$ -- 2
+while$ -- 117
+width$ -- 27
+write$ -- 230
+(There were 2 warnings)

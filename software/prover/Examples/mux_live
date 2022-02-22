@@ -1,0 +1,32 @@
+
+% the MUX program from Pnueli's CAV '97 paper
+% local state of a process = (has, control_state)
+% has : boolean (has the token ?)
+% control_state \in {ncrit, try, crit}
+
+pgm_clause(c1, ( gen([(ncrit, true)]) :- true), (1,1)).
+pgm_clause(c2, ( gen([(ncrit, false) | List]) :- gen(List)), (1,1)).
+
+pgm_clause(c3, ( trans([H|T], [H|T1]) :- trans(T, T1)), (1,1)).
+pgm_clause(c4, ( trans([A|T], [A1|T]) :- rewrite([A], [A1])), (1,1)).
+pgm_clause(c5, ( trans([A,B|T], [A1,B1|T]) :- rewrite([A,B], [A1,B1])), (1,1)).
+
+pgm_clause(c6, (rewrite( [(ncrit, X)], [(try, X)] ) :- true), (1,1)).
+pgm_clause(c7, (rewrite([(crit, X)], [(ncrit, X)]) :- true), (1,1)).
+pgm_clause(c8, (rewrite( [(try, true)], [(crit, true)]) :- true), (1,1)).
+pgm_clause(c9, (rewrite( [(try, false), (ncrit, true)], [(try, true), (ncrit, false)]) :- true), (1,1)).
+
+% Eventually the leftmost process acquires the token and finishes
+% its job in the critical section.
+%
+pgm_clause(c10, (live(X) :- X = [(ncrit,true)|_]), (1,1)).
+pgm_clause(c11, (live(X) :- trans(X, Y), live(Y)), (1,1)).
+
+pgm_clause(c12, (thm(X) :- gen(X), live(X)), (1,1)).
+%-----------------------------------------------------------------
+
+inductive(gen(_)).
+inductive(trans(_,_)).
+inductive(live(_)).
+
+proof_stack([]).

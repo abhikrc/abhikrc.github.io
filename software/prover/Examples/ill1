@@ -1,0 +1,147 @@
+toplevel(bad_start/1).
+toplevel(bad_src/2).
+toplevel(bad_dest/2).
+
+%------------------------------------------------------
+
+bad_start(X) :- gen(X), bad(X).
+bad_dest(X, Y) :- trans(X, Y), bad(Y).
+
+bad_src(X, Y) :- trans(X, Y), bad(X).
+
+%--------------------------------------------------
+
+gen([]).
+gen([i|X]) :- gen(X).
+
+%------------------------------------------------------
+% out(read) = read action by own processor
+% in(read)  = read action by some other processor
+
+trans(S, T) :- action(A),  trans_bcast(S, S, A, T).
+
+trans_bcast([H|T], S, Act, [H1|T1]) :- 
+	ltrans(H, S, out(Act), H1), trans_all(T, S, Act, T1).
+trans_bcast([H|T], S, Act, [H1|T1]) :- 
+	ltrans(H, S, in(Act), H1), trans_bcast(T, S, Act, T1).
+
+trans_all([], _, _, []).
+trans_all([H|T], S, Act, [H1|T1]) :-
+	ltrans(H, S, in(Act), H1), trans_all(T, S, Act, T1).
+
+%--------------------------
+
+action(read).
+action(write).
+action(replace).
+
+%-----------------------------------------------------------
+
+% local states : i = invalid
+%                v = valid-exclusive
+%		 s = shared
+%                d = dirty
+
+ltrans(i, _, in(read), i).
+ltrans(i, _, in(write), i).
+ltrans(i, _, in(replace), i).
+
+ltrans(i, S, out(read), v) :- inv1(S).
+ltrans(i, S, out(read), s) :- inv2m(S).
+ltrans(i, _, out(write), d).
+
+ltrans(v, _, in(read), s).
+ltrans(v, _, in(write), i).
+ltrans(v, _, in(replace), v).  % this can never occur
+
+ltrans(v, _, out(replace), i).
+ltrans(v, _, out(write), d).
+ltrans(v, _, out(read), v).
+
+ltrans(s, _, in(read), s).
+ltrans(s, _, in(write), i).
+ltrans(s, _, in(replace), s).
+
+ltrans(s, _, out(replace), i).
+ltrans(s, _, out(write), d).
+
+ltrans(d, _, in(read), s).
+ltrans(d, _, in(write), i).
+ltrans(d, _, in(replace), d). % this can never occur
+
+ltrans(d, _, out(read), d).
+ltrans(d, _, out(write), d).
+ltrans(d, _, out(replace), i).
+
+%--------------------------------
+
+inv2m([d|X]) :- inv2m(X).
+inv2m([s|X]) :- inv2m(X).
+inv2m([v|X]) :- inv2m(X).
+inv2m([i|X]) :- inv1m(X).
+
+inv1m([d|X]) :- inv1m(X).
+inv1m([s|X]) :- inv1m(X).
+inv1m([v|X]) :- inv1m(X).
+inv1m([i|X]) :- any(X).
+
+inv1([d|X]) :- inv1(X).
+inv1([s|X]) :- inv1(X).
+inv1([v|X]) :- inv1(X).
+inv1([i|X]) :- inv0(X).
+
+inv0([]).
+inv0([d|X]) :- inv0(X).
+inv0([s|X]) :- inv0(X).
+inv0([v|X]) :- inv0(X).
+
+
+%********************************
+
+bad([d|X]) :- one_more(X).
+bad([s|X]) :- bad(X).
+bad([v|X]) :- bad(X).
+bad([i|X]) :- bad(X).
+
+one_more([d|X]) :- any(X).
+one_more([s|X]) :- one_more(X).
+one_more([v|X]) :- one_more(X).
+one_more([i|X]) :- one_more(X).
+
+any([]).
+any([d|X]) :- any(X).
+any([s|X]) :- any(X).
+any([v|X]) :- any(X).
+any([i|X]) :- any(X).
+
+%----------------------------------------------------------------------
+
+consumer(one_more/1).
+consumer(bad/1).
+consumer(any/1).
+
+consumer(inv0/1).
+consumer(inv1/1).
+consumer(inv1m/1).
+consumer(inv2m/1).
+
+always_unfold(ltrans/4).
+
+maxDepthConstant(7).   % maximum term depth to restrict infinite 
+                       % call sequences during unfolding.  
+
+unfold_flag(suspend_expand).   % expand suspended atoms if they
+                               % get instantiated.
+
+%unfold_flag(nonconsumer_freeze). % do not expand a clause body 
+				 % if it has only open atoms.
+
+cleanup_flag([failed]).   
+		    % allows setting options for cleanup of clauses
+		    % periodically. Currently, allows removing subsumed
+		    % and failed clauses. Obviously then we have 4
+		    % User options: cleanup_flag([])
+		    %               cleanup_flag([subsumed]).
+		    %               cleanup_flag([failed]).
+	            %               cleanup_flag([subsumed, failed]).
+		    % Caution: Cleanups may slow down the prover considerably.

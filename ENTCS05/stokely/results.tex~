@@ -1,0 +1,362 @@
+\section{Experimental Evaluation}
+\label{sec:experimental}
+
+We implemented the atomiser algorithm inside both the ComFoRT
+reasoning framework from Carnegie Mellon and the Berkeley CIL
+\cite{cil} tool.  The goals of this experimentation were as follows.
+The first goal was to determine how much compression of assignment
+statements could be obtained for real programs in several different
+application domains.  The second goal was to determine if this
+compression would in fact speed up the model checking process.  The
+final goal was to characterise the class of software where model
+checking could benefit the most from utilisation of parallel
+assignment statements.
+
+\subsection{Assignment Compression Results}
+
+In this section we describe our results in the context of the first
+goal mentioned above, i.e., checking the effectiveness of the \atomizer{}
+and \catomizer{} algorithms at compressing the assignment control
+locations in real software source code.
+
+The results in this section were obtained with the Berkeley CIL parser
+and our parallel assignment compressor.  The relative length and
+frequency of sequences of simple assignment statements varies with
+different software application domains. The experiments that follow
+were chosen because they represent a broad spectrum of relevant
+software applications.
+
+\subsubsection{Unix System Software}
+
+The first benchmark set includes Unix system software from the FreeBSD
+6.0 operating system.  The utilities chosen include the file system
+consistency check utility (fsck), ifconfig, mount, ping, bdes, gzip,
+and grep.
+
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|} \hline
+Utility & Source File & LOC & Loc1 & Loc2 & Loc3 \\ \hline
+fsck & fsck.c & 1208 & 102 & 72 & 62 \\ \hline
+ifconfig & ifconfig.c & 2335 & 174 & 140 & 122 \\ \hline
+ifconfig & af\_inet6.c & 1436 & 76 & 61 & 56 \\ \hline
+mount & mount\_ufs.c & 227 & 10 & 6 & 5 \\ \hline
+ping & ping.c & 3242 & 312 & 200 & 181 \\ \hline
+bdes & bdes.c & 2357 & 284 & 253 & 220 \\ \hline
+gzip & trees.c & 1221 & 299 & 192 & 147 \\ \hline
+gzip & deflate.c & 477 & 103 & 65 & 59 \\ \hline
+gzip & inflate.c & 1491 & 377 & 254 & 169 \\ \hline
+grep & search.c & 2033 & 239 & 191 & 181 \\ \hline
+\multicolumn{2}{|c|}{totals} & 16027 & 1976 & 1434 & 1202 \\ \hline
+\multicolumn{4}{|c|}{average compression} & 72.6\% & 60.8\% \\ \hline
+\end{tabular}
+\label{tableunix}
+\end{center}
+\caption{Assignment Compression of Unix System Software}
+\end{table}
+
+Table~1 illustrates the results.  The first column, Utility, provides the name
+of the utility.  The second column, Source File, provides the name of the source
+file.  The third column, LOC, lists the number of lines of code in the
+source file.  Specifically, this means the lines of code after the C
+pre-processor has been run and the CIL transformations performed but
+without counting any \texttt{\#line} directives inserted by the
+pre-processor.  The fourth column, Loc1, lists the number of simple
+assignment statements in the source file.  The fifth column, Loc2, lists the
+number of assignment statements in the new source file generated with
+the \atomizer{} algorithm.  The sixth column, Loc3, lists the number of
+assignments in the new source file generated with the \catomizer{}
+algorithm.
+
+\subsubsection{Graphics Libraries}
+
+The second benchmark set includes the popular PNG and JPEG libraries
+used by most commercial and open source software to read and write
+those popular graphics file formats.  Table~2 illustrates
+the assignment compression results for the largest source files of
+libpng v1.2.8 and libjpeg v6b.
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|} \hline
+Library & Source File & LOC & Loc1 & Loc2 & Loc3 \\ \hline
+png & png.c & 1108 & 87 & 60 & 57 \\ \hline
+png & pnggccrd.c & 2835 & 511 & 262 & 229 \\ \hline
+png & pngrtan.c & 6221 & 1859 & 930 & 629 \\ \hline
+jpeg & jmemmgr.c & 1232 & 252 & 174 & 160 \\ \hline
+jpeg & jquant1.c & 1361 & 257 & 125 & 96 \\ \hline
+jpeg & jquant2.c & 1803 & 466 & 264 & 176 \\ \hline
+jpeg & transupp.c & 3826 & 637 & 414 & 345 \\ \hline
+\multicolumn{2}{|c|}{totals} & 18386 & 4069 & 2229 & 1692 \\ \hline
+\multicolumn{4}{|c|}{average compression} & 54.8\% & 41.6\% \\ \hline
+\end{tabular}
+\end{center}
+\label{graphics}
+\caption{Assignment Compression of Graphics Libraries}
+\end{table}
+
+\subsubsection{Results Summary}
+
+On the body of software tested in this section, the \atomizer{}
+algorithm reduces the number of assignment statement control points to
+63\% of the original total.  The \catomizer{} algorithm
+provides another 10\% reduction in control points. 
+
+\subsection{Model Checking Results}
+
+The ComFoRT reasoning framework \cite{comfort} uses model checking to
+predict whether software will meet specific safety and reliability
+requirements.  The model checking engine is derived from MAGIC
+\cite{sagar:efficientverification}, a tool developed by the model
+checking group at Carnegie Mellon University. We integrated the
+atomiser algorithms into ComFoRT and ran it on a collection of Windows
+device drivers, OpenSSL, and Micro-C~OS benchmarks.  These benchmarks
+show the improvement in time and memory space that is provided by the
+assignment compression.
+
+\subsubsection{OpenSSL}
+
+The first set of benchmarks was run on the OpenSSL source code.  The
+OpenSSL library implements the Secure Sockets Layer (SSL v2/v3) and
+Transport Layer Security (TLS v1) protocols. It is widely used by web
+browsers, ssh clients, and other secure network applications on many
+different computing platforms.
+
+Table~3 provides model checking results for the OpenSSL
+benchmarks.  The \emph{Server} test is the geometric mean of four
+benchmarks with same source code but different specifications.  The
+\emph{Client} test is the geometric mean of two benchmarks with same
+source code but different specifications.  The \emph{Srvr-Clnt} test
+is the geometric mean of sixteen benchmarks with same source code but
+different specifications.
+
+\begin{table}
+\begin{footnotesize}
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|} \hline
+Name & LOC & Loc1 & Loc2 & Loc3 & Time1 & Time2 & Time3 & Mem1 & Mem2
+& Mem3 \\ \hline
+Server & 2483 & 207 & 172 & 171 & 9.8 & 8.8 & 8.4 & 135.3 & 136.2 &
+133.8\\ \hline
+Client & 2484 & 175 & 145 & 144 & 17.5 & 11.7 & 12.4 & 128.9 & 128.1 &
+127.7\\ \hline
+Srvr-Clnt & \multicolumn{4}{|c|}{locations are as above} & 165.8 & 136.7
+& 128.4 & 201.1 & 194.7 & 192.3\\ \hline
+\end{tabular}
+\label{openssl}
+\caption{OpenSSL benchmarks with ComFoRT model checker + Atomise}
+\end{footnotesize}
+\end{table}
+
+Each test was run under three different model checking conditions:
+
+\begin{enumerate}
+\item no assignment parallelisation;
+\item parallelisation with the \atomizer{} algorithm (individual
+  assignments not changed)
+\item parallelisation with with \catomizer{} algorithm (individual
+  assignments changed as necessary)
+\end{enumerate}
+
+For each condition above, the number of assignments is listed (Loc) as
+well as the the time in seconds (Time), and the number of megabytes of
+memory (Mem) required for model checking.
+
+\subsubsection{Windows Device Drivers}
+
+The second set of ComFoRT benchmarks was run on a collection of
+Windows device drivers.  The results are presented in Table~4 in the
+same format as the last section.  Note that although significant
+assignment compression is achieved, the model checking time is not
+improved substantially.
+
+\begin{table}
+\begin{footnotesize}
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|} \hline
+Name & LOC & Loc1 & Loc2 & Loc3 & Time1 & Time2 & Time3 & Mem1 & Mem2
+& Mem3 \\ \hline
+cdaudio & 10171 & 2613 & 1447 & 1298 & 52.6 & 52.7 & 53.0 & 272.6 &
+264.0 & 269.6\\ \hline
+diskperf & 4824 & 1187 & 719 & 617 & 15.9 & 15.8 & 15.7 & 176.3 &
+176.3 & 175.0 \\ \hline
+floppy & 9579 & 3478 & 1957 & 1845 & 130.4 & 130.5 & 129.3 & 468.8 &
+468.8 & 470.4 \\ \hline
+kbfiltr & 3905 & 560 & 331 & 286 & 1.9 & 1.9 & 1.8 & 129.1 & 128.7 &
+126.3 \\ \hline
+parclass & 26623 & 2840 & 1649 & 1450 & 74.5 & 73.7 & 72.3 & 335.5 &
+335.5 & 340.0 \\ \hline
+parport & 12431 & 4634 & 2935 & 2409 & 384.5 & 381.1 & 375.6 & 1102.3
+& 1102.3 & 1127.2 \\ \hline
+\end{tabular}
+\label{windows}
+\caption{Windows device driver benchmarks ComFoRT model checker + Atomise}
+\end{footnotesize}
+\end{table}
+
+\subsubsection{Micro-C OS}
+
+The final set of ComFoRT benchmarks was run on Micro-C~OS.  The results
+are presented in Table~5.  The same source code was used
+against two different specifications.  One describing a Safety
+property and the other a Liveness property.  The most striking result
+in this table is perhaps the fact that model checking of the Safety
+property is not improved with assignment compression, but the speed of
+Liveness property verification is significantly improved.
+
+\begin{table}
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|} \hline
+Name & LOC & Loc1 & Loc2 & Loc3 & Time1 & Time2 & Time3 & Mem1 & Mem2
+& Mem3 \\ \hline
+Safety & 6279 & 2699 & 1789 & 1589 & 35.5 & 35.7 & 36.0 & 229.2 &
+229.2 & 223.5 \\ \hline
+Liveness & \multicolumn{4}{|c|}{locations are as above} & 182.2 & 144.4 & 134.4 & 272.3 &
+260.6 & 260.4 \\ \hline
+\end{tabular}
+\label{microc}
+\caption{Micro-C~OS benchmarks ComFoRT model checker + Atomise}
+\end{table}
+
+\subsubsection{Results Summary}
+
+%%% mostly direct from Sagar.
+
+There is certainly a compression in terms of the number of control
+locations using either of the two atomiser algorithms. In general, the
+difference between no compression and the \atomizer{} algorithm is
+more significant than that between the \atomizer{} and \catomizer{}
+algorithms. Actual performance of the model checker does improve in
+many cases, in particular for SSL and Micro-C~OS. The improvement is
+marked for time, but somewhat marginal for space. The lack of
+improvement for the device drivers may be because of the relatively
+small number of predicates necessary to complete the
+verification. This means that the number of states does not decrease
+as dramatically with the reduction in the number of control locations
+as for the other benchmarks. More experiments with other examples may
+provide additional support for these observations.
+
+\subsection{Observations}
+
+After examining the data, two scenarios can be seen as contributing to
+the observed speedup in model checking times with the Atomiser
+algorithms.
+
+\begin{itemize}
+
+\item Compositionality and Partial Order Reduction
+
+\item Property size
+
+\end{itemize}
+
+\subsubsection{Compositionality and Partial Order Reduction}
+
+Asynchronous systems such as the OpenSSL Srvr-Clnt benchmark are often
+described using an interleaving model of
+computation \cite{modelchecking}. Concurrent events are modelled by
+allowing their execution in all possible orders relative to each
+other.  Figure \ref{assignment-interleave} shows 3 transitions
+(assignment statements) on each of two separate components.  We assume here that the variables in each thread are not shared.  The
+transitions are labelled between 1 and 3 for the first component and
+between 4 and 6 for the second component.  The sequence of control
+along each component is fixed, but there is no guarantee about the
+relative order, or interleaving, of the transitions of the two
+components.  The model checker does not know that the interleavings do
+not matter, and so it will try all possible interleavings of the two
+for model checking.  The lattice representing all possible transition
+interleavings is represented in Figure \ref{lattice-interleave}.
+
+\begin{figure}
+\begin{center}
+\includegraphics*{interleaving.eps}
+\end{center}
+\caption{Assignment states in two components of a compositional model}
+\label{assignment-interleave}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics*{lattice-interleave.eps}
+\end{center}
+\caption{Lattice of possible paths from transitions in two components
+  without parallel assignment.}
+\label{lattice-interleave}
+\end{figure}
+
+With parallel assignment statements, the 6 transitions of Figure
+\ref{assignment-interleave} would be reduced to two transitions as in
+Figure \ref{parallel-interleave}.  The much simpler associated lattice
+with parallel assignments is shown in Figure \ref{parallel-lattice}.
+The \catomizer{} algorithm allows for a special case of partial order
+reduction to eliminate the different equivalent interleaving
+orderings \cite{partialorder}. This has the effect of dramatically
+reducing the number of required calls to the theorem prover to reason
+about the predicates as part of the weakest precondition computations.
+
+\begin{figure}
+\begin{center}
+\includegraphics*{parallel-interleave.eps}
+\end{center}
+\caption{Parallel Assignment states in two components of a compositional model}
+
+\label{parallel-interleave}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics*{parallel-lattice.eps}
+\end{center}
+\caption{Lattice of possible paths from transitions in two components
+  with parallel assignment.}
+\label{parallel-lattice}
+\end{figure}
+
+\subsubsection{Property Size}
+
+The Micro-C~OS benchmarks in Table~5 provide another important
+illustration of situations in which the algorithms presented in this
+paper can be especially beneficial.
+
+Both the Safety and Liveness properties are sequential one-component
+systems here, so there is no benefit from reducing the interleaving
+paths as described in the previous section.
+
+In the process of model checking a B\"uchi automaton for the negation
+of the property is constructed.  This automaton is then synchronised
+with the abstract model of the software to obtain a new product
+automaton on which emptiness analysis is performed.
+
+Consider the safety property $M \models $ ``locks \& unlocks alternate''
+and the event alphabet $\Sigma = \{a,b,c,lock,unlock\}$:
+\begin{center}
+\resizebox{2.75in}{!}
+{\includegraphics*{example-model2.eps}}
+\end{center}
+
+Suppose we also have an abstract model for our system:
+\begin{center}
+\includegraphics*{software-model.eps}
+\end{center}
+
+We can then take the cartesian product to define a new modified Kripke
+structure:
+\begin{center}
+\includegraphics*{crossproduct.eps}
+\end{center}
+
+In this way our LTL property is translated to emptiness testing with
+the cartesian product.  With this cartesian product construction one
+finds that the size of the B\"uchi automaton of the property acts as a
+scaling factor for the size of the product automaton.
+
+For the Micro-C~OS safety property, the B\"uchi automaton is relatively
+simple with just 4 states.  For the liveness property, however, the
+automaton has 51 states.  Therefore any small reduction in the abstract
+software model size will be improved further by this factor.  This
+explains why the same level of assignment compression has a
+significant effect for the liveness benchmark but not for the safety
+benchmark.
+
+It would be interesting to see what improvements in time and memory
+could be obtained by implementing these algorithms into other model
+checking tools such as BLAST \cite{website:blast} and SLAM
+\cite{slam}.

@@ -1,0 +1,23 @@
+=======Template for each paper==============================
+Paper Title:                Abstract Graph Transformation
+Journal title:            Electronic Notes in Theoretical Computer Science
+Journal Acronym:          ENTCS 
+First Author Initials:      A.
+First Author Last Name:     Rensink
+Corr Author Title:          Dr. ir.
+Corr Author Initials:       A.
+Corr Author Last Name:      Rensink
+Corr Author Institute:      University of Twente
+Corr Author Address 1:      P.O.Box 217
+Corr Author Address 2:      
+Corr Author City:           Enschede
+Corr Author Country:        Netherlands
+Corr Author Postcode:       7500 AE
+Corr Author Phone:          +31 53 489 4862
+Corr Author Fax:            +31 53 489 3247
+Corr Author Email:          rensink@cs.utwente.nl
+Editorial Office No.:       (to be supplied by the managing editor)
+Date of Receipt:            (to be supplied by the editor)
+Date of last Revision:      (to be supplied by the editor)
+Date of acceptance:         (to be supplied by the )
+=========================================================

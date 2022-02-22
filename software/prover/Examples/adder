@@ -1,0 +1,55 @@
+
+toplevel(thm/3).
+
+%-------------------------------------
+
+add([], [], [], 0).
+add([M1|L1], [M2|L2], [M3|L3], C) :-
+	add(L1, L2, L3, C1), lookup(M1, M2, C1, M3, C).
+
+
+sum(0, M, M).
+sum(s(N), M, s(K)) :- sum(N, M, K).
+
+
+convert([], 0, 0). 
+convert([0|L], s(K), Val) :- convert(L, K, Val).
+convert([1|L], s(K), Val) :- 
+	convert(L, K, Val1), exp(K, Exp), sum(Exp, Val1, Val).
+
+
+exp(0, s(0)).
+exp(s(K), N) :- exp(K, N1), sum(N1, N1, N).
+
+gen([], [], 0).
+gen([0|L1], [0|L2], s(K)) :- gen(L1, L2, K).
+gen([0|L1], [1|L2], s(K)) :- gen(L1, L2, K).
+gen([1|L1], [0|L2], s(K)) :- gen(L1, L2, K).
+gen([1|L1], [1|L2], s(K)) :- gen(L1, L2, K).
+
+thm(X, Y, K) :- 
+	gen(X, Y, K), prop(X, Y, K).
+
+prop(X, Y, K) :- 
+	add(X, Y, Z, C)
+	convert(X, K, X1), 
+	convert(Y, K, Y1), 
+	convert([C|Z], s(K), Z1), 
+	sum(X1, Y1, Z1).
+
+
+lookup(0, 0, 0, 0, 0).
+
+lookup(0, 0, 1, 1, 0).
+
+lookup(0, 1, 0, 1, 0).
+
+lookup(0, 1, 1, 0, 1).
+
+lookup(1, 0, 0, 1, 0).
+
+lookup(1, 0, 1, 0, 1).
+
+lookup(1, 1, 0, 0, 1).
+
+lookup(1, 1, 1, 1, 1).

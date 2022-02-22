@@ -1,0 +1,651 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Automated Program repair</title>
+</head>
+
+<body>
+
+        <h1 class="display-3"><font face="Arial" size="7">Automated Program Repair 
+		at NUS</font></h1>
+        <p class="lead">
+      <img border="0" src="index.3.jpg" width="699" height="337"></p>
+		<p class="lead">
+      <font face="Arial"><i>State-of-the-art in Program Repair: Pictorial view 
+		derived from
+		<a href="https://cacm.acm.org/magazines/2019/12/241055-automated-program-repair/fulltext">
+		Communications of the ACM article 2019</a>.</i></font></p>
+
+<div class="container">
+  <hr>
+	<p><u><b><font face="Arial" size="6">Summary</font></b></u></p>
+	<p>
+	<span lang=EN style='font-family:"Arial";color:#373A3C;
+    mso-ansi-language:EN'>Computing systems, specifically software systems, are
+    prone to vulnerabilities which can be exploited. One of the key difficulties in
+    building trustworthy software systems - is the lack of specifications, or
+    intended behavior, or a description of how the software system is supposed to
+    behave. In our work, we have developed semantic analysis techniques to extract
+    or discover specifications from an erroneous or vulnerable program. Such a
+    specification discovery process helps in automatically generating repairs,
+    thereby moving closer to the goal of self-healing software systems. We have 
+	focused on specification inference from tests, and we are also looking into 
+	specification inference from other program artifacts. There exist exciting
+    possibilities for combining semantics based repair approaches with search-based
+    repair, and this is under investigation in our research team. We envision that
+    automated repair capabilities should be integrated into programming
+    environments in the future.
+	<o:p>Instead of treating the software as a passive entity which is validate, 
+	we view it as an active entity which heals itself thereby delivering higher 
+	trust and assurance. </o:p></span></p>
+</div>
+
+<div id=news>
+  <hr>
+  <h1><u><font face="Arial">News</font></u></h1>
+  <p class=news-text>
+	<span lang=EN style='font-family:"Arial";color:#373A3C;mso-ansi-language:EN'>
+    <b>
+	2022:&nbsp; Ministry of Education (MoE) Tier3 research program at NUS on 
+	Program repair (2022-27):&nbsp; <a href="T3/MoET32022.pdf">Post-docs being 
+	recruited. </a></b></span></p>
+	<p class=news-text>
+	<span style="color: #373A3C"><b><span style="font-family: Arial">202</span></b></span><span lang=EN style='font-family:"Arial";color:#373A3C;mso-ansi-language:EN'><b>1: </b>
+	Thanks to Oracle for their generous donation to further our research on 
+	program repair!</span></p>
+	<p class=news-text>
+	<span style="color: #373A3C"><b><span style="font-family: Arial">2</span></b></span><span lang=EN style='font-family:"Arial";color:#373A3C;mso-ansi-language:EN'><b>021:</b> <b><a href="../../Videos/AbhikISSTA21Panel.mp4">Position statement</a></b> 
+	on Program Repair in ISSTA 2021 Panel: 30 Years of Testing and Analysis.</span></p>
+	<p class=news-text>
+    <span style="font-family: Arial; color: #373A3C"><b>2021</b>:
+	<a href="../../pdf/ISSTA21.pdf">ISSTA21 paper</a> on automated repair of 
+	Linux code receives Best Artifact Award.</span></p>
+	<p class=news-text>
+    <span style="color: #373A3C"><b><span style="font-family: Arial">2021:</span></b></span><span lang=EN style='font-family:"Arial";color:#373A3C;mso-ansi-language:EN'><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9461040">Special 
+	issue (Editor's note) </a>on program repair, in IEEE Software. </span></p>
+	<p class=news-text>
+    <span style="color: #373A3C"><b><span style="font-family: Arial">202</span></b></span><b><span lang=EN style='font-family:"Arial";color:#373A3C;mso-ansi-language:EN'>1: </span></b>
+	<font face="Arial"><a href="https://cpr-tool.github.io">CPR tool</a> on 
+	Concolic Program Repair (see <a href="../../pdf/PLDI21.pdf">paper</a>) 
+	released.</font></p>
+
+  <p class=news-text>
+    <b><span lang=EN style='font-family:"Arial";mso-ansi-language:EN'>December 2019:</span></b><font face="Arial">
+	</font>
+    <b>
+	<span lang=EN style='font-family:"Arial";color:#373A3C;mso-ansi-language:EN'><a href="http://bit.ly/2XD8q3D">Article</a></span></b><font face="Arial">
+	</font>
+    <span lang=EN style='font-family:"Arial";color:#373A3C;mso-ansi-language:EN'> and <b><a href="http://bit.ly/34aSNmy">Video</a></b> co-authored on &quot;<i>Automated Program Repair</i>&quot; appeared in Communications of the ACM.</span><font face="Arial">
+	</font>
+    <span lang=EN style='font-family:"Segoe UI",sans-serif;color:#373A3C;mso-ansi-language:EN'><o:p></o:p></span>
+  </p>
+
+  <p class=news-text>
+    <b><span lang=EN style='font-family:"Arial";mso-ansi-language:EN'>March 2019:</span></b><font face="Arial">
+	</font>
+    <span lang=EN style='font-family:"Arial";color:#373A3C;mso-ansi-language:EN'><a href="http://mechtaev.com">Sergey Mechtaev </a>is awarded the 2019 ACM SIGSOFT Outstanding Doctoral Dissertation Award for his <a href="https://www.comp.nus.edu.sg/~abhik/Students/Sergey.pdf">PhD thesis on Semantic Program Repair.</a><o:p></o:p></span><font face="Arial">
+	</font>
+  </p>
+
+  <p class=news-text>
+    <strong>
+	<span lang=EN style='font-family:"Arial";color:#373A3C;mso-ansi-language:EN'>Jan 2017:</span></strong><font face="Arial">
+	</font>
+    <span lang=EN style='font-family:"Arial";color:#373A3C;mso-ansi-language:EN'>Dagstuhl 
+	Seminar on Automated Program Repair held, see <a href="http://www.dagstuhl.de/en/program/calendar/semhp/?semnr=17022">website</a>.<o:p></o:p></span><font face="Arial">
+	</font>
+  </p>
+
+  <p class=news-text>
+    <strong>
+	<span lang=EN style='font-family:"Arial"; color:#373A3C;mso-ansi-language:EN'>2016:</span></strong><font face="Arial">
+	</font>
+    <span lang=EN style='font-family:"Arial";color:#373A3C;mso-ansi-language:EN'>Angelix and SemFix tool released, see <a href="http://angelix.io/">website</a>.<o:p></o:p></span><font face="Arial">
+	</font>
+  </p><hr>
+	<p class=news-text>
+    <u>
+    <b><font face="Arial" size="6">Views</font></b></u></p>
+	<p class=news-text>
+	<img src="https://i.vimeocdn.com/video/826958697-02f970ff41b57d27ffbc23ab81094f579e5add229d432f78697a3a01bbed93e8-d_130x73" width="156" height="84"></p>
+	<p class=news-text><font face="Arial"><b><a href="https://vimeo.com/369403234">
+	Viewpoint capturing summary of the field</a>:&nbsp;</b> accompanying Communications of ACM 2019 article.</font></p>
+	<p class=news-text>
+	<img border="0" src="AbhikISSTA21Panel_Moment.jpg" width="545" height="332"></p>
+	<p class=news-text><font face="Arial">
+	<b>
+	<a href="../../Videos/AbhikISSTA21Panel.mp4">Forward-looking view on 
+	automatically generated code</a>:</b> ISSTA 2021 Panel on 30 years 
+	of Testing and Analysis.</font></p>
+  <hr>
+	<p class=news-text>
+    <u>
+    <b><font face="Arial" size="6">Key works</font></b></u></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>SemFix: Program Repair via Semantic Analysis (&nbsp;<a href="https://www.comp.nus.edu.sg/~abhik/pdf/ICSE13-SEMFIX.pdf"><font color="#800080">pdf</font></a>&nbsp;)</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	Hoang D.T. Nguyen, Dawei Qi, Abhik Roychoudhury, Satish Chandra</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	ACM/IEEE International Conference on Software Engineering (ICSE) 2013.</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	&nbsp;</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>Angelix: Scalable Multiline Program Patch Synthesis via Symbolic Analysis 
+	(<a href="http://www.comp.nus.edu.sg/~abhik/pdf/ICSE16-angelix.pdf">&nbsp;pdf&nbsp;</a>)</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	Sergey Mechtaev, Jooyong Yi, Abhik Roychoudhury</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	ACM/IEEE International Conference on Software Engineering (ICSE) 2016.</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	&nbsp;</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>DirectFix: Looking for Simple Program Repairs (&nbsp;<a href="https://www.comp.nus.edu.sg/~abhik/pdf/ICSE15-directfix.pdf"><font color="#800080">pdf</font></a>&nbsp;)</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	Sergey Mechtaev, Jooyong Yi, Abhik Roychoudhury</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	ACM/IEEE International Conference on Software Engineering (ICSE) 2015.</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	&nbsp;</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>Automated Program Repair (&nbsp;<a href="https://www.comp.nus.edu.sg/~abhik/pdf/cacm19.pdf">PDF</a>&nbsp;,&nbsp;&nbsp;<a href="http://bit.ly/34aSNmy">Video</a>)</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	Claire Le Goues, Michael Pradel, Abhik Roychoudhury</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	Communications of the ACM (CACM), 62(12), December 2019.</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	&nbsp;</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>Concolic Program Repair (&nbsp;<a href="https://www.comp.nus.edu.sg/~abhik/pdf/PLDI21.pdf">PDF</a>,
+	<a href="https://cpr-tool.github.io">Tool</a><span style="color: #000000">,
+	<a href="../../Videos/CPR-PLDI21.mp4">Video</a>)</span></b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	Ridwan Shariffdeen, Yannic Noller, Lars Grunske, Abhik Roychoudhury</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	42nd ACM SIGPLAN Conference on Programming Language Design and 
+	Implementation (PLDI) 2021.</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	&nbsp;</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">&nbsp;</p>
+	<hr>
+  <h1><u><font face="Arial">Tech</font></u></h1>
+	<h1><font face="Arial" size="3">&nbsp;</font><img src="https://opengraph.githubassets.com/d427fab8fb7a6a7b5316532e0607329f15b27e1f4b2af4ecc7d4145db55febae/mechtaev/angelix" alt="GitHub - mechtaev/angelix: Semantic program repair system for C programs" width="459" height="234"></h1>
+	<p><b><font face="Arial">(i) <a href="https://github.com/mechtaev/angelix">
+	Angelix </a>&nbsp;tool from
+	<a href="https://www.comp.nus.edu.sg/~abhik/pdf/ICSE16-angelix.pdf">ICSE16 
+	paper</a>&nbsp; [ For the SemFix distribution, click
+	<a href="https://angelix.io/#semfix">here</a> ]</font></b></p>
+	<p>&nbsp;</p>
+	<p><img border="0" src="index.1.jpg" width="522" height="260"></p>
+	<p><font face="Arial"><b>(ii)&nbsp;
+	<a href="https://github.com/gaoxiang9439/Fix2Fit">Fix2Fit&nbsp; tool</a> 
+	from <a href="https://www.comp.nus.edu.sg/~abhik/pdf/ISSTA19.pdf">ISSTA19 
+	paper</a></b></font></p>
+	<p>&nbsp;</p>
+	<p>
+	<img src="https://cpr-tool.github.io/img/workflow.jpg" width="881" height="266"></p>
+	<p>
+	&nbsp;</p>
+	<p><b><font face="Arial">(iii) <a href="https://cpr-tool.github.io">Concolic 
+	Program Repair or CPR tool</a>&nbsp; from
+	<a href="https://www.comp.nus.edu.sg/~abhik/pdf/PLDI21.pdf">PLDI21 paper</a></font></b></p>
+	<p>&nbsp;</p>
+	<p>
+	<img src="https://fixmorph.github.io/img/FixMorph-Idea.jpeg" width="763" height="384"></p>
+	<p><b><font face="Arial">(iv) <a href="https://fixmorph.github.io">FixMorph tool</a> 
+	for repairing Linux code, from
+	<a href="https://www.comp.nus.edu.sg/~abhik/pdf/ISSTA21.pdf">ISSTA21 paper</a>.</font></b></p>
+	<hr>
+  <p class=news-text>
+    <u><b><font face="Arial" size="6">Members</font></b></u></p>
+	<p class=news-text>
+        <a href="https://www.comp.nus.edu.sg/~abhik/2011.jpg">
+        <img class="card-img-top img-fluid" src="2011_small.jpg" xthumbnail-orig-image="https://www.comp.nus.edu.sg/~abhik/2011.jpg" border="2"></a></p>
+          <h4 class="card-title"><font face="Arial">Abhik Roychoudhury&nbsp; 
+			(Faculty member)
+			<a href="http://www.comp.nus.edu.sg/~abhik/" class="card-link">Visit website</a>
+        </font></h4>
+	<p>
+	<a href="https://ilyasergey.net/assets/img/ilya-2021-2.jpg">
+	<img src="ilya-2021-2_small.jpg" xthumbnail-orig-image="https://ilyasergey.net/assets/img/ilya-2021-2.jpg" border="2"></a></p>
+	<p><font face="Arial"><b>Ilya Sergey (Faculty member)</b>&nbsp;
+	<a href="https://ilyasergey.net">Visit website</a></font></p>
+	<p>
+	<a href="chin-wei-ngan.jpg">
+	<img border="2" src="chin-wei-ngan_small.jpg" xthumbnail-orig-image="chin-wei-ngan.jpg"></a></p>
+	<p><font face="Arial"><b>Wei-Ngan Chin (Faculty member) </b>&nbsp;<a href="http://www.comp.nus.edu.sg/~chinwn">Visit 
+	website</a></font></p>
+	<p>
+	<a href="https://www.comp.nus.edu.sg/~nsoe-tss/people_files/duck.jpg">
+	<img src="duck_small.jpg" alt="Team | NSoE-TSS" xthumbnail-orig-image="https://www.comp.nus.edu.sg/~nsoe-tss/people_files/duck.jpg" border="2"></a></p>
+	<p><font face="Arial"><b>Gregory James Duck (Research Assistant Professor)</b>&nbsp;
+	<a href="http://www.comp.nus.edu.sg/~gregory">Website</a></font></p>
+	<p>
+	<a href="https://yannicnoller.github.io/img/IMG_5240.jpg">
+	<img src="IMG_5240_small.jpg" xthumbnail-orig-image="https://yannicnoller.github.io/img/IMG_5240.jpg" border="2"></a></p>
+	<h4 class="card-title">
+		<font face="Arial">Yannic Noller&nbsp; (Research Assistant Professor)
+		<span style="font-weight: 400">
+		<a class="card-link" href="https://yannicnoller.github.io">Visit website</a></span></font></h4>
+	<p class="card-title">
+		<a href="https://www.comp.nus.edu.sg/~andreeac/images/pic/res_1622424905448_4.jpg">
+		<img src="res_1622424905448_4_small.jpg" alt="Andreea" xthumbnail-orig-image="https://www.comp.nus.edu.sg/~andreeac/images/pic/res_1622424905448_4.jpg" border="2"></a></p>
+	<p class="card-title">
+		<font face="Arial"><b>Andreea Costea&nbsp; (Postdoc) </b>
+		<a href="https://www.comp.nus.edu.sg/~andreeac">Website</a></font></p>
+	<p>
+	<a href="https://www.cse.iitk.ac.in/users/umair/image.jpg">
+	<img src="image_small.jpg" xthumbnail-orig-image="https://www.cse.iitk.ac.in/users/umair/image.jpg" border="2"></a></p>
+	<p><font face="Arial"><b>Umair Z. Ahmed (Postdoc affiliate)</b>, <a href="https://cse.iitk.ac.in/users/umair">Website</a></font></p>
+	<p><a href="../../ridwan.jpg">
+	<img border="2" src="ridwan_small.jpg" xthumbnail-orig-image="../../ridwan.jpg"></a></p>
+	<p><b><font face="Arial">Ridwan Shariffdeen&nbsp; (PhD student)&nbsp; </font></b>
+	<font face="Arial"><a href="https://rshariffdeen.github.io">Website</a></font></p>
+	<p>
+	<a href="zhiyu.JPG.jpeg">
+	<img border="2" src="zhiyu.JPG_small.jpeg" xthumbnail-orig-image="zhiyu.JPG.jpeg"></a></p>
+	<p><font face="Arial"><b>Zhiyu Fan (PhD student) </b>&nbsp;<a href="https://zhiyufan.github.io">Website</a></font></p>
+	<p>
+	<a href="https://media-exp1.licdn.com/dms/image/C5603AQEZUUmGY-gDYg/profile-displayphoto-shrink_200_200/0/1589000373177?e=1632960000&v=beta&t=yRZcjG4VnZyLJ-qAQ6Kjb8v-8fGriHyB6yjxeXTZB2c">
+	<img src="1589000373177_small.jpg" alt="Yuntong Zhang" xthumbnail-orig-image="https://media-exp1.licdn.com/dms/image/C5603AQEZUUmGY-gDYg/profile-displayphoto-shrink_200_200/0/1589000373177?e=1632960000&amp;v=beta&amp;t=yRZcjG4VnZyLJ-qAQ6Kjb8v-8fGriHyB6yjxeXTZB2c" border="2"></a></p>
+	<p><b><font face="Arial">Yuntong Zhang (PhD student &amp; Research Assistant)</font></b></p>
+	<hr><hr>
+	<p><u><b><font size="6" face="Arial">Publications</font></b></u></p>
+<font face="Arial">
+
+
+	<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>[TOSEM]</b></p>
+	<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>Verifix: Verified Repair 
+	of Programming Assignments ( <a href="../../pdf/TOSEM22verifix.pdf">PDF</a> )</b></p>
+	<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">Umair Z. Ahmed, Zhiyu Fan, 
+	Jooyong Yi, O Al-Bataineh, Abhik Roychoudhury</p>
+	<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">ACM Transactions on Software 
+	Engineering and Methodology (TOSEM), To appear (2022).</p>   <font face="Arial" size="2"> 
+	<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">&nbsp;</p>
+	</font>    	
+
+
+	<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>[ICSE22]
+	</b></p>
+	<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>Trust Enhancement Issues 	in Program Repair ( <a href="../../pdf/ICSE22-TrustAPR.pdf">PDF</a> )</b></p>
+	<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">Yannic Noller, Ridwan 	Shariffdeen, Xiang Gao, Abhik Roychoudhury</p>	<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">IEEE/ACM 44th International 
+	Conference on Software Engineering (ICSE) 2022.</p>
+
+
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	&nbsp;</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>[OOPSLA21]</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>APIfix: Output-oriented Program Synthesis for Combating Breaking Changes 
+	in Libraries ( <a href="../../pdf/OOPSLA2021.pdf">PDF</a> )</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	Xiang Gao, Arjun Radhakrishna, Gustavo Soares,
+	Ridwan Shariffdeen, Sumit Gulwani, Abhik Roychoudhury</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	ACM SIGPLAN Object-Oriented Programming Systems Languages and Applications (OOPSLA) 2021.</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	&nbsp;</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 700; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	[IEEE-SW21]</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 700; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	Automatic Program Repair (
+	<a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9461040">PDF</a> 
+	)</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	Claire Le Goues, Michael Pradel, Abhik Roychoudhury, Satish Chandra</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	IEEE Software, 38(4), 22-27, 2021, Special Issue on Program Repair (Editor's 
+	note).</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	&nbsp;</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>[ISSTA21]</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>Automated Patch Backporting in Linux ( <a href="../../pdf/ISSTA21.pdf">
+	PDF</a> )</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	Ridwan Shariffdeen, Xiang Gao, Gregory J Duck, Shin Hwei Tan, Julia Lawall, Abhik Roychoudhury</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	ACM SIGSOFT International Symposium on Software Testing and Analysis (ISSTA) 2021.
+	<b>
+	<font color="#FF0000">Distinguished artifact award.</font></b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	&nbsp;</p>
+	<p style="font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 700; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	[VMCAI21]</p>
+	<p style="font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 700; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	Automated Repair of Heap-manipulating Programs using Deductive Synthesis (<a href="https://ilyasergey.net/assets/pdf/papers/nem-vmcai21.pdf">PDF</a>)</p>
+	<div class="gs_gray" style="margin: 0px; padding: 0px; border: 0px; color: rgb(119, 119, 119); font-family: Arial, sans-serif; font-size: 13px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;">
+		<font size="3" color="#000000">TT Nguyen, QT Ta, Ilya Sergey, Wei-Ngan 
+		Chin</font></div>
+	<div class="gs_gray" style="margin: 0px; padding: 0px; border: 0px; color: rgb(119, 119, 119); font-family: Arial, sans-serif; font-size: 13px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;">
+		<font size="3" color="#000000">International Conference on Verification, 
+		Model Checking, and Abstract Interpretation (VMCAI) 2021.</font></div>
+	<p style="color: #FF0000; font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	&nbsp;</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>[PLDI21]</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>Concolic Program Repair (&nbsp;<a href="https://www.comp.nus.edu.sg/~abhik/pdf/PLDI21.pdf">PDF</a>&nbsp;,&nbsp;
+	<a href="https://cpr-tool.github.io">Tool</a> ,
+	<a href="../../Videos/CPR-PLDI21.mp4">Video</a> )</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	Ridwan Shariffdeen, Yannic Noller, Lars Grunske, Abhik Roychoudhury</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	42nd ACM SIGPLAN Conference on Programming Language Design and 
+	Implementation (PLDI) 2021.</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	&nbsp;</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>[ASIACCS 21]</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>Localizing Vulnerabilities Statistically From One Exploit (&nbsp;<a href="https://www.comp.nus.edu.sg/~abhik/pdf/AsiaCCS21.pdf">PDF</a>&nbsp;) </b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	Shiqi Shen, Aashish Kolluri, Zhen Dong, Prateek Saxena, Abhik Roychoudhury</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	16th ACM ASIA Conference on Computer and Communications Security (ASIACCS) 
+	2021. <b> <font color="#FF0000">Best paper award.</font></b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	&nbsp;</p>
+</font> 
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>[TOSEM21]</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>Automated Patch Transplantation (&nbsp;<a href="https://www.comp.nus.edu.sg/~abhik/pdf/TOSEM_Transplantation.pdf">PDF</a>&nbsp;)</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	Ridwan Shariffdeen, Shin Hwei Tan, Mingyuan Gao, Abhik Roychoudhury</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	ACM Transactions on Software Engineering and Methodology (TOSEM), 30(1), 
+	pages 1-36, 2021.</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	&nbsp;</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>[TOSEM21]</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>Beyond Tests:&nbsp; Program Vulnerability Repair via Crash Constraint 
+	Extraction (&nbsp;<a href="https://www.comp.nus.edu.sg/~abhik/pdf/TOSEMextractfix21.pdf">PDF</a>&nbsp;)</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	Xiang Gao, Bo Wang, Gregory J. Duck, Ruyi Ji, Yingfei Xiong, Abhik 
+	Roychoudhury</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	ACM Transactions on Software Engineering and Methodology (TOSEM), To appear 
+	(2021).</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	&nbsp;</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 700; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	[ESOP20]</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<font size="3">
+	<span style="box-sizing: border-box; color: rgb(51, 51, 51); font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; font-weight: 700; background-color: rgb(255, 255, 255)">
+	Concise Read-Only Specifications for Better Synthesis of Programs with 
+	Pointers</span><i style="box-sizing: border-box; color: rgb(51, 51, 51); font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; background-color: rgb(255, 255, 255)">&nbsp;</i></font><span style="color: rgb(51, 51, 51); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none; background-color: rgb(255, 255, 255)"><font size="3">[</font></span><a style="box-sizing: border-box; text-decoration: none !important; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 700; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255)" href="https://arxiv.org/pdf/2001.10723.pdf"><font size="3">PDF</font></a><span style="color: rgb(51, 51, 51); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 700; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none; background-color: rgb(255, 255, 255)"><font size="3">,&nbsp;</font></span><font size="3"><a style="box-sizing: border-box; text-decoration: none !important; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 700; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255)" href="https://github.com/TyGuS/robosuslik">GitHub</a><a style="box-sizing: border-box; color: rgb(26, 188, 156); text-decoration: none !important; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 700; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255)" href="https://github.com/TyGuS/robosuslik">&nbsp;</a></font><span style="color: rgb(51, 51, 51); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 700; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none; background-color: rgb(255, 255, 255)"><font size="3">,&nbsp;</font></span><font size="3"><a style="box-sizing: border-box; text-decoration: none !important; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 700; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255)" href="https://youtu.be/6L_e9LNe-sA">video</a><a style="box-sizing: border-box; color: rgb(26, 188, 156); text-decoration: none !important; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 700; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255)" href="https://youtu.be/6L_e9LNe-sA">&nbsp;</a></font><span style="color: rgb(51, 51, 51); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none; background-color: rgb(255, 255, 255)"><font size="3">]</font></span><font size="3"><br style="box-sizing: border-box; color: rgb(51, 51, 51); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; background-color: rgb(255, 255, 255)">
+	</font>
+	<span style="color: rgb(51, 51, 51); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none; background-color: rgb(255, 255, 255)">
+	<font size="3">Andreea Costea, Amy Zhu, Nadia Polikarpova, and Ilya Sergey.
+	</font></span></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<span style="color: rgb(51, 51, 51); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none; background-color: rgb(255, 255, 255)">
+	<font size="3">European Symposium on Programming ESOP 2020: 141-168</font></span></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	&nbsp;</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px">
+	<b>[NeurIPS20]</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px">
+	<b>Synthesizing Tasks for Block-based Programming (<a href="https://arxiv.org/abs/2006.16913">PDF</a>&nbsp;)</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px">
+	Umair Z. Ahmed, Maria Christakis, Aleksandr Efremov, Nigel Fernandez, Ahana 
+	Ghosh, Abhik Roychoudhury, Adish Singla</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px">
+	Thirty-fourth Conference on Neural Information Processing Systems (NeurIPS), 
+	2020.</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	&nbsp;</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>[TOSEM20]</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>Smart Contract Repair (&nbsp;<a href="https://arxiv.org/abs/1912.05823">PDF</a>&nbsp;)</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	Xiao Liang Yu, Omar Al-Bataineh, David Lo, Abhik Roychoudhury</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	ACM Transactions on Software Engineering and Methodology (TOSEM), 29(4), 
+	October 2020.<br>
+	(arxiv Report December 2019, Accepted May 2020.)</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	&nbsp;</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>[PLDI20]</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>Binary Rewriting without Control Flow Recovery(&nbsp;<a href="https://www.comp.nus.edu.sg/~abhik/pdf/PLDI20.pdf">PDF</a>)</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	Gregory J Duck, Xiang Gao, Abhik Roychoudhury</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	41st ACM SIGPLAN conference on Programming Language Design and 
+	Implementation (PLDI) 2020.</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">&nbsp;</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>[CACM19]</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>Automated Program Repair (&nbsp;<a href="https://www.comp.nus.edu.sg/~abhik/pdf/cacm19.pdf">PDF</a>&nbsp;,&nbsp;&nbsp;<a href="http://bit.ly/34aSNmy">Video</a>)</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	Claire Le Goues, Michael Pradel, Abhik Roychoudhury</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	Communications of the ACM (CACM), 62(12), December 2019.</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	&nbsp;</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>[SCIS19]</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>Automated Program Repair: A step towards software automation (&nbsp;<a href="https://www.comp.nus.edu.sg/~abhik/pdf/SCIS_Perspective_on_Program_Repair.pdf">Pre-print</a>)</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	Abhik Roychoudhury and Yingfei Xiong</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	Science China Information Series (SCIS), 62(10), 2019.</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	&nbsp;</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 700; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	[VMCAI19]</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 700; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	Automatic Program Repair using Formal Verification and Expression Templates 
+	(<a href="https://thanhtoantnt.github.io/papers/VMCAI19.pdf"> PDF</a> )</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<span style="font-family: Roboto, sans-serif; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none; background-color: rgb(255, 255, 255)">
+	Thanh-Toan Nguyen, Quang-Trung Ta, and Wei-Ngan Chin</span></p>
+	<p style="color: rgb(0, 0, 0); font-family: Roboto, sans-serif; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+		<font size="3" color="#000000" face="Arial">International Conference on Verification, 
+		Model Checking, and Abstract Interpretation (VMCAI) 2021.</font></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	&nbsp;</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>[ASE19]</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>Re-factoring based Program Repair applied to Programming Assignments (&nbsp;<a href="https://www.comp.nus.edu.sg/~abhik/pdf/ASE19.pdf">PDF</a>&nbsp;)</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	Yang Hu, Umair Z. Ahmed, Sergey Mechtaev, Ben Leong, Abhik Roychoudhury</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	34th IEEE/ACM International Conference on Automated Software Engineering 
+	(ASE) 2019.</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">&nbsp;</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>[ISSTA19]</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>Crash-avoiding Program Repair (&nbsp;<a href="https://www.comp.nus.edu.sg/~abhik/pdf/ISSTA19.pdf">PDF</a>&nbsp;)</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	Xiang Gao, Sergey Mechtaev, Abhik Roychoudhury</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	ACM SIGSOFT International Symposium on Testing and Analysis (ISSTA) 2019.</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">&nbsp;</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>[TOSEM18]</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>Test-equivalence Analysis for Automatic Patch Generation (&nbsp;<a href="https://www.comp.nus.edu.sg/~abhik/pdf/TOSEM18.pdf">PDF</a>&nbsp;)</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	Sergey Mechtaev, Xiang Gao, Shin Hwei Tan, Abhik Roychoudhury</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	ACM Transactions on Software Engineering and Methodology (TOSEM), 27(4), 
+	October 2018.</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">&nbsp;</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>[ESEC-FSE18]</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>Symbolic Execution with Existential Second-order Constraints (&nbsp;<a href="https://www.comp.nus.edu.sg/~abhik/pdf/FSE18.pdf">PDF</a>&nbsp;)</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	Sergey Mechtaev, Alberto Griggio, Alessandro Cimatti, Abhik Roychoudhury</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	ACM Symposium on Foundations of Software Engineering (FSE) 2018.</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	&nbsp;</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>[ICSE18]</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>Semantic Program Repair Using a Reference Implementation (&nbsp;<a href="https://www.comp.nus.edu.sg/~abhik/pdf/ICSE18-SEMGRAFT.pdf">PDF</a>&nbsp;)</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	Sergey Mechtaev, Manh-Dung Nguyen, Yannic Noller, Lars Grunske, Abhik 
+	Roychoudhury</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	ACM/IEEE 40th International Conference on Software Engineering (ICSE) 2018.</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	&nbsp;</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>[ICSE18]</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>Repairing Crashes in Android Apps (&nbsp;<a href="https://www.comp.nus.edu.sg/~abhik/pdf/ICSE18-droix.pdf">PDF</a>&nbsp;)</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	Shin Hwei Tan, Zhen Dong, Xiang Gao, Abhik Roychoudhury</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	ACM/IEEE 40th International Conference on Software Engineering (ICSE) 2018.</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	&nbsp;</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>[EmSE18]</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>A Correlation Study between Automated Program Repair and Test-suite 
+	Metrics (&nbsp;<a href="https://www.comp.nus.edu.sg/~abhik/pdf/EMSE18.pdf">PDF</a>&nbsp;)</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	Jooyong Yi, Shin Hwei Tan, Sergey Mechtaev, Marcel&nbsp;<span class="scopediv profilePagePersonStringStringString profilePage" id="profilePagePersonStringStringString6"><span class="scopediv body" id="body6"><span class="section section1"><span class="scopediv pageHeader" id="pageHeader6"><span class="scopediv ofPersonPerson ofPerson" id="ofPersonPerson6"><span class="scopediv ofUserUser ofUser" id="ofUserUser6">Böhme</span></span></span></span></span></span>, 
+	Abhik Roychoudhury</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	Empirical Software Engineering Journal, 23(5), pages 2948-2979, 2018.</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	&nbsp;</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>[ESEC-FSE18]</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>A Feasibility Study of Using Automated Program Repair for Introductory 
+	Programming Assignments (&nbsp;<a href="https://www.comp.nus.edu.sg/~abhik/pdf/FSE17.pdf">PDF</a>&nbsp;)</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	Jooyong Yi, Umair Z. Ahmed, Amey Karkare, Shin Hwei Tan, Abhik Roychoudhury</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	ACM SIGSOFT International Symposium on Foundations of Software Engineering (FSE) 
+	2017.</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	&nbsp;</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>[ICSE-Poster17]</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>CodeFlaws: A Programming Competition Benchmark for Evaluating Automated 
+	Program Repair Tools</b>&nbsp; (<a href="https://codeflaws.github.io/">WWW</a>)</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	Shin Hwei Tan, Jooyong Yi, Yulis, Sergey Mechtaev, Abhik Roychoudhury</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	ACM/IEEE International Conference on Software Engineering (ICSE) 2017, 
+	Poster-paper.</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	&nbsp;&nbsp;</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>[ESEC-FSE16]</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>Anti-patterns in Search-based Program Repair (<a href="https://www.comp.nus.edu.sg/~abhik/pdf/FSE16.pdf">pdf</a>)</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	Shin Hwei Tan, Hiroaki Yoshida, Mukul Prasad, Abhik Roychoudhury</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	ACM SIGSOFT International Symposium on Foundations of Software Engineering (FSE) 
+	2016.</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	&nbsp;</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>[ICSE16]</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>Angelix: Scalable Multiline Program Patch Synthesis via Symbolic Analysis 
+	(<a href="http://www.comp.nus.edu.sg/~abhik/pdf/ICSE16-angelix.pdf">&nbsp;pdf&nbsp;</a>)</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	Sergey Mechtaev, Jooyong Yi, Abhik Roychoudhury</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	ACM/IEEE International Conference on Software Engineering (ICSE) 2016.</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	&nbsp;</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>[ICSE15]</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>DirectFix: Looking for Simple Program Repairs (&nbsp;<a href="https://www.comp.nus.edu.sg/~abhik/pdf/ICSE15-directfix.pdf"><font color="#800080">PDF</font></a>&nbsp;)</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	Sergey Mechtaev, Jooyong Yi, Abhik Roychoudhury</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	ACM/IEEE International Conference on Software Engineering (ICSE) 2015.</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	&nbsp;</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>[ICSE15]</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>Relifix: Automated&nbsp; Repair of Software Regressions&nbsp; (&nbsp;<a href="https://www.comp.nus.edu.sg/~abhik/pdf/ICSE15-relifix.pdf"><font color="#800080">PDF</font></a>&nbsp;)</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	Shin Hwei Tan, Abhik Roychoudhury</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	ACM/IEEE International Conference on Software Engineering (ICSE) 2015.</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	&nbsp;</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>[ICSE13]</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>SemFix: Program Repair via Semantic Analysis (&nbsp;<a href="https://www.comp.nus.edu.sg/~abhik/pdf/ICSE13-SEMFIX.pdf"><font color="#800080">pdf</font></a>&nbsp;)</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	Hoang D.T. Nguyen, Dawei Qi, Abhik Roychoudhury, Satish Chandra</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	ACM/IEEE International Conference on Software Engineering (ICSE) 2013.</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	&nbsp;</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">&nbsp;</p>
+	<hr>
+	<p><u><b><font size="6" face="Arial">Alumni</font></b></u></p>
+	<p>
+        <a href="images/shinhwei.jpg">
+        <img class="card-img-top img-fluid" src="shinhwei_small.jpg" xthumbnail-orig-image="images/shinhwei.jpg" border="2"></a></p>
+
+</div>
+
+          <h4 class="card-title"><font face="Arial">Shin Hwei Tan, PhD 2018, Moved as: 
+			Assistant Professor, SUSTech, Shenzhen, China.</font></h4>
+          <font face="Arial">
+          <a href="http://shinhwei.com" class="card-link">Visit website</a>
+        </font>
+<p>
+        <a href="images/sergey.jpg">
+        <img class="card-img-top img-fluid" src="sergey_small.jpg" xthumbnail-orig-image="images/sergey.jpg" border="2"></a></p>
+          <h4 class="card-title"><font face="Arial">Sergey Mechtaev,&nbsp;PhD 
+			2018,&nbsp; Moved 
+			as: Lecturer (Assistant Professor), University College London.</font></h4>
+          <font face="Arial">
+          <a href="http://mechtaev.com" class="card-link">Visit website</a>
+        </font>
+<p>
+        <a href="images/jooyong.jpg">
+        <img class="card-img-top img-fluid" src="jooyong_small.jpg" xthumbnail-orig-image="images/jooyong.jpg" border="2"></a></p>
+          <h4 class="card-title"><font face="Arial">Jooyong Yi, Postdoc 
+			2016-2020, Moved as: 
+			Assistant Professor, UNIST, South Korea.</font></h4>
+          <font face="Arial">
+          <a href="http://jooyongyi.com" class="card-link">Visit website</a>
+        </font>
+	<p>
+	<a href="gaoxiang.jpg.opt261x259o0,0s261x259.jpg">
+	<img src="gaoxiang.jpg.opt261x259o0,0s261x259_small.jpg" xthumbnail-orig-image="gaoxiang.jpg.opt261x259o0,0s261x259.jpg" border="2"></a></p>
+	<p><b><font face="Arial">Xiang Gao, PhD 2021, Moved as: Associate Professor, 
+	Beihang University. </font></b></p>
+<hr>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+</body>
+
+</html>

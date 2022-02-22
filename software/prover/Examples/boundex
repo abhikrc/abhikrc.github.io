@@ -1,0 +1,31 @@
+
+clauseI(1, (p :- [b]), (6,6)).
+clauseI(2, (p :- [e,p]), (2,2)).
+
+clauseI(3, (q :- [b]), (3,3)).
+clauseI(4, (q :- [e,q]), (1,1)).
+
+clauseI(a1, (p(X) :- [X =a]), (6,6)).
+clauseI(a2, (p(X) :- [e(X,Y), p(Y)]), (2,2)).
+
+clauseI(a3, (q(a) :- []), (3,3)).
+clauseI(a4, (q(X) :- [e(X,Y), q(Y)]), (1,1)).
+
+clauseI(b1, (p1(X) :- [X = [1|_]]), (1,1)).
+clauseI(b2, (p1(X) :- [e(X, Y), p1(Y)]), (1,1)).
+
+clauseI(b3, (q1([1|_]) :- []), (5,5)).
+clauseI(b4, (q1(X) :- [e(X,Y), q1(Y)]), (2,2)).
+
+clauseI(c1, (p2([1]) :- []), (1,1)).
+clauseI(c2, (p2([0|X]) :- [p2(X)]), (1,1)).
+
+clauseI(c3, (q2([1]) :- []), (4,4)).
+clauseI(c4, (q2([0|X]) :- [q2(X)]), (4,inf)).
+
+clauseI(d1, (trans2([0], [1]) :- []), (1,1)).
+clauseI(d2, (trans2([H|X], [H|Y]) :- [trans2(X, Y)]), (1,1)).
+
+clauseI(e1, (g2([0], [1]) :- []), (2,2)).
+clauseI(e2, (g2([1|X], [1|Y]) :- [trans2(X, Y)]), (3,3)).
+clauseI(e3, (g2([H|X], [H|Y]) :- [g2(X, Y)]), (3,3)).

@@ -1,0 +1,26 @@
+
+% Verifying a nested fixed point property in the n bit shift register.
+
+pgm_clause(c1, (cex(X) :- gen(X), unsafe(X)), (1,1)).
+pgm_clause(c2, (gen([1]) :- true), (1,1)).
+pgm_clause(c3, (gen([0|X]) :- gen(X)), (1,1)).
+pgm_clause(c4, (ef(X) :- X = [1|Z]), (1,1)).
+pgm_clause(c5, (ef(X) :- trans(X, Y), ef(Y)), (1,1)).
+pgm_clause(c8, (unsafe(X) :- not(ef(X))), (1,1)).
+pgm_clause(c9, (unsafe(X) :- trans(X, Y), unsafe(Y)), (1,1)).
+pgm_clause(c6, (trans([0,1|T], [1,0|T]) :- true), (1,1)).
+pgm_clause(c7, (trans([H|T], [H|T1]) :- trans(T, T1)), (1,1)).
+
+inductive(cex(_)).
+inductive(gen(_)).
+inductive(ef(_)).
+inductive(unsafe(_)).
+inductive(trans(_,_)).
+
+% unsafe(X) <=> not( X |= AG EF [1|_] )
+
+%-------------------------------------------------------------------
+% Initially you have no proof obligations.
+
+proof_stack([]).
+

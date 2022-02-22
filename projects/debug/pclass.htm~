@@ -1,0 +1,120 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>New Page 1</title>
+</head>
+
+<body bgcolor="#F7F7F7">
+
+<table width="779" border="0" id="table1" height="1107">
+	<!-- MSTableType="layout" -->
+	<tr>
+		<td valign="top" height="1103" width="773">
+		<!-- MSCellType="ContentBody" -->
+		<blockquote>
+		
+		<p><i><b><font size="5" face="Times New Roman">Interacting Process 
+		Classes -- Capturing Behaviors of Active Objects</font></b></i></p>
+		<p><font face="Times New Roman">Many reactive control systems consist of 
+		a large number of similar interacting objects; these objects can be 
+		often grouped into classes. Such interacting process classes appear in 
+		telecommunication, transportation and avionics domains. Since 2003, we 
+		have been studying modeling, simulation, testing and code generation for 
+		such process classes.&nbsp; The key contribution so far is that we propose a 
+		mechanism for grouping together active objects into &quot;<font color="#ff0000">behavioral 
+		subclasses</font>&quot; solely based on behavior during simulation. Nowhere 
+		in execution do we need object identities; this turns out to be 
+		challenging since we need to maintain object associations (static + 
+		dynamic) without&nbsp; referring to their names.</font></p>
+		<ul>
+			<li><font face="Times New Roman">Modeling :&nbsp; Our modeling style uses 
+			well-known UML notations to capture behavior. In particular, the 
+			control flow of a process class is captured by a state diagram, unit 
+			interactions between process objects by sequence diagrams and the 
+			structural relations are captured via class diagrams. </font></li>
+			<li><font face="Times New Roman">Simulation &nbsp;:&nbsp; The key feature of 
+			our approach is that our simulation is symbolic. We dynamically 
+			group together objects of the same class based on their past 
+			behavior. This leads to a simulation strategy that is both time and 
+			memory efficient as demonstrated on well-studied non-trivial 
+			examples of reactive systems. Our symbolic simulator has been used 
+			to debug realistic designs of reactive controllers such as the&nbsp;<a href="http://www.ctas.arc.nasa.gov">CTAS</a> 
+			weather-update controller from NASA. </font></li>
+			<li><font face="Times New Roman">Work on test generation and code 
+			generation is currently in progress </font></li>
+		</ul>
+		<hr>
+		<p><font face="Times New Roman"><i><b><font size="4">People involved</font></b></i><b><font size="4">:&nbsp;</font>&nbsp;
+		</b></font></p>
+		<p><font face="Times New Roman">
+		<a href="http://www.comp.nus.edu.sg/~ankitgoe/">Ankit Goel</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="http://www.comp.nus.edu.sg/~abhik">Abhik&nbsp; Roychoudhury</a>&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="http://www.comp.nus.edu.sg/~thiagu">P.S. Thiagarajan</a></font></p>
+		<hr>
+		<p><font face="Times New Roman" size="4"><b><i>Current Work:</i></b></font></p>
+		<ul>
+			<li><font face="Times New Roman">
+			<a href="http://www.comp.nus.edu.sg/~abhik/pdf/IPC-TR.pdf">A 
+            Technical Report on Modeling and Simulation </a>&nbsp; A version of 
+            this paper will appear in ICSE 2006 (final version to be made 
+            available soon).</font></li>
+			<li><font face="Times New Roman">You can get more details about
+			<a href="http://www.comp.nus.edu.sg/~ankitgoe/simulator">our 
+			simulator</a>. Feel free to try it out. </font></li>
+			<li>
+			<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">
+			<font face="Times New Roman">We have also dabbled in introducing 
+			symbolic execution to similar existing models of reactive systems -- 
+			in particular the Live Sequence Charts formalism of Damm and Harel. 
+			The results are detailed in the following work. This work presents a 
+			simple symbolic execution where objects are grouped together by 
+			expressing constraints on their identities, <i>i.e. process names 
+			need to be maintained.</i></font></li>
+		</ul>
+		<table border="0" width="629" id="table2">
+			<tr>
+				<td>&nbsp;</td>
+				<td width="543">
+		<font face="Times New Roman"><b>Symbolic Execution of Behavioral 
+				Requirements</b>, (<a href="http://www.comp.nus.edu.sg/~abhik/ps/padl04.ps">ps</a>)<br>
+				Tao Wang, Abhik Roychoudhury, Roland H.C. Yap and S.C. 
+		Choudhary<br>
+				<i>International Symposium on Practical Applications of 
+		Declarative Languages (PADL) 2004,&nbsp; Springer Verlag, LNCS 3057.</i></font></td>
+			</tr>
+		</table>
+		<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">
+		<font face="Times New Roman">&nbsp;</font></p>
+		<hr>
+		<p><i><b><font face="Times New Roman" size="4">Past Work on this topic:</font></b></i></p>
+		<p><font face="Times New Roman">As a pre-cursor to our work on 
+		Interacting Process Classes, we had developed a model of interacting 
+		processes communicating via non-atomic &quot;transactions&quot; depicted as a 
+		combination of UML sequence diagrams.&nbsp; <i>No notion of process classes 
+		is supported in this earlier work.</i> This model was developed over the 
+		period 2001-2003 and is elaborated in the following paper.</font></p>
+		<table border="0" width="627" id="table3">
+			<tr>
+				<td width="76">&nbsp;</td>
+				<td>
+		<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">
+		<font face="Times New Roman"><b>Communicating Transaction Processes: </b></font></p>
+		<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">
+		<font face="Times New Roman"><b>An MSC-Based Model of Computation for 
+		Reactive Embedded Systems </b>(<a href="http://www.comp.nus.edu.sg/~abhik/ps/ctp-full.ps"> 
+		ps </a>)<br>
+		Abhik Roychoudhury and&nbsp; P. S. Thiagarajan<br>
+		<i>Lectures on Concurrency and Petri Nets 2003, LNCS 3098, pages 789-818</i></font></p>
+				</td>
+			</tr>
+		</table>
+		
+		</blockquote>
+		</td>
+	</tr>
+</table>
+
+</body>
+
+</html>

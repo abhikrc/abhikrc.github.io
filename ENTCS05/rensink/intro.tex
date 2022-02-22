@@ -1,0 +1,152 @@
+\section{Introduction}
+\stlabel{intro}
+
+We study state-based models of system behaviour, in particular for software
+systems. Our eventual aim is to develop tools to support the verification of
+software through such models. For the basic modelling formalism we rely on
+\emph{graph transformation}, which is a long-standing field of research with a
+rich underlying theory (see, e.g., \cite{Handbook-GG-I} for an overview).
+Systems in many domains and on different levels of design detail lend
+themselves naturally to a behavioural specification in which states are
+modelled by graphs (with directed labelled edges over a finite alphabet) and
+transitions correspond to applications of graph transformation rules. We have
+presented in \cite{RenSchVar04} some first results on applying model checking
+techniques in this setting. The use of graph transformation pays off here,
+since the notions of independence and composition implied by the theory can be
+brought to bear immediately to the problems of state space explosion.
+
+A powerful notion in model checking is \emph{state abstraction}. It is
+generally recognized that some kind of abstraction, be it through slicing,
+bounding, predicate abstraction, symmetry recognition or a combination of
+these, is indispensible in software model checking in order to keep state space
+size under control. In \cite{DisRenKat02,DisKatRen04} we have studied model
+checking in a setting where the states are abstractions of restricted classes
+of graphs (multisets and single-linked lists, respectively), in which nodes
+with sufficiently similar structure are combined. In the current paper we
+combine these two strands of research, by extending the abstraction
+to general graphs and lifting the theory of graph transformation to the resulting
+abstracted graphs. Technically, we base the abstraction of the graphs
+on the prior work in \cite{Rens04-esop}; the contribution of the current
+paper is to lift the graph transformations to this level.
+
+It should be noted that this kind of abstraction has already been studied, to
+great effect, in the context of abstract interpretation, viz.\ in the theory of
+\emph{shape graphs}; e.g., by Sagiv, Reps, Wilhelm and others in
+\cite{SagRepWil98,SagRepWil02,Jeannet+2004,Rinetzky+2005}. There is therefore
+every reason to believe that this will give rise to an equally effective
+verification method in our setting of graph transformation-based model
+checking.
+
+\medskip\noindent \textbf{Approach.}
+%
+Any set of graph transformation rules, applied to a concrete start graph, gives
+rise to a (possibly infinite) concrete transition system. In this paper we
+define the application of the same rules, but now to graph abstractions ---
+which, following the work cited above, we call shapes --- in such a way that
+all transitions between the concrete states (transformations of concrete
+graphs) give rise to transitions between the abstract states (transformations
+of shapes). Thus we have an over-approximation of the concrete transition
+system, on the basis of which we can make certain predictions about the actual
+system behaviour.  Moreover, for every abstract transition there is at least
+one underlying concrete transition, meaning that we do not have spurious
+abstract transitions.  
+
+We will use a running example of a circular buffer used
+to store data values.  The buffer consists of an \Ln-linked circular structure
+of \LC-nodes and a central \LB-node pointing to the (current) first and last
+cell through \Lf- and \Ll-edges. A cell can contain an object, modelled by a
+$\Lv$-edge to an \LO-node, or be empty, modelled by a \Le-edge back to the
+\LB-node.  \fref{init-buffer} shows an example buffer of four cells, two of
+which are empty. The shape of this buffer combines the (structurally similar)
+empty \LC-nodes and the \LO-nodes, and additionally specifies
+\emph{multiplicities} on the nodes and incoming edges.\footnote{In this paper
+  we assume that graphs are deterministic --- defined below --- which means
+  that outgoing multiplicities are not needed.  We write the edge
+  multiplicities on the \emph{opposite} end of the arrows than is usual in
+  class diagrams.} The $\meq1$ on the incoming edge of the \LO-node, e.g.,
+indicates that each concrete \LO-instance has exactly one incoming \Lv-edge,
+which can come from \emph{either} of the \LC-nodes.
+
+\texfig{init-buffer}{Example circular buffer with four cells, its shape, and
+two production rules}%
+%
+To transform this example graph, \fref{init-buffer} also shows two rules
+\Rput{} and \Rget, each consisting of two graphs: a left hand side (LHS) and a
+right hand side (RHS). The rules describe the insertion and removal of objects,
+where for simplicity the nodes modelling the objects are actually created at
+insertion and deleted at removal. The effect of a rule is defined relative to a
+\emph{matching} of the LHS, which is an injective graph morphism into the host
+graph. The images of those elements not in the RHS are subsequently
+removed from the host graph, whereas elements that are \emph{fresh} in the RHS
+are added.
+
+Given an initial graph and a set of production rules, we obtain a transition
+system by recursively applying all rules to all graphs. For instance,
+\fref{buffer-ts} shows the transition system for the graph and rules in
+\fref{init-buffer}. We propose to use such transition systems as the basis for
+model checking; first results are reported in \cite{RenSchVar04}. However, for
+this technique to become practically feasible we need to address the following
+issues (among others):
+%
+\begin{itemize}\noitemsep\smalltopsep
+\item The models should be generic in the size of the data structures. As it
+  is, for our example we get a different model if we start with a 5-cell
+  buffer, etc.
+\item The models should be finite. As it is, if we add a rule to our example
+  that may add a cell to a circular buffer when it is completely full, then the
+  size of the graphs becomes unbounded and the state space becomes infinite.
+\end{itemize}
+%
+By lifting graph transformations to the level of shapes we achieve both these
+goals. In fact, what we achieve is a completely automatic technique for state
+abstraction, in a setting where the models are inherently dynamic --- that is,
+nodes and edges can be created and deleted at run-time. We believe that this is
+a promising basis for software verification, complementary to existing model
+checking techniques.
+%
+\texfig{buffer-ts}{Concrete transition system of the circular buffer}%
+%
+
+The abstract states will be \emph{canonical} shapes, which is a sub-class
+satisfying some normalisation constraints. Their transformation is a three-step process.
+%
+\begin{description}%\smalltopsep
+\item[Materialisation.] This involves identifying the sub-shape where the rule
+  applies (using the matching) and extracting an explicit, concrete copy of it.
+  This is necessary to accurately mimic the effect of the transformation. The
+  same principle can be found in \cite{SagRepWil98}, from where we took the
+  term ``materialisation'', but also in our own work
+  \cite{DisRenKat02,DisKatRen04}, where it is called ``extraction.''
+  
+\item[Transformation.] The transformation of a materialised shape is much like
+  an ordinary graph transformation. We will show that this type of
+  transformation both preserves and reflects transformations of the
+  corresponding instance graphs.
+  
+\item[Normalisation.] The result of the transformation, though still an
+  abstract graph, is typically outside the sub-class of \emph{canonical}
+  shapes. Therefore, we have to massage it to fit it back into that class. This
+  may introduce additional non-determinism: an arbitrary shape typically gives
+  rise to multiple canonical shapes.
+\end{description}
+%%
+%The result of a shape transformation is thus obtained by materialising the
+%shape w.r.t.\ a given matching, transforming the materialised shape, and
+%re-normalising the result. The normalisation step introduces additional
+%non-determinism: an arbitrary shape typically gives rise to more than one
+%canonical shape. %Such non-determinism is actually expected, since on the
+%%abstract level we have obviously lost information, and this can cause
+%%imprecision in predicting the effect of a transformation.
+%
+\emph{Structure of the paper.}  In \stref{def} we define the basic notions of
+graphs and graph transformations, and we recall the abstraction as defined in
+\cite{Rens04-esop}. The materialisation, transformation and normalisation steps
+are described in Sections \ref{s:mat}--\ref{s:norm}; in \stref{example} we
+combine them and complete the framework. Finally, \stref{concl}
+summaries the paper and discusses related work. Proofs of the theorems are
+given in the full report version, \cite{RensinkDis2005a}.
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "agt"
+%%% End: 

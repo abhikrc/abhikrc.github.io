@@ -1,0 +1,577 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:uml="http://www.eclipse.org/uml2/1.0.0/UML" xmi:id="_EUBR4C6eEdu8yt5aiFFH7Q" name="Weather">
+  <ownedMember xmi:type="uml:Class" xmi:id="_c_iJYC6eEdu8yt5aiFFH7Q" name="WC">
+    <ownedStateMachine xmi:id="_39FqEC6gEdu8yt5aiFFH7Q" name="WC">
+      <ownedTrigger xmi:type="uml:CallTrigger" xmi:id="_5cTaEC6gEdu8yt5aiFFH7Q" name="WCPreInit" operation="_lSnvAC6gEdu8yt5aiFFH7Q"/>
+      <ownedTrigger xmi:type="uml:CallTrigger" xmi:id="_8Yp2cC6gEdu8yt5aiFFH7Q" name="WCInit" operation="_oL1X0C6gEdu8yt5aiFFH7Q"/>
+      <ownedTrigger xmi:type="uml:CallTrigger" xmi:id="_90cfAC6gEdu8yt5aiFFH7Q" name="WCDone" operation="_pBVccC6gEdu8yt5aiFFH7Q"/>
+      <ownedTrigger xmi:type="uml:CallTrigger" xmi:id="__oq1sC6gEdu8yt5aiFFH7Q" name="WCPostInit" operation="_p6QBcC6gEdu8yt5aiFFH7Q"/>
+      <ownedTrigger xmi:type="uml:CallTrigger" xmi:id="_-VjEIC6kEdu8yt5aiFFH7Q" name="WCPreUpdate" operation="_70wiYC6kEdu8yt5aiFFH7Q"/>
+      <ownedTrigger xmi:type="uml:CallTrigger" xmi:id="_BPozgC6hEdu8yt5aiFFH7Q" name="WCUpdate" operation="_q2dLAC6gEdu8yt5aiFFH7Q"/>
+      <ownedTrigger xmi:type="uml:CallTrigger" xmi:id="_EwMwMC6hEdu8yt5aiFFH7Q" name="WCPostUpdate" operation="_r6HAYC6gEdu8yt5aiFFH7Q"/>
+      <ownedTrigger xmi:type="uml:CallTrigger" xmi:id="_qCoIEC6lEdu8yt5aiFFH7Q" name="WCPostRevert" operation="_ndOMEC6lEdu8yt5aiFFH7Q"/>
+      <region xmi:id="_wA92IC6iEdu8yt5aiFFH7Q" name="WC">
+        <subvertex xmi:type="uml:Pseudostate" xmi:id="_yw8qcC6iEdu8yt5aiFFH7Q" name="initial" outgoing="_3u8OcC6iEdu8yt5aiFFH7Q"/>
+        <subvertex xmi:type="uml:State" xmi:id="_0DgegC6iEdu8yt5aiFFH7Q" name="WCDone" outgoing="_vpIvgC6jEdu8yt5aiFFH7Q _zqoZkC6kEdu8yt5aiFFH7Q" incoming="_3u8OcC6iEdu8yt5aiFFH7Q _izMiYC6kEdu8yt5aiFFH7Q _nmmnAC6kEdu8yt5aiFFH7Q _t7xj4C6lEdu8yt5aiFFH7Q _xhGEwC6lEdu8yt5aiFFH7Q"/>
+        <subvertex xmi:type="uml:State" xmi:id="_qcGC4C6jEdu8yt5aiFFH7Q" name="WCPreInit" outgoing="_Th1RIC6kEdu8yt5aiFFH7Q" incoming="_vpIvgC6jEdu8yt5aiFFH7Q">
+          <entry xmi:id="_sQLPoC6jEdu8yt5aiFFH7Q" body="WeatherSystem.CM.afterPreInit();">
+            <ownedComment xmi:id="_ymn9oELWEdu-uo-KvlE4uA">
+              <body>CM.CMAfterPreInit</body>
+            </ownedComment>
+          </entry>
+        </subvertex>
+        <subvertex xmi:type="uml:State" xmi:id="_KJBusC6kEdu8yt5aiFFH7Q" name="WCInit" outgoing="_cHrsoC6kEdu8yt5aiFFH7Q _izMiYC6kEdu8yt5aiFFH7Q" incoming="_Th1RIC6kEdu8yt5aiFFH7Q">
+          <entry xmi:id="_L0UL0C6kEdu8yt5aiFFH7Q" body="WeatherSystem.CM.afterInit();">
+            <ownedComment xmi:id="_0-nvwELWEdu-uo-KvlE4uA">
+              <body>CM.CMAfterInit</body>
+            </ownedComment>
+          </entry>
+        </subvertex>
+        <subvertex xmi:type="uml:State" xmi:id="_X8EAwC6kEdu8yt5aiFFH7Q" name="WCPostInit" outgoing="_nmmnAC6kEdu8yt5aiFFH7Q" incoming="_cHrsoC6kEdu8yt5aiFFH7Q">
+          <entry xmi:id="_ZbucsC6kEdu8yt5aiFFH7Q" body="WeatherSystem.CM.afterPostInit();">
+            <ownedComment xmi:id="_3janwELWEdu-uo-KvlE4uA">
+              <body>CM.CMAfterPostInit</body>
+            </ownedComment>
+          </entry>
+        </subvertex>
+        <subvertex xmi:type="uml:State" xmi:id="_uD9sAC6kEdu8yt5aiFFH7Q" name="WCPreUpdating" outgoing="_JqMBIC6lEdu8yt5aiFFH7Q" incoming="_zqoZkC6kEdu8yt5aiFFH7Q">
+          <entry xmi:id="_vstygC6kEdu8yt5aiFFH7Q" body="WeatherSystem.CM.afterPreUpdate();">
+            <ownedComment xmi:id="_7K1aYELWEdu-uo-KvlE4uA">
+              <body>CM.CMAfterPreUpdate</body>
+            </ownedComment>
+          </entry>
+        </subvertex>
+        <subvertex xmi:type="uml:State" xmi:id="_E6pv4C6lEdu8yt5aiFFH7Q" name="WCUpdating" outgoing="_XR5M8C6lEdu8yt5aiFFH7Q _hZDDIC6lEdu8yt5aiFFH7Q" incoming="_JqMBIC6lEdu8yt5aiFFH7Q">
+          <entry xmi:id="_Gh6ooC6lEdu8yt5aiFFH7Q" body="WeatherSystem.CM.afterUpdate();">
+            <ownedComment xmi:id="_-KKSQELWEdu-uo-KvlE4uA">
+              <body>CM.CMAfterUpdate</body>
+            </ownedComment>
+          </entry>
+        </subvertex>
+        <subvertex xmi:type="uml:State" xmi:id="_TKTFcC6lEdu8yt5aiFFH7Q" name="WCPostUpdating" outgoing="_t7xj4C6lEdu8yt5aiFFH7Q" incoming="_XR5M8C6lEdu8yt5aiFFH7Q">
+          <entry xmi:id="_VQsxQC6lEdu8yt5aiFFH7Q" body="WeatherSystem.CM.afterPostUpdate();">
+            <ownedComment xmi:id="_A5ipoELXEdu-uo-KvlE4uA">
+              <body>CM.CMAfterPostUpdate</body>
+            </ownedComment>
+          </entry>
+        </subvertex>
+        <subvertex xmi:type="uml:State" xmi:id="_by1BgC6lEdu8yt5aiFFH7Q" name="WCPostReverting" outgoing="_xhGEwC6lEdu8yt5aiFFH7Q" incoming="_hZDDIC6lEdu8yt5aiFFH7Q">
+          <entry xmi:id="_ehnjAC6lEdu8yt5aiFFH7Q" body="WeatherSystem.CM.afterPostRevert();">
+            <ownedComment xmi:id="_DtjCUELXEdu-uo-KvlE4uA">
+              <body>CM.CMAfterPostRevert</body>
+            </ownedComment>
+          </entry>
+        </subvertex>
+        <transition xmi:id="_3u8OcC6iEdu8yt5aiFFH7Q" name="initial" source="_yw8qcC6iEdu8yt5aiFFH7Q" target="_0DgegC6iEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_vpIvgC6jEdu8yt5aiFFH7Q" name="WCPreInitBefore" source="_0DgegC6iEdu8yt5aiFFH7Q" target="_qcGC4C6jEdu8yt5aiFFH7Q" trigger="_5cTaEC6gEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_Th1RIC6kEdu8yt5aiFFH7Q" name="WCInitBefore" source="_qcGC4C6jEdu8yt5aiFFH7Q" target="_KJBusC6kEdu8yt5aiFFH7Q" trigger="_8Yp2cC6gEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_izMiYC6kEdu8yt5aiFFH7Q" name="WCInitDone" source="_KJBusC6kEdu8yt5aiFFH7Q" target="_0DgegC6iEdu8yt5aiFFH7Q" trigger="_90cfAC6gEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_cHrsoC6kEdu8yt5aiFFH7Q" name="WCPostInitBefore" source="_KJBusC6kEdu8yt5aiFFH7Q" target="_X8EAwC6kEdu8yt5aiFFH7Q" trigger="__oq1sC6gEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_nmmnAC6kEdu8yt5aiFFH7Q" name="WCPostInitDone" source="_X8EAwC6kEdu8yt5aiFFH7Q" target="_0DgegC6iEdu8yt5aiFFH7Q" trigger="_90cfAC6gEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_zqoZkC6kEdu8yt5aiFFH7Q" name="WCPreUpdatingBefore" source="_0DgegC6iEdu8yt5aiFFH7Q" target="_uD9sAC6kEdu8yt5aiFFH7Q" trigger="_-VjEIC6kEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_JqMBIC6lEdu8yt5aiFFH7Q" name="WCUpdatingBefore" source="_uD9sAC6kEdu8yt5aiFFH7Q" target="_E6pv4C6lEdu8yt5aiFFH7Q" trigger="_BPozgC6hEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_XR5M8C6lEdu8yt5aiFFH7Q" name="WCPostUpdatingBefore" source="_E6pv4C6lEdu8yt5aiFFH7Q" target="_TKTFcC6lEdu8yt5aiFFH7Q" trigger="_EwMwMC6hEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_hZDDIC6lEdu8yt5aiFFH7Q" name="WCPostRevertingBefore" source="_E6pv4C6lEdu8yt5aiFFH7Q" target="_by1BgC6lEdu8yt5aiFFH7Q" trigger="_qCoIEC6lEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_t7xj4C6lEdu8yt5aiFFH7Q" name="WCPostUpdatingDone" source="_TKTFcC6lEdu8yt5aiFFH7Q" target="_0DgegC6iEdu8yt5aiFFH7Q" trigger="_90cfAC6gEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_xhGEwC6lEdu8yt5aiFFH7Q" name="WCPostRevertingDone" source="_by1BgC6lEdu8yt5aiFFH7Q" target="_0DgegC6iEdu8yt5aiFFH7Q" trigger="_90cfAC6gEdu8yt5aiFFH7Q"/>
+      </region>
+    </ownedStateMachine>
+    <ownedOperation xmi:id="_lSnvAC6gEdu8yt5aiFFH7Q" name="preInit" type="_pbi-IC6eEdu8yt5aiFFH7Q">
+      <returnResult xmi:id="_lSnvAS6gEdu8yt5aiFFH7Q" name="return" type="_pbi-IC6eEdu8yt5aiFFH7Q"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_oL1X0C6gEdu8yt5aiFFH7Q" name="init" type="_pbi-IC6eEdu8yt5aiFFH7Q">
+      <returnResult xmi:id="_oL1X0S6gEdu8yt5aiFFH7Q" name="return" type="_pbi-IC6eEdu8yt5aiFFH7Q"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_pBVccC6gEdu8yt5aiFFH7Q" name="done" type="_pbi-IC6eEdu8yt5aiFFH7Q">
+      <returnResult xmi:id="_pBVccS6gEdu8yt5aiFFH7Q" name="return" type="_pbi-IC6eEdu8yt5aiFFH7Q"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_p6QBcC6gEdu8yt5aiFFH7Q" name="postInit" type="_pbi-IC6eEdu8yt5aiFFH7Q">
+      <returnResult xmi:id="_p6QBcS6gEdu8yt5aiFFH7Q" name="return" type="_pbi-IC6eEdu8yt5aiFFH7Q"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_70wiYC6kEdu8yt5aiFFH7Q" name="preUpdate" type="_pbi-IC6eEdu8yt5aiFFH7Q">
+      <returnResult xmi:id="_70wiYS6kEdu8yt5aiFFH7Q" name="return" type="_pbi-IC6eEdu8yt5aiFFH7Q"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_q2dLAC6gEdu8yt5aiFFH7Q" name="update" type="_pbi-IC6eEdu8yt5aiFFH7Q">
+      <returnResult xmi:id="_q2dLAS6gEdu8yt5aiFFH7Q" name="return" type="_pbi-IC6eEdu8yt5aiFFH7Q"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_r6HAYC6gEdu8yt5aiFFH7Q" name="postUpdate" type="_pbi-IC6eEdu8yt5aiFFH7Q">
+      <returnResult xmi:id="_r6HAYS6gEdu8yt5aiFFH7Q" name="return" type="_pbi-IC6eEdu8yt5aiFFH7Q"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_ndOMEC6lEdu8yt5aiFFH7Q" name="postRevert" type="_pbi-IC6eEdu8yt5aiFFH7Q">
+      <returnResult xmi:id="_ndOMES6lEdu8yt5aiFFH7Q" name="return" type="_pbi-IC6eEdu8yt5aiFFH7Q"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_QenCoESbEduRB4GmNFgtjA" name="WC"/>
+  </ownedMember>
+  <ownedMember xmi:type="uml:Class" xmi:id="_fSUEUC6eEdu8yt5aiFFH7Q" name="CM">
+    <ownedStateMachine xmi:id="_n-k0YC6fEdu8yt5aiFFH7Q" name="CM">
+      <ownedTrigger xmi:type="uml:CallTrigger" xmi:id="_qqYTUC6fEdu8yt5aiFFH7Q" name="CMConnect" operation="_42S04C6eEdu8yt5aiFFH7Q"/>
+      <ownedTrigger xmi:type="uml:CallTrigger" xmi:id="_ssKk4C6fEdu8yt5aiFFH7Q" name="CMAfterPreInit" operation="_LYuOQC6fEdu8yt5aiFFH7Q"/>
+      <ownedTrigger xmi:type="uml:CallTrigger" xmi:id="_vXh-8C6fEdu8yt5aiFFH7Q" name="CMAfterInit" operation="_Oxh9IC6fEdu8yt5aiFFH7Q"/>
+      <ownedTrigger xmi:type="uml:CallTrigger" xmi:id="_Ce54cC6gEdu8yt5aiFFH7Q" name="CMClientUseResultYes" operation="_P4wq8C6fEdu8yt5aiFFH7Q"/>
+      <ownedTrigger xmi:type="uml:CallTrigger" xmi:id="_FRk0YC6gEdu8yt5aiFFH7Q" name="CMClientUseResultNo" operation="_R3awAC6fEdu8yt5aiFFH7Q"/>
+      <ownedTrigger xmi:type="uml:CallTrigger" xmi:id="_HdDNcC6gEdu8yt5aiFFH7Q" name="CMAfterPostInit" operation="_T_nLkC6fEdu8yt5aiFFH7Q"/>
+      <ownedTrigger xmi:type="uml:CallTrigger" xmi:id="_QlxFcC6gEdu8yt5aiFFH7Q" name="CMAfterPreUpdate" operation="_ZmbqIC6fEdu8yt5aiFFH7Q"/>
+      <ownedTrigger xmi:type="uml:CallTrigger" xmi:id="_SDyioC6gEdu8yt5aiFFH7Q" name="CMAfterUpdate" operation="__VAIQC6fEdu8yt5aiFFH7Q"/>
+      <ownedTrigger xmi:type="uml:CallTrigger" xmi:id="_URfwUC6gEdu8yt5aiFFH7Q" name="CMAfterPostUpdate" operation="_bp26cC6fEdu8yt5aiFFH7Q"/>
+      <ownedTrigger xmi:type="uml:CallTrigger" xmi:id="_ZdpFEC6gEdu8yt5aiFFH7Q" name="CMAfterPostRevert" operation="_dz_PsC6fEdu8yt5aiFFH7Q"/>
+      <ownedTrigger xmi:type="uml:CallTrigger" xmi:id="_gp7soC6gEdu8yt5aiFFH7Q" name="CMPerformUpdate" operation="_kWHf8C6fEdu8yt5aiFFH7Q"/>
+      <ownedTrigger xmi:type="uml:CallTrigger" xmi:id="_lHs-4DBVEdu8yt5aiFFH7Q" name="CMProgress" operation="_jrT5YDBVEdu8yt5aiFFH7Q"/>
+      <ownedTrigger xmi:type="uml:CallTrigger" xmi:id="_jEZmAEO_EduRXZeF8JH_lw" name="CMClientGetResultYes" operation="_c2erMEO_EduRXZeF8JH_lw"/>
+      <ownedTrigger xmi:type="uml:CallTrigger" xmi:id="_l2ujsEO_EduRXZeF8JH_lw" name="CMClientGetResultNo" operation="_eYqPoEO_EduRXZeF8JH_lw"/>
+      <region xmi:id="_efv60DBSEdu8yt5aiFFH7Q" name="CM">
+        <subvertex xmi:type="uml:Pseudostate" xmi:id="_gAAzsDBSEdu8yt5aiFFH7Q" name="initial" outgoing="_j0r_MDBSEdu8yt5aiFFH7Q"/>
+        <subvertex xmi:type="uml:State" xmi:id="_iQGnADBSEdu8yt5aiFFH7Q" name="CMDefault" outgoing="_s1ppYDBSEdu8yt5aiFFH7Q _HOL2kDEHEdu8yt5aiFFH7Q" incoming="_j0r_MDBSEdu8yt5aiFFH7Q _n3PHQDBVEdu8yt5aiFFH7Q _uTGXcDBVEdu8yt5aiFFH7Q _LH-R8DEPEdu8yt5aiFFH7Q _WkpwoDEPEdu8yt5aiFFH7Q"/>
+        <subvertex xmi:type="uml:State" xmi:id="_oxoaUDBSEdu8yt5aiFFH7Q" name="CMPreInit" outgoing="_1bNUgDBTEdu8yt5aiFFH7Q" incoming="_s1ppYDBSEdu8yt5aiFFH7Q"/>
+        <subvertex xmi:type="uml:State" xmi:id="_z1lagDBTEdu8yt5aiFFH7Q" name="CMInit" outgoing="_DPb5YDBUEdu8yt5aiFFH7Q" incoming="_1bNUgDBTEdu8yt5aiFFH7Q"/>
+        <subvertex xmi:type="uml:State" xmi:id="_AJs3gDBUEdu8yt5aiFFH7Q" name="CMWaitClientGetInit" outgoing="_L1vA0DBUEdu8yt5aiFFH7Q _bSkiQDBUEdu8yt5aiFFH7Q" incoming="_DPb5YDBUEdu8yt5aiFFH7Q"/>
+        <subvertex xmi:type="uml:State" xmi:id="_IzbGYDBUEdu8yt5aiFFH7Q" name="CMInitFail" outgoing="_uTGXcDBVEdu8yt5aiFFH7Q" incoming="_L1vA0DBUEdu8yt5aiFFH7Q _tHZOwDBUEdu8yt5aiFFH7Q">
+          <entry xmi:id="_S5Fu0DBUEdu8yt5aiFFH7Q" body="WeatherSystem.WC.done();baseClass.currClient.disconnect();baseClass.progress();">
+            <ownedComment xmi:id="_VsyPEELXEdu-uo-KvlE4uA">
+              <body>WC.WCDone</body>
+            </ownedComment>
+            <ownedComment xmi:id="_cOm9UELXEdu-uo-KvlE4uA">
+              <body>CM.CMProgress</body>
+            </ownedComment>
+            <ownedComment xmi:id="_f1RiAELXEdu-uo-KvlE4uA">
+              <body>Client.ClientDisconnect</body>
+            </ownedComment>
+          </entry>
+        </subvertex>
+        <subvertex xmi:type="uml:State" xmi:id="_X7_oADBUEdu8yt5aiFFH7Q" name="CMGetSuccessInit" outgoing="_pNYiIDEWEdu3-II2DJ9hSA" incoming="_bSkiQDBUEdu8yt5aiFFH7Q">
+          <entry xmi:id="_iCZ3UDBUEdu8yt5aiFFH7Q" body="WeatherSystem.WC.postInit();baseClass.currClient.useNewWthr();">
+            <ownedComment xmi:id="_jiWQsELXEdu-uo-KvlE4uA">
+              <body>WC.WCPostInit</body>
+            </ownedComment>
+            <ownedComment xmi:id="_pFbewELXEdu-uo-KvlE4uA">
+              <body>Client.ClientUseNewWthr</body>
+            </ownedComment>
+          </entry>
+        </subvertex>
+        <subvertex xmi:type="uml:State" xmi:id="_rK9-UDBUEdu8yt5aiFFH7Q" name="CMWaitClientUseInit" outgoing="_tHZOwDBUEdu8yt5aiFFH7Q _cx8N0DBVEdu8yt5aiFFH7Q" incoming="_pNYiIDEWEdu3-II2DJ9hSA"/>
+        <subvertex xmi:type="uml:State" xmi:id="_12CZ4DBUEdu8yt5aiFFH7Q" name="CMUseSuccessInit" outgoing="_n3PHQDBVEdu8yt5aiFFH7Q" incoming="_cx8N0DBVEdu8yt5aiFFH7Q">
+          <entry xmi:id="_Q_f6gDBVEdu8yt5aiFFH7Q" body="WeatherSystem.WC.done();baseClass.currClient.done();WeatherSystem.AllClients.add(baseClass.currClient);baseClass.progress();">
+            <ownedComment xmi:id="_sNjGQELXEdu-uo-KvlE4uA">
+              <body>WC.WCDone</body>
+            </ownedComment>
+            <ownedComment xmi:id="_vGBvQELXEdu-uo-KvlE4uA">
+              <body>Client.ClientDone</body>
+            </ownedComment>
+            <ownedComment xmi:id="_3w7p4ELXEdu-uo-KvlE4uA">
+              <body>CM.CMProgress</body>
+            </ownedComment>
+          </entry>
+        </subvertex>
+        <subvertex xmi:type="uml:State" xmi:id="_EkKgUDEHEdu8yt5aiFFH7Q" name="CMPreUpdating" outgoing="_h-LHQDEHEdu8yt5aiFFH7Q" incoming="_HOL2kDEHEdu8yt5aiFFH7Q">
+          <entry xmi:id="_PKT_oDEHEdu8yt5aiFFH7Q" body="WeatherSystem.WC.preUpdate();for(int i=0; i&lt;WeatherSystem.AllClients.size(); i++) { ((Client)WeatherSystem.AllClients.get(i)).preUpdate(); }">
+            <ownedComment xmi:id="_69E1wELXEdu-uo-KvlE4uA">
+              <body>WC.WCPreUpdate</body>
+            </ownedComment>
+            <ownedComment xmi:id="_ASv58ELYEdu-uo-KvlE4uA">
+              <body>Client.ClientPreUpdate</body>
+            </ownedComment>
+          </entry>
+        </subvertex>
+        <subvertex xmi:type="uml:State" xmi:id="_gLSNUDEHEdu8yt5aiFFH7Q" name="CMUpdating" outgoing="_Km2mEDEIEdu8yt5aiFFH7Q" incoming="_h-LHQDEHEdu8yt5aiFFH7Q">
+          <entry xmi:id="_y8UDYDEHEdu8yt5aiFFH7Q" body="WeatherSystem.WC.update(); for(int i=0; i&lt;WeatherSystem.AllClients.size(); i++) { ((Client)WeatherSystem.AllClients.get(i)).getNewWthr(); }">
+            <ownedComment xmi:id="_E6-pUELYEdu-uo-KvlE4uA">
+              <body>WC.WCUpdate</body>
+            </ownedComment>
+            <ownedComment xmi:id="_IYG3gELYEdu-uo-KvlE4uA">
+              <body>Client.ClientGetNewWthr</body>
+            </ownedComment>
+          </entry>
+        </subvertex>
+        <subvertex xmi:type="uml:State" xmi:id="_Inc6IDEIEdu8yt5aiFFH7Q" name="CMWaitClientGetUpd" outgoing="_mtjyEDEIEdu8yt5aiFFH7Q _FQAD4DENEdu8yt5aiFFH7Q" incoming="_Km2mEDEIEdu8yt5aiFFH7Q _T126ADENEdu8yt5aiFFH7Q"/>
+        <subvertex xmi:type="uml:State" xmi:id="_isODkDEIEdu8yt5aiFFH7Q" name="CMGetFailUpd" outgoing="_9kP18DEIEdu8yt5aiFFH7Q" incoming="_USfHcEScEduRB4GmNFgtjA">
+          <entry xmi:id="_x9Io4DEIEdu8yt5aiFFH7Q" body="WeatherSystem.WC.postRevert(); for(int i=0; i&lt;WeatherSystem.AllClients.size(); i++) { ((Client)WeatherSystem.AllClients.get(i)).useOldWthr(); }">
+            <ownedComment xmi:id="_LxqNQELYEdu-uo-KvlE4uA">
+              <body>WC.WCPostRevert</body>
+            </ownedComment>
+            <ownedComment xmi:id="_PqzpEELYEdu-uo-KvlE4uA">
+              <body>Client.ClientUseOldWthr</body>
+            </ownedComment>
+          </entry>
+        </subvertex>
+        <subvertex xmi:type="uml:State" xmi:id="_6q4cIDEIEdu8yt5aiFFH7Q" name="CMPostReverting" outgoing="_jMj7EDEJEdu8yt5aiFFH7Q _ftf9wDEKEdu8yt5aiFFH7Q" incoming="_9kP18DEIEdu8yt5aiFFH7Q _rqES4DEJEdu8yt5aiFFH7Q"/>
+        <subvertex xmi:type="uml:Pseudostate" xmi:id="_dyHEkDEJEdu8yt5aiFFH7Q" name="CMPostRevertingChoice" outgoing="_rqES4DEJEdu8yt5aiFFH7Q _GqJOADEKEdu8yt5aiFFH7Q" incoming="_jMj7EDEJEdu8yt5aiFFH7Q" kind="choice"/>
+        <subvertex xmi:type="uml:State" xmi:id="_3eSu4DEJEdu8yt5aiFFH7Q" name="CMUpdSuccess" outgoing="_LH-R8DEPEdu8yt5aiFFH7Q" incoming="_GqJOADEKEdu8yt5aiFFH7Q _817vsDEOEdu8yt5aiFFH7Q">
+          <entry xmi:id="_7z5dMDEJEdu8yt5aiFFH7Q" body="WeatherSystem.WC.done(); for(int i=0; i&lt;WeatherSystem.AllClients.size(); i++) { ((Client)WeatherSystem.AllClients.get(i)).done(); } baseClass.progress();">
+            <ownedComment xmi:id="_UHHcUELYEdu-uo-KvlE4uA">
+              <body>WC.WCDone</body>
+            </ownedComment>
+            <ownedComment xmi:id="_XnhoAELYEdu-uo-KvlE4uA">
+              <body>Client.ClientDone</body>
+            </ownedComment>
+            <ownedComment xmi:id="_ZqMqYELYEdu-uo-KvlE4uA">
+              <body>CM.CMProgress</body>
+            </ownedComment>
+          </entry>
+        </subvertex>
+        <subvertex xmi:type="uml:State" xmi:id="_UYHZ4DEKEdu8yt5aiFFH7Q" name="CMUpdFail" outgoing="_WkpwoDEPEdu8yt5aiFFH7Q" incoming="_4hc0AEScEduRB4GmNFgtjA _M2vSIESdEduRB4GmNFgtjA">
+          <entry xmi:id="_WP6pADEKEdu8yt5aiFFH7Q" body="WeatherSystem.WC.done(); for(int i=0; i&lt;WeatherSystem.AllClients.size(); i++) { ((Client)WeatherSystem.AllClients.get(i)).disconnect(); } WeatherSystem.AllClients.clear(); baseClass.progress();">
+            <ownedComment xmi:id="_cu5KcELYEdu-uo-KvlE4uA">
+              <body>WC.WCDone</body>
+            </ownedComment>
+            <ownedComment xmi:id="_f5sSgELYEdu-uo-KvlE4uA">
+              <body>Client.ClientDisconnect</body>
+            </ownedComment>
+            <ownedComment xmi:id="_hwc_0ELYEdu-uo-KvlE4uA">
+              <body>CM.CMProgress</body>
+            </ownedComment>
+          </entry>
+        </subvertex>
+        <subvertex xmi:type="uml:Pseudostate" xmi:id="_BKV2EDENEdu8yt5aiFFH7Q" name="CMWaitClientGetChoice" outgoing="_T126ADENEdu8yt5aiFFH7Q _eqT7EDENEdu8yt5aiFFH7Q" incoming="_FQAD4DENEdu8yt5aiFFH7Q" kind="choice"/>
+        <subvertex xmi:type="uml:State" xmi:id="_dUxrgDENEdu8yt5aiFFH7Q" name="CMPostUpdating" outgoing="_5sBN4DENEdu8yt5aiFFH7Q" incoming="_eqT7EDENEdu8yt5aiFFH7Q">
+          <entry xmi:id="_pqYWQDENEdu8yt5aiFFH7Q" body="WeatherSystem.WC.postUpdate(); for(int i=0; i&lt;WeatherSystem.AllClients.size(); i++) { ((Client)WeatherSystem.AllClients.get(i)).useNewWthr(); }">
+            <ownedComment xmi:id="_mHZx8ELYEdu-uo-KvlE4uA">
+              <body>WC.WCPostUpdate</body>
+            </ownedComment>
+            <ownedComment xmi:id="_qUp1gELYEdu-uo-KvlE4uA">
+              <body>Client.ClientUseNewWthr</body>
+            </ownedComment>
+          </entry>
+        </subvertex>
+        <subvertex xmi:type="uml:State" xmi:id="_2Ald8DENEdu8yt5aiFFH7Q" name="CMWaitClientUseUpd" outgoing="_EPo9oDEOEdu8yt5aiFFH7Q _i3R1UDEOEdu8yt5aiFFH7Q" incoming="_5sBN4DENEdu8yt5aiFFH7Q _ukMvcDEOEdu8yt5aiFFH7Q"/>
+        <subvertex xmi:type="uml:Pseudostate" xmi:id="_g4d_QDEOEdu8yt5aiFFH7Q" name="CMWaitClientUseUpdChoice" outgoing="_ukMvcDEOEdu8yt5aiFFH7Q _817vsDEOEdu8yt5aiFFH7Q" incoming="_i3R1UDEOEdu8yt5aiFFH7Q" kind="choice"/>
+        <subvertex xmi:type="uml:State" xmi:id="_8TQuMESbEduRB4GmNFgtjA" name="CMProgressGet" outgoing="_USfHcEScEduRB4GmNFgtjA" incoming="_mtjyEDEIEdu8yt5aiFFH7Q"/>
+        <subvertex xmi:type="uml:State" xmi:id="_-LLSEESbEduRB4GmNFgtjA" name="CMProgressUse" outgoing="_M2vSIESdEduRB4GmNFgtjA" incoming="_EPo9oDEOEdu8yt5aiFFH7Q"/>
+        <subvertex xmi:type="uml:State" xmi:id="_ElUrAEScEduRB4GmNFgtjA" name="CMProgressUseOld" outgoing="_4hc0AEScEduRB4GmNFgtjA" incoming="_ftf9wDEKEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_j0r_MDBSEdu8yt5aiFFH7Q" name="initial" source="_gAAzsDBSEdu8yt5aiFFH7Q" target="_iQGnADBSEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_s1ppYDBSEdu8yt5aiFFH7Q" name="CMPreInitBefore" source="_iQGnADBSEdu8yt5aiFFH7Q" target="_oxoaUDBSEdu8yt5aiFFH7Q" trigger="_qqYTUC6fEdu8yt5aiFFH7Q">
+          <effect xmi:id="_y2_gwDBSEdu8yt5aiFFH7Q" body="baseClass.currClient=(Client)parameter;baseClass.currClient.preInit();WeatherSystem.WC.preInit();">
+            <ownedComment xmi:id="_vLyjkELYEdu-uo-KvlE4uA">
+              <body>Client.ClientPreInit</body>
+            </ownedComment>
+            <ownedComment xmi:id="_ytr9AELYEdu-uo-KvlE4uA">
+              <body>WC.WCPreInit</body>
+            </ownedComment>
+          </effect>
+        </transition>
+        <transition xmi:id="_1bNUgDBTEdu8yt5aiFFH7Q" name="CMInitBefore" source="_oxoaUDBSEdu8yt5aiFFH7Q" target="_z1lagDBTEdu8yt5aiFFH7Q" trigger="_ssKk4C6fEdu8yt5aiFFH7Q">
+          <effect xmi:id="_6WEsADBTEdu8yt5aiFFH7Q" body="WeatherSystem.WC.init();baseClass.currClient.getNewWthr();">
+            <ownedComment xmi:id="_1Vd3kELYEdu-uo-KvlE4uA">
+              <body>WC.WCInit</body>
+            </ownedComment>
+            <ownedComment xmi:id="_5R4p0ELYEdu-uo-KvlE4uA">
+              <body>Client.ClientGetNewWthr</body>
+            </ownedComment>
+          </effect>
+        </transition>
+        <transition xmi:id="_DPb5YDBUEdu8yt5aiFFH7Q" name="CMWaitClientGetInitBefore" source="_z1lagDBTEdu8yt5aiFFH7Q" target="_AJs3gDBUEdu8yt5aiFFH7Q" trigger="_vXh-8C6fEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_L1vA0DBUEdu8yt5aiFFH7Q" name="CMWaitClientGetInitFail" source="_AJs3gDBUEdu8yt5aiFFH7Q" target="_IzbGYDBUEdu8yt5aiFFH7Q" trigger="_l2ujsEO_EduRXZeF8JH_lw"/>
+        <transition xmi:id="_bSkiQDBUEdu8yt5aiFFH7Q" name="CMWaitClientGetInitSuccess" source="_AJs3gDBUEdu8yt5aiFFH7Q" target="_X7_oADBUEdu8yt5aiFFH7Q" trigger="_jEZmAEO_EduRXZeF8JH_lw"/>
+        <transition xmi:id="_tHZOwDBUEdu8yt5aiFFH7Q" name="CMWaitClientUseInitFail" source="_rK9-UDBUEdu8yt5aiFFH7Q" target="_IzbGYDBUEdu8yt5aiFFH7Q" trigger="_FRk0YC6gEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_cx8N0DBVEdu8yt5aiFFH7Q" name="CMWaitClientUseInitSuccess" source="_rK9-UDBUEdu8yt5aiFFH7Q" target="_12CZ4DBUEdu8yt5aiFFH7Q" trigger="_Ce54cC6gEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_pNYiIDEWEdu3-II2DJ9hSA" name="CMWaitClientUseInitBefore" source="_X7_oADBUEdu8yt5aiFFH7Q" target="_rK9-UDBUEdu8yt5aiFFH7Q" trigger="_HdDNcC6gEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_n3PHQDBVEdu8yt5aiFFH7Q" name="CMInitUseSuccessAfter" source="_12CZ4DBUEdu8yt5aiFFH7Q" target="_iQGnADBSEdu8yt5aiFFH7Q" trigger="_lHs-4DBVEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_uTGXcDBVEdu8yt5aiFFH7Q" name="CMInitFailAfter" source="_IzbGYDBUEdu8yt5aiFFH7Q" target="_iQGnADBSEdu8yt5aiFFH7Q" trigger="_lHs-4DBVEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_HOL2kDEHEdu8yt5aiFFH7Q" name="CMPreUpdatingBefore" source="_iQGnADBSEdu8yt5aiFFH7Q" target="_EkKgUDEHEdu8yt5aiFFH7Q" trigger="_gp7soC6gEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_h-LHQDEHEdu8yt5aiFFH7Q" name="CMUpdatingBefore" source="_EkKgUDEHEdu8yt5aiFFH7Q" target="_gLSNUDEHEdu8yt5aiFFH7Q" trigger="_QlxFcC6gEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_Km2mEDEIEdu8yt5aiFFH7Q" name="CMWaitClientGetUpdBefore" source="_gLSNUDEHEdu8yt5aiFFH7Q" target="_Inc6IDEIEdu8yt5aiFFH7Q" trigger="_SDyioC6gEdu8yt5aiFFH7Q">
+          <effect xmi:id="_XVy94DEIEdu8yt5aiFFH7Q" body="baseClass.msgRcvCount=0;"/>
+        </transition>
+        <transition xmi:id="_mtjyEDEIEdu8yt5aiFFH7Q" name="CMWaitClientGetUpdResultNo" source="_Inc6IDEIEdu8yt5aiFFH7Q" target="_8TQuMESbEduRB4GmNFgtjA" trigger="_l2ujsEO_EduRXZeF8JH_lw"/>
+        <transition xmi:id="_USfHcEScEduRB4GmNFgtjA" name="CMUpdGetFailBefore" source="_8TQuMESbEduRB4GmNFgtjA" target="_isODkDEIEdu8yt5aiFFH7Q" trigger="_lHs-4DBVEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_9kP18DEIEdu8yt5aiFFH7Q" name="CMPostRevertingBefore" source="_isODkDEIEdu8yt5aiFFH7Q" target="_6q4cIDEIEdu8yt5aiFFH7Q" trigger="_ZdpFEC6gEdu8yt5aiFFH7Q">
+          <effect xmi:id="_C73a4DEJEdu8yt5aiFFH7Q" body="baseClass.msgRcvCount=0;"/>
+        </transition>
+        <transition xmi:id="_jMj7EDEJEdu8yt5aiFFH7Q" name="CMPostRevertingResultYes" source="_6q4cIDEIEdu8yt5aiFFH7Q" target="_dyHEkDEJEdu8yt5aiFFH7Q" trigger="_Ce54cC6gEdu8yt5aiFFH7Q">
+          <effect xmi:id="_QZTa8DEKEdu8yt5aiFFH7Q" body="baseClass.msgRcvCount++;"/>
+        </transition>
+        <transition xmi:id="_rqES4DEJEdu8yt5aiFFH7Q" name="CMPostRevertingNotCompletechoice" source="_dyHEkDEJEdu8yt5aiFFH7Q" target="_6q4cIDEIEdu8yt5aiFFH7Q">
+          <guard xmi:id="_1FtG4DEJEdu8yt5aiFFH7Q">
+            <specification xmi:type="uml:OpaqueExpression" xmi:id="_1yQq4DEJEdu8yt5aiFFH7Q">
+              <body>else</body>
+            </specification>
+          </guard>
+        </transition>
+        <transition xmi:id="_GqJOADEKEdu8yt5aiFFH7Q" name="CMPostRevertingCompletechoice" source="_dyHEkDEJEdu8yt5aiFFH7Q" target="_3eSu4DEJEdu8yt5aiFFH7Q">
+          <guard xmi:id="_L3e1kDEKEdu8yt5aiFFH7Q">
+            <specification xmi:type="uml:OpaqueExpression" xmi:id="_MQqKkDEKEdu8yt5aiFFH7Q">
+              <body>baseClass.msgRcvCount>=WeatherSystem.AllClients.size() - 1</body>
+            </specification>
+          </guard>
+        </transition>
+        <transition xmi:id="_ftf9wDEKEdu8yt5aiFFH7Q" name="CMPostRevertingResultNo" source="_6q4cIDEIEdu8yt5aiFFH7Q" target="_ElUrAEScEduRB4GmNFgtjA" trigger="_FRk0YC6gEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_4hc0AEScEduRB4GmNFgtjA" name="CMAfterProgressUseOld" source="_ElUrAEScEduRB4GmNFgtjA" target="_UYHZ4DEKEdu8yt5aiFFH7Q" trigger="_lHs-4DBVEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_FQAD4DENEdu8yt5aiFFH7Q" name="CMWaitClientGetUpdResultYes" source="_Inc6IDEIEdu8yt5aiFFH7Q" target="_BKV2EDENEdu8yt5aiFFH7Q" trigger="_jEZmAEO_EduRXZeF8JH_lw">
+          <effect xmi:id="_QTzvkDENEdu8yt5aiFFH7Q" body="baseClass.msgRcvCount++;"/>
+        </transition>
+        <transition xmi:id="_T126ADENEdu8yt5aiFFH7Q" name="CMWaitClientGetUpdResultNotCompletechoice" source="_BKV2EDENEdu8yt5aiFFH7Q" target="_Inc6IDEIEdu8yt5aiFFH7Q">
+          <guard xmi:id="_aj5fUDENEdu8yt5aiFFH7Q">
+            <specification xmi:type="uml:OpaqueExpression" xmi:id="_bB2moDENEdu8yt5aiFFH7Q">
+              <body>else</body>
+            </specification>
+          </guard>
+        </transition>
+        <transition xmi:id="_eqT7EDENEdu8yt5aiFFH7Q" name="CMWaitClientGetUpdResultCompletechoice" source="_BKV2EDENEdu8yt5aiFFH7Q" target="_dUxrgDENEdu8yt5aiFFH7Q">
+          <guard xmi:id="_juaHEDENEdu8yt5aiFFH7Q">
+            <specification xmi:type="uml:OpaqueExpression" xmi:id="_kXFQoDENEdu8yt5aiFFH7Q">
+              <body>baseClass.msgRcvCount>=WeatherSystem.AllClients.size()</body>
+            </specification>
+          </guard>
+        </transition>
+        <transition xmi:id="_5sBN4DENEdu8yt5aiFFH7Q" name="CMWaitClientUseUpdBefore" source="_dUxrgDENEdu8yt5aiFFH7Q" target="_2Ald8DENEdu8yt5aiFFH7Q" trigger="_URfwUC6gEdu8yt5aiFFH7Q">
+          <effect xmi:id="__pCl8DENEdu8yt5aiFFH7Q" body="baseClass.msgRcvCount=0;"/>
+        </transition>
+        <transition xmi:id="_EPo9oDEOEdu8yt5aiFFH7Q" name="CMWaitClientUseUpdResultNo" source="_2Ald8DENEdu8yt5aiFFH7Q" target="_-LLSEESbEduRB4GmNFgtjA" trigger="_FRk0YC6gEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_M2vSIESdEduRB4GmNFgtjA" name="CMAfterProgressUse" source="_-LLSEESbEduRB4GmNFgtjA" target="_UYHZ4DEKEdu8yt5aiFFH7Q" trigger="_lHs-4DBVEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_i3R1UDEOEdu8yt5aiFFH7Q" name="CMWaitClientUseUpdResultYes" source="_2Ald8DENEdu8yt5aiFFH7Q" target="_g4d_QDEOEdu8yt5aiFFH7Q" trigger="_Ce54cC6gEdu8yt5aiFFH7Q">
+          <effect xmi:id="_qnoMMDEOEdu8yt5aiFFH7Q" body="baseClass.msgRcvCount++;"/>
+        </transition>
+        <transition xmi:id="_ukMvcDEOEdu8yt5aiFFH7Q" name="CMWaitClientUseUpdResultNotCompletechoice" source="_g4d_QDEOEdu8yt5aiFFH7Q" target="_2Ald8DENEdu8yt5aiFFH7Q">
+          <guard xmi:id="_7U73ADEOEdu8yt5aiFFH7Q">
+            <specification xmi:type="uml:OpaqueExpression" xmi:id="_74ZJYDEOEdu8yt5aiFFH7Q">
+              <body>else</body>
+            </specification>
+          </guard>
+        </transition>
+        <transition xmi:id="_817vsDEOEdu8yt5aiFFH7Q" name="CMWaitClientUseUpdResultCompletechoice" source="_g4d_QDEOEdu8yt5aiFFH7Q" target="_3eSu4DEJEdu8yt5aiFFH7Q">
+          <guard xmi:id="_EgLekDEPEdu8yt5aiFFH7Q">
+            <specification xmi:type="uml:OpaqueExpression" xmi:id="_FVrjMDEPEdu8yt5aiFFH7Q">
+              <body>baseClass.msgRcvCount>=WeatherSystem.AllClients.size()</body>
+            </specification>
+          </guard>
+        </transition>
+        <transition xmi:id="_LH-R8DEPEdu8yt5aiFFH7Q" name="CMUpdSuccessAfter" source="_3eSu4DEJEdu8yt5aiFFH7Q" target="_iQGnADBSEdu8yt5aiFFH7Q" trigger="_lHs-4DBVEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_WkpwoDEPEdu8yt5aiFFH7Q" name="CMUpdFailAfter" source="_UYHZ4DEKEdu8yt5aiFFH7Q" target="_iQGnADBSEdu8yt5aiFFH7Q" trigger="_lHs-4DBVEdu8yt5aiFFH7Q"/>
+      </region>
+    </ownedStateMachine>
+    <ownedAttribute xmi:id="_rogk8C6eEdu8yt5aiFFH7Q" name="msgRcvCount" type="_os6WgC6eEdu8yt5aiFFH7Q">
+      <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_uuGc4C6eEdu8yt5aiFFH7Q">
+        <body>0</body>
+      </defaultValue>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_wq0oQC6eEdu8yt5aiFFH7Q" name="numClients" type="_os6WgC6eEdu8yt5aiFFH7Q">
+      <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_wq0oQS6eEdu8yt5aiFFH7Q">
+        <body>0</body>
+      </defaultValue>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_0nZLgC6eEdu8yt5aiFFH7Q" name="currClient" type="_faDrEC6eEdu8yt5aiFFH7Q"/>
+    <ownedOperation xmi:id="_42S04C6eEdu8yt5aiFFH7Q" name="connect" type="_pbi-IC6eEdu8yt5aiFFH7Q">
+      <returnResult xmi:id="_8LOwYC6eEdu8yt5aiFFH7Q" name="return" type="_pbi-IC6eEdu8yt5aiFFH7Q"/>
+      <ownedParameter xmi:id="_IpVP0C6fEdu8yt5aiFFH7Q" name="client" type="_faDrEC6eEdu8yt5aiFFH7Q"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_LYuOQC6fEdu8yt5aiFFH7Q" name="afterPreInit" type="_pbi-IC6eEdu8yt5aiFFH7Q">
+      <returnResult xmi:id="_LYuOQS6fEdu8yt5aiFFH7Q" name="return" type="_pbi-IC6eEdu8yt5aiFFH7Q"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_Oxh9IC6fEdu8yt5aiFFH7Q" name="afterInit" type="_pbi-IC6eEdu8yt5aiFFH7Q">
+      <returnResult xmi:id="_Oxh9IS6fEdu8yt5aiFFH7Q" name="return" type="_pbi-IC6eEdu8yt5aiFFH7Q"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_P4wq8C6fEdu8yt5aiFFH7Q" name="clientUseResultYes" type="_pbi-IC6eEdu8yt5aiFFH7Q">
+      <returnResult xmi:id="_P4wq8S6fEdu8yt5aiFFH7Q" name="return" type="_pbi-IC6eEdu8yt5aiFFH7Q"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_R3awAC6fEdu8yt5aiFFH7Q" name="clientUseResultNo" type="_pbi-IC6eEdu8yt5aiFFH7Q">
+      <returnResult xmi:id="_R3awAS6fEdu8yt5aiFFH7Q" name="return" type="_pbi-IC6eEdu8yt5aiFFH7Q"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_T_nLkC6fEdu8yt5aiFFH7Q" name="afterPostInit" type="_pbi-IC6eEdu8yt5aiFFH7Q">
+      <returnResult xmi:id="_T_nLkS6fEdu8yt5aiFFH7Q" name="return" type="_pbi-IC6eEdu8yt5aiFFH7Q"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_ZmbqIC6fEdu8yt5aiFFH7Q" name="afterPreUpdate" type="_pbi-IC6eEdu8yt5aiFFH7Q">
+      <returnResult xmi:id="_ZmbqIS6fEdu8yt5aiFFH7Q" name="return" type="_pbi-IC6eEdu8yt5aiFFH7Q"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="__VAIQC6fEdu8yt5aiFFH7Q" name="afterUpdate" type="_pbi-IC6eEdu8yt5aiFFH7Q">
+      <returnResult xmi:id="__VAIQS6fEdu8yt5aiFFH7Q" name="return" type="_pbi-IC6eEdu8yt5aiFFH7Q"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_bp26cC6fEdu8yt5aiFFH7Q" name="afterPostUpdate" type="_pbi-IC6eEdu8yt5aiFFH7Q">
+      <returnResult xmi:id="_bp26cS6fEdu8yt5aiFFH7Q" name="return" type="_pbi-IC6eEdu8yt5aiFFH7Q"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_dz_PsC6fEdu8yt5aiFFH7Q" name="afterPostRevert" type="_pbi-IC6eEdu8yt5aiFFH7Q">
+      <returnResult xmi:id="_dz_PsS6fEdu8yt5aiFFH7Q" name="return" type="_pbi-IC6eEdu8yt5aiFFH7Q"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_kWHf8C6fEdu8yt5aiFFH7Q" name="performUpdate" type="_pbi-IC6eEdu8yt5aiFFH7Q">
+      <returnResult xmi:id="_kWHf8S6fEdu8yt5aiFFH7Q" name="return" type="_pbi-IC6eEdu8yt5aiFFH7Q"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_jrT5YDBVEdu8yt5aiFFH7Q" name="progress" type="_pbi-IC6eEdu8yt5aiFFH7Q">
+      <returnResult xmi:id="_jrT5YTBVEdu8yt5aiFFH7Q" name="return" type="_pbi-IC6eEdu8yt5aiFFH7Q"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_c2erMEO_EduRXZeF8JH_lw" name="clientGetResultYes" type="_pbi-IC6eEdu8yt5aiFFH7Q">
+      <returnResult xmi:id="_c2erMUO_EduRXZeF8JH_lw" name="return" type="_pbi-IC6eEdu8yt5aiFFH7Q"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_eYqPoEO_EduRXZeF8JH_lw" name="clientGetResultNo" type="_pbi-IC6eEdu8yt5aiFFH7Q">
+      <returnResult xmi:id="_eYqPoUO_EduRXZeF8JH_lw" name="return" type="_pbi-IC6eEdu8yt5aiFFH7Q"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_T-Mu8ESbEduRB4GmNFgtjA" name="CM"/>
+  </ownedMember>
+  <ownedMember xmi:type="uml:Class" xmi:id="_faDrEC6eEdu8yt5aiFFH7Q" name="Client">
+    <ownedStateMachine xmi:id="_uhdAoC6hEdu8yt5aiFFH7Q" name="Client">
+      <ownedTrigger xmi:type="uml:CallTrigger" xmi:id="_vpHzUC6hEdu8yt5aiFFH7Q" name="ClientPreInit" operation="_HkWS0C6hEdu8yt5aiFFH7Q"/>
+      <ownedTrigger xmi:type="uml:CallTrigger" xmi:id="_ykbt4C6hEdu8yt5aiFFH7Q" name="ClientGetNewWthr" operation="_QppDYC6hEdu8yt5aiFFH7Q"/>
+      <ownedTrigger xmi:type="uml:CallTrigger" xmi:id="_1GQKYC6hEdu8yt5aiFFH7Q" name="ClientGetSuccess" operation="_SomqcC6hEdu8yt5aiFFH7Q"/>
+      <ownedTrigger xmi:type="uml:CallTrigger" xmi:id="_4sB-QC6hEdu8yt5aiFFH7Q" name="ClientGetFail" operation="_dsP-EC6hEdu8yt5aiFFH7Q"/>
+      <ownedTrigger xmi:type="uml:CallTrigger" xmi:id="_6aJs8C6hEdu8yt5aiFFH7Q" name="ClientDisconnect" operation="_ey4O8C6hEdu8yt5aiFFH7Q"/>
+      <ownedTrigger xmi:type="uml:CallTrigger" xmi:id="_8DpaUC6hEdu8yt5aiFFH7Q" name="ClientPreUpdate" operation="_forOgC6hEdu8yt5aiFFH7Q"/>
+      <ownedTrigger xmi:type="uml:CallTrigger" xmi:id="_-cYzUC6hEdu8yt5aiFFH7Q" name="ClientUseNewWthr" operation="_iGxooC6hEdu8yt5aiFFH7Q"/>
+      <ownedTrigger xmi:type="uml:CallTrigger" xmi:id="_AxGA4C6iEdu8yt5aiFFH7Q" name="ClientUseSuccess" operation="_kOrJQC6hEdu8yt5aiFFH7Q"/>
+      <ownedTrigger xmi:type="uml:CallTrigger" xmi:id="_FA5CIC6iEdu8yt5aiFFH7Q" name="ClientUseFail" operation="_mAE1cC6hEdu8yt5aiFFH7Q"/>
+      <ownedTrigger xmi:type="uml:CallTrigger" xmi:id="_HMEgQC6iEdu8yt5aiFFH7Q" name="ClientDone" operation="_pBVccC6gEdu8yt5aiFFH7Q"/>
+      <ownedTrigger xmi:type="uml:CallTrigger" xmi:id="_KBt3sC6iEdu8yt5aiFFH7Q" name="ClientUseOldWthr" operation="_n34EkC6hEdu8yt5aiFFH7Q"/>
+      <region xmi:id="_GGDpkDBGEdu8yt5aiFFH7Q" name="Client">
+        <subvertex xmi:type="uml:Pseudostate" xmi:id="_kXq0oDBLEdu8yt5aiFFH7Q" name="initial" outgoing="_sId3cDBLEdu8yt5aiFFH7Q"/>
+        <subvertex xmi:type="uml:State" xmi:id="_lg1cIDBLEdu8yt5aiFFH7Q" name="ClientDone" outgoing="_zmo5MDBLEdu8yt5aiFFH7Q _CKkKwDBOEdu8yt5aiFFH7Q" incoming="_sId3cDBLEdu8yt5aiFFH7Q _2T9JIDBNEdu8yt5aiFFH7Q _vNMlADBREdu8yt5aiFFH7Q _PlMAADBSEdu8yt5aiFFH7Q"/>
+        <subvertex xmi:type="uml:State" xmi:id="_xfyhcDBLEdu8yt5aiFFH7Q" name="ClientPreInit" outgoing="_778-UDBLEdu8yt5aiFFH7Q" incoming="_zmo5MDBLEdu8yt5aiFFH7Q"/>
+        <subvertex xmi:type="uml:State" xmi:id="_6zFRwDBLEdu8yt5aiFFH7Q" name="ClientInit" outgoing="_bH9HUDBMEdu8yt5aiFFH7Q _nlwEwDBMEdu8yt5aiFFH7Q" incoming="_778-UDBLEdu8yt5aiFFH7Q"/>
+        <subvertex xmi:type="uml:State" xmi:id="_EFyMMDBMEdu8yt5aiFFH7Q" name="ClientSuccessedGetInit" outgoing="_F-8QwDBNEdu8yt5aiFFH7Q" incoming="_bH9HUDBMEdu8yt5aiFFH7Q">
+          <entry xmi:id="_sbsgADBMEdu8yt5aiFFH7Q" body="WeatherSystem.CM.clientGetResultYes();">
+            <ownedComment xmi:id="_jl0wkELZEdu-uo-KvlE4uA">
+              <body>CM.CMClientGetResultYes</body>
+            </ownedComment>
+          </entry>
+        </subvertex>
+        <subvertex xmi:type="uml:State" xmi:id="_jya9EDBMEdu8yt5aiFFH7Q" name="ClientFailedGetInit" outgoing="_8xwIcDBMEdu8yt5aiFFH7Q" incoming="_nlwEwDBMEdu8yt5aiFFH7Q">
+          <entry xmi:id="_4NiWYDBMEdu8yt5aiFFH7Q" body="WeatherSystem.CM.clientGetResultNo();">
+            <ownedComment xmi:id="_mg1JIELZEdu-uo-KvlE4uA">
+              <body>CM.CMClientGetResultNo</body>
+            </ownedComment>
+          </entry>
+        </subvertex>
+        <subvertex xmi:type="uml:State" xmi:id="_7bBmEDBMEdu8yt5aiFFH7Q" name="ClientEnd" incoming="_8xwIcDBMEdu8yt5aiFFH7Q _i58ngDBNEdu8yt5aiFFH7Q _LbWSQDBREdu8yt5aiFFH7Q _oUavUDBREdu8yt5aiFFH7Q _CK4XADBSEdu8yt5aiFFH7Q _KQGKoDBSEdu8yt5aiFFH7Q"/>
+        <subvertex xmi:type="uml:State" xmi:id="_D4040DBNEdu8yt5aiFFH7Q" name="ClientPostInit" outgoing="_WsZFgDBNEdu8yt5aiFFH7Q _vLre4DBNEdu8yt5aiFFH7Q" incoming="_F-8QwDBNEdu8yt5aiFFH7Q"/>
+        <subvertex xmi:type="uml:State" xmi:id="_SnxZgDBNEdu8yt5aiFFH7Q" name="ClientFailedUseInit" outgoing="_i58ngDBNEdu8yt5aiFFH7Q" incoming="_WsZFgDBNEdu8yt5aiFFH7Q">
+          <entry xmi:id="_fZ_HwDBNEdu8yt5aiFFH7Q" body="WeatherSystem.CM.clientUseResultNo();">
+            <ownedComment xmi:id="_o6nD8ELZEdu-uo-KvlE4uA">
+              <body>CM.CMClientUseResultNo</body>
+            </ownedComment>
+          </entry>
+        </subvertex>
+        <subvertex xmi:type="uml:State" xmi:id="_o-3XUDBNEdu8yt5aiFFH7Q" name="ClientSuccessedUseInit" outgoing="_2T9JIDBNEdu8yt5aiFFH7Q" incoming="_vLre4DBNEdu8yt5aiFFH7Q">
+          <entry xmi:id="_rp72cDBNEdu8yt5aiFFH7Q" body="WeatherSystem.CM.clientUseResultYes();">
+            <ownedComment xmi:id="_q9b3UELZEdu-uo-KvlE4uA">
+              <body>CM.CMClientUseResultYes</body>
+            </ownedComment>
+          </entry>
+        </subvertex>
+        <subvertex xmi:type="uml:State" xmi:id="_AjdDADBOEdu8yt5aiFFH7Q" name="ClientPreUpdating" outgoing="_s7l2IDBOEdu8yt5aiFFH7Q" incoming="_CKkKwDBOEdu8yt5aiFFH7Q"/>
+        <subvertex xmi:type="uml:State" xmi:id="_p1Q-YDBOEdu8yt5aiFFH7Q" name="ClientUpdating" outgoing="_-UjtEDBOEdu8yt5aiFFH7Q _UqnJEDBPEdu8yt5aiFFH7Q" incoming="_s7l2IDBOEdu8yt5aiFFH7Q"/>
+        <subvertex xmi:type="uml:State" xmi:id="_4KRVEDBOEdu8yt5aiFFH7Q" name="ClientSuccessedGetUpd" outgoing="_OKbkIDBQEdu8yt5aiFFH7Q _YUar4DBQEdu8yt5aiFFH7Q" incoming="_-UjtEDBOEdu8yt5aiFFH7Q">
+          <entry xmi:id="_IqdJ4DBPEdu8yt5aiFFH7Q" body="WeatherSystem.CM.clientGetResultYes();">
+            <ownedComment xmi:id="_u5aksELZEdu-uo-KvlE4uA">
+              <body>CM.CMClientGetResultYes</body>
+            </ownedComment>
+          </entry>
+        </subvertex>
+        <subvertex xmi:type="uml:State" xmi:id="_Mq6HkDBPEdu8yt5aiFFH7Q" name="ClientFailedGetUpd" outgoing="_rKNGIDBQEdu8yt5aiFFH7Q" incoming="_UqnJEDBPEdu8yt5aiFFH7Q">
+          <entry xmi:id="_RrbbIDBPEdu8yt5aiFFH7Q" body="WeatherSystem.CM.clientGetResultNo();">
+            <ownedComment xmi:id="_xUYLQELZEdu-uo-KvlE4uA">
+              <body>CM.CMClientGetResultNo</body>
+            </ownedComment>
+          </entry>
+        </subvertex>
+        <subvertex xmi:type="uml:State" xmi:id="_LppCYDBQEdu8yt5aiFFH7Q" name="ClientPostUpdating" outgoing="_7nafcDBQEdu8yt5aiFFH7Q _X6MYkDBREdu8yt5aiFFH7Q" incoming="_OKbkIDBQEdu8yt5aiFFH7Q"/>
+        <subvertex xmi:type="uml:State" xmi:id="_WV5wwDBQEdu8yt5aiFFH7Q" name="ClientPostReverting" outgoing="_7i9AwDBREdu8yt5aiFFH7Q _VHe48DEYEdu3-II2DJ9hSA" incoming="_YUar4DBQEdu8yt5aiFFH7Q _rKNGIDBQEdu8yt5aiFFH7Q"/>
+        <subvertex xmi:type="uml:State" xmi:id="_4w4XMDBQEdu8yt5aiFFH7Q" name="ClientFailedUseUpd" outgoing="_LbWSQDBREdu8yt5aiFFH7Q" incoming="_7nafcDBQEdu8yt5aiFFH7Q">
+          <entry xmi:id="_JrQ30DEZEdu3-II2DJ9hSA" body="WeatherSystem.CM.clientUseResultNo();">
+            <ownedComment xmi:id="_8DwfEELZEdu-uo-KvlE4uA">
+              <body>CM.CMClientUseResultNo</body>
+            </ownedComment>
+          </entry>
+        </subvertex>
+        <subvertex xmi:type="uml:State" xmi:id="_UYl6EDBREdu8yt5aiFFH7Q" name="ClientSuccessedUseUpd" outgoing="_oUavUDBREdu8yt5aiFFH7Q _vNMlADBREdu8yt5aiFFH7Q" incoming="_X6MYkDBREdu8yt5aiFFH7Q">
+          <entry xmi:id="_MpQS8DEZEdu3-II2DJ9hSA" body="WeatherSystem.CM.clientUseResultYes();">
+            <ownedComment xmi:id="__bX7IELZEdu-uo-KvlE4uA">
+              <body>CM.CMClientUseResultYes</body>
+            </ownedComment>
+          </entry>
+        </subvertex>
+        <subvertex xmi:type="uml:State" xmi:id="_2VdoMDBREdu8yt5aiFFH7Q" name="ClientFailedUseOld" outgoing="_CK4XADBSEdu8yt5aiFFH7Q" incoming="_7i9AwDBREdu8yt5aiFFH7Q">
+          <entry xmi:id="_OJhL0DEZEdu3-II2DJ9hSA" body="WeatherSystem.CM.clientUseResultNo();">
+            <ownedComment xmi:id="_DLunUELaEdu-uo-KvlE4uA">
+              <body>CM.CMClientUseResultNo</body>
+            </ownedComment>
+          </entry>
+        </subvertex>
+        <subvertex xmi:type="uml:State" xmi:id="_HmE0YDBSEdu8yt5aiFFH7Q" name="ClientSuccessedUseOld" outgoing="_KQGKoDBSEdu8yt5aiFFH7Q _PlMAADBSEdu8yt5aiFFH7Q" incoming="_VHe48DEYEdu3-II2DJ9hSA">
+          <entry xmi:id="_QfHxQDEZEdu3-II2DJ9hSA" body="WeatherSystem.CM.clientUseResultYes();">
+            <ownedComment xmi:id="_F_lPAELaEdu-uo-KvlE4uA">
+              <body>CM.CMClientUseResultYes</body>
+            </ownedComment>
+          </entry>
+        </subvertex>
+        <transition xmi:id="_sId3cDBLEdu8yt5aiFFH7Q" name="initial" source="_kXq0oDBLEdu8yt5aiFFH7Q" target="_lg1cIDBLEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_zmo5MDBLEdu8yt5aiFFH7Q" name="ClientPreInitBefore" source="_lg1cIDBLEdu8yt5aiFFH7Q" target="_xfyhcDBLEdu8yt5aiFFH7Q" trigger="_vpHzUC6hEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_778-UDBLEdu8yt5aiFFH7Q" name="ClientInitBefore" source="_xfyhcDBLEdu8yt5aiFFH7Q" target="_6zFRwDBLEdu8yt5aiFFH7Q" trigger="_ykbt4C6hEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_bH9HUDBMEdu8yt5aiFFH7Q" name="ClientSuccessedGetInitBefore" source="_6zFRwDBLEdu8yt5aiFFH7Q" target="_EFyMMDBMEdu8yt5aiFFH7Q" trigger="_1GQKYC6hEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_nlwEwDBMEdu8yt5aiFFH7Q" name="ClientFailedGetInitBefore" source="_6zFRwDBLEdu8yt5aiFFH7Q" target="_jya9EDBMEdu8yt5aiFFH7Q" trigger="_4sB-QC6hEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_8xwIcDBMEdu8yt5aiFFH7Q" name="ClientFailedGetInitAfter" source="_jya9EDBMEdu8yt5aiFFH7Q" target="_7bBmEDBMEdu8yt5aiFFH7Q" trigger="_6aJs8C6hEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_F-8QwDBNEdu8yt5aiFFH7Q" name="ClientPostInitBefore" source="_EFyMMDBMEdu8yt5aiFFH7Q" target="_D4040DBNEdu8yt5aiFFH7Q" trigger="_-cYzUC6hEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_WsZFgDBNEdu8yt5aiFFH7Q" name="ClientFailedUseInitBefore" source="_D4040DBNEdu8yt5aiFFH7Q" target="_SnxZgDBNEdu8yt5aiFFH7Q" trigger="_FA5CIC6iEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_i58ngDBNEdu8yt5aiFFH7Q" name="ClientFailedUseInitAfter" source="_SnxZgDBNEdu8yt5aiFFH7Q" target="_7bBmEDBMEdu8yt5aiFFH7Q" trigger="_6aJs8C6hEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_vLre4DBNEdu8yt5aiFFH7Q" name="ClientSuccessedUseInitBefore" source="_D4040DBNEdu8yt5aiFFH7Q" target="_o-3XUDBNEdu8yt5aiFFH7Q" trigger="_AxGA4C6iEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_2T9JIDBNEdu8yt5aiFFH7Q" name="ClientSuccessedUseInitAfter" source="_o-3XUDBNEdu8yt5aiFFH7Q" target="_lg1cIDBLEdu8yt5aiFFH7Q" trigger="_HMEgQC6iEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_CKkKwDBOEdu8yt5aiFFH7Q" name="ClientPreUpdatingBefore" source="_lg1cIDBLEdu8yt5aiFFH7Q" target="_AjdDADBOEdu8yt5aiFFH7Q" trigger="_8DpaUC6hEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_s7l2IDBOEdu8yt5aiFFH7Q" name="ClientUpdatingBefore" source="_AjdDADBOEdu8yt5aiFFH7Q" target="_p1Q-YDBOEdu8yt5aiFFH7Q" trigger="_ykbt4C6hEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_-UjtEDBOEdu8yt5aiFFH7Q" name="ClientSuccessedGetUpdBefore" source="_p1Q-YDBOEdu8yt5aiFFH7Q" target="_4KRVEDBOEdu8yt5aiFFH7Q" trigger="_1GQKYC6hEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_UqnJEDBPEdu8yt5aiFFH7Q" name="ClientFailedGetUpdBefore" source="_p1Q-YDBOEdu8yt5aiFFH7Q" target="_Mq6HkDBPEdu8yt5aiFFH7Q" trigger="_4sB-QC6hEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_OKbkIDBQEdu8yt5aiFFH7Q" name="ClientPostUpdatingBefore" source="_4KRVEDBOEdu8yt5aiFFH7Q" target="_LppCYDBQEdu8yt5aiFFH7Q" trigger="_-cYzUC6hEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_YUar4DBQEdu8yt5aiFFH7Q" name="ClientSuccessedGetUpd2Revert" source="_4KRVEDBOEdu8yt5aiFFH7Q" target="_WV5wwDBQEdu8yt5aiFFH7Q" trigger="_KBt3sC6iEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_rKNGIDBQEdu8yt5aiFFH7Q" name="ClientFailedGetUpd2Revert" source="_Mq6HkDBPEdu8yt5aiFFH7Q" target="_WV5wwDBQEdu8yt5aiFFH7Q" trigger="_KBt3sC6iEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_7nafcDBQEdu8yt5aiFFH7Q" name="ClientFailedUseUpdBefore" source="_LppCYDBQEdu8yt5aiFFH7Q" target="_4w4XMDBQEdu8yt5aiFFH7Q" trigger="_FA5CIC6iEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_LbWSQDBREdu8yt5aiFFH7Q" name="ClientFailedUseUpdDisconnect" source="_4w4XMDBQEdu8yt5aiFFH7Q" target="_7bBmEDBMEdu8yt5aiFFH7Q" trigger="_6aJs8C6hEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_X6MYkDBREdu8yt5aiFFH7Q" name="ClientSuccessedUseUpdBefore" source="_LppCYDBQEdu8yt5aiFFH7Q" target="_UYl6EDBREdu8yt5aiFFH7Q" trigger="_AxGA4C6iEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_oUavUDBREdu8yt5aiFFH7Q" name="ClientSuccessedUseUpdDisconnect" source="_UYl6EDBREdu8yt5aiFFH7Q" target="_7bBmEDBMEdu8yt5aiFFH7Q" trigger="_6aJs8C6hEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_vNMlADBREdu8yt5aiFFH7Q" name="ClientSuccessedUseUpdDone" source="_UYl6EDBREdu8yt5aiFFH7Q" target="_lg1cIDBLEdu8yt5aiFFH7Q" trigger="_HMEgQC6iEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_7i9AwDBREdu8yt5aiFFH7Q" name="ClientFailedUseOldBefore" source="_WV5wwDBQEdu8yt5aiFFH7Q" target="_2VdoMDBREdu8yt5aiFFH7Q" trigger="_FA5CIC6iEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_CK4XADBSEdu8yt5aiFFH7Q" name="ClientFailedUseOldDisconnect" source="_2VdoMDBREdu8yt5aiFFH7Q" target="_7bBmEDBMEdu8yt5aiFFH7Q" trigger="_6aJs8C6hEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_VHe48DEYEdu3-II2DJ9hSA" name="ClientSuccessedUseOldBefore" source="_WV5wwDBQEdu8yt5aiFFH7Q" target="_HmE0YDBSEdu8yt5aiFFH7Q" trigger="_AxGA4C6iEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_KQGKoDBSEdu8yt5aiFFH7Q" name="ClientSuccessedUseOldDisconnect" source="_HmE0YDBSEdu8yt5aiFFH7Q" target="_7bBmEDBMEdu8yt5aiFFH7Q" trigger="_6aJs8C6hEdu8yt5aiFFH7Q"/>
+        <transition xmi:id="_PlMAADBSEdu8yt5aiFFH7Q" name="ClientSuccessedUseOldDone" source="_HmE0YDBSEdu8yt5aiFFH7Q" target="_lg1cIDBLEdu8yt5aiFFH7Q" trigger="_HMEgQC6iEdu8yt5aiFFH7Q"/>
+      </region>
+    </ownedStateMachine>
+    <ownedOperation xmi:id="_HkWS0C6hEdu8yt5aiFFH7Q" name="preInit" type="_pbi-IC6eEdu8yt5aiFFH7Q">
+      <returnResult xmi:id="_HkWS0S6hEdu8yt5aiFFH7Q" name="return" type="_pbi-IC6eEdu8yt5aiFFH7Q"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_QppDYC6hEdu8yt5aiFFH7Q" name="getNewWthr" type="_pbi-IC6eEdu8yt5aiFFH7Q">
+      <returnResult xmi:id="_QppDYS6hEdu8yt5aiFFH7Q" name="return" type="_pbi-IC6eEdu8yt5aiFFH7Q"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_SomqcC6hEdu8yt5aiFFH7Q" name="getSuccess" type="_pbi-IC6eEdu8yt5aiFFH7Q">
+      <returnResult xmi:id="_SomqcS6hEdu8yt5aiFFH7Q" name="return" type="_pbi-IC6eEdu8yt5aiFFH7Q"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_dsP-EC6hEdu8yt5aiFFH7Q" name="getFail" type="_pbi-IC6eEdu8yt5aiFFH7Q">
+      <returnResult xmi:id="_dsP-ES6hEdu8yt5aiFFH7Q" name="return" type="_pbi-IC6eEdu8yt5aiFFH7Q"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_ey4O8C6hEdu8yt5aiFFH7Q" name="disconnect" type="_pbi-IC6eEdu8yt5aiFFH7Q">
+      <returnResult xmi:id="_ey4O8S6hEdu8yt5aiFFH7Q" name="return" type="_pbi-IC6eEdu8yt5aiFFH7Q"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_forOgC6hEdu8yt5aiFFH7Q" name="preUpdate" type="_pbi-IC6eEdu8yt5aiFFH7Q">
+      <returnResult xmi:id="_forOgS6hEdu8yt5aiFFH7Q" name="return" type="_pbi-IC6eEdu8yt5aiFFH7Q"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_iGxooC6hEdu8yt5aiFFH7Q" name="useNewWthr" type="_pbi-IC6eEdu8yt5aiFFH7Q">
+      <returnResult xmi:id="_iGxooS6hEdu8yt5aiFFH7Q" name="return" type="_pbi-IC6eEdu8yt5aiFFH7Q"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_kOrJQC6hEdu8yt5aiFFH7Q" name="useSuccess" type="_pbi-IC6eEdu8yt5aiFFH7Q">
+      <returnResult xmi:id="_kOrJQS6hEdu8yt5aiFFH7Q" name="return" type="_pbi-IC6eEdu8yt5aiFFH7Q"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_mAE1cC6hEdu8yt5aiFFH7Q" name="useFail" type="_pbi-IC6eEdu8yt5aiFFH7Q">
+      <returnResult xmi:id="_mAE1cS6hEdu8yt5aiFFH7Q" name="return" type="_pbi-IC6eEdu8yt5aiFFH7Q"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_nQiXwC6hEdu8yt5aiFFH7Q" name="done" type="_pbi-IC6eEdu8yt5aiFFH7Q">
+      <returnResult xmi:id="_nQiXwS6hEdu8yt5aiFFH7Q" name="return" type="_pbi-IC6eEdu8yt5aiFFH7Q"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_n34EkC6hEdu8yt5aiFFH7Q" name="useOldWthr" type="_pbi-IC6eEdu8yt5aiFFH7Q">
+      <returnResult xmi:id="_n34EkS6hEdu8yt5aiFFH7Q" name="return" type="_pbi-IC6eEdu8yt5aiFFH7Q"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_WaDGUESbEduRB4GmNFgtjA" name="Client"/>
+  </ownedMember>
+  <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_os6WgC6eEdu8yt5aiFFH7Q" name="int"/>
+  <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_pbi-IC6eEdu8yt5aiFFH7Q" name="void"/>
+  <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_-nqAgDBUEdu8yt5aiFFH7Q" name="ArrayList"/>
+  <ownedMember xmi:type="uml:Model" xmi:id="_NW58wDEREdu3-II2DJ9hSA" name="java.util.*"/>
+  <ownedMember xmi:type="uml:Class" xmi:id="_glVOkC6iEdu8yt5aiFFH7Q" name="WeatherSystem">
+    <packageImport xmi:id="_P98QcDEREdu3-II2DJ9hSA" importedPackage="_NW58wDEREdu3-II2DJ9hSA"/>
+    <ownedAttribute xmi:id="_kAE3IC6iEdu8yt5aiFFH7Q" name="WC" isStatic="true" type="_c_iJYC6eEdu8yt5aiFFH7Q">
+      <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_pBC2oC6iEdu8yt5aiFFH7Q">
+        <body>new WC()</body>
+      </defaultValue>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_qTTIsC6iEdu8yt5aiFFH7Q" name="CM" isStatic="true" type="_fSUEUC6eEdu8yt5aiFFH7Q">
+      <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_qTTIsS6iEdu8yt5aiFFH7Q">
+        <body>new CM()</body>
+      </defaultValue>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_7NgN0DBUEdu8yt5aiFFH7Q" name="AllClients" isStatic="true" type="_-nqAgDBUEdu8yt5aiFFH7Q">
+      <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_K_NMADBVEdu8yt5aiFFH7Q">
+        <body>new ArrayList()</body>
+      </defaultValue>
+    </ownedAttribute>
+  </ownedMember>
+</uml:Model>

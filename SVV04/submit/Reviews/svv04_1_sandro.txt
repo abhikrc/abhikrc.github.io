@@ -1,0 +1,76 @@
+
+Paper # 1
+
+Title: Contractual Consistency of BON Static and Dynamic Diagrams
+
+Authors: Ali Taleghani, Jonathan Ostroff
+
+
+1 - How do you classify this paper? 2.5
+
+   3: Strong Accept
+
+   2: Weak Accept
+
+   1: Weak Reject
+
+   0: Strong Reject
+
+ 
+ 2 - What is your overall expertise concerning the subject areas of this
+paper? X
+
+   X: I am an expert.
+   Y: I am knowledgeable in the area, though not an expert
+   Z: I am not an expert. My evaluation is that of an informed outsider.
+
+
+
+ 3 - Main Contributions of the paper
+
+The paper describes a theoretical approach to check, through theorem proving, 
+the contractual consistency between static and dynamic diagrams 
+written in a subset of BON. 
+
+BON is a standard for designing model driven diagrams, where a 
+system is described providing two different views (e.g., kind of diagrams), 
+one static and one dynamic.
+
+Static diagram depicts, using a graphical model reminding UML, 
+classes (or cluster of related classes) and pre and post 
+conditions that must hold over the class routines.
+Dynamic diagrams shows the communication 
+between objects, that is messages sent from one object to other 
+object(s). 
+
+Contractually consistency (CC) holds if for all the messages in the dynamic 
+diagram whether the preconditions of a routine associate with a message 
+are satisfied before the message is executed, and whether the postcondition 
+of the routine do not evaluate to false afterward.  	
+
+The paper provides a symbolic model of execution of BON diagrams, 
+formally defines the CC, and designs a checker for CC based on an existing 
+theorem prover. Finally it discusses advantages and disadvantages of the 
+approach. 
+
+ 4 - Points in favour or against the paper
+
+The paper is well written, it is sound and complete (self contained). 
+
+ 5- Specific Comments for improving the paper
+
+Some minor typos. Please use $\mathit{}$ and not $$ for itemize 
+function's name (e.g. \mathit{false}). 
+
+I would also enrich a bit more the conclusion, e.g., by summarizing 
+the experience. 
+
+The actual conclusion sounds more only as future works, and it comes evidently
+from the conclusions section of the phd thesis the work is based on. 
+
+It the only weaker section of the paper. 
+Even, in row +4, the word "thesis" has been use instead of "paper". 
+Please fix it.
+
+
+

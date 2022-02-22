@@ -1,0 +1,15 @@
+
+clauseI(11, ( p([0],[1]) :- true ), _).
+clauseI(12, ( p([1|X],[1|Y]) :- p(X,Y) ), _).
+clauseI(13, ( p([H|X],[H|Y]) :- q(X,Y) ), _).
+
+clauseI(14, ( q([0],[1]) :- true ), _).
+clauseI(15, ( q([H|X],[H|Y]) :- q(X,Y) ), _).
+
+
+clauseI(1, (p :- b), _).
+clauseI(2, (p :- p), _).
+clauseI(3, (p :- q), _).
+
+clauseI(4, (q :- b), _).
+clauseI(5, (q :- q), _).

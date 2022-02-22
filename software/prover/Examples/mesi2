@@ -1,0 +1,113 @@
+toplevel(bad_start/1).
+toplevel(bad_src/2).
+toplevel(bad_dest/2).
+
+%------------------------------------------------------
+
+bad_start(X) :- gen(X), bad(X).
+bad_dest(X, Y) :- trans(X, Y), bad(Y).
+bad_src(X, Y) :-  trans(X, Y), bad(X).
+
+%--------------------------------------------------
+
+gen([]).
+gen([i|X]) :- gen(X).
+
+%------------------------------------------------------
+
+trans(S, T) :- trans_bcast(S, T).
+trans(S, T) :- trans_local(S, T).  % no rendezvous actions in
+				   % this broadcast protocol.
+
+trans_local([H|T], [H1|T]) :- ltrans(H, self(_), H1).
+trans_local([H|T], [H|T1]) :- trans_local(T, T1).
+
+
+trans_bcast(S, T) :- trans_bcast(S, inv, T).
+trans_bcast(S, T) :- trans_bcast(S, cp, T).
+
+trans_bcast([H|T], Act, [H1|T1]) :- 
+	ltrans(H, b_out(Act), H1), trans_all(T, Act, T1).
+trans_bcast([H|T], Act, [H1|T1]) :- 
+	ltrans(H, b_in(Act), H1), trans_bcast(T, Act, T1).
+
+trans_all([], _, []).
+trans_all([H|T], Act, [H1|T1]) :-
+	ltrans(H, b_in(Act), H1), trans_all(T, Act, T1).
+
+%-----------------------------------------------------------
+% each process in this broadcast protocol has 4 states :
+%      m  == modified
+%      e  == exclusive 
+%      s  == shared
+%      i  == invalid
+
+ltrans(m, b_in(read), s).
+ltrans(m, b_in(inv), i).
+ltrans(m, self(read), m).
+ltrans(m, self(write), m).
+
+ltrans(e, b_in(read), s).
+ltrans(e, b_in(inv), i).
+ltrans(e, self(read), e).
+ltrans(e, self(write), m).
+
+ltrans(s, b_in(read), s).
+ltrans(s, b_in(inv), i).
+ltrans(s, b_out(inv), e).
+ltrans(s, self(read), s).
+
+ltrans(i, b_in(read), i).
+ltrans(i, b_in(inv), i).
+ltrans(i, b_out(read), s).
+
+%------------------------------------
+
+% reader-writer mutual exclusion: #m + #e = 0 \/ #s = 0
+
+bad([m|X]) :- one_more_s(X).
+bad([e|X]) :- one_more_s(X).
+bad([s|X]) :- one_more(X).
+bad([i|X]) :- bad(X).
+
+one_more_s([m|X]) :- one_more_s(X).
+one_more_s([e|X]) :- one_more_s(X).
+one_more_s([s|X]) :- any(X).
+one_more_s([i|X]) :- one_more_s(X).
+
+one_more([m|X]) :- any(X).
+one_more([e|X]) :- any(X).
+one_more([s|X]) :- one_more(X).
+one_more([i|X]) :- one_more(X).
+
+
+any([]).
+any([m|X]) :- any(X).
+any([e|X]) :- any(X).
+any([s|X]) :- any(X).
+any([i|X]) :- any(X).
+
+%----------------------------------------------------------------------
+consumer(one_more/1).
+consumer(one_more_s/1).
+consumer(bad/1).
+consumer(any/1).
+
+maxDepthConstant(4).   % maximum term depth to restrict infinite 
+                       % call sequences during unfolding.  
+
+unfold_flag(suspend_expand).   % expand suspended atoms if they
+                               % get instantiated.
+
+%unfold_flag(nonconsumer_freeze). % do not expand a clause body 
+				 % if it has only open atoms.
+
+cleanup_flag([failed]).   
+		    % allows setting options for cleanup of clauses
+		    % periodically. Currently, allows removing subsumed
+		    % and failed clauses. Obviously then we have 4
+		    % User options: cleanup_flag([])
+		    %               cleanup_flag([subsumed]).
+		    %               cleanup_flag([failed]).
+	            %               cleanup_flag([subsumed, failed]).
+		    % Caution: Cleanups may slow down the prover considerably.

@@ -1,0 +1,103 @@
+toplevel(bad_src/2).
+toplevel(bad_dest/2).
+toplevel(bad_start/1).
+
+%------------------------------------------------------------
+
+bad_dest(X, Y) :- trans(X, Y), bad(Y).
+bad_src(X, Y) :- trans(X, Y), bad(X).
+
+bad_start(X) :- gen(X), bad(X).
+
+%-----------------------------------------------------------
+
+gen([own0(0)]).
+gen([invalid|X]) :- gen(X).
+
+%-------------------------------------------------------
+
+trans([H|T], [H1|T1]) :- ltrans(H, in(Act), H1),
+			 trans_rest(T, out(Act), T1).
+
+trans([H|T], [H|T1]) :- trans(T, T1).
+
+trans([H|T], [H1|T]) :- ltrans(H, self(_X), H1).
+
+trans([H|T], [H1|T1]) :- ltrans(H, out(Act), H1),
+			 trans_rest(T, in(Act), T1).
+
+trans_rest([S|T], A, [S1|T]) :- ltrans(S, A, S1).
+trans_rest([H|T], A, [H|T1]) :- trans_rest(T, A, T1).
+
+
+ltrans(valid(V), in(ot), own1(V)) :- bit(V).
+ltrans(valid(V), in(inv), invalid) :- bit(V).
+ltrans(valid(V), self(rd(V)), valid(V)) :- bit(V).
+
+ltrans(invalid, in(cp(V)), valid(V)) :- bit(V).
+
+ltrans(own0(V), self(rd(V)), own0(V)) :- bit(V).
+ltrans(own0(V), self(wr(V1)), own0(V1)) :- bit(V), bit(V1).
+ltrans(own0(V), out(cp(V)), own1(V)) :- bit(V).
+
+ltrans(own1(V), self(rd(V)), own1(V)) :- bit(V).
+ltrans(own1(V), out(inv), own0(V)) :- bit(V).
+ltrans(own1(V), out(ot), valid(V)) :- bit(V).
+
+bit(0).
+bit(1).
+
+%----------------------------------------------------
+
+neq_bit(0, 1).
+neq_bit(1, 0).
+
+bad([invalid|X]) :- bad(X).
+bad([own0(V)|X]) :-  bit(V), not_all_invalid(X).
+bad([valid(V)|X]) :- bit(V), not_all_equal(V, X).
+bad([own1(V)|X]) :-  bit(V), not_all_equal(V, X).
+
+not_all_invalid([invalid|X]) :- not_all_invalid(X).
+not_all_invalid([valid(V)|X]) :- bit(V), any(X).
+not_all_invalid([own0(V)|X]) :- bit(V), any(X).
+not_all_invalid([own1(V)|X]) :- bit(V), any(X).
+
+not_all_equal(V, [invalid|X]) :- not_all_equal(V, X).
+not_all_equal(V, [valid(V1)|X]) :- bit(V1), neq_bit(V, V1), any(X).
+not_all_equal(V, [own1(V1)|X]) :- bit(V1), neq_bit(V, V1), any(X).
+
+any([]).
+any([invalid|X]) :- any(X).
+any([valid(V)|X]) :- bit(V), any(X).
+any([own0(V)|X]) :- bit(V), any(X).
+any([own1(V)|X]) :- bit(V), any(X).
+
+%----------------------------------------------------
+
+consumer(bad/1).
+consumer(any/1).
+consumer(not_all_equal/2).
+consumer(not_all_invalid/1).
+
+always_unfold(bit/1).
+
+maxDepthConstant(7).   % maximum term depth to restrict infinite 
+                       % call sequences during unfolding.  
+
+unfold_flag(suspend_expand).   % expand suspended atoms if they
+                               % get instantiated.
+
+%unfold_flag(nonconsumer_freeze). % do not expand a clause body 
+				 % if it has only open atoms.
+
+cleanup_flag([failed]).   
+		    % allows setting options for cleanup of clauses
+		    % periodically. Currently, allows removing subsumed
+		    % and failed clauses. Obviously then we have 4
+		    % User options: cleanup_flag([])
+		    %               cleanup_flag([subsumed]).
+		    %               cleanup_flag([failed]).
+	            %               cleanup_flag([subsumed, failed]).
+		    % Caution: Subsumption based cleanups may 
+                    %          slow down the prover considerably.
+

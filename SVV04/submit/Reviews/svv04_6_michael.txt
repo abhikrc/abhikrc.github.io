@@ -1,0 +1,80 @@
+Paper # 6
+
+Title: Combining Theorem Proving with Static Analysis
+for Data Structure Consistency
+
+Authors: Zee, Lam, Kuncak, & Rinard
+
+
+1 - How do you classify this paper?
+
+   3: Strong Accept
+
+   2: Weak Accept
+
+   1: Weak Reject
+
+   0: Strong Reject
+
+
+2: Weak Accept
+
+ 
+ 2 - What is your overall expertise concerning the subject areas of this
+paper?
+
+   X: I am an expert.
+   Y: I am knowledgeable in the area, though not an expert
+   Z: I am not an expert. My evaluation is that of an informed outsider.
+
+Y: I am knowledgeable in the area, though not an expert
+
+ 3 - Main Contributions of the paper
+
+The paper proposes the combination of static analysis and theorem
+proving for verifying the data structure consistency of imperative
+programs.  The proposal is for a loose integration of methods,
+in which either static analysis or theorem proving is applied on a
+module-by-module basis.  The theorem prover used is Isabelle,
+while the available static analysis tools are PALE and a home-grown
+tool for boolean flag and set membership analysis based on MONA.
+The utility of the approach is demonstrated by applying it to
+the verification of a process scheduler making use of a priority
+queue and to the verification of an implementation of the game
+Minesweeper. 
+
+ 4 - Points in favour or against the paper
+
+Although the authors demonstrate that their approach can be used
+to successfully verify the data structure correctness of two
+complicated programs, it appears as if the loosely-integrated
+methodology they advocate is limited in its applicability.  
+To apply the static analysis tools and achieve high degrees of
+automation, it seems necessary to decompose the program into
+modules in such a way that any module to be analyzed automatically
+can be analyzed fully.  In other words, if the verification of
+a module requires theorem proving, then it does not seem possible
+to apply static analysis tools to that module to automate parts
+of the proof.  This limitation seems restrictive and unnecessary.   
+It has been known since the early 1970's that one way to combine
+deductive program verification and static analysis is to encode
+the output of static analysis tools as formulas to be used as
+lemmas by the theorem prover.  Why not use shape analysis tools
+to generate data structure invariants, thereby freeing the user
+from having to specify them when using Isabelle?
+
+ 5- Specific Comments for improving the paper
+
+In the process scheduler example, are extractMax() and removeFirst()
+meant to be synonymous?  In Figure 2, what does the conjunct
+(card(n)=1) denote?  That multiplicity of n in InQueue is 1?
+Isn't InQueue a set?
+
+Also, the choice to ignore those aspects of the data structures
+dealing with the priority of processes weakens the example
+considerably.  Why not verify that SuspendedQueue actually
+implements a priority queue?  Does the lack of automatic
+data structure invariant generation make the problem too
+tedious?
+
+-------------------------

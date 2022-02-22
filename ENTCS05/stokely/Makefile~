@@ -1,0 +1,25 @@
+# MSc (Mathematics and the Foundations of Computer Science)
+# Thesis
+# Oxford University
+#
+# $Id$
+
+TEXFILES=	article.tex
+OUTPUT=		article.ps
+BIBFILES=	article.bib
+SECTIONS=	intro.tex parassign.tex results.tex conc.tex
+#USE_PIC=1
+LATEX=		latex
+BIBTEX=		bibtex
+DVIPS=		dvips
+#LATEX=		/opt/local/bin/latex
+#BIBTEX=	/opt/local/bin/bibtex
+#DVIPS=		/opt/local/bin/dvips
+
+article.ps: article.tex ${SECTIONS}
+	${LATEX} article.tex
+	${LATEX} article.tex
+	${BIBTEX} article
+	${LATEX} article.tex
+	${LATEX} article.tex
+	${DVIPS} -f -Ppdf < article.dvi > article.ps

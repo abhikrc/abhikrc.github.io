@@ -1,0 +1,14 @@
+
+pgm_clause(c1, (trans(C, [(F,T)|C]) :- nmem((_, T), C)), (1,1)).
+
+pgm_clause(c2, (reach([]) :- true), (1,1)).
+
+pgm_clause(c3, (reach(Y) :- reach(X), trans(X, Y)), (1,1)).
+
+pgm_clause(c4, (bad(X) :- mem((F1, T), X), mem((F2, T), X), neq(F1, F2)), (1,1)).
+
+pgm_clause(c5, (mem(X, [X|_]) :- true), (1,1)).
+
+pgm_clause(c6, (mem(X, [_|T]) :- mem(X, T)), (1,1)).
+
+pgm_clause(c7, (thm(X) :- reach(X), bad(X)), (1,1)).

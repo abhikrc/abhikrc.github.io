@@ -1,0 +1,12 @@
+ptrans(read,read,think,read,hungry).
+ptrans(read,read,think,read,eat).
+ptrans(read,read,think,read,read).
+ptrans(read,read,hungry,read,hungry).
+ptrans(read,read,hungry,read,eat).
+ptrans(read,read,hungry,read,read).
+ptrans(read,read,eat,read,hungry).
+ptrans(read,read,eat,read,eat).
+ptrans(read,read,eat,read,read).
+ptrans(read,read,read,read,hungry).
+ptrans(read,read,read,read,eat).
+ptrans(read,read,read,read,read).

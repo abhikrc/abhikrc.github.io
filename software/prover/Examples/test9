@@ -1,0 +1,7 @@
+
+pgm_clause( c1, (p(X,Y) :- b(X,Y)), (1,1)).
+pgm_clause( c2, (p(X,Y) :- q1(X,Y), q2(Y)), (1,1)).
+
+pgm_clause( c3, (q(X,Y ) :- b(X, Y)), (1,1)).
+pgm_clause( c4, (q(X,Y) :- q1(X,Y), q2(X)), (1,1)).
+

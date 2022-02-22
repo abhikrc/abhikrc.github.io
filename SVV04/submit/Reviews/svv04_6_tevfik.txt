@@ -1,0 +1,45 @@
+
+Paper # 6
+
+Title: Combining Theorem Proving with Static Analysis for Data
+       Structure Consistency
+
+Authors: Karen Zee, Patrick Lam, Viktor Kuncak, and Martin Rinard
+
+1 - How do you classify this paper?
+
+   3: Strong Accept
+
+ 2 - What is your overall expertise concerning the subject areas of this
+paper?
+
+   X: I am an expert.
+
+ 3 - Main Contributions of the paper
+
+The main contribution of the paper is to present an approach which combines 
+different verification techniques in one framework. In particular the 
+authors use theorem proving, shape analysis and a technique for analyzing 
+typestates of the object. These techniques are integrated to a 
+specification and verification environment as plugins.
+
+ 4 - Points in favour or against the paper
+
+I think this paper is an excellent paper for this workshop. It presents
+an approach that combines the strengths of different techniques to verify 
+properties of some interesting software modules.
+
+ 5- Specific Comments for improving the paper
+
+Since the paper covers a lot (a specification language, three verification 
+techniques), technical details are omitted at some parts.
+
+Theorem proving techniques have not been very successful in software 
+verification since they require too much user interaction. Some discussion 
+about why the authors think that this trend will change would be useful.
+
+
+
+
+-------------------------
+

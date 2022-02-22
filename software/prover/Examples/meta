@@ -1,0 +1,119 @@
+toplevel(bad_src/2).
+toplevel(bad_dest/2).
+toplevel(bad_start/1).
+
+%------------------------------------------------------------
+
+bad_dest(X, Y) :- trans(X, Y), bad(Y).
+bad_src(X, Y) :-  trans(X, Y), bad(X).
+
+bad_start(X) :- gen(X), bad(X).
+
+%-----------------------------------------------------------
+
+gen((T,nobusy)) :- gen_threads(T).
+
+gen_threads([idle,idle]).
+gen_threads([idle|X]) :- gen_threads(X).
+
+%---------------------------------------------------------------
+
+trans((Th, O), (Th1, O)) :- 
+	synch_threads(Th, Th1).
+
+trans((Th, O), (Th1, O1)) :-
+	o_trans(O, in(Act), O1), trans_threads(Th, out(Act), Th1).
+
+trans((Th, O), (Th1, O1)) :-
+	o_trans(O, out(Act), O1), trans_threads(Th, in(Act), Th1).
+
+
+synch_threads([H|T], [H|T1]) :- 
+	synch_threads(T, T1).
+
+synch_threads([H|T], [H1|T1]) :- 
+	synch_action(Act),
+	t_trans(H, out(Act), H1), 
+	trans_threads(T, in(Act), T1).
+
+synch_threads([H|T], [H1|T1]) :-
+	synch_action(Act),
+	t_trans(H, in(Act), H1), 
+	trans_threads(T, out(Act), T1).
+
+
+trans_threads([Th|Rest], A, [Th1|Rest]) :- 
+	t_trans(Th, A, Th1).
+
+trans_threads([Th|Rest], A, [Th|Rest1]) :- 
+	trans_threads(Rest, A, Rest1).
+
+%---------------------------------------------------------
+
+t_trans(idle,  out(get),       owner).
+t_trans(idle,  out(get_slow),  wait_in).
+t_trans(owner, out(put),      idle).
+t_trans(owner, out(put_slow), wait_out).
+t_trans(wait_in, in(handoff), owner).
+t_trans(wait_out, out(handoff), idle).
+
+o_trans(nobusy,    in(get),      busy_excl).
+o_trans(busy_excl, in(put),      nobusy).
+o_trans(busy_excl, in(get_slow), busy_sh).
+o_trans(busy_sh,   in(put_slow), busy_excl).
+
+%---------------------------------------------------------
+
+synch_action(handoff).
+
+%-----------------------------------------------------
+
+bad((T,nobusy)) :- one_more(T).
+bad((T,busy_excl)) :- two_more(T).
+bad((T,busy_sh)) :- two_more(T).
+
+two_more([H|X]) :- access_state(H), one_more(X).
+two_more([H|X]) :- blocked_state(H), two_more(X).
+
+one_more([H|X]) :- access_state(H), any(X).
+one_more([H|X]) :- blocked_state(H), one_more(X).
+
+any([]).
+any([H|X]) :- thread_state(H), any(X).
+
+%--------------------------------------------------------------
+
+thread_state(X) :- access_state(X).
+thread_state(X) :- blocked_state(X).
+
+access_state(owner).
+access_state(wait_out).
+
+blocked_state(idle).
+blocked_state(wait_in).
+
+%---------------------------------------------------------------------
+% user annotations : should be inferred automatically later
+% the following says that it is safe to unfold an instance of 
+% bad([_|_]) (even if exceeds a pre-specified maximum depth)
+% since unfolding will only consume bindings, rather than 
+% creating bindings.
+
+consumer(bad/1).
+consumer(two_more/1).
+consumer(one_more/1).
+consumer(any/1).
+
+maxDepthConstant(5).   % maximum term depth to restrict infinite 
+                       % call sequences during unfolding.  
+
+unfold_flag(suspend_expand).   % expand suspended atoms if they
+                               % get instantiated.
+
+%unfold_flag(nonconsumer_freeze).
+
+cleanup_flag([failed]).
+
+%always_unfold(thread_state/1).
+%always_unfold(access_state/1).
+%always_unfold(blocked_state/1).

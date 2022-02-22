@@ -1,0 +1,342 @@
+This is TeX, Version 3.14159 (Web2C 7.3.3) (format=latex 2002.6.17)  16 DEC 2003 10:18
+**svv-final-submission
+(svv-final-submission.tex
+LaTeX2e <1999/12/01> patch level 1
+Babel <v3.6Z> and hyphenation patterns for american, french, german, ngerman, n
+ohyphenation, loaded.
+(entcs.cls
+Document Class: entcs 1994/01/12, 2e-1.15: Elsevier Preprint
+(/usr/share/texmf/tex/latex/base/newlfont.sty
+Package: newlfont 1998/08/17 v2.2m Standard LaTeX package
+LaTeX Info: Redefining \em on input line 62.
+
+(/usr/share/texmf/tex/latex/base/latexsym.sty
+Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
+\symlasy=\mathgroup4
+LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
+(Font)                  U/lasy/m/n --> U/lasy/b/n on input line 42.
+))
+(/usr/share/texmf/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 1996/11/03 v2.2b
+
+(/usr/share/texmf/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 1997/09/17 v2.2e
+\@emptytoks=\toks14
+\symAMSa=\mathgroup5
+\symAMSb=\mathgroup6
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 133.
+))
+(/home/pbhaduri/tex/ifpdf.sty
+Package: ifpdf 2001/06/14 v1.0 Providing \ifpdf (HO)
+Package ifpdf Info: pdfTeX in pdf mode not detected on input line 140.
+)
+(/usr/share/texmf/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2000/05/08 v6.70f Hypertext links for LaTeX
+
+(/usr/share/texmf/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks15
+)
+\@linkdim=\dimen102
+\Hy@linkcounter=\count79
+\Hy@pagecounter=\count80
+
+(/usr/share/texmf/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2000/05/08 v6.70f Hyperref: PDFDocEncoding definition (HO)
+)
+Package hyperref Info: Option `raiselinks' set `false' on input line 1478.
+Package hyperref Info: Option `colorlinks' set `true' on input line 1478.
+Package hyperref Info: Option `bookmarksopen' set `true' on input line 1478.
+Package hyperref Info: Bookmarks ON on input line 1536.
+Package hyperref Info: Hyper figures OFF on input line 1555.
+Package hyperref Info: Link nesting OFF on input line 1560.
+Package hyperref Info: Hyper index ON on input line 1563.
+Package hyperref Info: Plain pages ON on input line 1568.
+Package hyperref Info: Backreferencing OFF on input line 1575.
+
+Implicit mode ON; LaTeX internals redefined
+(/usr/share/texmf/tex/latex/misc/url.sty
+Package: url 1999/03/02  ver 1.4  Verb mode for urls, email addresses, and file
+ names
+)
+\Fld@menulength=\count81
+\Field@Width=\dimen103
+\Fld@charsize=\dimen104
+\Choice@toks=\toks16
+\Field@toks=\toks17
+Package hyperref Info: Hyper figures OFF on input line 2206.
+Package hyperref Info: Link nesting OFF on input line 2211.
+Package hyperref Info: Hyper index ON on input line 2214.
+Package hyperref Info: backreferencing OFF on input line 2221.
+Package hyperref Info: Link coloring ON on input line 2224.
+\c@Item=\count82
+\c@Hfootnote=\count83
+)
+*hyperref using driver hdvips*
+(/usr/share/texmf/tex/latex/hyperref/hdvips.def
+File: hdvips.def 2000/05/08 v6.70f Hyperref driver for dvips
+
+(/usr/share/texmf/tex/latex/hyperref/pdfmark.def
+File: pdfmark.def 2000/05/08 v6.70f Hyperref definitions for pdfmark specials
+\pdf@docset=\toks18
+\pdf@box=\box26
+\pdf@toks=\toks19
+\pdf@defaulttoks=\toks20
+\Fld@listcount=\count84
+\@outlinefile=\write3
+))
+(/usr/share/texmf/tex/latex/base/leqno.clo
+File: leqno.clo 1998/08/17 v1.1c Standard LaTeX option (left equation numbers)
+)
+LaTeX Info: Redefining \rm on input line 75.
+LaTeX Info: Redefining \cal on input line 76.
+LaTeX Info: Redefining \sf on input line 77.
+LaTeX Info: Redefining \tt on input line 78.
+LaTeX Info: Redefining \bf on input line 79.
+LaTeX Info: Redefining \it on input line 80.
+LaTeX Info: Redefining \sl on input line 81.
+LaTeX Info: Redefining \sc on input line 82.
+\@bls=\dimen105
+\eqntopsep=\skip41
+\eqnarraycolsep=\dimen106
+\labelwidthi=\dimen107
+\labelwidthii=\dimen108
+\labelwidthiii=\dimen109
+\labelwidthiv=\dimen110
+\@maxlistdepth=\count85
+\eqnbaselineskip=\skip42
+\eqnlineskip=\skip43
+\mathindent=\dimen111
+\c@part=\count86
+\c@section=\count87
+\c@subsection=\count88
+\c@subsubsection=\count89
+\c@paragraph=\count90
+\c@subparagraph=\count91
+\c@thm=\count92
+\c@alg=\count93
+\c@algorithm=\count94
+\c@note=\count95
+\c@summ=\count96
+\c@case=\count97
+\@tempcntc=\count98
+\c@figure=\count99
+\c@table=\count100
+\t@glob@notes=\toks21
+\t@loc@notes=\toks22
+\note@cnt=\count101
+\c@author=\count102
+\n@author=\count103
+\c@collab=\count104
+\n@collab=\count105
+\c@address=\count106
+\sv@mathsurround=\dimen112
+\sv@hyphenpenalty=\count107
+\prev@elem=\count108
+\cur@elem=\count109
+\fm@box=\box27
+\fm@size=\dimen113
+\t@abstract=\box28
+\t@keyword=\box29
+\t@xtheight=\dimen114
+\@logoheight=\dimen115
+\@pubyear=\count110
+\@copyear=\count111
+\slashbox=\box30
+LaTeX Font Info:    Try loading font information for U+lasy on input line 1123.
+
+
+(/usr/share/texmf/tex/latex/base/ulasy.fd
+File: ulasy.fd 1998/08/17 v2.2eLaTeX symbol font definitions
+)
+LaTeX Font Info:    Try loading font information for U+msa on input line 1123.
+
+(/usr/share/texmf/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 1995/01/05 v2.2e AMS font definitions
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 1123.
+
+(/usr/share/texmf/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 1995/01/05 v2.2e AMS font definitions
+)
+\Slashbox=\box31
+)
+(/home/pbhaduri/tex/entcs-format/entcsmacro.sty)
+(/usr/share/texmf/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf/tex/latex/graphics/graphics.sty
+Package: graphics 1999/02/16 v1.0l Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/share/texmf/tex/latex/config/graphics.cfg)
+Package graphics Info: Driver file: dvips.def on input line 80.
+
+(/usr/share/texmf/tex/latex/graphics/dvips.def
+File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+))
+\Gin@req@height=\dimen116
+\Gin@req@width=\dimen117
+)
+(/usr/share/texmf/tex/latex/algorith/algorithm.sty
+Package: algorithm 
+
+Document Style `algorithm' - floating environment
+(/usr/share/texmf/tex/latex/misc/float.sty
+Package: float 1999/05/29 v1.2d Float enhancements (AL)
+\c@float@type=\count112
+\float@box=\box32
+\@floatcapt=\box33
+)
+(/usr/share/texmf/tex/latex/base/ifthen.sty
+Package: ifthen 1999/09/10 v1.1b Standard LaTeX ifthen package (DPC)
+))
+(/usr/share/texmf/tex/latex/algorith/algorithmic.sty
+Package: algorithmic 
+
+Document Style `algorithmic' - environment
+(/usr/share/texmf/tex/latex/tools/calc.sty
+Package: calc 1998/07/07 v4.1b Infix arithmetic (KKT,FJ)
+\calc@Acount=\count113
+\calc@Bcount=\count114
+\calc@Adimen=\dimen118
+\calc@Bdimen=\dimen119
+\calc@Askip=\skip44
+\calc@Bskip=\skip45
+LaTeX Info: Redefining \setlength on input line 59.
+LaTeX Info: Redefining \addtolength on input line 60.
+\calc@denominator=\count115
+)
+\c@ALC@line=\count116
+\c@ALC@rem=\count117
+\ALC@tlm=\skip46
+) (svv-final-submission.aux)
+\openout1 = `svv-final-submission.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+
+(/usr/share/texmf/tex/latex/graphics/color.sty
+Package: color 1999/02/16 v1.0i Standard LaTeX Color (DPC)
+
+(/usr/share/texmf/tex/latex/config/color.cfg)
+Package color Info: Driver file: dvips.def on input line 125.
+
+(/usr/share/texmf/tex/latex/graphics/dvipsnam.def
+File: dvipsnam.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+))
+Package hyperref Info: Link coloring ON on input line 33.
+
+(/usr/share/texmf/tex/latex/hyperref/nameref.sty
+Package: nameref 2000/05/08 v2.18 Cross-referencing by name of section
+\c@section@level=\count118
+) (svv-final-submission.out)
+(svv-final-submission.out)
+\openout3 = `svv-final-submission.out'.
+
+LaTeX Info: Redefining \ref on input line 33.
+LaTeX Info: Redefining \pageref on input line 33.
+\c@sv@footnote=\count119
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+[][][][][][]
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 87.
+(/usr/share/texmf/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/sl' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 87.
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 87.
+ [1]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [2]
+File: fig1.eps Graphic file (type eps)
+
+<fig1.eps>
+Overfull \hbox (11.65549pt too wide) in paragraph at lines 221--227
+\OT1/cmr/m/n/12 cate-na-tion is the set of all fi-nite and in-fi-nite runs ob-t
+ained by (i) (a)synchronously
+ []
+
+[3] [4] [5] [6]
+Overfull \hbox (12.3293pt too wide) in paragraph at lines 396--403
+[][] 
+ []
+
+
+Overfull \hbox (16.93298pt too wide) in paragraph at lines 449--459
+\OT1/cmr/m/n/12 events in a set of ba-sic MSCs $\OML/cmm/m/it/12 S$ \OT1/cmr/m/
+n/12 in an MSC-graph $\OML/cmm/m/it/12 H$\OT1/cmr/m/n/12 . Let $\OML/cmm/m/it/1
+2 w \OT1/cmr/m/n/12 =\OML/cmm/m/it/12 < M[]; M[]; [] ; M[] >$
+ []
+
+[7]
+
+Package hyperref Warning: bookmark level for unknown algorithm defaults to 0.
+
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 486.
+[8]
+Overfull \hbox (25.19675pt too wide) in paragraph at lines 605--613
+[][] 
+ []
+
+[9] [10]
+
+Package hyperref Warning: bookmark level for unknown algorithm defaults to 0.
+
+
+Package hyperref Warning: bookmark level for unknown algorithm defaults to 0.
+
+[11]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [12]
+[13]
+File: fig2.eps Graphic file (type eps)
+ <fig2.eps>
+Underfull \vbox (badness 3724) has occurred while \output is active []
+
+ [14]
+[15]
+File: fig3.eps Graphic file (type eps)
+ <fig3.eps>
+Overfull \hbox (2.06004pt too wide) in paragraph at lines 1045--1047
+ [][] 
+ []
+
+[16]
+Underfull \hbox (badness 10000) in paragraph at lines 1081--1087
+\OT1/cmr/m/n/10.95 2002, ap-peared in
+ []
+
+[17] [18] (svv-final-submission.aux) ) 
+Here is how much of TeX's memory you used:
+ 3345 strings out of 10895
+ 41350 string characters out of 72423
+ 101743 words of memory out of 263001
+ 6245 multiletter control sequences out of 10000+0
+ 20851 words of font info for 85 fonts, out of 400000 for 1000
+ 14 hyphenation exceptions out of 1000
+ 32i,10n,36p,313b,1207s stack positions out of 300i,100n,500p,50000b,4000s
+
+Output written on svv-final-submission.dvi (18 pages, 124436 bytes).

@@ -1,0 +1,19 @@
+\BOOKMARK [1][]{section.0.1}{Introduction}{}
+\BOOKMARK [1][]{section.0.2}{Background}{}
+\BOOKMARK [2][]{subsection.2.1}{ORA-SS data modeling language}{section.0.2}
+\BOOKMARK [2][]{subsection.2.2}{Z formal specification langauge}{section.0.2}
+\BOOKMARK [1][]{section.0.3}{Formal semantics of ORA-SS data modeling langauge}{}
+\BOOKMARK [2][]{subsection.3.1}{Basic types}{section.0.3}
+\BOOKMARK [2][]{subsection.3.2}{Relationship type}{section.0.3}
+\BOOKMARK [2][]{subsection.3.3}{Degree of a relationship type}{section.0.3}
+\BOOKMARK [2][]{subsection.3.4}{Instances of object class and attribute}{section.0.3}
+\BOOKMARK [2][]{subsection.3.5}{Instances of a relationship type}{section.0.3}
+\BOOKMARK [2][]{subsection.3.6}{Participation constraints on objects in a relationship type}{section.0.3}
+\BOOKMARK [2][]{subsection.3.7}{Object class, attribute pairs and their instances}{section.0.3}
+\BOOKMARK [2][]{subsection.3.8}{Candidate key and primary key of an object class}{section.0.3}
+\BOOKMARK [2][]{subsection.3.9}{Cardinality of attribute values associated with an object}{section.0.3}
+\BOOKMARK [1][]{section.0.4}{Validating semistructured data}{}
+\BOOKMARK [2][]{subsection.4.1}{Schema diagram validation}{section.0.4}
+\BOOKMARK [2][]{subsection.4.2}{XML instance validation}{section.0.4}
+\BOOKMARK [1][]{section.0.5}{Conclusion}{}
+\BOOKMARK [1][]{section*.1}{References}{}

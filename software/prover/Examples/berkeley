@@ -1,0 +1,150 @@
+toplevel(bad_start/1).
+toplevel(bad_src/2).
+toplevel(bad_dest/2).
+
+toplevel(bad_src1/2).
+toplevel(bad_dest1/2).
+
+%------------------------------------------------------
+
+bad_start(X) :- gen(X), bad(X).
+bad_dest(X, Y) :- trans(X, Y), bad(Y).
+bad_src(X, Y) :- trans(X, Y), bad(X).
+
+bad_dest1(X, Y) :- trans(X, Y), bad1(Y).
+bad_src1(X, Y) :- trans(X, Y), bad1(X).
+
+
+%--------------------------------------------------
+
+gen([]).
+gen([i|X]) :- gen(X).
+
+%---------------------------------------
+
+trans(S, T) :- trans_bcast(S, read, T).  % only read miss
+trans(S, T) :- trans_bcast(S, write_hit, T).
+trans(S, T) :- trans_bcast(S, write_miss, T).
+
+trans_bcast([H|T], Act, [H1|T1]) :- 
+	ltrans(H, out(Act), H1), trans_all(T, Act, T1).
+trans_bcast([H|T], Act, [H1|T1]) :- 
+	ltrans(H, in(Act), H1), trans_bcast(T, Act, T1).
+
+trans_all([], _, []).
+trans_all([H|T], Act, [H1|T1]) :-
+	ltrans(H, in(Act), H1), trans_all(T, Act, T1).
+
+
+%-----------------------------------------------------------
+% Modelled from Archibald and Baer : AB86
+% local states : i = invalid
+%                v = valid
+%		 s = shared-dirty
+%                d = dirty
+
+% out(read) = read action by own processor  
+%     -- i.e. local processor requests
+% in(read)  = read action by some other processor
+%     -- i.e. remote processor requests over the bus
+% read == read miss : since read hits do not generate traffic.
+
+ltrans(i, out(read), v).
+ltrans(i, in(read), i).
+ltrans(i, in(write_hit), i).
+%  out(write_hit) can never happen in state i
+ltrans(i, out(write_miss), d).
+ltrans(i, in(write_miss), i).
+ltrans(i, in(replace), i).
+
+
+% ltrans(v, out(read), v). : read miss : can never happen
+ltrans(v, in(read), v).
+ltrans(v, in(write_hit), i).
+ltrans(v, out(write_hit), d).
+% ltrans(v, out(write_miss), d). 
+ltrans(v, in(write_miss), i).
+ltrans(v, in(replace), v).
+ltrans(v, out(replace), i).
+
+% ltrans(s, out(read), s). : read miss : can never happen
+ltrans(s, in(read), s).
+ltrans(s, in(write_hit), i).
+ltrans(s, out(write_hit), d).
+% write_miss can never happen
+ltrans(s, in(write_miss), i).
+ltrans(s, in(replace), s).
+ltrans(s, out(replace), i).
+
+% ltrans(d, out(read), d). : read miss : can never happen
+ltrans(d, in(read), s).
+% ltrans(d, out(write_hit), d). : not a bus transaction : proceeds
+%                                 without change of state
+ltrans(d, in(write_hit), i).
+% write_miss can never happen
+ltrans(d, in(write_miss), i).
+ltrans(d, in(replace), d).
+ltrans(d, out(replace), i).
+
+%********************************
+
+bad([d|X]) :- one_more(X).
+bad([s|X]) :- bad(X).
+bad([v|X]) :- bad(X).
+bad([i|X]) :- bad(X).
+
+one_more([d|X]) :- any(X).
+one_more([s|X]) :- one_more(X).
+one_more([v|X]) :- one_more(X).
+one_more([i|X]) :- one_more(X).
+
+any([]).
+any([d|X]) :- any(X).
+any([s|X]) :- any(X).
+any([v|X]) :- any(X).
+any([i|X]) :- any(X).
+
+%----------------------------------------------------------------------
+
+bad1([d|X]) :- one_more_s(X).
+bad1([s|X]) :- one_more(X).
+bad1([v|X]) :- bad1(X).
+bad1([i|X]) :- bad1(X).
+
+one_more_s([d|X]) :- one_more_s(X).
+one_more_s([s|X]) :-  any(X).
+one_more_s([v|X]) :- one_more_s(X).
+one_more_s([i|X]) :- one_more_s(X).
+
+
+%----------------------------------------------------------------------
+
+consumer(one_more/1).
+consumer(bad/1).
+consumer(any/1).
+
+consumer(bad1/1).
+consumer(one_more_s/1).
+
+always_unfold(ltrans/3).
+
+maxDepthConstant(4).   % maximum term depth to restrict infinite 
+                       % call sequences during unfolding.  
+
+unfold_flag(suspend_expand).   % expand suspended atoms if they
+                               % get instantiated.
+
+%unfold_flag(nonconsumer_freeze). % do not expand a clause body 
+				 % if it has only open atoms.
+
+cleanup_flag([failed]).   
+		    % allows setting options for cleanup of clauses
+		    % periodically. Currently, allows removing subsumed
+		    % and failed clauses. Obviously then we have 4
+		    % User options: cleanup_flag([])
+		    %               cleanup_flag([subsumed]).
+		    %               cleanup_flag([failed]).
+	            %               cleanup_flag([subsumed, failed]).
+		    % Caution: Cleanups may slow down the prover considerably.
+
+%verbose_proof.

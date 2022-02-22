@@ -1,0 +1,752 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="./files/project.css" type="text/css">
+
+<title>Binary Analysis</title>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<table align="center" bgcolor="black" width="100%">
+<tbody><tr>
+<td></td>
+<td><div class="whitefont">
+ <a href="#overview" class="tag">Overview </a>  |
+  <!--<a href="#updates" class="tag">Updates  </a> | -->
+  <a href="#publications" class="tag">Publications </a> | 
+  <a href="#people" class="tag">People </a> | 
+  <a href="#acknowledge" class="tag">Acknowledgement</a>
+</div>
+</td>
+<td align="right"><a href="mailto:abhik@comp.nus.edu.sg" class="tag">Contact Us</a></td>
+</tr>
+</tbody></table>
+
+<!-- Header -->
+<table align="center" width="100%" bgcolor="white" id="header">
+<tbody><tr align="center">
+<td></td>
+<td></td> 
+<td></td>
+</tr>
+</tbody></table>
+
+
+<p align="center"><font size="6" face="Arial">Research on Fuzz Testing and 
+Symbolic Execution at NUS</font></p>
+
+<hr>
+<table align="center" width="100%">
+<tbody>
+<tr>
+<td width="0"></td>
+<td>
+<a name="overview"><h2>+Overview:</h2></a>
+</td>
+</tr>
+
+<tr>
+<td width="0"></td>
+<td>
+<div id="parag">
+	<img border="0" src="./files/logo.jpg" width="235" height="159">
+<p class="content">
+Software almost always has vulnerabilities. Many of these cause serious
+  problems such as software crash and leaking sensitive user
+  information. To fix bugs, software engineers have been
+  fighting an endless battle with bugs. The cost of this battle is
+  enormous—$312 billion per year globally as of 2012 according to <a
+  href="http://insight.jbs.cam.ac.uk/2013/financial-content-cambridge-university-study-states-software-bugs-cost-economy-312-billion-per-year/"
+  class="content">Cambridge
+  University research</a> (in comparison, the GDP of Singapore is $308 billion 
+as of 2014). This high cost is due to that software developers spend about 50% 
+of their time debugging. We are conducting research on automatically finding 
+vulnerabilities in program binaries by combining black-box or grey-box fuzzing 
+with symbolic execution approaches. In black-box or grey-box fuzzing, the logic 
+of the program is not analyzed, whereas symbolic execution approaches proceed by 
+a semantic analysis of the program behavior. A lot of our research can be seen 
+as a targeted search where we are trying to reach target locations, either to 
+reproduce a crash or to uncover more behavior so that vulnerabilities can be 
+uncovered.<br></p></div>
+<p class="content">
+One of the key innovations in our approach is that the analysis for finding 
+vulnerabilities works directly on the program binaries - no source code is 
+needed. Another key innovation is the development of scalable search strategies 
+to guide the symbolic analysis for common file-format processing programs such 
+as PDF, PNG, WAV. We are also working on improving grey-box fuzzing technology 
+in its weak-point, namely behavioral coverage. Grey-box fuzzing technology 
+generates many inputs with the goal to crash the program, but may end up 
+covering few paths in the program since no semantic analysis is involved. In our 
+latest work, we have improved the search heuristics inside fuzzers to 
+drastically improve the coverage without resorting to costly symbolic analysis. 
+Thus, our approach for finding vulnerabilities is two pronged - improve the 
+scalability of the symbolic execution or semantic approaches, and improve the 
+behavioral coverage of fuzzing or syntactic approaches.
+</p>
+
+<hr>
+	<p class=news-text>
+    <b><font face="Arial" size="5">Viewpoint</font></b></p>
+<p class=news-text>
+    <img border="0" src="index.2.jpg" width="411" height="500"></p>
+<p class=news-text>
+    <b><font face="Arial" size="5">&nbsp; </font><font face="Arial">
+	<a href="https://www.computer.org/csdl/magazine/so/2021/03/09166552/1mgaKsMFDYA">
+	IEEE Software Article</a> reflecting on fuzzing as a field.</font></b></p>
+
+<hr>
+	<p class=news-text>
+    <b><font face="Arial" size="5">Key Publications</font></b></p>
+<p class=news-text>
+    <font face="Arial">
+
+
+	<br>
+<b>Coverage-based Greybox Fuzzing as Markov Chain (<a href="http://www.comp.nus.edu.sg/~abhik/pdf/CCS16.pdf">pdf
+</a>)</b><br>
+Marcel Böhme, Van Thuan Pham, Abhik Roychoudhury<br>
+23rd ACM Conference on Computer and Communications Security (CCS) 2016.</font></p>
+<p class=news-text>
+<font face="Arial">
+
+
+<b>Directed Greybox Fuzzing ( <a href="../../pdf/CCS17.pdf">PDF</a> )</b><br>
+Marcel&nbsp;<span class="scopediv profilePagePersonStringStringString profilePage" id="profilePagePersonStringStringString12"><span class="scopediv body" id="body12"><span class="section section1"><span class="scopediv pageHeader" id="pageHeader12"><span class="scopediv ofPersonPerson ofPerson" id="ofPersonPerson12"><span class="scopediv ofUserUser ofUser" id="ofUserUser12">Böhme</span></span></span></span></span></span>, 
+Van Thuan Pham, Manh-Dung Nguyen, Abhik Roychoudhury<br>
+24th ACM Conference on Computer and Communications Security (CCS) 2017.</font></p>
+<font face="Arial">
+
+
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>Smart Greybox Fuzzing&nbsp; (
+	<a href="../../pdf/TSE19AFLSmart.pdf">PDF</a>,&nbsp;&nbsp;
+	<a href="https://www.theregister.co.uk/2018/11/28/better_fuzzer_aflsmart/">
+	Sample News 1</a>,&nbsp;
+	<a href="https://www.securityweek.com/researchers-introduce-smart-greybox-fuzzing">
+	Sample News 2 </a>)</b></p>
+	<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">Van-Thuan Pham, Marcel 
+	<span class="scopediv profilePagePersonStringStringString profilePage" id="profilePagePersonStringStringString13"> 	
+	<span class="scopediv body" id="body13"><span class="section section1"> 	
+	<span class="scopediv pageHeader" id="pageHeader13"> 	
+	<span class="scopediv ofPersonPerson ofPerson" id="ofPersonPerson13"> 	
+	<span class="scopediv ofUserUser ofUser" id="ofUserUser13"> 	Böhme</span></span></span></span></span></span>, 
+	Andrew E. Santosa, Alexandru Razvan Caciulescu, Abhik Roychoudhury</p>
+	<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">IEEE Transactions on Software 
+	Engineering, 47(9), 2021. </p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">&nbsp;</p>
+	<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>Linear-time Temporal Logic 	guided Greybox Fuzzing ( <a href="../../pdf/ICSE22-LTLFuzz.pdf">PDF</a> )</b></p>
+	<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">Ruijie Meng, Zhen Dong, 	Jialin Li, Ivan Beschastnikh, Abhik Roychoudhury</p>
+	<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">IEEE/ACM 44th International 
+	Conference on Software Engineering (ICSE) 2022.</p>
+	</font>
+<font face="Arial">
+
+
+<p>
+<b>Fuzzing: Challenges and Reflections
+</b> ( <b><a href="../../pdf/IEEE-SW-Fuzzing.pdf">PDF</a></b> )<br>
+Marcel Böhme, Cristian Cadar, Abhik Roychoudhury<br>
+IEEE Software, 38(3), 2021.<p>
+&nbsp;<p>
+&nbsp;</font><hr>
+<p class="content">
+<b><font face="Arial" size="5">Technology</font></b></p>
+<ul>
+	<li>
+	<p class="content"><font face="Arial">
+	<a href="https://github.com/aflgo/aflgo">AFLGo</a>:&nbsp;&nbsp; Directed 
+	fuzzer</font></p></li>
+	<li>
+	<p class="content"><font face="Arial">
+	<a href="https://github.com/mboehme/aflfast">AFLFast</a>: Integrated into 
+	AFL now</font></p></li>
+	<li>
+	<p class="content"><font face="Arial">
+	<a href="https://github.com/DroidTest/TimeMachine">TimeMachine</a>:&nbsp; 
+	Android app fuzzing</font></p></li>
+	<li>
+	<p class="content"><font face="Arial">
+	<a href="https://github.com/aflsmart/aflsmart">AFLSmart</a>: Structure aware 
+	fuzzing</font></p></li>
+	<li>
+	<p class="content"><font face="Arial">
+	<a href="https://github.com/aflnet/aflnet">AFLNet</a>: Response code based 
+	stateful fuzzing</font></p></li>
+	<li>
+	<p class="content"><font face="Arial">...&nbsp; <i>&lt; more to come, watch 
+	this space&gt; </i></font></p></li>
+</ul>
+<hr>
+<p class="content">
+<b><font face="Arial" color="#FF0000"><font size="5">News: </font>&nbsp;</font></b></p>
+<p class="content">
+<b><font face="Arial">2021: <a href="../../pdf/AsiaCCS21.pdf">AsiaCCS21 paper</a> 
+on fault localization in binaries using fuzzing, gets Best paper award.</font></b></p>
+<p class="content">
+<b><font face="Arial">2021: <a href="../../pdf/IEEE-SW-Fuzzing.pdf">Perspectives 
+article</a> on Fuzzing and Symbolic Execution, appeared in IEEE Software.</font></b></p>
+<p class="content">
+<b><font face="Arial">2020: </font></b>
+	<font face="Arial">      	 	   
+<b><a href="https://github.com/DroidTest/TimeMachine">TimeMachine</a></b> 
+		tool for fuzz testing Android apps released ( 
+<a href="../../pdf/ICSE20TM.pdf">
+		Paper</a> in ICSE 2020, Received <i>Distinguished Paper Award</i>).</font></p>
+<p class="content">
+<b><font face="Arial">2019:&nbsp; Shonan Meeting on Fuzzing and Symbolic 
+execution organized, see <a href="https://shonan.nii.ac.jp/seminars/160">here.</a></font></b></p>
+<p class="content">
+<b><font face="Arial">2019: Releasing the<a href="https://github.com/aflsmart/aflsmart"> AFLSmart tool</a> which fuzzes 
+applications processing file formats. Read the paper
+<a href="https://arxiv.org/pdf/1811.09447.pdf">here</a>. See Sample
+<a href="https://www.theregister.co.uk/2018/11/28/better_fuzzer_aflsmart/">news 
+(the register)</a>,
+<a href="https://www.securityweek.com/researchers-introduce-smart-greybox-fuzzing">
+other news</a>.</font></b></p>
+<p class="content">
+<b><font face="Arial">2017-18:&nbsp; Released the directed fuzzer
+<a href="https://github.com/aflgo/aflgo">AFLGo</a> tool. AFLGo is the first 
+directed grey-box fuzzer. Read the paper <a href="../../pdf/CCS17.pdf">here</a>.</font></b></p>
+<p class="content">
+<b><font face="Arial">2016-17:
+  Released the <a href="https://github.com/mboehme/aflfast">AFLfast</a> tool, which improves 
+<a href="http://lcamtuf.coredump.cx/afl/">AFL</a> fuzzer - see
+<a href="https://news.ycombinator.com/item?id=12330038">Hacker 
+news</a>.&nbsp; This has led to
+<a href="https://groups.google.com/forum/#!topic/afl-users/1PmKJC-EKZ0">changes 
+in the widely used AFL Fuzzer</a>. Read the paper <a href="../../pdf/CCS16.pdf">
+here</a>.</font></b></p>
+<hr><br>
+</td>
+<td></td>
+<td></td>
+</tr>
+
+<!-- Updates part -->
+<!--
+<tr>
+<td></td>
+<td colspan="2"><a name="updates"><h2>+Updates:</h2></a>
+<ul>
+<li>Our work on analysis of evolving programs has received a substantial grant from Ministry of Education (
+<a href="http://www.comp.nus.edu.sg/~abhik/projects/moe10/RF-Abhik.pdf">Postdocs</a>, 
+<a href="http://www.comp.nus.edu.sg/~abhik/projects/moe10/RA-Abhik.pdf">RAs</a> 
+being recruited) [March 2011]</li><br>
+</ul>
+</td>
+<td></td>
+</tr>
+-->
+
+
+<!-- Publications part -->
+<!-- Data of publication is stored within 'li' tag.-->
+<tr>
+<td width="0"></td>
+<td colspan="2"><h2><a name="publications">All Publications:</a></h2>
+<font face="Arial">
+
+
+	<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>[ICSE22]</b></p>
+	<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>Linear-time Temporal Logic 	guided Greybox Fuzzing ( <a href="../../pdf/ICSE22-LTLFuzz.pdf">PDF</a> )</b></p>
+	<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">Ruijie Meng, Zhen Dong, 	Jialin Li, Ivan Beschastnikh, Abhik Roychoudhury</p>
+	<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">IEEE/ACM 44th International 
+	Conference on Software Engineering (ICSE) 2022.</p>
+<font face="Arial" size="2"> 
+	<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">&nbsp;</p>    
+	</font>    	
+
+
+	<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>[TSE21]</b></p>
+	<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>Smart Greybox Fuzzing&nbsp; (<a href="../../pdf/TSE21AFLSmart.pdf">PDF</a>,&nbsp;&nbsp;
+	<a href="https://www.theregister.co.uk/2018/11/28/better_fuzzer_aflsmart/">
+	Sample News 1</a>,&nbsp;
+	<a href="https://www.securityweek.com/researchers-introduce-smart-greybox-fuzzing">
+	Sample News 2 </a>)</b></p>
+	<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">Van-Thuan Pham, Marcel 
+	<span class="scopediv profilePagePersonStringStringString profilePage" id="profilePagePersonStringStringString8"> 	
+	<span class="scopediv body" id="body8"><span class="section section1"> 	
+	<span class="scopediv pageHeader" id="pageHeader8"> 	
+	<span class="scopediv ofPersonPerson ofPerson" id="ofPersonPerson8"> 	
+	<span class="scopediv ofUserUser ofUser" id="ofUserUser8"> 	Böhme</span></span></span></span></span></span>, 
+	Andrew E. Santosa, Alexandru Razvan Caciulescu, Abhik Roychoudhury</p>
+	<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">IEEE Transactions on Software 
+	Engineering, 47(9), pages 1980-1997, 2021.</p>
+</font> 
+	<p>
+<b><font face="Arial">[A</font></b><font face="Arial"><b>SE 2021] <br>
+Scalable fuzzing of <font size="3" face="Arial">&nbsp;program binaries with e9AFL ( <a href="../../pdf/ASE21.pdf">
+PDF</a> )</font></b><br>
+<font size="3">Xiang Gao, Gregory J Duck, Abhik Roychoudhury
+<br>
+</font>
+<span style="color: #333333; letter-spacing: normal; background-color: #FFFFFF">
+International Conference on Automated Software Engineering (ASE)</span><span style="color: rgb(51, 51, 51); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none; background-color: rgb(255, 255, 255)"><font size="3">&nbsp;2021.</font></span></font></p>
+<p>
+<font face="Arial">
+
+
+<b>[ESEC-FSE 2021] <br>
+<font size="3" face="Arial">Flaky Test Detection in Android via Event Order 
+Exploration ( <a href="../../pdf/FSE21.pdf">PDF</a> )</font></b><br>
+<font size="3">Zhen Dong, Abhishek Tiwari, Xiao Liang Yu, Abhik Roychoudhury
+<br>
+</font>
+<span style="color: rgb(51, 51, 51); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none; background-color: rgb(255, 255, 255)">
+<font size="3">ACM Joint European Software Engineering Conference and Symposium 
+on the Foundations of Software Engineering (ESEC/FSE)&nbsp;2021.</font></span></font></p>
+<font face="Arial">
+
+
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>[ASIACCS 21]</b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	<b>Localizing Vulnerabilities Statistically From One Exploit (&nbsp;<a href="https://www.comp.nus.edu.sg/~abhik/pdf/AsiaCCS21.pdf">PDF</a>&nbsp;) </b></p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	Shiqi Shen, Aashish Kolluri, Zhen Dong, Prateek Saxena, Abhik Roychoudhury</p>
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	16th ACM ASIA Conference on Computer and Communications Security (ASIACCS) 
+	2021. <b> <font color="#FF0000">Best paper award</font></b></p>
+
+
+	<p style="color: rgb(0, 0, 0); font-family: Arial; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px;">
+	
+
+<p>
+<b>[IEEE Software21] <br>
+Fuzzing: Challenges and Reflections
+</b> ( <b>
+<a href="https://s3.amazonaws.com/ieeecs.cdn.csdl.content/mags/so/2021/03/09166552.pdf?AWSAccessKeyId=ASIA2Z6GPE73FHU7EWKC&Expires=1626658493&Signature=xTgOr0EB7skAVK71+ei5wl73J8A=&x-amz-security-token=IQoJb3JpZ2luX2VjEIj//////////wEaCXVzLWV">PDF</a></b> )<br>
+Marcel Böhme, Cristian Cadar, Abhik Roychoudhury<br>
+IEEE Software, 38(3), pages 79-86, 2021. 
+<p style="color: rgb(0, 0, 0); font-family: Arial; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255)">
+	&nbsp;</p>
+<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px">
+<b>[ICST20]</b></p>
+<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px">
+<b>AFLNet: A Greybox Fuzzer for Network Protocols (&nbsp;<a href="https://www.comp.nus.edu.sg/~abhik/pdf/AFLNet-ICST20.pdf">PDF</a>&nbsp;,&nbsp;<a href="https://www.youtube.com/watch?v=Au3eO7mEI7E&feature=youtu.be">Video</a>&nbsp;)</b></p>
+<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px">
+Van-Thuan Pham, Marcel&nbsp;<span class="scopediv profilePagePersonStringStringString profilePage" id="profilePagePersonStringStringString11"><span class="scopediv body" id="body11"><span class="section section1"><span class="scopediv pageHeader" id="pageHeader11"><span class="scopediv ofPersonPerson ofPerson" id="ofPersonPerson11"><span class="scopediv ofUserUser ofUser" id="ofUserUser11">Böhme</span></span></span></span></span></span>, 
+Abhik Roychoudhury</p>
+<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px">
+IEEE International Conf. on Software Testing Verification and Validation (ICST) 
+2020.</p>
+	<p>
+<b>[TOSEM20] <br>
+KLEESpectre: Detecting Information Leakage through Speculative Cache Attacks via Symbolic Execution
+</b> ( <b><a href="../../pdf/KLEESpectre_TOSEM.pdf">PDF</a></b> )<br>
+Guanhua Wang, Sudipta Chattopadhyay, AKBiswas, Tulika Mitra, Abhik Roychoudhury
+<br>
+ACM Transactions on Software Engineering and Methodology (TOSEM), 2020.<p style="color: rgb(0, 0, 0); font-family: Arial; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px;">&nbsp;</p>
+<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px">
+<b>[ICSE-Workshop]</b></p>
+<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px">
+<b>Fitness Guided Vulnerability Detection with Greybox Fuzzing (&nbsp;<a href="https://www.comp.nus.edu.sg/~abhik/pdf/ICSE20_Workshop_SBST.pdf">PDF</a>&nbsp;)</b></p>
+<p style="color: rgb(0, 0, 0); font-family: Arial; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px">
+RK Medicherla, R Komondoor, Abhik Roychoudhury</p>
+<p style="color: rgb(0, 0, 0); font-family: Arial; font-size: small; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; margin-top: 0px; margin-bottom: 0px;">
+<font size="3">ACM/IEEE 42nd International Conference on Software Engineering (ICSE) 2020 
+Workshop on Search based Software Testing.</font><br>
+
+</p>
+
+<p>
+<b>[ICSE20] <br>
+Time-travel Testing of Android Apps 
+</b> ( <b><a href="../../pdf/ICSE20TM.pdf">PDF</a></b> )&nbsp;
+<br>
+Zhen Dong, Marcel Böhme, Lucia Cojocaru, Abhik Roychoudhury
+<br>
+ACM/IEEE 42nd International Conference on Software Engineering (ICSE) 2020. <b>
+<font color="#FF0000">Distinguished Paper Award</font></b><br>
+
+<p>
+<b>[ICSE20] <br>
+Fuzz Testing based Data Augmentation to Improve Robustness of Deep Neural Networks
+</b> ( <b><a href="../../pdf/ICSE20_Sensei.pdf">PDF</a></b> )<br>
+Xiang Gao, Ripon K. Saha, Mukul R. Prasad, Abhik Roychoudhury
+<br>
+ACM/IEEE 42nd International Conference on Software Engineering (ICSE) 2020.
+<br>
+
+
+
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">&nbsp;</p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>[TSE20-b]</b><br>
+<b><i>oo7</i>: Low-overhead Defense 
+against Spectre Attacks via Binary Analysis (<a href="../../pdf/TSE20_oo7.pdf">PDF</a>)</b><br>
+Guanhua Wang, Sudipta Chattopadhyay, Ivan Gotovchits, Tulika Mitra, Abhik 
+Roychoudhury<br>
+IEEE Transactions on Software Engineering,&nbsp;<a href="http://www.comp.nus.edu.sg/~abhik/News/TheRegister2018.pdf">Sample 
+News</a>.</p>
+	<p>
+<b>[NDSS19] <br>
+Neuro-Symbolic Execution: Augmenting Symbolic Execution with Neural 
+Constraints</b> ( <b><a href="../../pdf/ndss19.pdf">PDF</a></b> )<br>
+Shen Shiqi, Shweta Shinde, Soundarya Ramesh, Abhik Roychoudhury, Prateek Saxena<br>
+Network and Distributed Systems Security Symposium (NDSS), 2019.<br>
+
+<p>
+<b>[TSE19]</b><br>
+<b>Coverage-based Greybox Fuzzing as Markov Chain (&nbsp;<a href="https://www.comp.nus.edu.sg/~abhik/pdf/TSE18.pdf">PDF</a>&nbsp;)</b> <br>
+Marcel&nbsp;<span class="scopediv profilePagePersonStringStringString profilePage" id="profilePagePersonStringStringString7"><span class="scopediv body" id="body7"><span class="section section1"><span class="scopediv pageHeader" id="pageHeader7"><span class="scopediv ofPersonPerson ofPerson" id="ofPersonPerson7"><span class="scopediv ofUserUser ofUser" id="ofUserUser7">Böhme</span></span></span></span></span></span>, 
+Van Thuan Pham, Abhik Roychoudhury<br>
+IEEE Transactions on Software Engineering (TSE), To appear.
+(expanded version of CCS16 paper).<br>
+
+<p>
+<b>[ASE18]</b><br>
+<b>Android Testing via Synthetic Symbolic Execution (&nbsp;<a href="https://www.comp.nus.edu.sg/~abhik/pdf/ase18.pdf">PDF</a>&nbsp;)</b><br>
+Xiang Gao, Shin Hwei Tan, Zhen Dong, Abhik Roychoudhury<br>
+ACM/IEEE International Conference on Automated Software Engineering (ASE) 2018.<br>
+
+<p>
+<b>[CCS17]</b><br>
+<b>Directed Greybox Fuzzing ( <a href="../../pdf/CCS17.pdf">PDF</a> )</b><br>
+Marcel&nbsp;<span class="scopediv profilePagePersonStringStringString profilePage" id="profilePagePersonStringStringString9"><span class="scopediv body" id="body9"><span class="section section1"><span class="scopediv pageHeader" id="pageHeader9"><span class="scopediv ofPersonPerson ofPerson" id="ofPersonPerson9"><span class="scopediv ofUserUser ofUser" id="ofUserUser9">Böhme</span></span></span></span></span></span>, 
+Van Thuan Pham, Manh-Dung Nguyen, Abhik Roychoudhury<br>
+24th ACM Conference on Computer and Communications Security (CCS) 2017.<p>
+<b>[FASE17]</b><br>
+<b>Bucketing Failing tests using Symbolic Analysis (<a href="http://www.comp.nus.edu.sg/~abhik/pdf/FASE17.pdf">pdf
+</a>)</b><br>
+Van Thuan Pham, Saakar Khurana, Subhajit Roy, Abhik Roychoudhury<br>
+International Conference on Foundational Aspects of Software Engineering (FASE) 2017.
+
+<p>
+<b>[CCS16]</b><br>
+<b>Coverage-based Greybox Fuzzing as Markov Chain (<a href="http://www.comp.nus.edu.sg/~abhik/pdf/CCS16.pdf">pdf
+</a>)</b><br>
+Marcel Böhme, Van Thuan Pham, Abhik Roychoudhury<br>
+23rd ACM Conference on Computer and Communications Security (CCS) 2016.<br>
+
+
+<p>
+<b>[ASE16]</b><br>
+<b>Model-based Whitebox Fuzzing for Program Binaries (<a href="http://www.comp.nus.edu.sg/~abhik/pdf/ASE16.pdf">pdf
+</a>)</b><br>
+Van Thuan Pham, Marcel Böhme, Abhik Roychoudhury<br>
+IEEE/ACM International Conference on Automated Software Engineering (ASE) 2016.<br>
+
+<p>
+<b>[ICSE15]</b><br>
+<b>Hercules: Reproducing Crashes 
+in Real-World Application Binaries (<a href="http://www.comp.nus.edu.sg/~abhik/pdf/ICSE15-Hercules.pdf">pdf
+</a>)</b><br>
+Van Thuan Pham, Wei Boon Ng, Konstantin Rubinov, Abhik Roychoudhury<br>
+ACM/IEEE International 
+Conference on Software Engineering (ICSE) 2015.
+
+<p>
+<b>[ISSTA14]<br>
+CoREBench: Studying Complexity of Regression Errors (<a href="http://www.comp.nus.edu.sg/~abhik/pdf/issta14.pdf">pdf
+</a>)</b><br>
+Marcel Böhme, Abhik Roychoudhury<br>
+ACM International Symposium on Software Testing and Analysis (ISSTA) 2014.</p>
+
+
+<p>
+<b>[ESEC-FSE13]<br>
+Regression Tests to Expose 
+Change Interaction Errors (<a href="http://www.comp.nus.edu.sg/~abhik/pdf/fse13.pdf">pdf
+</a>)</b><br>
+Marcel Böhme, Bruno C.d.S. Oliveira, Abhik Roychoudhury<br>
+Joint meeting of 
+ACM SIGSOFT symposium and European conference on Foundations of software engineering (ESEC-FSE) 2013.
+<p>
+
+<br>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>[ICSE13]</b>
+<b>Partition-based Regression Verification (<a href="http://www.comp.nus.edu.sg/~abhik/pdf/ICSE13-PRV.pdf">pdf
+</a>)</b><br>
+Marcel Böhme, Bruno C.d.S. Oliveira, Abhik Roychoudhury<br>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">ACM/IEEE International Conference on Software Engineering (ICSE) 2013.</p>
+
+<br>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>[TOSEM13]
+Path Exploration based on Symbolic Output (<a href="http://www.comp.nus.edu.sg/~abhik/pdf/tosem-peso.pdf">pdf
+</a>)</b><br>
+Dawei Qi, Hoang D.T. Nguyen, Abhik Roychoudhury<br>
+ACM Transactions on Software Engineering and Methodology (TOSEM), 22(4), 2013. <i>Conference paper appeared in ESEC-FSE 2011.</i></p>
+
+<br>
+</font> 
+<br>
+
+<hr>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">&nbsp;</p>
+<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">&nbsp;</p>
+
+</td>
+<td></td>
+</tr>
+
+<!-- People part -->
+<tr>
+<td width="0"></td>
+<td><a name="people"><h2>Current Members:</h2></a>
+
+<p><b><font face="Arial">&nbsp;&nbsp;&nbsp;&nbsp; Principal Investigator: </font>
+</b></p>
+<div class="title">
+	<table cellpadding="0" cellspacing="20" border="0">
+		<tr>
+			<td align="left" width="40%">
+			<img border="0" src="./files/abhik.jpg" width="109" height="157">
+			</td>
+			<td width="56%" align = "left"><font face="Arial">
+			<a class="author" href="http://www.comp.nus.edu.sg/~abhik/" >
+			<span style="font-style: normal"><font color="#800080">Abhik Roychoudhury
+			</font></span></a></font></td>
+		</tr>
+	</table>
+	<p></p></div>
+<p><b><font face="Arial">&nbsp;&nbsp;&nbsp;&nbsp; Post-doc</font></b></p>
+	<table cellpadding="0" cellspacing="20" border="0">
+		<tr>
+			<td align="left" width="40%">&nbsp;<a href="https://yannicnoller.github.io/img/IMG_5240.jpg"><img src="../Repair/IMG_5240_small.jpg" xthumbnail-orig-image="https://yannicnoller.github.io/img/IMG_5240.jpg" border="2"></a></td>
+			<td width="56%" align = "left"><font face="Arial">
+			<font color="#800080">Yannic Noller</font><a class="author" href="http://www.comp.nus.edu.sg/~abhik/" ><span style="font-style: normal"><font color="#800080">
+			</font></span></a></font></td>
+		</tr>
+	</table>
+	<p><b><font face="Arial">&nbsp;&nbsp;&nbsp;&nbsp; PhD students</font></b></p>
+<p>&nbsp;</p>
+<div class="title">
+	<table cellpadding="0" cellspacing="20" border="0">
+		<tr>
+			<td align="left" width="40%">&nbsp;<a href="../../jinsheng.jpg"><img border="2" src="../../jinsheng_small.jpg" xthumbnail-orig-image="../../jinsheng.jpg"></a></td>
+			<td width="56%" align = "left"><font face="Arial" color="#800080">
+			Jinsheng Ba</font><font face="Arial"><a class="author" href="http://www.comp.nus.edu.sg/~abhik/" ><span style="font-style: normal"><font color="#800080">
+			</font></span></a></font></td>
+		</tr>
+	</table>
+	<table cellpadding="0" cellspacing="20" border="0">
+		<tr>
+			<td align="left" width="40%">&nbsp;<a href="https://www.comp.nus.edu.sg/~abhik/projects/Fuzz/Blank_portrait,_male_(rectangular).png"><img src="../../Blank_portrait,_male_(rectangular)_small.png" xthumbnail-orig-image="https://www.comp.nus.edu.sg/~abhik/projects/Fuzz/Blank_portrait,_male_(rectangular).png" border="2" width="99" height="129"></a></td>
+			<td width="56%" align = "left"><font face="Arial">
+			<font color="#800080">&nbsp;Ruijie Meng</font><a class="author" href="http://www.comp.nus.edu.sg/~abhik/" ><span style="font-style: normal"><font color="#800080">
+			</font></span></a></font></td>
+		</tr>
+	</table>
+	<table cellpadding="0" cellspacing="20" border="0" width="343">
+		<tr>
+			<td align="left" width="34%">&nbsp;<a href="https://www.comp.nus.edu.sg/~abhik/projects/Fuzz/Blank_portrait,_male_(rectangular).png"><img src="../../Blank_portrait,_male_(rectangular)_small.png" xthumbnail-orig-image="https://www.comp.nus.edu.sg/~abhik/projects/Fuzz/Blank_portrait,_male_(rectangular).png" border="2" width="99" height="129"></a></td>
+			<td width="48%" align = "left"><font face="Arial">
+			<span style="font-style: normal"><font color="#800080">&nbsp;Haifeng 
+			Ruan</font></span></font></td>
+		</tr>
+	</table>
+	<table cellpadding="0" cellspacing="20" border="0" width="350">
+		<tr>
+			<td align="left" width="40%">&nbsp;<a href="https://www.comp.nus.edu.sg/~abhik/projects/Fuzz/Blank_portrait,_male_(rectangular).png"><img src="../../Blank_portrait,_male_(rectangular)_small.png" xthumbnail-orig-image="https://www.comp.nus.edu.sg/~abhik/projects/Fuzz/Blank_portrait,_male_(rectangular).png" border="2" width="99" height="129"></a></td>
+			<td width="56%" align = "left"><font face="Arial">
+			<span style="font-style: normal"><font color="#800080">Dylan Wolff</font><a class="author" href="http://www.comp.nus.edu.sg/~abhik/" ><font color="#800080">
+			</font></a></span></font></td>
+		</tr>
+	</table>
+	<p>&nbsp;</div>
+<hr>
+<p><u><b><font size="6" face="Arial">Alumni</font></b></u></p>
+<p>&nbsp;</p>
+<table cellpadding="0" cellspacing="20" border="0">
+	<tr>
+		<td align="left" width="40%">
+		<img border="0" src="./files/marcel.jpg" width="140" height="151"> </td>
+		<td width="50%"><a href="http://www.comp.nus.edu.sg/~mboehme/">
+		<font face="Arial" color="#800080">Marcel Boehme</font></a></td>
+	</tr>
+</table>
+<p><font face="Arial">Faculty Member, Max-Plack Institute of Security and 
+Privacy.</font><br></p>
+<li>
+<div class="title">&nbsp;</div>
+<table cellpadding="0" cellspacing="20" border="0">
+	<tr>
+		<td align="left" width="40%">
+		<img border="0" src="./files/thuan.png" width="133" height="168"> </td>
+		<td width="50%"><a href="http://www.comp.nus.edu.sg/~thuanpv/">
+		<font face="Arial" color="#800080">Thuan Pham Van</font></a></td>
+	</tr>
+</table>
+<p>Lecturer (Asst Prof), University of Melbourne</p>
+<table cellpadding="0" cellspacing="20" border="0">
+	<tr>
+		<td align="left" width="40%">&nbsp;<img src="https://www.comp.nus.edu.sg/~dongz/res/zhen_dong.jpg" width="131" height="150"></td>
+		<td width="56%" align = "left">
+		<a href="http://www.comp.nus.edu.sg/~dongz">
+		<font face="Arial" color="#800080">Zhen Dong</font></a></td>
+	</tr>
+</table>
+<p>Assoc Prof, Fudan University.</p>
+<p>&nbsp;</p>
+</li>
+  
+
+<!--
+<ul>
+<li>
+  <div class="title">Faculty Member: 
+    <ul><li>
+    <p>
+      <font face="Arial">
+        <a class="author" href="http://www.comp.nus.edu.sg/~abhik/">
+	  <span style="font-style: normal">
+            <font color="#800080">Abhik Roychoudhury </font>
+          </span>
+        </a>
+      </font>
+    </p>
+    </li></ul>
+   </div>
+</li>
+
+<br>
+</p>
+<li>
+  <div class="title">Post-doctoral Research Fellows:
+    <ul>
+      <li>
+        <p>
+          <font face="Arial">
+            <a class="author" href="http://www.comp.nus.edu.sg/~leejy/">
+	      <span style="font-style: normal">
+                <font color="#800080">Jooyong Yi</font>
+              </span>
+            </a>
+          </font>
+        </p>
+      </li>
+
+      <li>
+        <p>
+          <font face="Arial">
+            <a class="author" href="http://www.comp.nus.edu.sg/~mboehme/">
+	      <span style="font-style: normal">
+                <font color="#800080">Marcel Böhme</font>
+              </span>
+            </a>
+          </font>
+        </p>
+      </li>
+    </ul>
+  </div>
+</li>
+
+<br>
+
+<li>
+<div class="title">PhD Students:</div>
+<ul>
+  <p>
+    <li>
+      <font face="Arial">
+        <a class="author" href="http://www.comp.nus.edu.sg/~shinhwei/">
+	  <span style="font-style: normal">
+            <font color="#800080">Shin Hwei Tan</font>
+          </span>
+        </a>
+      </font>
+    </li>
+  </p>
+
+  <p>
+    <li>
+      <font face="Arial">
+        <a class="author" href="http://www.comp.nus.edu.sg/~mechtaev/">
+	  <span style="font-style: normal">
+            <font color="#800080">Sergey Mechtaev</font>
+          </span>
+        </a>
+      </font>
+    </li>
+  </p>
+
+  <p>
+    <li>
+      <font face="Arial">
+        <a class="author" href="http://www.comp.nus.edu.sg/~thuanpv/">
+	  <span style="font-style: normal">
+            <font color="#800080">Thuan Pham Van</font>
+          </span>
+        </a>
+      </font>
+    </li>
+  </p>
+</ul>
+
+<li>
+<div class="title">Research Interns:</div>
+<ul>
+  <p>
+    <li>
+      <font face="Arial">
+	  <span style="font-style: normal">
+            <font color="#800080">Dipanjan Das</font>
+          </span>
+      </font>
+    </li>
+  </p>
+
+  <p>
+    <li>
+      <font face="Arial">
+	  <span style="font-style: normal">
+            <font color="#800080">Priyanka Bose</font>
+          </span>
+      </font>
+    </li>
+  </p>
+</ul>
+</li>
+-->
+
+</td>
+<td></td>
+</tr>
+
+
+<!-- Acknowledgement part -->
+<tr>
+<td width="0"></td>
+<td><a name="acknowledge"><h2>+Acknowledgements:</h2></a>
+<p class="content">The later parts of the research are integrated as part of an umbrella project, <a
+  href="http://www.comp.nus.edu.sg/~tsunami/" class="content"><b>
+<font color="#FF0000">TSUNAMi</font></b></a>, funded by a substantial research grant from
+ <a href="http://www.nrf.gov.sg/" class="content"><b>NRF</b></a> (National 
+Research Foundation, Singapore). This was continued via the National Satellite 
+of Excellence in Trustworthy Software Systems, at Singapore, funded by NRF. This support is gratefully acknowledged. </p><br>
+</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<!-- Footbar part -->
+<table align="center" bgcolor="black" width="100%">
+<tbody><tr>
+<td></td>
+<td><div class="whitefont">
+ <a href="#overview" class="tag">Overview </a>  |
+  <!--<a href="#updates" class="tag">Updates  </a> | -->
+  <a href="#publications" class="tag">Publications </a> | 
+  <a href="#people" class="tag">People </a> | 
+  <a href="#acknowledge" class="tag">Acknowledgement</a>
+</div>
+</td>
+<td align="right"><a href="mailto:abhik@comp.nus.edu.sg" class="tag">Contact Us</a></td>
+</tr>
+</tbody></table>
+
+<!-- Links -->
+<table align="center" width="100%">
+<tbody><tr>
+<td></td>
+<td valign="middle" align="center" colspan="2">
+<a href="http://www.nus.edu.sg/" class="content">National University of Singapore</a> &nbsp; | &nbsp;
+<a href="http://www.comp.nus.edu.sg/" class="content">School of Computing</a> &nbsp; | &nbsp;
+<a href="http://www.nrf.gov.sg/" class="content">National Research Foundation</a>
+</td>
+<td></td>
+</tr>
+</tbody></table>
+
+
+
+</body></html>

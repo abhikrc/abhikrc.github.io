@@ -1,0 +1,24 @@
+
+% PROOF OBLIGATION :  (thm <=> gen)
+
+toplevel(thm/1).
+
+%-----------------------------------------------------
+
+thm(X) :- gen(X), live(X).
+
+gen([1]).
+gen([0|X]) :- gen(X).
+
+live(X) :- X = [1|Z].
+live(X) :- trans(X, Y), live(Y).
+
+trans([0,1|T], [1,0|T]).
+trans([H|T], [H|T1]) :- trans(T, T1).
+
+%--------------------------------------------------------------------
+
+unfold_flag(suspend_expand).
+
+maxDepthConstant(8).
+

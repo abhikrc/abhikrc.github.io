@@ -1,0 +1,127 @@
+\begin{thebibliography}{10}
+
+\bibitem{clar-grum-pele-99}
+{E. M.} Clarke, {O. M.} Grumberg, and {D. A.} Peled.
+\newblock {\em Model Checking}.
+\newblock The {MIT} Press, 1999.
+
+\bibitem{cona-02}
+J.~Conallen.
+\newblock {\em Building Web applications with UML}.
+\newblock Addison Wesley Publ.\ Co., Reading, Massachussetts, 2002.
+
+\bibitem{de-alfaro-01}
+L.~{de Alfaro}.
+\newblock Model checking the {W}orld {W}ide {W}eb.
+\newblock In {\em Proceedings of the 13th International Conference on Computer
+  Aided Verification (CAV'01)}, pages 77--85, 2001.
+
+\bibitem{dilucca}
+G.~{Di Lucca} and M.~{Di Penta}.
+\newblock An approach to identify duplicated web pages.
+\newblock In {\em 26th Annual International Computer Software and Applications
+  Conference}, pages 481 -- 486, Oxford, England, 2002.
+
+\bibitem{antoniol}
+M.~{Di Penta}, G.~Antoniol, G.~Casazza, and E.~Merlo.
+\newblock Modeling web maintenance centers through queue models.
+\newblock In {\em Fifth European Conference on Software Maintenance and
+  Reengineering}, pages 131 -- 139, Lisbon, Portugal, 2001.
+
+\bibitem{seke-02}
+E.~{Di Sciascio}, {F. M.} Donini, M.~Mongiello, and G.~Piscitelli.
+\newblock Anweb: a system for automatic support to web application
+  verification.
+\newblock In {\em Proc. of SEKE '02}, pages 609--616. ACM, New York, July 2002.
+
+\bibitem{csmr-03}
+E.~{Di Sciascio}, {F. M.} Donini, M.~Mongiello, and G.~Piscitelli.
+\newblock Web applications design and maintenance using symbolic model
+  checking.
+\newblock In {\em Proc. of CSMR '03}, pages 63--72, Benevento, Italy, March
+  26--28 2003. IEEE.
+
+\bibitem{disc-doni-mong-tota-cast}
+E.~{Di Sciascio}, {F. M.} Donini, M.~Mongiello, R.~Totaro, and D.~Castelluccia.
+\newblock Design verification of web applications using symbolic model
+  checking.
+\newblock In {\em ICWE}, Lecture Notes in Computer Science, pages 69--74.
+  Springer, 2005.
+
+\bibitem{fer-98}
+{M. F.} Fernandez, D.~Florescu, J.~Kang, {A. Y.} Levy, and D.~Suciu.
+\newblock Catching the boat with strudel: experiences with a web-site
+  management system.
+\newblock In {\em ACM - SIGMOD}, pages 414--425, 1998.
+
+\bibitem{fraternali-99}
+P.~Fraternali.
+\newblock Tools and approaches for developing data-intensive web applications:
+  a survey.
+\newblock {\em ACM Computing Survey}, 31(3):227--263, 1999.
+
+\bibitem{gar-pao-93}
+F.~Garzotto, P.~Paolini, and D.~Schwabe.
+\newblock Hdm - a model-based approach to hypertext application design.
+\newblock {\em ACM TOIS}, 11(1):1--26, 1993.
+
+\bibitem{veriweb}
+P.~Godefroid, M.~Benedikt, and J.~Freire.
+\newblock Veriweb: Automatically testing dynamic web sites.
+\newblock In {\em 11th International World Wide Web Conference (WWW '02)},
+  Honolulu, May 2002.
+
+\bibitem{huth-ryan-99}
+{M. R. A.} Huth and {M. D.} Ryan.
+\newblock {\em Logic in Computer Science}.
+\newblock Cambridge University Press, 1999.
+
+\bibitem{isa-sto-95}
+T.~Isakowitz, E.~Stohr, and P.~Balasubramanian.
+\newblock Rmm : a methodology for structured hypermedia design.
+\newblock {\em Comm. ACM}, 38(8):34--44, 1995.
+
+\bibitem{katoen}
+{J. P.} Katoen.
+\newblock {\em Concepts algorithms and tools for model checking}, volume 32-1
+  of {\em Lecture Notes of the Course "Mechanised Validation of Parallel
+  Systems"}.
+\newblock Friedrich-Alexander-Universitat Erlangen-Nurnberg, 1999.
+
+\bibitem{koch-kraus-02}
+N.~Koch and A.~Kraus.
+\newblock The expressive power of uml-based web engineering.
+\newblock In {\em Proc. of IWOOST '02}, 2002.
+
+\bibitem{smv92}
+{K. L.} McMillan.
+\newblock The {SMV} system, February 1992.
+\newblock http://www.cs.cmu.edu/{~}modelcheck/smv/smvmanual.r2.2.ps.
+
+\bibitem{atz-mec-mer-98}
+P.Atzeni, G.~Mecca, and P.~Meriado.
+\newblock Design and maintenance of data-intensive web sites.
+\newblock In {\em Proc. of EDBT-98}, pages 436--450, 1998.
+
+\bibitem{ric-ton-02}
+F.~Ricca and P.~Tonella.
+\newblock Testing processes of web applications.
+\newblock {\em Annals of software engineering}, 14(1):93--114, 2002.
+
+\bibitem{ros-sch-02}
+G.~Rossi and D.~Schwabe.
+\newblock Object-oriented design structures in web application models.
+\newblock {\em Annals of software engineering}, 13(1):97--110, 2002.
+
+\bibitem{cer-fra-mat-02}
+S.Ceri, P.Fraternali, and M.~Matera.
+\newblock Conceptual modeling of data-intensive web application.
+\newblock {\em IEEE Internet Computing}, 6(4):20--30, 2002.
+
+\bibitem{stotts-98}
+{P.D.} Stotts and {J.C.} Furuta.
+\newblock Hyperdocuments as automata: verification of trace-based browsing
+  properties by model checking.
+\newblock {\em TOIS}, 16(1):1--30, 1998.
+
+\end{thebibliography}

@@ -1,0 +1,579 @@
+\section{Parallel Assignment}
+
+Sequences of assignment instructions are called \emph{straight line
+programs} or \emph{linear blocks}.  Parallel assignment is a construct
+that permits the updating of multiple variables as a single atomic
+operation.  For the purpose of verification, we are interested in
+identifying sequential assignment statements in straight line code
+that can be replaced with equivalent parallel assignment statements.
+This operation compresses multiple control points for sequential
+assignment statements into a single parallel assignment control point.
+The new parallel assignment control point consists of a list of
+assignment statements.
+
+In this section we consider a number of possible approaches to finding
+sequences of assignments suitable for parallel assignment.
+
+\begin{itemize}
+\item In Section~2.1, we require that
+  each assignment in a parallel assignment block may be executed in
+  any order without affecting the other assignment statements in that
+  parallel block.  In this scenario, the example $x,y := y,x$ would
+  not be a valid parallel assignment because $x := y; y:= x$ is
+  different from $y := x; x := y$ whenever $x \ne y$.
+
+\item In Section~2.2, we add an additional restriction to the
+  classical parallel assignment problem by disallowing reordering of
+  the assignment statements.  This produces a tractable problem for
+  which efficient algorithms can be obtained.
+
+\item In Section~2.3, we see that we have additional flexibility in
+  the context of weakest precondition computations.  We can assume
+  that the assignments in a parallel assignment block must all be
+  executed concurrently.
+
+\end{itemize}
+
+\subsection{Classical Parallel Assignment}
+
+The classical parallel assignment problem is stated by Garey and
+Johnson \cite{np} as follows.
+
+\textbf{Instance}: Set $V = \{v_1, v_2, \dots, v_n\}$ of variables, set $A =
+  \{A_1, A_2, \dots, A_n\}$ of assignments, each $A_i$ of the form
+  ``$v_i \leftarrow op(B_i)$'' for some subset $B_i \subseteq V$, and a
+  positive integer $K$.
+
+\begin{eqnarray*}
+A_1 : v_1 & := & op(B_1) \\
+A_2 : v_2 & := & op(B_2) \\
+A_3 : v_3 & := & op(B_3) \\
+ & \vdots & \\
+A_n : v_n & := & op(B_n)
+\end{eqnarray*}
+
+\textbf{Question}: Is there an ordering
+  $v_{\pi(1)},v_{\pi(2)},\dots,v_{\pi(n)}$ of $V$ such that there are
+  at most $K$ values of $i$, $1 \le i \le n$, for which $v_{\pi(i)}
+  \in B_{\pi(j)}$ for some $j > i$?
+
+\begin{figure}[ht]
+\begin{center}
+\includegraphics*{assignment.eps}
+\end{center}
+\caption{Sequential Assignments transformed to Parallel Assignments
+\label{assignmentex1}}
+\end{figure}
+
+Thus our problem of compressing the sequential assignment statements
+into as few parallel assignment statements as possible would be
+equivalent to the optimisation problem of finding the minimum
+satisfying $K$.
+
+% The classical parallel assignment problem relies on the assumption
+% that sequential assignment statements can only be combined into a
+% parallel assignment if the order in which they are executed does not
+% matter.  That is to say, the parallel assignment is not necessarily
+% concurrent
+
+Unfortunately, Sethi \cite{sethi} showed that this problem is NP-Hard
+via a reduction from the feedback node set problem.  In the next
+section we consider a greedy algorithm which identifies parallel
+assignments with the additional restriction that the sequential
+assignments must be adjacent.  That is to say, no reordering of the
+assignments is allowed even if this would not disrupt the data
+dependencies.  In Section~2.3 we consider the special circumstances of
+statements in weakest precondition computations to perform even better
+compression of single assignment statements.
+
+%% XXX use ref to section 2.3 rather than explicit ref.
+
+\subsection{Tractable General Parallel Assignment}
+
+Consider now a modified version of the classical
+parallel assignment problem where reordering of the assignment
+statements is not allowed.  The instance introduced in the previous
+section is still used, but the question becomes:
+
+\textbf{Question}: Are there
+  at most $K$ values of $i$, $1 \le i \le n$, for which $v_i
+  \in B_j$ for some $j > i$?
+
+\begin{figure}
+\begin{center}
+\includegraphics*{assignment2.eps}
+\end{center}
+\caption{Sequential Assignments transformed to Parallel Assignments
+  without reordering.}
+\label{assignmentex2}
+\end{figure}
+
+Figure \ref{assignmentex1} illustrates a transformation from
+sequential to parallel assignment statements involving reordering that
+would be allowed in the classical parallel assignment problem.  Figure
+\ref{assignmentex2} shows a similar transformation with the additional
+condition preventing reordering.
+
+\subsubsection{Analysis}
+
+For each of the $n$ assignments $A_i$, and for each $j, i < j \le n$,
+we must test if $v_i \in B_j$.  Therefore, we will need $(n - 1) + (n
+- 2) + (n - 3) + \ldots + 3 + 2 + 1 = \frac{(n-1)^2}{2}$ set inclusion
+operations.  If each $\|B_j\| <
+C$ for some constant $C$, then set inclusion can be
+determined in constant time, yielding an $O(n^2)$ algorithm.
+
+Recall that $n$ will not be the number of control locations in the
+entire program.  Instead, $n$ is the number of assignments in a
+sequential list of assignment statements in one node of the control
+flow graph.  As such, $n$ is never a very large number.
+
+\subsubsection{Implementation}
+
+In order to reason about the variables on the right-hand side of
+assignment statements, we need more information than what is provided
+by the control flow graph.  The parse tree \cite{dragon} provides the
+expression-level syntactic information we need to reason about
+individual assignments.  We are not interested in a parse tree for the
+entire program source code, however.  Instead, we expect the control
+flow graph to maintain a pointer to a parse tree for each individual
+assignment statement.  Given such a parse tree, one can easily build
+up lists of variables on the left-hand side (LHS) and right-hand side
+(RHS) of an assignment statement.
+
+With these two lists as input, the process of creating a new CFG that
+utilises parallel assignment statements is described in Algorithm
+\ref{algorithm-greedy1}.  This algorithm visits each node in the
+control flow graph and then follows a greedy strategy to build up
+lists of parallel assignment statements.
+
+Each assignment statement in the CFG node is compared to the running
+list of assignments in the parallel assignment block.  If the
+assignment statement is not suitable for parallel assignment with all
+of the other assignments in the current parallel assignment block,
+then that assignment block is finished and a new one is started.
+
+This algorithm relies on another algorithm to determine whether an
+assignment statement $s_1$ can be included in the block of parallel
+assignments $P_1$.  Algorithm \ref{algorithm-canparallelise},
+\emph{canParallelise}, illustrates the decision procedure in the
+simpler case of just two assignment statements.
+
+\begin{algorithm}
+\caption{\textbf{Atomise} accepts a CFG and
+  loops over the assignment statements combining adjacent assignments
+  into parallel assignment blocks whenever possible.}
+\label{algorithm-greedy1}
+\begin{algorithmic}
+\STATE Input: A CFG
+\STATE Output: A CFG in which assignment statements have been parallelised
+  \FORALL{$N \in \mathit{CFG}$}
+    \IF{$N$ contains a statement list $S$}
+    \STATE    Let $\mathit{parallel\_ list} = \textrm{first}\ s \in S$.
+    \FORALL{statement $s \in S$ with successor statement $s'$.}
+      \IF{$canParallelise(parallel\_list, s')$}
+\STATE        append $s'$ to $\mathit{parallel\_list}$.
+      \ELSE
+\STATE        Append {\it parallel\_list} to {\it new\_list}
+\STATE        Initialise {\it parallel\_list} with $s'$.
+      \ENDIF
+    \ENDFOR
+\STATE    Append {\it parallel\_list} to {\it new\_list}
+\STATE    Replace statement list $S$ in CFG node $N$ with {\it new\_list}.
+    \ENDIF
+  \ENDFOR
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+\caption{\textbf{CanParallelise} accepts a list of assignments
+ suitable for parallel assignment and an additional assignment and
+ determines if the new assignment can be safely added to the existing
+ parallel assignment block.}
+\label{algorithm-canparallelise}
+\begin{algorithmic}
+\STATE Input: Assignment list $l$ and an assignment statement $s_1$.
+\STATE Output: A boolean answer as to whether the statements may be executed in parallel.
+\STATE Let $\mathit{LHS(s)}$ be a function returning the variable on
+the left-hand side of single assignment $s$.
+\STATE Let $\mathit{LHS\_List(l)}$ be a function returning the variables on
+the left-hand side of the assignments in assignment list $l$.
+\STATE Let $\mathit{RHS(s)}$ be a function returning the list of
+variables on the right-hand side of assignment $s$.
+\STATE Let $\mathit{RHS\_List(l)}$ be a function returning the variables on
+the right-hand side of the assignments in assignment list $l$.
+\IF{$\mathit{LHS(s_1)} \in \mathit{RHS\_List(l)}$ or
+  $\mathit{RHS(s_1)} \cap \mathit{LHS\_List(l) \ne \varnothing}$}
+\RETURN false
+\ELSE
+\RETURN true
+\ENDIF
+\end{algorithmic}
+\end{algorithm}
+
+\subsection{Concurrent Parallel Assignment}
+
+The algorithms described in the two previous sections are based on two
+assumptions.  The first assumption is that we cannot change the form
+of the individual assignment statements.  The second assumption is
+that we must guarantee that the assignments in a parallel block can be
+executed in any order without affecting the result.  In fact neither
+of these assumptions is necessary in the context of building parallel
+assignments for weakest precondition computations.
+
+Consider the following example:
+
+\begin{center} 
+\texttt{x := y}\\
+\texttt{z := x}
+\end{center}
+
+Algorithm \ref{algorithm-greedy1} would not be able to combine these
+two assignment statements because the left-hand side of one is present
+in the right-hand side of the other.  However, it is possible to
+change the second assignment without altering the result of the block.
+
+\begin{center}
+\texttt{x := y}\\
+\texttt{z := y}
+\end{center}
+
+With this modification, our existing algorithm would be able to
+combine these two assignments into a single parallel assignment
+block.  It is also clear that the result is exactly the same as the
+original sequence of assignments.
+
+In general, we can define a function that accepts a sequence of simple
+assignment statements $S$ without pointers and without function calls
+and returns an equivalent parallel assignment statement.
+
+\noindent \textit{\bf Proof by Induction: }
+
+The base case of a single assignment, $S = \{ s_1 \}$, is vacuously
+true.  $f(S) = S$ is the function.
+
+Now, let $S$ be a sequence of $n$ sequential assignment statements and
+let $S^+$ denote the the sequence $S$ and the successor of the last
+assignment in $S$, $s'$.  Suppose a function $g$ exists to transform
+the sequence $S$ of assignments into an equivalent parallel
+assignment, $g(S)$. \emph{(Inductive hypothesis)}
+
+We build a new function $h(S^+)$ as follows:
+
+\begin{algorithmic}
+  \FORALL{$v \in \mathit{RHS}(s')$}
+    \IF{$v = \mathit{LHS}(\tilde{s})$ for some $\tilde{s} \in g(S)$}
+    \STATE Replace $v$ in $s'$ with $\mathit{RHS}(\tilde{s})$
+    \ENDIF
+  \ENDFOR
+  \STATE Output $(g(S),s')$
+\end{algorithmic}
+
+By the replacement construction on $s'$ we guarantee that it can be
+combined with $g(S)$ in a parallel block, thus proving our result
+inductively. \hspace{\fill}$\blacksquare$\\
+
+With concurrent parallel assignment, the left-hand side of all
+assignment statements are updated simultaneously.  This means that
+instances of all variables in the parallel assignment block refer to
+the valuations before the parallel block is entered.  If an assignment
+statement needs to utilise the valuation of a variable after another
+assignment statement, then that assignment must be rewritten with the
+procedure outlined in the previous proof.
+
+As one final illustration, consider the following assignment list:
+%introduced in Figure \ref{fig:a}.
+
+\begin{center}
+\texttt{x = 1;}\\
+\texttt{y = x;}\\
+\texttt{u = 2;}\\
+\texttt{v = u;}
+\end{center}
+
+The classical parallel assignment problem seeks to find the optimal
+ordering of the assignment statements so as to find a minimal set of
+parallel assignment statements, such as:
+
+\begin{center}
+\texttt{x = 1 ||| u = 2;}\\
+\texttt{y = x ||| v = u;}
+\end{center}
+
+In the context of weakest precondition computations, however, we can
+modify the assignment statements as necessary to ensure that all can
+be combined into one parallel assignment block:
+
+\begin{center}
+\texttt{x = 1 ||| y = 1; ||| u = 2 ||| v = 2;}
+\end{center}
+
+\subsubsection{Implementation}
+
+The \emph{ConcurrentAtomise} algorithm described in the previous section is
+presented in Algorithm \ref{algorithm-best}.
+
+\begin{algorithm}
+\caption{\textbf{ConcurrentAtomise} accepts a CFG 
+  and loops over the assignment statements modifying adjacent
+  assignments as necessary to allow them to be combined into a single
+  parallel assignment block.}
+\label{algorithm-best}
+\begin{algorithmic}
+\STATE Input: A CFG
+\STATE Output: A CFG in which assignment statements have been parallelised
+  \FORALL{$N \in \mathit{CFG}$}
+    \IF{$N$ contains a statement list $S$}
+    \STATE    Let $\mathit{parallel\_ list} = \textrm{first}\ s \in S$.
+    \FORALL{statement $s \in S$ with successor statement $s'$.}
+  \FORALL{$v \in \mathit{RHS}(s')$}
+    \IF{$v = \mathit{LHS}(\tilde{s})$ for some 
+               $\tilde{s} \in \mathit{parallel\_list}$}
+    \STATE Replace $v$ in $s'$ with $\mathit{RHS}(\tilde{s})$
+    \ENDIF
+  \ENDFOR
+\STATE        append $s'$ to $\mathit{parallel\_list}$.
+\ENDFOR
+\STATE    Replace statement list $S$ in CFG node $N$ with {\it parallel\_list}.
+    \ENDIF
+  \ENDFOR
+\end{algorithmic}
+\end{algorithm}
+
+\subsection{Parallel Assignment and Weakest Preconditions}
+
+For an assignment statement $s$ and predicate $\phi$, the weakest
+precondition $\WPRE (s,\phi)$ is obtained by replacing all occurrences
+of the left-hand side of $s$ with the right-hand side of the
+assignment.  This can be represented in replacement notation by $\phi
+[ \mathit{LHS} / \mathit{RHS} ]$.
+
+This replacement operation extends naturally when $s$ is a parallel
+assignment block.  Each variable in $\phi$ that occurs on the
+left-hand side of an assignment in $s$ is replaced with the
+corresponding right-hand side. For example, the weakest precondition
+of parallel assignment $a,c := b,a$ and the same predicate $\phi$
+would be denoted $\phi [ a / b, c / a ]$.
+
+\expandafter\ifx\csname graph\endcsname\relax
+   \csname newbox\expandafter\endcsname\csname graph\endcsname
+\fi
+\ifx\graphtemp\undefined
+  \csname newdimen\endcsname\graphtemp
+\fi
+\expandafter\setbox\csname graph\endcsname
+ =\vtop{\vskip 0pt\hbox{%
+    \special{pn 8}%
+    \special{pa 1450 1000}%
+    \special{pa 2350 1000}%
+    \special{pa 2350 500}%
+    \special{pa 1450 500}%
+    \special{pa 1450 1000}%
+    \special{da 0.050}%
+    \graphtemp=.5ex
+    \advance\graphtemp by 0.750in
+    \rlap{\kern 1.900in\lower\graphtemp\hbox to 0pt{\hss x := y\hss}}%
+    \special{pa 1900 1000}%
+    \special{pa 1900 1500}%
+    \special{fp}%
+    \special{sh 1.000}%
+    \special{pa 1925 1400}%
+    \special{pa 1900 1500}%
+    \special{pa 1875 1400}%
+    \special{pa 1925 1400}%
+    \special{fp}%
+    \special{pa 1450 2000}%
+    \special{pa 2350 2000}%
+    \special{pa 2350 1500}%
+    \special{pa 1450 1500}%
+    \special{pa 1450 2000}%
+    \special{da 0.050}%
+    \graphtemp=.5ex
+    \advance\graphtemp by 1.750in
+    \rlap{\kern 1.900in\lower\graphtemp\hbox to 0pt{\hss a := b\hss}}%
+    \special{pa 1900 2000}%
+    \special{pa 1900 2500}%
+    \special{fp}%
+    \special{sh 1.000}%
+    \special{pa 1925 2400}%
+    \special{pa 1900 2500}%
+    \special{pa 1875 2400}%
+    \special{pa 1925 2400}%
+    \special{fp}%
+    \special{pa 1450 3000}%
+    \special{pa 2350 3000}%
+    \special{pa 2350 2500}%
+    \special{pa 1450 2500}%
+    \special{pa 1450 3000}%
+    \special{da 0.050}%
+    \graphtemp=.5ex
+    \advance\graphtemp by 2.750in
+    \rlap{\kern 1.900in\lower\graphtemp\hbox to 0pt{\hss y := z\hss}}%
+    \special{pa 1900 3000}%
+    \special{pa 1900 3500}%
+    \special{fp}%
+    \special{sh 1.000}%
+    \special{pa 1925 3400}%
+    \special{pa 1900 3500}%
+    \special{pa 1875 3400}%
+    \special{pa 1925 3400}%
+    \special{fp}%
+    \special{pa 1450 4000}%
+    \special{pa 2350 4000}%
+    \special{pa 2350 3500}%
+    \special{pa 1450 3500}%
+    \special{pa 1450 4000}%
+    \special{da 0.050}%
+    \graphtemp=.5ex
+    \advance\graphtemp by 3.750in
+    \rlap{\kern 1.900in\lower\graphtemp\hbox to 0pt{\hss c := b\hss}}%
+    \special{pa 1900 4000}%
+    \special{pa 1900 4500}%
+    \special{fp}%
+    \special{sh 1.000}%
+    \special{pa 1925 4400}%
+    \special{pa 1900 4500}%
+    \special{pa 1875 4400}%
+    \special{pa 1925 4400}%
+    \special{fp}%
+    \graphtemp=.5ex
+    \advance\graphtemp by 4.500in
+    \rlap{\kern 1.400in\lower\graphtemp\hbox to 0pt{\hss (a)\hss}}%
+    \special{pa 750 4000}%
+    \special{pa 500 3750}%
+    \special{pa 750 3500}%
+    \special{sp}%
+    \special{sh 1.000}%
+    \special{pa 662 3553}%
+    \special{pa 750 3500}%
+    \special{pa 697 3588}%
+    \special{pa 662 3553}%
+    \special{fp}%
+    \special{ar 750 3250 750 250 0 6.28319}%
+    \graphtemp=.5ex
+    \advance\graphtemp by 3.250in
+    \rlap{\kern 0.750in\lower\graphtemp\hbox to 0pt{\hss $\WPRE( c := b, \Phi)$\hss}}%
+    \special{pa 750 3000}%
+    \special{pa 500 2750}%
+    \special{pa 750 2500}%
+    \special{sp}%
+    \special{sh 1.000}%
+    \special{pa 662 2553}%
+    \special{pa 750 2500}%
+    \special{pa 697 2588}%
+    \special{pa 662 2553}%
+    \special{fp}%
+    \special{ar 750 2250 750 250 0 6.28319}%
+    \graphtemp=.5ex
+    \advance\graphtemp by 2.250in
+    \rlap{\kern 0.750in\lower\graphtemp\hbox to 0pt{\hss $\WPRE( y := z, \Phi)$\hss}}%
+    \special{pa 750 2000}%
+    \special{pa 500 1750}%
+    \special{pa 750 1500}%
+    \special{sp}%
+    \special{sh 1.000}%
+    \special{pa 662 1553}%
+    \special{pa 750 1500}%
+    \special{pa 697 1588}%
+    \special{pa 662 1553}%
+    \special{fp}%
+    \special{ar 750 1250 750 250 0 6.28319}%
+    \graphtemp=.5ex
+    \advance\graphtemp by 1.250in
+    \rlap{\kern 0.750in\lower\graphtemp\hbox to 0pt{\hss $\WPRE( a := b, \Phi)$\hss}}%
+    \special{pa 750 1000}%
+    \special{pa 500 750}%
+    \special{pa 750 500}%
+    \special{sp}%
+    \special{sh 1.000}%
+    \special{pa 662 553}%
+    \special{pa 750 500}%
+    \special{pa 697 588}%
+    \special{pa 662 553}%
+    \special{fp}%
+    \special{ar 750 250 750 250 0 6.28319}%
+    \graphtemp=.5ex
+    \advance\graphtemp by 0.250in
+    \rlap{\kern 0.750in\lower\graphtemp\hbox to 0pt{\hss $\WPRE( x := y, \Phi)$\hss}}%
+    \special{pa 4300 2000}%
+    \special{pa 5200 2000}%
+    \special{pa 5200 1500}%
+    \special{pa 4300 1500}%
+    \special{pa 4300 2000}%
+    \special{da 0.050}%
+    \graphtemp=.5ex
+    \advance\graphtemp by 1.750in
+    \rlap{\kern 4.750in\lower\graphtemp\hbox to 0pt{\hss x, a := y, b\hss}}%
+    \special{pa 4750 2000}%
+    \special{pa 4750 2500}%
+    \special{fp}%
+    \special{sh 1.000}%
+    \special{pa 4775 2400}%
+    \special{pa 4750 2500}%
+    \special{pa 4725 2400}%
+    \special{pa 4775 2400}%
+    \special{fp}%
+    \special{pa 4300 3000}%
+    \special{pa 5200 3000}%
+    \special{pa 5200 2500}%
+    \special{pa 4300 2500}%
+    \special{pa 4300 3000}%
+    \special{da 0.050}%
+    \graphtemp=.5ex
+    \advance\graphtemp by 2.750in
+    \rlap{\kern 4.750in\lower\graphtemp\hbox to 0pt{\hss y, c := z, b\hss}}%
+    \special{pa 4750 3000}%
+    \special{pa 4750 3500}%
+    \special{fp}%
+    \special{sh 1.000}%
+    \special{pa 4775 3400}%
+    \special{pa 4750 3500}%
+    \special{pa 4725 3400}%
+    \special{pa 4775 3400}%
+    \special{fp}%
+    \graphtemp=.5ex
+    \advance\graphtemp by 3.500in
+    \rlap{\kern 4.250in\lower\graphtemp\hbox to 0pt{\hss (b)\hss}}%
+    \special{pa 3600 3000}%
+    \special{pa 3350 2750}%
+    \special{pa 3600 2500}%
+    \special{sp}%
+    \special{sh 1.000}%
+    \special{pa 3512 2553}%
+    \special{pa 3600 2500}%
+    \special{pa 3547 2588}%
+    \special{pa 3512 2553}%
+    \special{fp}%
+    \special{ar 3600 2250 750 250 0 6.28319}%
+    \graphtemp=.5ex
+    \advance\graphtemp by 2.250in
+    \rlap{\kern 3.600in\lower\graphtemp\hbox to 0pt{\hss $\WPRE( y, c := z, b, \Phi)$\hss}}%
+    \special{pa 3600 2000}%
+    \special{pa 3350 1750}%
+    \special{pa 3600 1500}%
+    \special{sp}%
+    \special{sh 1.000}%
+    \special{pa 3512 1553}%
+    \special{pa 3600 1500}%
+    \special{pa 3547 1588}%
+    \special{pa 3512 1553}%
+    \special{fp}%
+    \special{ar 3600 1250 750 250 0 6.28319}%
+    \graphtemp=.5ex
+    \advance\graphtemp by 1.250in
+    \rlap{\kern 3.600in\lower\graphtemp\hbox to 0pt{\hss $\WPRE( x, a := y, b, \Phi)$\hss}}%
+    \hbox{\vrule depth4.500in width0pt height 0pt}%
+    \kern 5.200in
+  }%
+}%
+
+\begin{figure}
+\centerline{\box\graph}
+\caption{(a) A sequence of four simple assignment statements and the
+  associated weakest precondition computations that would be
+  calculated in a CEGAR loop.
+(b)~A shorter sequence of parallel assignment statements with fewer
+  associated weakest precondition computations.}
+\label{wpex1}
+\end{figure}
+

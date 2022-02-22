@@ -1,0 +1,105 @@
+toplevel(bad_src/2).
+toplevel(bad_dest/2).
+toplevel(bad_start/1).
+%toplevel(any_src/2).
+%toplevel(any_dest/2).
+toplevel(zero_dest/2).
+toplevel(zero_src/2).
+toplevel(zero_start/1).
+
+%------------------------------------------------------------
+
+zero_src(X, Y) :- trans(X, Y), zero_owner(X).
+zero_dest(X, Y) :- trans(X, Y), zero_owner(Y).
+
+%any_src(X, Y) :- trans(X, Y), any(X).
+%any_dest(X, Y) :- trans(X, Y), any(Y).
+
+bad_src(X, Y) :- trans(X, Y), bad(X).
+bad_dest(X, Y) :- trans(X, Y), bad(Y).
+
+bad_start(X) :- gen(X), bad(X).
+
+zero_start(X) :- gen(X), zero_owner(X).
+
+%-----------------------------------------------------------
+
+gen([own0]).
+gen([invalid|X]) :- gen(X).
+
+trans([H|T], [H1|T1]) :- ltrans(H, in(Act), H1),
+			 trans_rest(T, out(Act), T1).
+
+trans([H|T], [H|T1]) :- trans(T, T1).
+
+trans([H|T], [H1|T]) :- ltrans(H, self(_X), H1).
+
+trans([H|T], [H1|T1]) :- ltrans(H, out(Act), H1),
+			 trans_rest(T, in(Act), T1).
+
+trans_rest([S|T], A, [S1|T]) :- ltrans(S, A, S1).
+trans_rest([H|T], A, [H|T1]) :- trans_rest(T, A, T1).
+
+
+ltrans(valid, in(ot), own1).
+ltrans(valid, in(inv), invalid).
+ltrans(valid, self(rd), valid).
+
+ltrans(invalid, in(cp), valid).
+
+ltrans(own0, self(rd), own0).
+ltrans(own0, self(wr), own0).
+ltrans(own0, out(cp), own1).
+
+ltrans(own1, self(rd), own1).
+ltrans(own1, out(inv), own0).
+ltrans(own1, out(ot), valid).
+
+bad([own0|X]) :- one_more(X).
+bad([own1|X]) :- one_more(X).
+bad([valid|X]) :- bad(X).
+bad([invalid|X]) :- bad(X).
+
+one_more([own0|X]) :- any(X).
+one_more([own1|X]) :- any(X).
+one_more([valid|X]) :- one_more(X).
+one_more([invalid|X]) :- one_more(X).
+
+any([]).
+any([valid|X]) :- any(X).
+any([invalid|X]) :- any(X).
+any([own0|X]) :- any(X).
+any([own1|X]) :- any(X).
+
+
+zero_owner([]).
+zero_owner([invalid|X]) :- zero_owner(X).
+zero_owner([valid|X]) :- zero_owner(X).
+%----------------------------------------------------
+
+
+consumer(one_more/1).
+consumer(bad/1).
+consumer(any/1).
+consumer(zero_owner/1).
+
+maxDepthConstant(4).   % maximum term depth to restrict infinite 
+                       % call sequences during unfolding.  
+
+unfold_flag(suspend_expand).   % expand suspended atoms if they
+                               % get instantiated.
+
+%unfold_flag(nonconsumer_freeze). % do not expand a clause body 
+				 % if it has only open atoms.
+
+cleanup_flag([failed]).   
+		    % allows setting options for cleanup of clauses
+		    % periodically. Currently, allows removing subsumed
+		    % and failed clauses. Obviously then we have 4
+		    % User options: cleanup_flag([])
+		    %               cleanup_flag([subsumed]).
+		    %               cleanup_flag([failed]).
+	            %               cleanup_flag([subsumed, failed]).
+		    % Caution: Subsumption based cleanups may 
+                    %          slow down the prover considerably.
+

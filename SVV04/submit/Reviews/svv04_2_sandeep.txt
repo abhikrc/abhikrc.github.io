@@ -1,0 +1,43 @@
+
+Paper #2
+
+Title: A Formal Approach for the Specification and  The Verification of UML Structural Properties: Applications to E-Business Domain
+
+Authors: Nicolas Guelfi, Amel Mammar and Benoit Reis
+
+
+1 - How do you classify this paper? 3
+
+   3: Strong Accept  
+
+   2: Weak Accept
+
+   1: Weak Reject
+
+   0: Strong Reject
+
+
+ 
+ 2 - What is your overall expertise concerning the subject areas of this
+paper? Y
+
+   X: I am an expert.
+   Y: I am knowledgeable in the area, though not an expert   Y
+   Z: I am not an expert. My evaluation is that of an informed outsider.
+
+
+
+ 3 - Main Contributions of the paper
+This paper formalizes the UML class and  activity diagrams' semantics based on 2001 thesis of Richter,
+and  then applies OCL constraints to express required properties of a business process. The verification is done using OCL interpretation and the authors are studying model checking tools.
+They make their tool based on meta information such that ill formed diagrams are ruled out.
+
+ 4 - Points in favour or against the paper
+I like the idea of making the diagrammatic modeling of business processes amenable to formal analysis.
+Also the idea of making highlightings on the UML diagram when an OCL constraint is violiated is a good debugging aid for users who are usually not formally inclined, and are business process developers.
+
+ 5- Specific Comments for improving the paper
+Please check the projects on using meta modeling based on UML called GME (Vanderbilt Univ) and META-X at Virginia Tech (http://fermat.ece.vt.edu/METAX.htm)
+
+-------------------------
+

@@ -1,0 +1,322 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- DW6 -->
+<head>
+<title>Timing Analysis of Behavioral System Models</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<link rel="stylesheet" href="project.css" type="text/css" />
+<style type="text/css">
+<!--
+.STYLE5 {
+	color: #0000E8;
+	font-weight: bold;
+	font-size: 34px;
+	font-family: "Times New Roman", Times, serif;
+}
+.STYLE10 {color: #336633}
+.STYLE11 {font-size: 16px}
+.STYLE13 {color: #7D89F7}
+.STYLE14 {font-size: 12px}
+.STYLE15 {font-size: 17px}
+.STYLE16 {color: #FF00FF}
+.STYLE17 {
+	font-family: "Times New Roman", Times, serif;
+	font-size: 18px;
+}
+.STYLE18 {
+	color: #9C3000;
+	font-weight: bold;
+}
+.STYLE19 {
+	font-size: 16px;
+	font-weight: bold;
+}
+.STYLE23 {
+	font-size: 12px;
+	color: #FFFFFF;
+}
+.STYLE25 {font-size: 16px; color: #00309C; }
+span.SpellE
+	{}
+-->
+</style>
+</head>
+<body bgcolor="#F4FFE4">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr bgcolor="#D5EDB3">
+  	<td width="8" bgcolor="#FFFFFF">　</td>
+    <td colspan="1" width="150" height="120" rowspan="1" bgcolor="#FFFFFF"><img src="pic/blue_clock1.jpg" alt="Logo image" width="150" height="120" border="0" /></td>
+	<td width="12" bgcolor="#FFFFFF">　</td>
+	<td colspan="1" rowspan="1" bgcolor="#FFFFFF">
+		<table width="100%">
+			<tr>
+				<td height="76" colspan="1" align="center" valign="middle" nowrap="nowrap" bgcolor=			
+				"#FFFFFF" ><span class="STYLE5">Timing Analysis of Behavioral System Models
+				</span></td>			
+			</tr>		
+			<tr>
+				<td height="28" colspan="3" align="center" valign="top" bgcolor="#FFFFFF" id=
+				"tagline"><div align="right" class="subHeader STYLE10">
+				  <div align="center" class=
+				"STYLE11 STYLE13">Funded by University Research Council (URC) </div>
+				</div>
+			  </td>
+			</tr>
+		</table>
+	
+	</td>
+    <td width="8" bgcolor="#FFFFFF">　</td>
+  </tr>
+ 
+  <tr bgcolor="#99CC66">
+  	<td width="8"  bgcolor="#FFFFFF">　</td>
+    <td height="12" colspan="3" align="right" bgcolor="#3C6CFF"><span class="STYLE23">Last update: 8 January 2008  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></td>
+	<td width="8" bgcolor="#FFFFFF">　</td>
+  </tr>
+  
+  <tr>
+  	<td width="8" bgcolor="#FFFFFF">　</td>
+  
+    <td colspan="1" align="center" valign="top" bgcolor="#003399">
+	  <table width="110" height="246" border="0" cellpadding="0" cellspacing="0" id="navigation">
+      <tr>
+        <td height="34">　</td>
+      </tr>
+      <tr>
+        <td><a href="index.html#overview"  class="navText STYLE14 STYLE16">
+        <font size="3">Overview</font></a></td>
+      </tr>
+	  <tr>
+        <td><a href="index.html#direction" class="navText STYLE14">
+        <font size="3">Direction</font></a></td>
+      </tr>
+      <tr>
+        <td><a href="index.html#people" class="navText STYLE14"><font size="3">People</font></a></td>
+      </tr>
+      <tr>
+        <td><a href="index.html#publications" class="navText STYLE14">
+        <font size="3">Publications</font></a></td>
+      </tr>
+      <tr>
+        <td><font size="3"><a class="navText STYLE14" href="#funding">Funding</a></font></td>
+      </tr>
+    </table>
+    </td>
+
+	<td width="12" bgcolor="#FFFFFF">　</td>
+    
+	<td colspan="1" id="_body" valign="top">
+		<table width="100%">
+			<tr><td>
+				<table width="100%">
+					<tr>
+					<td>
+					<b><A name=overview><FONT size=5>Overview</FONT></A></b> 
+					<p align="justify" class="STYLE17">
+                    <font face="Arial" size="3">Real-time  embedded systems are ubiquitous, appearing in diverse application domains such  as avionics, automobiles, and consumer electronics. For safety-critical embedded  systems, system design from high-level behavioral models (such as Simulink,  Stateflow, or synchronous programming models like Esterel) is of paramount  importance. In such design flows, the entire system description is developed as  a high-level model and code is automatically generated from these models.</font></p>
+					<p align="justify" class="STYLE17">
+                    <font face="Arial" size="3">Clearly, for model-based design of real-time control software, we need to support timing analysis at the model level. However, conventional techniques for timing or schedulability analysis are not mature enough for this purpose. This is because (a) the task models usually considered for system-level schedulability 
+                    analysis are not powerful enough to be used for models of 
+                    computation like State Diagrams, and (b) many simplifying 
+                    assumptions made in the models (such as the synchrony 
+                    hypothesis in the synchronous programming languages) are 
+                    currently not supported/validated by the lower-level timing 
+                    analyzers. In this project, we will attempt to overcome 
+                    these difficulties and develop a model-level timing analysis 
+                    framework. </font>					</p>
+			
+				</td>
+				</tr>
+				<tr>
+				<td>		
+					　<p><font size="5" color="#800000"><b>Research </b></font>		
+					<b><FONT size=5><A name=direction><font color="#800000">Direction</font></A><font color="#800000">s</font></FONT></b><font color="#800000">
+                    </font></p>
+					<p align="justify" class="STYLE17">
+					 <font face="Arial" size="3">We will build on (and exploit) our past work on system- and 
+                     software-level timing analyzers. In particular, we plan to
+                     leverage on our past efforts with the
+                    <a href="http://www.comp.nus.edu.sg/~rpembed/chronos">
+                    Chronos WCET analyzer</a> for software timing analysis.</font><p align="justify" class="STYLE17">
+					 <font face="Arial" size="3">Our main strategy will be to exploit the recent advances in 
+                     program-level timing analysis and micro-architecture 
+                     modeling and integrate them with model-level timing 
+                     analysis techniques. Modern day UML-based behavioral system 
+                     modeling tools (e.g. those based on State Diagrams) support 
+                     automated code generation. We will study how platform-aware 
+                     time-safety checking can be performed for the generated 
+                     code, and results from such timing analysis can be replayed 
+                     back at the model level. In this project, we plan to pursue 
+                     the following research directions. </font> 
+					<ul class="STYLE15">
+					  <li type="square"><i><font size="3">Relating software timing analysis to high-level behavioral models</font></i></li>
+					  <li type="square"><i><font size="3">Relating system-level performance analysis to high-level behavioral models
+                      </font></i>
+					  </li>
+					  <li type="square"><i><font size="3">Validating idealized timing assumptions made at model level via platform-aware software analysis
+                      </font></i>
+					  </li>  
+				  </ul>	
+				    <p><font size="3" face="Arial">An important technical 
+                    contribution of this project will be to seamlessly integrate 
+                    platform-aware software timing analysis into the compilation 
+                    process of reactive languages like Esterel and Lustre.
+                    </font></p>
+                    <p>　</p>
+				  </p>			
+				</td>
+				</tr>
+				<tr>
+				<td>						
+					<p><b><A name=people><FONT size=5>People</FONT></A></b></p>
+					<p class="STYLE18"><FONT size=4>Faculty Members</FONT>				  
+					<ul class="STYLE15">
+					  	<li type="square"><a href="http://www.comp.nus.edu.sg/~abhik/" target="_blank">Abhik Roychoudhury</a> 
+                        (Principal Investigator)</li>
+					  	<li type="square"><a href="http://www.comp.nus.edu.sg/~samarjit/" target="_blank">Samarjit Chakraborty</a> 
+                        (Co-Principal Investigator)</li>
+		  		  </ul>
+				  </p>							
+					<p class="STYLE18"><FONT size=4>PhD Students</FONT><ul class="STYLE15">
+					  	<li type="square">
+						<a href="http://www.comp.nus.edu.sg/~julei/" target="_blank">
+						Lei Ju</a></li>
+					  	<li type="square">
+						<a href="http://www.comp.nus.edu.sg/~huynhbac/" target="_blank">Bach Khoa 
+						Huynh</a></li>
+		  		  </ul>			
+				    <p>　</p>
+				  </p>
+			  	</td>
+				</tr>	
+				<tr>
+				<td>						
+					　<p>						
+					<b><A name=publications><FONT size=5>Publications</FONT></A></b>
+                    </p>
+					<ul class="STYLE15">
+						  
+					  	<li type="square"><span class="STYLE19">
+						<a href="../../pdf/rtas08.pdf">Schedulability Analysis of MSC-based System Models</a></span>
+						<span class="STYLE11">&nbsp;Lei Ju, Abhik Roychoudhury, Samarjit Chakraborty<br />
+                          <em>14th IEEE Real-Time and Embedded
+Technology and Applications Symposium (RTAS) 2008</em></span>, <i>Full paper.</i></li>
+						<li type="square">
+						<font face="Arial" size="3">
+						<b>
+						<a href="../../pdf/toplas10.pdf">Scratchpad Allocation 
+						for Concurrent Embedded Software</a>, </b>Vivy Suhendra<b>, </b>
+						Abhik Roychoudhury and Tulika Mitra, <i>ACM Transactions 
+						on Programming Languages and Systems (TOPLAS), 32(4), 
+						2010 [ 47 pages]</i></font></li>
+						<li type="square"><b>
+						<a href="../../pdf/codes08-spm.pdf">Scratchpad Allocation for 
+						Concurrent Embedded Software</a></b>, Vivy Suhendra, Abhik 
+						Roychoudhury and Tulika Mitra, <span class="STYLE11">
+						<em>ACM Intl 
+						Conf on Hardware/Software Codesign and System Synthesis 
+						(CODES+ISSS) 2008, Full paper.</em></span></li>
+						<li type="square"><span class="STYLE11">
+						<em style="font-style: normal"><b>
+						<a href="../../pdf/codes08-esterel.pdf">Performance Debugging 
+						of Esterel Specifications</a></b> Lei Ju, B K Huynh, Abhik 
+						Roychoudhury and Samarjit Chakraborty, </em><em>ACM Intl 
+						Conf on Hardware/Software Codesign and System Synthesis 
+						(CODES+ISSS) 2008, Full paper.</em></span></li>
+						<li type="square"><a href="../../pdf/isola08.pdf"><font face="Arial">
+						<span class="STYLE11">
+						<em style="font-style: normal"><b>Debugging 
+						</b> </em></span></font><b>
+						<font face="Arial" size="3">Statecharts via Model-code Traceability</font></b></a><font face="Arial" size="2">
+						</font><font face="Arial" size="3">Liang Guo and </font>
+						<span class="STYLE11">
+						<em style="font-style: normal"><font face="Arial">Abhik 
+						Roychoudhury,</font>&nbsp; </em></span>
+						<font face="Arial" size="3">International Symposium on 
+						Leveraging Applications of Formal Methods, Verification 
+						and Validation (ISoLA) 2008, <i>Invited paper.</i></font></li>
+						<li type="square"><font face="Arial" size="3">
+						<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>
+						<a href="../../pdf/dac09-esterel.pdf">Context-Sensitive Timing Analysis of Esterel Programs</a>
+						</b>Lei Ju, Bach Khoa Huynh, Samarjit Chakraborty and 
+						Abhik Roychoudhury, ACM Design Automation Conference (DAC) 
+						2009, <i>Short Paper</i>.</font></li>
+						<li type="square"><font face="Arial" size="3">
+						<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>
+						<a href="../../pdf/icse09-short.pdf">Footprinter: Roundtrip Engineering via Scenario and 
+						State based Models</a> </b>Ankit Goel, Bikram Sengupta and 
+						Abhik Roychoudhury,&nbsp; ACM International Conference 
+						on Software Engineering (ICSE) 2009, <i>Short paper</i>.</font></li>
+						<li type="square">
+						<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>
+						<a href="../../pdf/rtss09.pdf">Unified Cache Modeling for WCET Analysis and Layout 
+						Optimizations</a>, </b>Sudipta Chattopadhyay and Abhik 
+						Roychoudhury, <i>IEEE Real-time Systems Symposium (RTSS) 
+						2009, Full paper.</i></li>
+						<li type="square">
+						<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">
+						<font face="Arial" size="3">
+						<b>
+						<a href="../../pdf/rtss09-sharedCache.pdf">Timing 
+						Analysis of Concurrent Programs Running on Shared Cache 
+						Multi-cores</a>, </b><span class="SpellE">Yan Li, Vivy 
+						Suhendra, Yun Liang, Tulika Mitra </span>and
+						<span class="SpellE">Abhik</span> <span class="SpellE">
+						Roychoudhury</span>,<i> IEEE Real-time System Symposium 
+						(RTSS) 2009, Full paper.</i></font></li>
+						<li type="square">
+						<font face="Arial" size="3">
+						<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>
+						<a href="../../pdf/scopes10.pdf">Modeling Shared Cache 
+						and Bus in Multi-cores for Timing Analysis </a></b>
+						</font><font face="Arial" size="2">&nbsp;</font><font face="Arial" size="3">Sudipta 
+						Chattopadhyay, Abhik Roychoudhury and Tulika Mitra, <i>13th International Workshop on Software and Compilers 
+						for Embedded Systems (SCOPES) 2010.</i></li></font>
+						<li type="square">
+						<font face="Arial" size="3">
+						<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>Timing 
+						Analysis of Esterel Programs on General-purpose 
+						Multiprocessors </b>Lei Ju, Bach Khoa Huynh, Abhik 
+						Roychoudhury and Samarjit Chakraborty, <i>ACM Design 
+						Automation Conference (DAC) 2010.</i></p>
+						</font></li>
+						<li type="square"><font face="Arial" size="3">
+						<font face="Arial">
+						<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>
+						<a href="../../pdf/RTAS11.pdf">Scope aware Data cache 
+						analysis for WCET estimation</a>, </b>Bach Khoa Huynh, 
+						Lei Ju, Abhik Roychoudhury, 17th IEEE Real-time Embedded 
+						Technology and Applications Symposium (RTAS) 2011.</p>
+						<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">　</p>
+						</font>
+						</li>
+		  		  </ul>
+						</font><font face="Arial" size="3"></font>
+					<font face="Arial" size="3"></font>
+					<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">　</td>
+				</tr>	
+				<tr>
+				<td>
+					<div align="right">
+					  <p align="left"><a name="funding"></a>&nbsp;<b><font style="font-size: 16pt" color="#800000">Funding</font></b></p>
+					  <p align="left"><font size="3">This project is funded by 
+                      the University Research Council for a period of three and 
+						half 
+                      years (2007 Nov - 2011 May). This support is gratefully 
+                      acknowledged.</font></p>
+					  <p><a href="index.html#overview"><img src="pic/top.jpg" alt="back to top" width="56" height="40" border="0"/><span class="STYLE25">Back to Top</span> </a></p>
+				  </div></td>
+				</tr>
+			</table>
+			</td>
+			<td width="20">&nbsp;
+			</td>
+			</tr>
+		</table>
+	</td>
+	
+	<td width="8" bgcolor="#FFFFFF">　</td>
+  </tr>
+</table>
+</body>
+</html>

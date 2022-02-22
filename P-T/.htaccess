@@ -1,0 +1,8 @@
+AuthUserFile /home/staff/abhik/public_html/P-T/.htpasswd
+
+AuthGroupFile /dev/null
+AuthName ByPassword
+AuthType Basic
+
+require user referee
+

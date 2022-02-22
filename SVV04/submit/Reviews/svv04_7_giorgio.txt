@@ -1,0 +1,47 @@
+Paper # 7
+
+Title: Verification in Optimal Space
+
+Authors: Subramani
+
+
+1 - How do you classify this paper?
+
+   3: Strong Accept
+
+   2: Weak Accept   
+
+   1: Weak Reject  <--
+
+   0: Strong Reject
+
+ 
+ 2 - What is your overall expertise concerning the subject areas of this
+paper?
+
+   X: I am an expert.   
+   Y: I am knowledgeable in the area, though not an expert  <--
+   Z: I am not an expert. My evaluation is that of an informed outsider.
+
+
+ 3 - Main Contributions of the paper
+
+The author presents a new algorithm for the negative cost cycle detection
+problem. This problem is related to the satisfiability problem of difference
+constraints, a class of constraints used, e.g., in timed automata.
+The main feature of the algorithm is that it does not used extra memory
+(it modifies the costs of the edges).
+
+ 4 - Points in favour or against the paper
+
+The new algorithm is interesting and the result seems correct.
+However, my objection is that no efforts have been made by the author 
+to make the paper suitable for the audience of a workshop on Software 
+Verification and Validation (the key word "verification" in the title 
+is not enough).
+I think that the paper is  more adequate for a forum on 
+algorithms/operational research.
+ 
+ 5- Specific Comments for improving the paper
+
+The paper is overly long.

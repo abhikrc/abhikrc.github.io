@@ -1,0 +1,92 @@
+
+FAQ on Written QE in Computer Science
+--------------------------------------
+
+Compiled on March 7 by Graduate Division, SoC
+----------------------------------------------
+
+1. Basic Information
+
+   -> Two papers --- Theory and Systems 
+    
+   -> Written, Open-book, 3 hour exam for each paper
+  
+   -> Check the Graduate Division page for more details.
+      http://www.comp.nus.edu.sg/graduateprog/
+          Click on "Programme Structure" and then
+                   "PhD Qualifying Examination".
+
+
+2. But all these topics may not be relevant for my research !
+
+   -> The topics covered in each of the two papers form the 
+      foundations of our discipline. 
+  
+   -> We expect our students to develop good foundations, before 
+      building a house on top of it.
+
+
+3. What if I did not take all the relevant courses in my undergraduate ?
+
+   -> You can check out the reading list, and the list of topcis covered 
+       in each area. For these topics, you can do self study. 
+
+   -> Or you can sit through some of the corresponding undergraduate modules
+      even though this is not necessary.
+
+   -> Further, each paper has 4 areas, and the students answer any three.
+
+
+4. The reading list looks formidable, one has to read 4 books for 
+   each paper !!
+
+   -> Usually, solving exercises is more helpful than just taking a book
+      and reading it.
+
+   -> You can even form study groups of 2-3 people if you like. This 
+      may help, depending on your style and temparament.
+
+
+5. OK, this gives us a good idea about the topics. What kind of 
+   questions can we expect?
+
+    -> The questions are always long questions, not multiple-choice
+       questions.
+
+    -> In general, understanding the principles and concepts is more 
+     helpful than reading about the details.
+
+
+6. That does not say much. Can we look at past year papers to get 
+   a better idea ?
+
+    -> Yes, past year papers may give a general idea. But of course
+       they do not form a definitive guide to future papers.
+
+    -> You can look at the CS 5201 and CS 5202 pages to retrieve the 
+       past year papers.
+  
+    -> A rough analysis of the past 2 years questions on CS 5201 appears
+       in the CS 5201 webpage.
+
+
+7. I found some past year papers from the NUS Libarary website. But
+   they do not seem to be closely related to our QE !
+
+    -> It is always best to visit the Graduate Division page and follow
+       the links from there to get information about the exam.
+
+    -> AN IMPORTANT NOTE OF CAUTION: The exam papers are also being
+       made available from the NUS Library Website 
+               http://lib.nus.edu.sg
+       However, if you retrieve the past year papers from here, please
+       look at exams from 2005 onwards. In the past, the module code
+       CS 5201 and CS 5202 was used by different modules unrelated to
+       the QE. So, these papers are **not** relevant for QE.
+
+
+
+
+    
+
+

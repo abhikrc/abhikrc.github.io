@@ -1,0 +1,68 @@
+\section{Preliminaries}
+
+For the following, we fix an \Def{alphabet} $\alphabet$, i.e. a finite
+set of \Def{letters}, usually denoted by $a,b,\dots,a_1,a_2,\dots$ A
+\Def{language} is a subset of $\alphabet^\ast$, the set of finite
+(possibly empty) sequences of letters, also called \Def{strings} or
+\Def{words}.
+
+A \Def{deterministic finite-state automaton} (\Def{DFA}) over
+$\alphabet$ is a structure $\auto=(\states,\transf,\initst,\final)$
+where $\states$ is a non-empty finite set of \Def{states}, $\initst
+\in \states$ is the \Def{initial state}, $\final \subseteq \states$ is
+the set of \Def{final states}, and $\transf : \states \times \alphabet
+\to \states$ is the \Def{transition function}. We denote the number of
+states $\states$, the size of the alphabet $\alphabet$, and the size
+of the transition function $\transf$ by respectively $|\states|$,
+$|\alphabet|$, and $|\transf|$. The latter is defined to be the number
+of elements of the domain of $\transf$, i.e. $|\states \times
+\alphabet|$.
+
+A \Def{run} of $\auto$ on a finite word $w=a_1\dots a_n \in
+\alphabet^\ast$ is a sequence $\initst \movesto{a_1} \dots
+\movesto{a_n} q_n$, where $\initst$ is the initial state of $\auto$
+and $q_{i+1} = \transf(q_i, a_{i+1})$ for $i \in \{ 0, \dots, n-1 \}$.
+It is called \Def{accepting}, if $q_n \in \final$. The \Def{language}
+accepted by $\auto$, denoted by $\langP{\auto}$, is defined as
+$\langP{\auto}=\{ w \in \alphabet^\ast \mid \mbox{ there is an
+  accepting run of } \auto \mbox{ on } w\}$. We call a language
+$\Lang$ \Def{regular} if there is a DFA accepting $\Lang$.
+
+Let us recall the notion of Nerode's right congruence. Given a
+language $\Lang$, we say that two words $u, v \in \alphabet^\ast$ are
+\Def{equivalent}, written as $u \equiv_{\Lang} v$, if for all $w \in
+\alphabet^\ast$ we have $uw \in \Lang$ iff $vw \in \Lang$. It is easy
+to see that $\equiv_{\Lang} \subseteq \alphabet^\ast \times \alphabet^\ast$ is
+a right congruence, i.e., it is an equivalence relation that
+additionally satisfies $u \equiv_{\Lang}
+v$ implies $uw \equiv_{\Lang} vw$ for all $w
+\in \alphabet^\ast$. We denote the equivalence class of a word $w$ by
+$[w]$.
+
+It is folklore that a language $\Lang$ is regular iff $\equiv_{\Lang}$
+has finite \Def{index}, i.e., the number of equivalence classes of
+$\alphabet^\ast$ with respect to $\equiv_{\Lang}$ is finite.  Let us
+recall the idea of the proof for the direction \emph{right-to-left}:
+Given a language $\Lang$ with finite index, we construct an automaton
+$\cA_\Lang$ such that $\langP{\cA_\Lang} = \Lang$. The states of
+$\cA_\Lang$ are the equivalence classes of $\alphabet^\ast$ with
+respect to $\equiv_{\Lang}$, the initial state is the equivalence
+class containing the empty string, denoted by $\emptystring$, final
+states are the ones containing strings in $\Lang$, and the transition
+function maps $([w],a)$ to $[wa]$.
+
+It can be shown that this construction yields a minimal DFA accepting
+$\Lang$, i.e., the number of states is minimal among all DFA
+accepting $\Lang$. Furthermore, it can be shown that every minimal DFA
+is isomorphic to the one we constructed.
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End: 
+
+
+
+
+
+

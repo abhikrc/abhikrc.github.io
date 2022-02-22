@@ -1,0 +1,11 @@
+
+% the local state of a process v is a 3-tuple:
+% 	( phase(v), max(v), left(v) )
+% phase \in {init, first, second, winner, inactive}  (CONTROL VARIABLE)
+% max(v), left(v) \leq N
+
+
+% Assume a simple initial permutation N,N-1,...,1,0
+gen(0, [(init, 0, _)]).
+gen(s(N), [(init, s(N), _)|L]) :- gen(N, L).
+

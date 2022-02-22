@@ -1,0 +1,134 @@
+This is TeX, Version 3.14159 (Web2C 7.4.5) (format=latex 2004.8.25)  18 OCT 2006 13:44
+**./images.tex
+(./images.tex
+LaTeX2e <2001/06/01>
+Babel <v3.7h> and hyphenation patterns for american, french, german, ngerman, n
+ohyphenation, loaded.
+
+(/usr/local/teTeX-2.0.2/share/texmf/tex/latex/base/book.cls
+Document Class: book 2001/04/21 v1.4e Standard LaTeX document class
+(/usr/local/teTeX-2.0.2/share/texmf/tex/latex/base/bk11.clo
+File: bk11.clo 2001/04/21 v1.4e Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+) (/usr/local/teTeX-2.0.2/share/texmf/tex/latex/base/ifthen.sty
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+) (/usr/local/teTeX-2.0.2/share/texmf/tex/latex/html/url.sty
+Package: url 1999/03/02  ver 1.4  Verb mode for urls, email addresses, and file
+ names
+) (/usr/local/teTeX-2.0.2/share/texmf/tex/latex/graphics/color.sty
+Package: color 1999/02/16 v1.0i Standard LaTeX Color (DPC)
+(/usr/local/teTeX-2.0.2/share/texmf/tex/latex/config/color.cfg
+File: color.cfg 2001/08/31 v1.1 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: dvips.def on input line 125.
+(/usr/local/teTeX-2.0.2/share/texmf/tex/latex/graphics/dvips.def
+File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+) (/usr/local/teTeX-2.0.2/share/texmf/tex/latex/graphics/dvipsnam.def
+File: dvipsnam.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+)) (/usr/local/teTeX-2.0.2/share/texmf/tex/latex/base/inputenc.sty
+Package: inputenc 2001/07/10 v0.99a Input encoding file 
+)
+\sizebox=\box26
+\lthtmlwrite=\write3
+(./images.aux)
+\openout1 = `images.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 134.
+LaTeX Font Info:    ... okay on input line 134.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 134.
+LaTeX Font Info:    ... okay on input line 134.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 134.
+LaTeX Font Info:    ... okay on input line 134.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 134.
+LaTeX Font Info:    ... okay on input line 134.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 134.
+LaTeX Font Info:    ... okay on input line 134.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 134.
+LaTeX Font Info:    ... okay on input line 134.
+
+latex2htmlLength hsize=349.0pt
+
+latex2htmlLength vsize=669.62294pt
+
+latex2htmlLength hoffset=0.0pt
+
+latex2htmlLength voffset=0.0pt
+
+latex2htmlLength topmargin=0.0pt
+
+latex2htmlLength topskip=0.00003pt
+
+latex2htmlLength headheight=0.0pt
+
+latex2htmlLength headsep=0.0pt
+
+latex2htmlLength parskip=0.0pt plus 1.0pt
+
+latex2htmlLength oddsidemargin=0.0pt
+
+latex2htmlLength evensidemargin=0.0pt
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <10.95> on input line 172.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 172.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 172.
+l2hSize :tex2html_wrap_inline233:7.07185pt::0.0pt::9.06422pt.
+[1
+
+
+
+]
+l2hSize :tex2html_wrap_inline235:7.57185pt::7.57185pt::38.2642pt.
+[2
+
+
+]
+l2hSize :tex2html_wrap_inline237:7.57185pt::7.57185pt::32.7892pt.
+[3
+
+
+]
+l2hSize :tex2html_wrap_inline239:7.57185pt::7.57185pt::32.7892pt.
+[4
+
+
+]
+l2hSize :tex2html_wrap_inline241:7.07185pt::0.0pt::14.53922pt.
+[5
+
+
+]
+l2hSize :tex2html_wrap_inline243:7.57185pt::7.57185pt::38.2642pt.
+[6
+
+
+]
+l2hSize :tex2html_wrap_inline245:8.10416pt::8.10416pt::91.98264pt.
+[7
+
+
+] (./images.aux) ) 
+Here is how much of TeX's memory you used:
+ 688 strings out of 95847
+ 8956 string characters out of 1195216
+ 49869 words of memory out of 1000001
+ 3674 multiletter control sequences out of 10000+50000
+ 6379 words of font info for 23 fonts, out of 500000 for 1000
+ 14 hyphenation exceptions out of 1000
+ 21i,5n,19p,162b,225s stack positions out of 1500i,500n,5000p,200000b,5000s
+
+Output written on images.dvi (7 pages, 1652 bytes).

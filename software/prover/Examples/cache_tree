@@ -1,0 +1,97 @@
+
+% A hierarchical distributed shared memory system.
+% --  Buses are hierarchically arranged in an arbitary depth binary tree.
+% --  Arbitrary number of processors, a memory bank, and an agent 
+% --  in each bus.
+
+gen(nil).
+gen(f(Node, L, R)) :- gen_node(Node), gen(L), gen(R).
+
+gen_node([agent_init|Proc]) :- gen_proc(Proc).
+gen_proc([]).
+gen_proc([i|X]) :- gen_proc(X).
+
+trans(S, T) :- trans_auto(S, T).
+trans(S, T) :- trans_hshk(S, T).
+
+trans_auto(f(Node, L, R), f(Node1, L, R)) :- trans_node(Node, Node1).
+trans_auto(f(Node, L, R), f(Node, L1, R)) :- trans_auto(L, L1).
+trans_auto(f(Node, L, R), f(Node, L, R1)) :- trans_auto(R, R1).
+
+trans_hshk(f(Parent, f(LChild, LL, LR), R),  
+	   f(Parent1, f(LChild1, LL, LR), R) ) :-
+	trans_exchange(Parent, LChild, Parent1, LChild1).
+
+trans_hshk(f(Parent, L, f(RChild, RL, RR)),  
+	   f(Parent1, L, f(RChild1, RL, RR)) ):-
+	trans_exchange(Parent, RChild, Parent1, RChild1).
+
+trans_hshk(f(Node, L, R), f(Node, L1, R)) :- trans_hshk(L, L1).
+trans_hshk(f(Node, L, R), f(Node, L, R1)) :- trans_hshk(R, R1).
+
+% trans_exchange : Exchange of information between agents of different 
+%                  buses. Written as a collection of facts.
+
+trans_exchange([try|PBus], [idle|CBus],
+	       [try|PBus], [try|CBus]).
+
+trans_exchange([idle|PBus], [try|CBus],
+	       [try|PBus], [try|CBus]).
+
+trans_exchange([try|PBus], [has_data|CBus],
+	       [try|PBus], [invalidate|CBus]).
+
+trans_exchange([has_data|PBus], [try|CBus],
+	       [invalidate|PBus], [try|CBus]).
+
+trans_exchange([try|PBus], [ready|CBus],
+	       [ready|PBus], [idle|CBus]).
+
+trans_exchange([ready|PBus], [try|CBus],
+	       [idle|PBus], [ready|CBus]).
+
+
+% trans_node is defined for a single node of the tree
+
+trans_node([Agent|Bus], [Agent|Bus1]) :- 
+	trans_local(Bus,Bus1).
+
+trans_node(Bus, Bus1) :- trans_bcast(Bus, inv, Bus1).
+trans_node(Bus, Bus1) :- trans_bcast(Bus, cp, Bus1).
+
+trans_local([H|T], [H1|T]) :- ltrans(H, _Act, H1).
+trans_local([H|T], [H|T1]) :- trans_local(T, T1).
+
+trans_bcast([H|T], Act, [H1|T1]) :- 
+	btrans(H, out(Act), H1), trans_all(T, Act, T1).
+trans_bcast([H|T], Act, [H1|T1]) :- 
+	btrans(H, in(Act), H1), trans_bcast(T, Act, T1).
+
+trans_all([], _, []).
+trans_all([H|T], Act, [H1|T1]) :-
+	btrans(H, in(Act), H1), trans_all(T, Act, T1).
+
+%-----------------------------------------------------------
+% each process in this broadcast protocol has 4 states :
+%      m  == modified
+%      e  == exclusive 
+%      s  == shared
+%      i  == invalid
+
+ltrans(m, read, m).
+ltrans(m, write, m).
+
+ltrans(e, read, e).
+ltrans(e, write, m).
+
+ltrans(s, read, s).
+
+
+btrans(invalidate, b_out(inv), ready).
+
+btrans(m, b_in(inv), i).
+btrans(e, b_in(inv), i).
+btrans(s, b_in(inv), i).
+btrans(i, b_in(inv), i).
+
+btrans(i, b_out(cp), wait).

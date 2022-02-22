@@ -1,0 +1,129 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>New Page 1</title>
+</head>
+
+<body bgcolor="#F7F7F7">
+
+
+<table width="100%" border="0" id="table1" height="942">
+	<!-- MSTableType="layout" -->
+	<tr>
+		<td vAlign="top" width="774" height="938">
+		<blockquote>
+			<h2><font face="Arial"><a name="Overview">Publications</a></font></h2>
+
+
+<p style="margin-top: 0; margin-bottom: 0">
+                                        <font face="Arial"><b> Symbolic Message Sequence Charts </b>
+                    </font></p>
+                                        <p style="margin-top: 0; margin-bottom: 0">
+                                        <font face="Arial">Abhik Roychoudhury, Ankit Goel and Bikram Sengupta</font></p>
+                                        <p style="margin-top: 0; margin-bottom: 0">
+                                        <font face="Arial">15th ACM SIGSOFT Symposium on Foundations of Software Engineering (FSE) 2007.</font></p>
+
+
+					<p style="margin-top: 0; margin-bottom: 0">
+					<font face="Arial"><b>Hierarchical Dynamic Slicing </b>(
+                    <a href="../../pdf/issta07.pdf">pdf</a> )</font></p>
+					<p style="margin-top: 0; margin-bottom: 0">
+					<font face="Arial">Tao Wang and Abhik Roychoudhury</font></p>
+					<p style="margin-top: 0; margin-bottom: 0">
+					<font face="Arial">International Symposium on Software 
+                    Testing and Analysis (ISSTA) 2007.</font></p>
+					<p style="margin-top: 0; margin-bottom: 0">
+					&nbsp;</p>
+					<p style="margin-top: 0; margin-bottom: 0">
+					<b><font face="Arial">
+							Dynamic Slicing on Java Bytecode Traces</font></b><font face="Arial">, 
+							(<a href="http://www.comp.nus.edu.sg/~abhik/pdf/slice-jnl.pdf">pdf</a>)<br>
+							Tao Wang and Abhik Roychoudhury<br>
+							<i>ACM Transactions on Programming Languages and 
+                            Systems (TOPLAS), To appear.</i></font></p>
+			<p>
+					<b><font face="Arial">A</font></b><font face="Arial"><b>ccurately Choosing Execution Runs for 
+                    Software Fault Localization</b> (<a href="../../pdf/cc06.pdf">pdf</a>)<br>
+                    Liang Guo, Abhik Roychoudhury and Tao Wang<br>
+                    <i>Compiler Construction (CC) 2006.</i></font></p>
+					<p style="margin-top: 0; margin-bottom: 0">
+					<b><font face="Arial">A</font></b><font face="Arial"><b> Memory Model Sensitive Checker for 
+                    C# (</b><a href="../../pdf/fm06.pdf">pdf</a>)</font></p>
+                    <p style="margin-top: 0; margin-bottom: 0">
+					<font face="Arial">Thuan Quang Huynh and Abhik Roychoudhury, </font>
+                    </p>
+                    <p style="margin-top: 0; margin-bottom: 0">
+					<font face="Arial">Formal Methods (FM) 2006,&nbsp; LNCS 
+                    4085, Springer.</font></p>
+                    <p style="margin-top: 0; margin-bottom: 0">
+					&nbsp;</p>
+					<font face="Arial">
+                    <p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><b>Synthesis 
+                    and Traceability of Scenario-based Executable Models ( </b>
+                    <a href="http://www.comp.nus.edu.sg/~abhik/pdf/isola06.pdf">
+                    pdf</a> <b>)</b></p>
+                    <p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">Ankit Goel 
+                    and Abhik Roychoudhury</p>
+                    <p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px"><i>Invited 
+                    Paper</i>, Intl. Symp. on Leveraging Applications of Formal 
+                    Methods, Verification and Validation (ISoLA) 2006, IEEE 
+                    Press</p>
+                    </font>
+							<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">
+							&nbsp;</p>
+							<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">
+							<font face="Arial">
+							<b>Interacting Process Classes ( </b>
+                            <a href="../../pdf/icse06.pdf">pdf</a><b> )</b></font></p>
+							<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">
+							<font face="Arial">Ankit Goel, Sun Meng, Abhik 
+                            Roychoudhury and P.S. Thiagarajan</font></p>
+							<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">
+							<i><font face="Arial">International Conference on 
+                            Software Engineering (ICSE) 2006.</font></i></p>
+							<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">
+							&nbsp;</p>
+							<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">
+							<b><font face="Arial">A</font></b><font face="Arial"><b>utomated Path 
+							Generation for Software Fault 
+							Localization</b>, (<a href="http://www.comp.nus.edu.sg/~wangtao/papers/ase05.pdf">pdf</a>)</font></p>
+							<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">
+							<font face="Arial">Tao Wang and Abhik 
+							Roychoudhury</font><p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">
+							<font face="Arial"><i>IEEE/ACM 
+							International Conference on Automated 
+							Software Engineering (ASE) 2005.</i></font><p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">
+							&nbsp;<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">
+							<span style="FONT-FAMILY: Arial">
+							<b>Model-Driven SoC Design: The 
+							UML-SystemC Bridge</b></span></p>
+							<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px">
+							<span style="FONT-FAMILY: Arial">
+							K.D. Nguyen, Z. Sun, P.S. Thiagarajan 
+							and&nbsp; W-F. Wong, Chapter in a book, UML 
+							for SoC design, Grant Martin and 
+							Wolfgang Mueller (eds), Springer, 2005.</span></p>
+			<p>
+							<font face="Arial"><b>Using Compressed 
+							Bytecode Traces for Slicing Java 
+							Programs</b>, (<a href="http://www.comp.nus.edu.sg/~abhik/pdf/icse04.pdf">pdf</a>)<br>
+							Tao Wang and Abhik Roychoudhury<br>
+							<i>ACM/IEEE International Conference on 
+							Software Engineering (ICSE) 2004.</i></font></p>
+							<font face="Arial"><b>Symbolic 
+							Execution of Behavioral Requirements</b>, 
+							(<a href="http://www.comp.nus.edu.sg/~abhik/ps/padl04.ps">ps</a>)<br>
+							Tao Wang, Abhik Roychoudhury, Roland H.C. 
+							Yap and S.C. Choudhary<br>
+							<i>International Symposium on Practical 
+							Applications of Declarative Languages (PADL) 
+							2004, Springer Verlag, LNCS 3057.</i></font><p>&nbsp;</p>
+			<br>&nbsp;</blockquote>
+		</td>
+	</tr>
+</table>
+
+</body>
+
+</html>

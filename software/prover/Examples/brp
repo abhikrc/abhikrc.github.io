@@ -1,0 +1,229 @@
+
+toplevel(bad_dest/2).
+toplevel(bad_src/2).
+
+% Defining the entire infinite family
+
+gen( [(sender, (init, RB)), (receiver, init), (snd_chan, init), 
+      (rcv_chan, init), (hsk_coord, init)] ) :- nat(RB).
+
+nat(0).
+nat(s(N)) :- nat(N).
+
+%------------------------------------------------------------------------
+% Transition relation for Parameterized Bounded Retransmission Protocol.
+% Parameterized by the Retransmission Bound which is a natural number.
+% Aim is to construct induction proofs of safety properties of BRP
+% (by inducting on the Retrans. bound) via program transformations.
+
+% Checking for the non-prefix property
+% the receiving client receives data which is not a prefix of the file
+% being sent by the sending client.
+
+bad_dest(X, Y) :- trans(X, Y), bad(Y).
+bad_src(X, Y) :- trans(X, Y), bad(X).
+
+counter_example(X) :- gen(X), unsafe(X).
+
+%:- table unsafe/1.
+
+unsafe(X) :- bad(X).
+
+unsafe(X) :- trans(X, Y), unsafe(Y).
+
+% the inequalities here will NOT be constraints.
+% the receiver's list is either absent (e.g. in the "init" state
+% where it is assumed to be [], or if present it must be ground).
+
+bad(X) :- X = [_, (receiver, S), _, _, _], S = (_, List, _),
+	  List \= [], List \= [a], List \= [a,b].
+ 
+% GLOBAL transition relation
+
+%:- table trans/2.
+
+trans([H|T], [H|T1]) :- trans(T, T1).
+
+trans([H|T], [H1|T]) :- ltrans(H, self(_X), H1).
+
+trans([H|T], [H1|T1]) :- ltrans(H, in(Proc, Data), H1),
+			 trans_rest(T, out(Proc, Data), T1).
+
+trans([H|T], [H1|T1]) :- ltrans(H, out(Proc, Data), H1),
+			 trans_rest(T, in(Proc, Data), T1).
+
+trans_rest([(Proc, S)|T], A, [(Proc, S1)|T]) 
+	:- ltrans((Proc, S), A, (Proc, S1)).
+
+trans_rest([H|T], A, [H|T1]) :- trans_rest(T, A, T1).
+
+
+% The LOCAL transition rules
+
+:- index ltrans/3-1.
+
+ltrans( (sender,S1), A, (sender,S2)) :- snd_trans(S1, A, S2).
+
+ltrans( (receiver,S1), A, (receiver,S2)) :- rcv_trans(S1, A, S2).
+
+ltrans( (snd_chan,S1), A, (snd_chan,S2)) :- sch_trans(S1, A, S2).
+
+ltrans( (rcv_chan,S1), A, (rcv_chan,S2)) :- rch_trans(S1, A, S2).
+
+ltrans( (hsk_coord,S1), A, (hsk_coord,S2)) :- hsk_trans(S1, A, S2).
+
+
+% 1. SENDER process
+
+% RB   : Maximum Retransmission Bound
+% RC   : Retransmission Count so far (per chunk)
+% Seq  : Sequence Number
+% List : List of remaining chunks to be sent (in the current file).
+
+% Transition rules for SENDER
+
+%  0. Defining the initial state : Syntactic Sugar
+
+snd_trans( (init, RB), A, S) :- 
+	snd_trans( (send, RB, [a,b], 0, 0), A, S ).
+
+% 1. send -> wait : Transmit a chunk and wait for ack
+
+snd_trans( (send, RB, [H|T], Seq, RC), out(snd_chan, (H, Seq)),
+	   (wait, RB, [H|T], Seq, RC) ) :- nat(RB), nat(RC).
+
+% 2. wait -> rcvd : Get an ack from the ack channel
+
+snd_trans( (wait, RB, [_H|T], Seq, RC), in(rcv_chan, ack),
+	   (rcvd, RB, T, Seq, RC) ) :- nat(RB), nat(RC).
+
+% 3. wait -> send : Timeout, and retransmit the same chunk
+
+snd_trans( (wait, RB, List, Seq, RC), self(timeout),
+	   (send, RB, List, Seq, RC1) ) 
+	:- nat(RB), nat(RC), lt(RC,RB), plus_one(RC,RC1).
+
+% 4. wait -> abort : Timeout, and retrans. bound exceeded
+%                    so start a new session
+
+snd_trans( (wait, RB, _List, _Seq, RC), self(timeout),
+	   (abort, RB) ) 
+	:- nat(RB), nat(RC), geq(RC, RB).
+
+% 5. abort -> ready : Updating timers to get ready for new session
+
+snd_trans( (abort, RB), out(hsk_coord, snd_reset), (ready, RB) )
+	:- nat(RB).
+
+% 6. ready -> init : Timers updated, starting new session
+
+snd_trans( (ready, RB), in(hsk_coord, rcv_reset), (init, RB) )
+	:- nat(RB).
+
+% 7. rcvd -> init : File transmission successful, transmit new file
+
+snd_trans( (rcvd, RB, List, _Seq, _RC), self(timer_reset),
+	   (init, RB) ) :- nat(RB), List = [].
+
+% 8. rcvd -> send : Chunk transmission successful, transmit new chunk
+
+snd_trans( (rcvd, RB, List, Seq, _), self(timer_reset),
+	   (send, RB, List, NSeq, 0) ) 
+	:- nat(RB), List = [_|_], bitflip(Seq, NSeq).
+
+%-------------------------------------------------------------------------
+
+% Transition rules for SEND CHANNEL (lossy)
+
+sch_trans( init, in(sender, (Chunk, Seq)), data(Chunk, Seq) ).
+
+sch_trans( data(Chunk, Seq), out(receiver, (Chunk, Seq)), init).
+
+sch_trans( data(_Chunk, _Seq), self(lost), init).
+
+%----------------------------------------------------------------------
+
+% Transition rules for RECEIVE CHANNEL (lossy)
+
+rch_trans( init, in(receiver, ack), rcvd ).
+
+rch_trans( rcvd, out(sender, ack), init).
+
+rch_trans( rcvd, self(lost), init).
+
+%----------------------------------------------------------------------
+
+% Transition rules for HANDSHAKE-COORDINATOR
+
+% a process to co-ordinate a handshake between sender and receiver
+% in case transmission of a file aborts.
+
+hsk_trans( init, in(sender, snd_reset), snd_ready).
+
+hsk_trans(snd_ready, out(receiver, timeout), wait_rcv).
+
+hsk_trans(wait_rcv, in(receiver, rcv_reset), rcv_ready).
+
+hsk_trans(rcv_ready, out(sender, rcv_reset), init).
+
+%-------------------------------------------------------------------------
+
+% Transition rules for RECEIVER
+
+% 0. Initial State : Syntactic Sugar
+
+rcv_trans(init, A, S) :-  rcv_trans( (receive, [], 0), A, S).
+
+% 1. Correctly receiving a chunk
+
+rcv_trans( (receive, List, Seq), in(snd_chan, (Chunk, Seq)), 
+	   (rcvd, [Chunk|List], NSeq) ) :- bitflip(Seq, NSeq).
+
+% 2. Receiving a duplicate chunk
+
+rcv_trans( (receive, List, Seq), in(snd_chan, (_Chunk, Seq1)), 
+	   (rcvd, List, Seq) ) :- bitneq(Seq, Seq1).
+
+% 3. Acknowledging a received chunk
+
+rcv_trans( (rcvd, List, Seq), out(rcv_chan, ack), (receive, List, Seq) ).
+
+% 4. Aborting current packet transmission
+
+rcv_trans( (receive, _List, _Seq), in(hsk_coord, timeout), abort).
+
+% 5. Starting a new transmission
+
+rcv_trans( abort, out(hsk_coord, rcv_reset), init ).
+
+%------------------------------------------------------------------
+
+% Arithmetic manipulation predicates
+
+% Bit operations
+
+bitfilp(0, 1).
+bitflip(1, 0).
+
+bitneq(0, 1).
+bitneq(1, 0).
+
+% Integer operations
+
+plus_one(X, s(X)).
+
+lt(0, _).
+lt(s(X), s(Y)) :- lt(X, Y).
+
+geq(_, 0).
+geq(s(X), s(Y)) :- geq(X, Y).
+
+%-------------------
+
+consumer(bad/1).
+
+unfold_flag(suspend_expand).
+
+cleanup_flag([failed]).
+
+maxDepthConstant(15).

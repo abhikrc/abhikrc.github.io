@@ -1,0 +1,10 @@
+\BOOKMARK [1][]{section.0.1}{Introduction}{}
+\BOOKMARK [1][]{section.0.2}{Preliminaries}{}
+\BOOKMARK [1][]{section.0.3}{Learning finite state machines}{}
+\BOOKMARK [2][]{subsection.3.1}{Angluin's learning algorithm}{section.0.3}
+\BOOKMARK [2][]{subsection.3.2}{Prefix-closed models}{section.0.3}
+\BOOKMARK [1][]{section.0.4}{Experimental Results}{}
+\BOOKMARK [2][]{subsection.4.1}{Angluin's algorithm}{section.0.4}
+\BOOKMARK [2][]{subsection.4.2}{The optimization for prefix-closed systems}{section.0.4}
+\BOOKMARK [1][]{section.0.5}{Conclusions and future work}{}
+\BOOKMARK [1][]{section*.11}{References}{}

@@ -1,0 +1,13 @@
+\BOOKMARK [1][]{section.0.1}{Introduction}{}
+\BOOKMARK [1][]{section.0.2}{Preliminaries}{}
+\BOOKMARK [1][]{section.0.3}{FLC with Nondeterministic Operator ``+'' \(FLC+ \) }{}
+\BOOKMARK [2][]{subsection.3.1}{Syntax and Semantics}{section.0.3}
+\BOOKMARK [2][]{subsection.3.2}{Some Theorems for FLC+ }{section.0.3}
+\BOOKMARK [1][]{section.0.4}{Correspondence between FLC+ and BPA}{}
+\BOOKMARK [2][]{subsection.4.1}{Nondeterminism}{section.0.4}
+\BOOKMARK [2][]{subsection.4.2}{Sequential Composition}{section.0.4}
+\BOOKMARK [2][]{subsection.4.3}{Recursion}{section.0.4}
+\BOOKMARK [1][]{section.0.5}{Constructing Characteristic Formulae of Sequential Processes}{}
+\BOOKMARK [1][]{section.0.6}{Related Work and Concluding Remarks}{}
+\BOOKMARK [1][]{section*.1}{Acknowledgement }{}
+\BOOKMARK [1][]{section*.2}{References}{}

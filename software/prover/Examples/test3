@@ -1,0 +1,8 @@
+
+clauseI(c1, ( da(X,Y,Z, R) :- app(X, Y, I), app(I, Z, R)), ([1],[1])).
+clauseI(c2, ( app([], X, X) :- true), ([1], [1])).
+clauseI(c3, ( app([X|Xs], Y, [X|Zs]) :- app(Xs, Y, Zs)), ([1], [1])).
+
+num_strata(1).
+get_stratum(da, 1).
+get_stratum(app, 1).

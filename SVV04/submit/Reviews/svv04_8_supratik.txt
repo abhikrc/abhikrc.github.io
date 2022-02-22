@@ -1,0 +1,43 @@
+Paper: Handling Uncertainty in Real Time Scheduling
+
+Author: Subramani
+1 - How do you classify this paper?
+
+   3: Strong Accept
+
+   2: Weak Accept
+
+   1: Weak Reject <--
+
+   0: Strong Reject
+
+2 - What is your overall expertise concerning the subject areas of this
+paper?
+
+   X: I am an expert.
+   Y: I am knowledgeable in the area, though not an expert<--
+   Z: I am not an expert. My evaluation is that of an informed outsider.
+
+3 Contributions of the Paper: The paper presents a framework for
+scheduling under uncertainty. Applications include robotics, compiler
+construction etc. Algorithms are presented for synthesizing scheduling
+algorithms in the framework and their complexities are analyzed and
+correctness proved
+
+4 Points in favor or against:
+It is difficult to find out how this paper benefits the verification
+community
+
+
+On Tue, 26 Oct 2004, Abhik Roychoudhury wrote:
+
+>
+> i have uploaded everything that I have received. papers 3,5,7,9
+> still have only 1 review. I have not yet received anything from
+> Ramesh, and from you so far I have got 1 review. The others have
+> mostly sent in their reviews.
+>
+> regards
+> -Abhik
+> http://www.comp.nus.edu.sg/~abhik
+>
