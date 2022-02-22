@@ -1,7 +1,0 @@
-AuthUserFile /home/staff/abhik/public_html/ENTCS05/.htpasswd
-
-AuthGroupFile /dev/null 
-AuthName ByPassword
-AuthType Basic 
-
-require user mislove
